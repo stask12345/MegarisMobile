@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://skrypty/Gold Sword.gd" type="Script" id=1]
+[ext_resource path="res://grafika/itemy/sword2.png" type="Texture" id=2]
+
+[node name="Gold Sword" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

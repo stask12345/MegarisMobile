@@ -1,0 +1,179 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://skrypty/playerDetection.gd" type="Script" id=1]
+[ext_resource path="res://grafika/monster/monster-spider-animation.png" type="Texture" id=2]
+[ext_resource path="res://skrypty/Monster-Spider.gd" type="Script" id=3]
+[ext_resource path="res://monster_death_anim.tres" type="Animation" id=4]
+[ext_resource path="res://skrypty/RangeAreaMonster.gd" type="Script" id=5]
+[ext_resource path="res://skrypty/MovementControlerMonster.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Monster1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "charge"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "walk"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 36.5, 13.2 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 331, 57.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 41, 22 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 197, 40.5 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 117.5, 12 )
+
+[node name="Monster-Spider" type="KinematicBody2D"]
+z_index = 1
+collision_layer = 2
+script = ExtResource( 3 )
+
+[node name="Monster1" type="Sprite" parent="."]
+modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+texture = ExtResource( 2 )
+hframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 14 )
+anims/charge = SubResource( 19 )
+anims/idle = SubResource( 15 )
+anims/monster_death = ExtResource( 4 )
+anims/walk = SubResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2, 19.2 )
+shape = SubResource( 16 )
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_mask = 0
+input_pickable = false
+monitorable = false
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 13 )
+
+[node name="monsterBody" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
+position = Vector2( 0, 11 )
+shape = SubResource( 18 )
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 513
+monitorable = false
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+position = Vector2( 0, 7.5 )
+shape = SubResource( 21 )
+
+[node name="MovementControlerMonster" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementControlerMonster"]
+position = Vector2( -0.5, 12 )
+shape = SubResource( 22 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="RangeArea" to="RangeArea" method="_on_RangeArea_body_entered"]
+[connection signal="body_exited" from="RangeArea" to="RangeArea" method="_on_RangeArea_body_exited"]
+[connection signal="area_entered" from="MovementControlerMonster" to="MovementControlerMonster" method="_on_MovementControlerMonster_area_entered"]
+[connection signal="area_exited" from="MovementControlerMonster" to="MovementControlerMonster" method="_on_MovementControlerMonster_area_exited"]

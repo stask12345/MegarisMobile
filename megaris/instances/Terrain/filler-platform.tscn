@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grafika/white.png" type="Texture" id=1]
+
+[node name="filler-platform" type="Sprite"]
+modulate = Color( 0.545098, 0.305882, 0.266667, 1 )
+position = Vector2( -1877.15, 805 )
+scale = Vector2( 5.02063, -60 )
+texture = ExtResource( 1 )
+offset = Vector2( -0.0688, 2.494 )
