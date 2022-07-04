@@ -3576,7 +3576,7 @@ anims/startingAnimation = ExtResource( 70 )
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="Monster-Slime" parent="." instance=ExtResource( 86 )]
-position = Vector2( -1045, 902 )
+position = Vector2( 88, 902 )
 
 [node name="Monster-Slime2" parent="." instance=ExtResource( 86 )]
 position = Vector2( -1667, 882 )
