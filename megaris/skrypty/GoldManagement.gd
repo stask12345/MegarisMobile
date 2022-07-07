@@ -18,7 +18,7 @@ func _process(delta):
 	if Input.is_key_pressed(16777351):
 		save()
 	if Input.is_key_pressed(16777229):
-		$Hp.hp = 0
+		get_tree().quit()
 	$Crystals.text = String(crystals)
 	$Gold.text = String(gold)
 

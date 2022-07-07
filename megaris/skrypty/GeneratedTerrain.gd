@@ -174,27 +174,34 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 			add_child(decoration)
 
 func generateMonsters(platform,numberOfCurrentFloor):
-	var slime1 = preload("res://instances/Monsters/Monster-Slime.tscn")
+	var slime0 = preload("res://instances/Monsters/Monster-Slime.tscn")
+	var slime1 = preload("res://instances/Monsters/Monster-OrangeSlime.tscn")
 	var slime2 = preload("res://instances/Monsters/Monster-RedSlime.tscn")
 	var slime3 = preload("res://instances/Monsters/Monster-BlueSlime.tscn")
+	var bat0 = preload("res://instances/Monsters/Monster-Bat3.tscn")
 	var bat1 = preload("res://instances/Monsters/Monster-Bat.tscn")
 	var bat2 = preload("res://instances/Monsters/Monster-Bat2.tscn")
 	var spider = preload("res://instances/Monsters/Monster-Spider.tscn")
 	var turtle = preload("res://instances/Monsters/Monster-Turtle.tscn")
 	var turtle1 = preload("res://instances/Monsters/Monster-BigTurtle.tscn")
 	
+	var monsterList0 = [slime0,slime0,bat0]
 	var monsterList1 = [slime1,slime1,slime1,bat1,bat1,slime3,turtle]
-	var monsterList2 = [slime2,slime2,slime2,bat2,bat2,spider,turtle1]
+	var monsterList2 = [slime2,slime2,slime2,bat2,bat2,spider,turtle1,slime3]
 	
 	var numberOfMonster = randi()%3# od 0 do 2 potworków na platformę # tu można to zmienić
 	for i in numberOfMonster:
 		var generatedMonster
+		var list0 = monsterList0
 		var list1 = monsterList1
 		var list2 = monsterList2
-		if numberOfCurrentFloor <= (numberOfFloors/2): 
+		if numberOfCurrentFloor <= 2:
+			generatedMonster = list0[randi()%list0.size()].instance()
+			list0.erase(generatedMonster)
+		if  numberOfCurrentFloor > 2 and numberOfCurrentFloor <= 7: 
 			generatedMonster = list1[randi()%list1.size()].instance()
 			list1.erase(generatedMonster)
-		if numberOfCurrentFloor > (numberOfFloors/2): 
+		if numberOfCurrentFloor > 7 and numberOfCurrentFloor <= 12: 
 			generatedMonster = list2[randi()%list2.size()].instance()
 			list2.erase(generatedMonster)
 		

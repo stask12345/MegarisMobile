@@ -7,13 +7,12 @@ var maxJump = 3600
 var jumped = false
 var waitingForJump = false
 
-
 func _ready():
 	minCoins = 1
 	maxCoins = 2
-	attackStrenght = 20 #statystyki zmienne
-	hp = 20
-	monsterName = "Blue Slime"
+	attackStrenght = 30 #statystyki zmienne
+	hp = 30
+	monsterName = "Orange Slime"
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja
@@ -27,6 +26,7 @@ func _physics_process(delta):
 			goingRight = true
 		if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
 			waitingForJump = true
+			print("czeka na skok")
 			waitForJump()
 	
 	if jumped:
@@ -58,13 +58,13 @@ func _physics_process(delta):
 	if !destroyed: move_and_slide(motion,Vector2(0,-1))
 	
 
+
 func waitForJump():
 	$Timer2.start(2)
-	yield($Timer2,"timeout")
+	yield($Timer2, "timeout")
 	jumped = true
 
 
 func destroyMonster():
 	dropGold()
 	queue_free()
-

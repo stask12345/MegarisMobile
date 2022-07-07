@@ -76,7 +76,8 @@ func shoot():
 	waitForShoot()
 
 func waitForShoot():
-	yield(get_tree().create_timer(2),"timeout")
+	$Timer2
+	yield($Timer2,"timeout")
 	canShoot = true
 
 func destroyMonster():

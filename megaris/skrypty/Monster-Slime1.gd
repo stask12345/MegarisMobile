@@ -11,7 +11,7 @@ func _ready():
 	minCoins = 1
 	maxCoins = 2
 	attackStrenght = 30 #statystyki zmienne
-	hp = 30
+	hp = 10
 	monsterName = "Green Slime"
 
 func _physics_process(delta):
@@ -60,9 +60,8 @@ func _physics_process(delta):
 
 
 func waitForJump():
-#	$Timer3.start(2)
-	yield($Timer3, "timeout")
-	print("skok")
+	$Timer2.start(2)
+	yield($Timer2, "timeout")
 	jumped = true
 
 

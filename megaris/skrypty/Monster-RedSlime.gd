@@ -59,8 +59,8 @@ func _physics_process(delta):
 	
 
 func waitForJump():
-	yield(get_tree().create_timer(2), "timeout")
-	print("skok")
+	$Timer2.start(2)
+	yield($Timer2,"timeout")
 	jumped = true
 
 func destroyMonster():

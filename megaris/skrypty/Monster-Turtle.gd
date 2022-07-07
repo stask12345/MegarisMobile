@@ -82,7 +82,8 @@ func _physics_process(delta):
 
 func waitForJump():
 	waitingForJump = true
-	yield(get_tree().create_timer(1),"timeout")
+	$Timer2.start(1)
+	yield($Timer2,"timeout")
 	monsterJump()
 
 func monsterJump():

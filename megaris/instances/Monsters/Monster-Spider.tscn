@@ -171,6 +171,8 @@ shape = SubResource( 22 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+
 [connection signal="body_entered" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="RangeArea" to="RangeArea" method="_on_RangeArea_body_entered"]

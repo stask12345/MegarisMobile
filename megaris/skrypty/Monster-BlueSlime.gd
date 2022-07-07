@@ -68,9 +68,11 @@ func _physics_process(delta):
 	
 
 func waitForJump():
-	yield(get_tree().create_timer(1), "timeout")
+	$Timer2.start(1)
+	yield($Timer2,"timeout")
 	$AnimationPlayer.play("jumping")
-	yield(get_tree().create_timer(2), "timeout")
+	$Timer2.start(2)
+	yield($Timer2,"timeout")
 	jumped = true
 	jump = 1
 
