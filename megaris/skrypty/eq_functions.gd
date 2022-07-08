@@ -148,7 +148,6 @@ func switchItemPlace(inventoryToAdd,replace = false):
 	stopSlotAnimation()
 
 func stopSlotAnimation():
-	print("to tak wyglada")
 	inventory1.modulate = Color.white
 	inventory1Animation.stop()
 	inventory2.modulate = Color.white
