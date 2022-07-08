@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=2]
+[gd_scene load_steps=152 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -88,6 +88,7 @@
 [ext_resource path="res://grafika/worldElements/market.png" type="Texture" id=86]
 [ext_resource path="res://grafika/UI/drink_animation.png" type="Texture" id=87]
 [ext_resource path="res://Drink.gd" type="Script" id=88]
+[ext_resource path="res://grafika/terrain/buildSiteMarket.png" type="Texture" id=89]
 [ext_resource path="res://grafika/player_hightlight.png" type="Texture" id=98]
 
 [sub_resource type="Animation" id=54]
@@ -1020,40 +1021,6 @@ extents = Vector2( 68.7475, 90 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 82.743, 172.736 )
 
-[sub_resource type="Animation" id=70]
-resource_name = "crystalIdle"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PortalCrystal:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -2, -45 ), Vector2( -2, -54 ), Vector2( -2, -45 ) ]
-}
-
-[sub_resource type="Animation" id=71]
-resource_name = "crystalSpawning"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PortalCrystal:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
 [sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
@@ -1097,6 +1064,40 @@ extents = Vector2( 23, 10 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 509, 102.5 )
+
+[sub_resource type="Animation" id=70]
+resource_name = "crystalIdle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -45 ), Vector2( -2, -54 ), Vector2( -2, -45 ) ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "crystalSpawning"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 33, 45 )
@@ -3347,41 +3348,174 @@ texture = ExtResource( 11 )
 
 [node name="Elements" type="Node" parent="Terrain"]
 
-[node name="Torch" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="BossRoom" type="Node" parent="Terrain/Elements"]
+
+[node name="Monster-Slime" type="KinematicBody2D" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 0, -3228 )
+z_index = 2
+collision_layer = 2
+script = ExtResource( 46 )
+
+[node name="Monster1" type="Sprite" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+texture = ExtResource( 80 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+autoplay = "idle"
+anims/RESET = SubResource( 14 )
+anims/idle = SubResource( 15 )
+anims/monster_death = ExtResource( 75 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+position = Vector2( 0, 3 )
+shape = SubResource( 16 )
+
+[node name="TriggerArea" type="Area2D" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+collision_mask = 0
+input_pickable = false
+monitorable = false
+script = ExtResource( 59 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea"]
+position = Vector2( 0, -25 )
+shape = SubResource( 13 )
+
+[node name="monsterBody" type="Area2D" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/BossRoom/Monster-Slime/monsterBody"]
+position = Vector2( 0, 2 )
+shape = SubResource( 18 )
+
+[node name="Timer" type="Timer" parent="Terrain/Elements/BossRoom/Monster-Slime"]
+
+[node name="Slime-statue" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -366, -3255 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue3" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -658, -3255 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue4" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -1172, -3255 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue8" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -1478, -3255 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue2" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 399, -3255 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue5" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 702, -3255 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue6" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 1161, -3255 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 71 )
+
+[node name="Slime-statue7" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 1475, -3255 )
+texture = ExtResource( 71 )
+
+[node name="Boss-baner" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -1, -3529 )
+texture = ExtResource( 61 )
+
+[node name="Boss-baner1" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -946, -3397 )
+texture = ExtResource( 79 )
+
+[node name="Boss-baner2" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 955, -3404 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 79 )
+
+[node name="Area2D" type="Area2D" parent="Terrain/Elements/BossRoom"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/BossRoom/Area2D"]
+position = Vector2( 27, -3318.5 )
+shape = SubResource( 72 )
+
+[node name="Light2D" type="Light2D" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 0, -3715 )
+texture = ExtResource( 44 )
+color = Color( 0.607843, 0.607843, 0.607843, 1 )
+
+[node name="Torch" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( -1314, -3334 )
 z_index = 1
 
-[node name="Torch2" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="Torch2" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( -512, -3334 )
 z_index = 1
 
-[node name="Torch3" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="Torch3" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( 567, -3334 )
 z_index = 1
 
-[node name="Torch5" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="Torch5" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( -69, -3324 )
 z_index = 1
 
-[node name="Torch6" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="Torch6" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( 69, -3323 )
 z_index = 1
 
-[node name="Torch4" parent="Terrain/Elements" instance=ExtResource( 48 )]
+[node name="Torch4" parent="Terrain/Elements/BossRoom" instance=ExtResource( 48 )]
 position = Vector2( 1316, -3334 )
 z_index = 1
 
-[node name="SpawnPoint" type="Sprite" parent="Terrain/Elements"]
+[node name="Pillar" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -514, -3565 )
+texture = ExtResource( 47 )
+
+[node name="Pillar2" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 564, -3565 )
+texture = ExtResource( 47 )
+
+[node name="Pillar4" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 1313, -3565 )
+texture = ExtResource( 47 )
+
+[node name="Pillar3" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -1315, -3565 )
+texture = ExtResource( 47 )
+
+[node name="Trone" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 0, -3279 )
+texture = ExtResource( 55 )
+
+[node name="Boss-platform" type="Sprite" parent="Terrain/Elements/BossRoom"]
+position = Vector2( 0, -3222 )
+texture = ExtResource( 54 )
+
+[node name="Floor" type="Node" parent="Terrain/Elements"]
+
+[node name="SpawnPoint" type="Sprite" parent="Terrain/Elements/Floor"]
 position = Vector2( -119.5, 842.5 )
 texture = ExtResource( 64 )
 
-[node name="BumEffect" type="Sprite" parent="Terrain/Elements/SpawnPoint"]
+[node name="BumEffect" type="Sprite" parent="Terrain/Elements/Floor/SpawnPoint"]
 visible = false
 position = Vector2( -2, 63 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 67 )
 
-[node name="TeleportationEffect" type="Sprite" parent="Terrain/Elements/SpawnPoint"]
+[node name="TeleportationEffect" type="Sprite" parent="Terrain/Elements/Floor/SpawnPoint"]
 visible = false
 position = Vector2( -2.5, 57.5073 )
 z_index = 12
@@ -3389,139 +3523,30 @@ texture = ExtResource( 69 )
 hframes = 7
 frame = 6
 
-[node name="PortalCrystal" type="Sprite" parent="Terrain/Elements/SpawnPoint"]
+[node name="PortalCrystal" type="Sprite" parent="Terrain/Elements/Floor/SpawnPoint"]
 position = Vector2( -2, -45 )
 texture = ExtResource( 65 )
 hframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain/Elements/SpawnPoint"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain/Elements/Floor/SpawnPoint"]
 autoplay = "crystalIdle"
 anims/crystalIdle = SubResource( 70 )
 anims/crystalSpawning = SubResource( 71 )
 
-[node name="Pillar" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -514, -3565 )
-texture = ExtResource( 47 )
+[node name="SkillMarket" type="Node" parent="Terrain/Elements/Floor"]
 
-[node name="Pillar2" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 564, -3565 )
-texture = ExtResource( 47 )
+[node name="BuildSiteMarket" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
+visible = false
+position = Vector2( 489, 825 )
+texture = ExtResource( 89 )
 
-[node name="Pillar4" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 1313, -3565 )
-texture = ExtResource( 47 )
+[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
+position = Vector2( 603, 825 )
+texture = ExtResource( 86 )
 
-[node name="Pillar3" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -1315, -3565 )
-texture = ExtResource( 47 )
-
-[node name="Trone" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 0, -3279 )
-texture = ExtResource( 55 )
-
-[node name="Boss-platform" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 0, -3222 )
-texture = ExtResource( 54 )
-
-[node name="Monster-Slime" type="KinematicBody2D" parent="Terrain/Elements"]
-position = Vector2( 0, -3228 )
-z_index = 2
-collision_layer = 2
-script = ExtResource( 46 )
-
-[node name="Monster1" type="Sprite" parent="Terrain/Elements/Monster-Slime"]
-modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
-texture = ExtResource( 80 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain/Elements/Monster-Slime"]
-autoplay = "idle"
-anims/RESET = SubResource( 14 )
-anims/idle = SubResource( 15 )
-anims/monster_death = ExtResource( 75 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Monster-Slime"]
-position = Vector2( 0, 3 )
-shape = SubResource( 16 )
-
-[node name="TriggerArea" type="Area2D" parent="Terrain/Elements/Monster-Slime"]
-collision_mask = 0
-input_pickable = false
-monitorable = false
-script = ExtResource( 59 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Monster-Slime/TriggerArea"]
-position = Vector2( 0, -25 )
-shape = SubResource( 13 )
-
-[node name="monsterBody" type="Area2D" parent="Terrain/Elements/Monster-Slime"]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Monster-Slime/monsterBody"]
-position = Vector2( 0, 2 )
-shape = SubResource( 18 )
-
-[node name="Timer" type="Timer" parent="Terrain/Elements/Monster-Slime"]
-
-[node name="Slime-statue" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -366, -3255 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue3" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -658, -3255 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue4" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -1172, -3255 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue8" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -1478, -3255 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue2" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 399, -3255 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue5" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 702, -3255 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue6" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 1161, -3255 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 71 )
-
-[node name="Slime-statue7" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 1475, -3255 )
-texture = ExtResource( 71 )
-
-[node name="Boss-baner" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -1, -3529 )
-texture = ExtResource( 61 )
-
-[node name="Boss-baner1" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( -946, -3397 )
-texture = ExtResource( 79 )
-
-[node name="Boss-baner2" type="Sprite" parent="Terrain/Elements"]
-position = Vector2( 955, -3404 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 79 )
-
-[node name="Area2D" type="Area2D" parent="Terrain/Elements"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Area2D"]
-position = Vector2( 27, -3318.5 )
-shape = SubResource( 72 )
-
-[node name="Light2D" type="Light2D" parent="Terrain/Elements"]
-position = Vector2( 0, -3715 )
-texture = ExtResource( 44 )
-color = Color( 0.607843, 0.607843, 0.607843, 1 )
+[node name="ItemTable" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket/Market"]
+position = Vector2( -256, 107 )
+texture = ExtResource( 32 )
 
 [node name="GeneratedTerrain" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -3572,10 +3597,6 @@ anims/startingAnimation = ExtResource( 70 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[node name="Market" type="Sprite" parent="."]
-position = Vector2( 323, 826 )
-texture = ExtResource( 86 )
-
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="CanvasLayer/Control5/background_unselect_button" to="CanvasLayer" method="_on_background_unselect_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control5/background_unselect_button2" to="CanvasLayer" method="_on_background_unselect_button_pressed"]
@@ -3605,9 +3626,9 @@ texture = ExtResource( 86 )
 [connection signal="pressed" from="CanvasLayer/Control4/ChestMenu/Back/Button" to="CanvasLayer/Control4/ChestMenu" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Exit/Button" to="CanvasLayer/Control-DeathScreen" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Reset/ButtonReset" to="CanvasLayer/Control-DeathScreen" method="_on_ButtonReset_pressed"]
-[connection signal="body_entered" from="Terrain/Elements/Monster-Slime/TriggerArea" to="Terrain/Elements/Monster-Slime/TriggerArea" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Terrain/Elements/Monster-Slime/TriggerArea" to="Terrain/Elements/Monster-Slime/TriggerArea" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Terrain/Elements/Area2D" to="EffectGenerator" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Terrain/Elements/BossRoom/Area2D" to="EffectGenerator" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="GeneratedTerrain/Chest/Area2D" to="GeneratedTerrain/Chest" method="_on_Area2D_body_entered"]
