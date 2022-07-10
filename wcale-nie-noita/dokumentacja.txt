@@ -1,0 +1,53 @@
+Megaris Mobile
+
+30.01.2022r Niedziela #początek!
+
+To Do:
+-
+
+To optimise:
+-gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
+-lepsze wyświetlanie damage w stulu terraria
+
+---------------------- ! HELP ! -----------------------
+Dodawanie itemów:
+-stworzenie itemu(sprite z skryptem dziedziczącym z wepon)
+-stworzenie pocisku(sprite pocisku musi nazywać się "Pocisk")
+-*w skrypcie wepon_player, jeśli jest to potrzebne dodajemy rozpoznawanie nowego typu pocisku(funkcja shot)
+-*w skrypcie wepon_player, gdy dodajemy nowy sposób trzymania broni, dodajemy nowy wpis w funkcji get_wepon
+-by ustalić sposób trzymania broni modyfikujemy w skrypcie WeponHolder funkcję get_wepon_in_right_place
+
+---------------------- ! Balans ! ----------------------
+Ulepszenia:
+- armor1 50g
+- armor2 150g
+- armor3 250g
+- bron1  20g
+- bron2  30g
+
+Bronie:
+- miecz1 10-15       0
+- miecz2 20-30       100g
+- miecz3 30-45       150g
+- luk 20-30          60g
+- luk2 30-70         100g
+- maczuga 15-30      70g
+- maczuga1 20-40     110g
+- mzczuga2 30-50     150g
+- wlucznia 15-20     80g
+- wlucznia1 25-35    120g
+- ognista 50-80      120g
+- wodnista 5-10      80g
+Itemy:
+- healing1 30g
+- healing2 60g
+- healing3 100g
+- invicibl 75g
+- strenght 75g
+Potwory:
+- slime1 30        1-2
+- nietoperz1 30    2-3      Area1: 2,5*14=35g*5=175
+- duzy slime 65    4-5
+- slime2 70        4-5
+- nietoperz2 65    5-6      Area2: 6*14=84g*5=420
+- pajak 120        6-10
