@@ -1,7 +1,7 @@
 extends Node2D
 
 
-func _ready():
+func _enter_tree():
 	loadData()
 
 func saveData():
@@ -19,13 +19,13 @@ func saveData():
 			pass
 
 func loadData():
-#	var save_game = File.new()
-#	if not save_game.file_exists("user://savegame.save"):
-#		return # Error! We don't have a save to load.
-#	save_game.open("user://savegame.save", File.READ)
-#	while save_game.get_position() < save_game.get_len():#wczytowanie danych, a nie obiektów do skopiowania!
-#		var node_data = parse_json(save_game.get_line())
-#		for i in node_data.keys():
-#			if i != "nodePath":
-#				get_node(node_data["nodePath"]).set(i,node_data[i])
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegame.save", File.READ)
+	while save_game.get_position() < save_game.get_len():#wczytowanie danych, a nie obiektów do skopiowania!
+		var node_data = parse_json(save_game.get_line())
+		for i in node_data.keys():
+			if i != "nodePath":
+				get_node(node_data["nodePath"]).set(i,node_data[i])
 	pass

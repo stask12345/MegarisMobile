@@ -51,11 +51,11 @@ func spawnPlayer():
 	player.playerVisible = true
 
 func enterBossArea():
-	get_node("/root/MainScene/Terrain/Elements/Area2D").queue_free()
+	get_node("/root/MainScene/Terrain/Elements/BossRoom/Area2D").queue_free()
 	player.trapped = true
 	player.stuck = true
 	$AnimationPlayer.play("bossAnimation")
-	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/Monster-Slime")
+	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/BossRoom/Monster-Slime")
 	if player.global_position.x - slimeToKill.global_position.x > 0:
 		player.get_node("Player").scale.x = -1
 	else: player.get_node("Player").scale.x = 1
@@ -70,7 +70,7 @@ func spawBoss():
 	add_child(boss1)
 
 func killSlimeOnBossFight():
-	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/Monster-Slime")
+	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/BossRoom/Monster-Slime")
 	slimeToKill.minCoins = -2
 	slimeToKill.maxCoins = -1
 	slimeToKill.playAnimationAndDestroy()

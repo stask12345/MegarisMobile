@@ -177,6 +177,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroyMonster"
+} ]
+}
 
 [node name="Monster-BlueSlime2" type="KinematicBody2D"]
 z_index = 2
@@ -258,6 +272,10 @@ z_index = 3
 texture = ExtResource( 4 )
 hframes = 6
 frame = 5
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="Timer3" type="Timer" parent="."]
 
 [connection signal="body_entered" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_exited"]

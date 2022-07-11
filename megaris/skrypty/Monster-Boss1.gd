@@ -4,22 +4,39 @@ var jump = 0
 var jumpPower = 700
 var jumpSpeed = 250 # x
 var maxJump = 12000
+var fullLength = 0
+var lastSetHp = -1 #Dla lepszej optymalizacji
+var maxHp = 0
 var jumped = false
 var waitingForJump = false
 var attackBolt = preload("res://instances/Bullets/Sliding-monster-bullet.tscn")
 var smallBlueSlime = preload("res://instances/Monsters/Monster-SmallBlueSlime.tscn")
 onready var playerCamera = get_node("/root/MainScene/Player/AnimationPlayerCamera")
+onready var bossHp = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/BossMenu")
 
 func _ready():
-	minCoins = 4
-	maxCoins = 5
+	minCoins = 100
+	maxCoins = 200
 	attackStrenght = 30 #statystyki zmienne
 	hp = 65
 	gravity = 50
 	maxGravity = 660
-	monsterName = "Gigantic Slime"
+	monsterName = "Slime King"
+	fullLength = bossHp.get_child(0).scale.x
+	maxHp = hp
 
 func _physics_process(delta):
+	if lastSetHp != hp:
+		if hp > maxHp: hp = maxHp
+		var hpPrecent : float = float(hp) / float(maxHp)
+		if hpPrecent < 0: hpPrecent = 0
+		print(fullLength)
+		print(hpPrecent)
+		print(hp)
+		print(maxHp)
+		bossHp.get_child(0).scale.x = fullLength * hpPrecent
+		lastSetHp = hp
+	
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
@@ -72,23 +89,18 @@ func _physics_process(delta):
 	
 
 func waitForJump():
-	yield(get_tree().create_timer(1), "timeout")
+	$Timer2.start(2)
+	yield($Timer2,"timeout")
 	$AnimationPlayer.play("jumping")
-	yield(get_tree().create_timer(2), "timeout")
+	$Timer3.start(1)
+	yield($Timer3,"timeout")
 	jumped = true
 	jump = 1
 
 
 func destroyMonster():
 	dropGold()
-	var slime1 = smallBlueSlime.instance()
-	var slime2 = smallBlueSlime.instance()
-	slime1.position = position
-	slime2.position = position
-	slime1.position.x -= 30
-	slime2.position.x += 30
-	get_parent().add_child(slime1)
-	get_parent().add_child(slime2)
+	bossHp.visible = false
 	queue_free()
 
 func shootBullets():
@@ -114,6 +126,7 @@ func shootBullets():
 	b2.timerToDestroy(1.2)
 
 func playAnimation():
+	get_node("/root/MainScene/Player/AnimationPlayerCamera").play("cameraShaking")
 	$AnimationPlayerDeath.play("BossDeath")
 
 func addSlimes():

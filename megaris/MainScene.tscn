@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=171 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -89,7 +89,19 @@
 [ext_resource path="res://grafika/UI/drink_animation.png" type="Texture" id=87]
 [ext_resource path="res://Drink.gd" type="Script" id=88]
 [ext_resource path="res://grafika/terrain/buildSiteMarket.png" type="Texture" id=89]
+[ext_resource path="res://grafika/worldElements/trainingCamp.png" type="Texture" id=90]
+[ext_resource path="res://grafika/terrain/buildSiteTrainingCamp.png" type="Texture" id=91]
+[ext_resource path="res://grafika/worldElements/market1.png" type="Texture" id=92]
+[ext_resource path="res://grafika/terrain/buildSiteHallOfFame.png" type="Texture" id=93]
+[ext_resource path="res://grafika/worldElements/hallOfFame.png" type="Texture" id=94]
+[ext_resource path="res://grafika/terrain/buildSiteMarket1.png" type="Texture" id=95]
+[ext_resource path="res://skrypty/SkillMarket.gd" type="Script" id=96]
+[ext_resource path="res://grafika/UI/buy.png" type="Texture" id=97]
 [ext_resource path="res://grafika/player_hightlight.png" type="Texture" id=98]
+[ext_resource path="res://skrypty/Buy.gd" type="Script" id=99]
+[ext_resource path="res://skrypty/TrainingCamp.gd" type="Script" id=100]
+[ext_resource path="res://skrypty/ItemMarket.gd" type="Script" id=101]
+[ext_resource path="res://skrypty/HallOfFame.gd" type="Script" id=102]
 
 [sub_resource type="Animation" id=54]
 resource_name = "idle_highlight"
@@ -829,6 +841,39 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
 }
 
+[sub_resource type="Animation" id=76]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=77]
+resource_name = "pick_up_sight_animation"
+length = 4.0
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 0 ]
+}
+
 [sub_resource type="DynamicFont" id=38]
 size = 31
 font_data = ExtResource( 52 )
@@ -1099,6 +1144,21 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="DynamicFont" id=75]
+font_data = ExtResource( 52 )
+
+[sub_resource type="RectangleShape2D" id=78]
+extents = Vector2( 56.5, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=79]
+extents = Vector2( 43, 65 )
+
+[sub_resource type="RectangleShape2D" id=80]
+extents = Vector2( 54, 66.5 )
+
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 33.6666, 42.3333 )
+
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 33, 45 )
 
@@ -1222,10 +1282,13 @@ tracks/7/keys = {
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 63 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -491, 892 )
+position = Vector2( 1220, -3318 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1449,7 +1512,7 @@ self_modulate = Color( 0.282353, 0.803922, 0.0705882, 1 )
 position = Vector2( 30, 72 )
 scale = Vector2( 420.75, 80 )
 texture = ExtResource( 4 )
-offset = Vector2( 0.500596, -0.0374998 )
+offset = Vector2( 0.501, -0.037 )
 script = ExtResource( 24 )
 
 [node name="HpBar" type="Sprite" parent="CanvasLayer/Control3"]
@@ -1657,9 +1720,6 @@ margin_left = -960.0
 margin_top = -1080.0
 margin_right = -960.0
 margin_bottom = -1080.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemSlot_background" type="Sprite" parent="CanvasLayer/Control4"]
 self_modulate = Color( 0.537255, 0.223529, 0.101961, 1 )
@@ -1783,6 +1843,28 @@ anims/RESET = SubResource( 50 )
 anims/pick_up_sight_animation = SubResource( 51 )
 
 [node name="Button" type="Button" parent="CanvasLayer/Control4/Drink"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -149.0
+margin_top = -46.0
+margin_right = 148.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy" type="Sprite" parent="CanvasLayer/Control4"]
+visible = false
+position = Vector2( 956, 787 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 97 )
+hframes = 8
+script = ExtResource( 99 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control4/Buy"]
+anims/RESET = SubResource( 76 )
+anims/pick_up_sight_animation = SubResource( 77 )
+
+[node name="Button" type="Button" parent="CanvasLayer/Control4/Buy"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = -149.0
 margin_top = -46.0
@@ -2417,9 +2499,6 @@ margin_top = -1080.0
 margin_right = -960.0
 margin_bottom = -1080.0
 script = ExtResource( 36 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="YouDied" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
@@ -2590,9 +2669,10 @@ visible = false
 
 [node name="Boss-hp" type="Sprite" parent="CanvasLayer/Control-DeathScreen/BossMenu"]
 self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 957, 808 )
+position = Vector2( 517, 808 )
 scale = Vector2( 880, 80 )
 texture = ExtResource( 4 )
+offset = Vector2( 0.5, 0 )
 
 [node name="Boss-bar" type="Sprite" parent="CanvasLayer/Control-DeathScreen/BossMenu"]
 position = Vector2( 957, 808 )
@@ -3503,6 +3583,12 @@ texture = ExtResource( 55 )
 position = Vector2( 0, -3222 )
 texture = ExtResource( 54 )
 
+[node name="White" type="Sprite" parent="Terrain/Elements/BossRoom"]
+self_modulate = Color( 0.545098, 0.305882, 0.266667, 1 )
+position = Vector2( 1875, -3185 )
+scale = Vector2( 2, 60.0001 )
+texture = ExtResource( 4 )
+
 [node name="Floor" type="Node" parent="Terrain/Elements"]
 
 [node name="SpawnPoint" type="Sprite" parent="Terrain/Elements/Floor"]
@@ -3534,19 +3620,150 @@ anims/crystalIdle = SubResource( 70 )
 anims/crystalSpawning = SubResource( 71 )
 
 [node name="SkillMarket" type="Node" parent="Terrain/Elements/Floor"]
+script = ExtResource( 96 )
 
-[node name="BuildSiteMarket" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
-visible = false
+[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
 position = Vector2( 489, 825 )
 texture = ExtResource( 89 )
 
+[node name="Label" type="Label" parent="Terrain/Elements/Floor/SkillMarket/BuildSite"]
+margin_left = -79.0
+margin_top = -38.0
+margin_right = -58.0
+margin_bottom = -22.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/SkillMarket/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D"]
+position = Vector2( -43.5, 93.5 )
+shape = SubResource( 78 )
+
 [node name="Market" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
-position = Vector2( 603, 825 )
+visible = false
+position = Vector2( 700, 826 )
 texture = ExtResource( 86 )
 
 [node name="ItemTable" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket/Market"]
 position = Vector2( -256, 107 )
 texture = ExtResource( 32 )
+
+[node name="TrainingCamp" type="Node" parent="Terrain/Elements/Floor"]
+script = ExtResource( 100 )
+
+[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp"]
+position = Vector2( 1271, 848 )
+texture = ExtResource( 91 )
+
+[node name="Label" type="Label" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite"]
+margin_left = -18.0
+margin_top = -58.0
+margin_right = 3.0
+margin_bottom = -42.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D"]
+position = Vector2( 13, 37 )
+shape = SubResource( 79 )
+
+[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp"]
+visible = false
+position = Vector2( 1326, 848 )
+texture = ExtResource( 90 )
+
+[node name="ItemMarket" type="Node" parent="Terrain/Elements/Floor"]
+script = ExtResource( 101 )
+
+[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket"]
+position = Vector2( -823, 825 )
+texture = ExtResource( 95 )
+
+[node name="Label" type="Label" parent="Terrain/Elements/Floor/ItemMarket/BuildSite"]
+margin_left = 12.0
+margin_top = -41.0
+margin_right = 33.0
+margin_bottom = -25.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/ItemMarket/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D"]
+position = Vector2( 44, 56.5 )
+shape = SubResource( 80 )
+
+[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket"]
+visible = false
+position = Vector2( -897, 825 )
+texture = ExtResource( 92 )
+
+[node name="HallOfFame" type="Node" parent="Terrain/Elements/Floor"]
+script = ExtResource( 102 )
+
+[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame"]
+position = Vector2( -1437, 880 )
+texture = ExtResource( 93 )
+
+[node name="Label" type="Label" parent="Terrain/Elements/Floor/HallOfFame/BuildSite"]
+margin_left = -27.0
+margin_top = -92.0
+margin_right = -6.0
+margin_bottom = -76.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/HallOfFame/BuildSite"]
+position = Vector2( -27, -86 )
+scale = Vector2( 1.5, 1.5 )
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D"]
+position = Vector2( 19.6666, 60.3333 )
+shape = SubResource( 81 )
+
+[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame"]
+visible = false
+position = Vector2( -1458, 880 )
+texture = ExtResource( 94 )
 
 [node name="GeneratedTerrain" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -3614,6 +3831,7 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 [connection signal="pressed" from="CanvasLayer/Control4/Enter/Button" to="CanvasLayer/Control4/Enter" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/Open/Button" to="CanvasLayer/Control4/Open" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/Drink/Button" to="CanvasLayer/Control4/Drink" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control4/Buy/Button" to="CanvasLayer/Control4/Buy" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/AnvilMenu/BuyWepon/BuyWeponButton" to="CanvasLayer/Control4/AnvilMenu" method="_on_BuyWeponButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/AnvilMenu/BuyArmor/BuyArmorButton2" to="CanvasLayer/Control4/AnvilMenu" method="_on_BuyArmorButton2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/AnvilMenu/Back/Button" to="CanvasLayer/Control4/AnvilMenu" method="_on_Button_pressed"]
@@ -3629,6 +3847,14 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Area2D" to="EffectGenerator" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/SkillMarket" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/SkillMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D" to="Terrain/Elements/Floor/TrainingCamp" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D" to="Terrain/Elements/Floor/TrainingCamp" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/ItemMarket" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/ItemMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D" to="Terrain/Elements/Floor/HallOfFame" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D" to="Terrain/Elements/Floor/HallOfFame" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="GeneratedTerrain/Chest/Area2D" to="GeneratedTerrain/Chest" method="_on_Area2D_body_entered"]
