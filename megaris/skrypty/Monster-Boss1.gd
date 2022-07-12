@@ -99,8 +99,8 @@ func waitForJump():
 
 
 func destroyMonster():
-	dropGold()
 	bossHp.visible = false
+	get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
 	queue_free()
 
 func shootBullets():

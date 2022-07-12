@@ -36,6 +36,7 @@ func _on_Area2D_body_entered(body):
 		buyButton.objectToBuy = self
 		buyButton.visible = true
 		buyButton.get_child(0).play("pick_up_sight_animation")
+		buyButton.get_child(2).text = "Skill Market"
 
 
 func _on_Area2D_body_exited(body):

@@ -3,7 +3,12 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
--
+-napis "Pokonałeś bossa"
+-pokój z nagrodami(fajne tło)
+-teleportacja do następnej krainy
+-generowanie terenu w następnej krainie
+-skille 
+-market
 
 To optimise:
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu

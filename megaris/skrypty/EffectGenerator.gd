@@ -37,6 +37,9 @@ func deathAnimation():
 	player.get_node("AnimationPlayerLight").play("deathLighting")
 	cameraShakingAnimation.play("cameraShaking")
 
+func makePlayerInvisible():
+	player.playerVisible = false
+
 func putGrave():
 	var grave = preload("res://instances/Grave.tscn").instance()
 	player.modulate = Color(1,1,1)
