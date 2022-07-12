@@ -101,7 +101,6 @@ func waitForJump():
 func destroyMonster():
 	bossHp.visible = false
 	get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
-	queue_free()
 
 func shootBullets():
 	var b1 = attackBolt.instance()

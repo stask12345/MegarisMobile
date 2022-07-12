@@ -40,6 +40,9 @@ func deathAnimation():
 func makePlayerInvisible():
 	player.playerVisible = false
 
+func makePlayerIndestructable():
+	player.get_node("Area2D").invisible = true
+
 func putGrave():
 	var grave = preload("res://instances/Grave.tscn").instance()
 	player.modulate = Color(1,1,1)
