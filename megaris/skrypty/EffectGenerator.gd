@@ -40,8 +40,12 @@ func deathAnimation():
 func makePlayerInvisible():
 	player.playerVisible = false
 
+func playStartingAnimation():
+	$AnimationPlayer.play("startingAnimation")
+
 func makePlayerIndestructable():
 	player.get_node("Area2D").invisible = true
+	player.trapped = true
 
 func putGrave():
 	var grave = preload("res://instances/Grave.tscn").instance()
@@ -55,6 +59,11 @@ func spawnPlayer():
 	player.trapped = false
 	player.stuck = false
 	player.playerVisible = true
+
+func getPlayerToRewardRoom():
+	var rewardRoom = load("res://instances/RewardRoom.tscn").instance()
+	get_node("/root/MainScene").add_child(rewardRoom)
+	player.global_position = Vector2(0,2100);
 
 func enterBossArea():
 	get_node("/root/MainScene/Terrain/Elements/BossRoom/Area2D").queue_free()
@@ -74,6 +83,9 @@ func spawBoss():
 	var boss1 = preload("res://instances/Monsters/Monster-Boss1.tscn").instance()
 	boss1.position = Vector2(0,-3600)
 	add_child(boss1)
+
+func changeBossLabel():
+	UIBoss.get_child(2).text = " Boss defeated!"
 
 func killSlimeOnBossFight():
 	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/BossRoom/Monster-Slime")

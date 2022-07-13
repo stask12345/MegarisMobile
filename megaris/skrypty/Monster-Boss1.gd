@@ -30,10 +30,6 @@ func _physics_process(delta):
 		if hp > maxHp: hp = maxHp
 		var hpPrecent : float = float(hp) / float(maxHp)
 		if hpPrecent < 0: hpPrecent = 0
-		print(fullLength)
-		print(hpPrecent)
-		print(hp)
-		print(maxHp)
 		bossHp.get_child(0).scale.x = fullLength * hpPrecent
 		lastSetHp = hp
 	
@@ -99,8 +95,10 @@ func waitForJump():
 
 
 func destroyMonster():
-	bossHp.visible = false
-	get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
+	if bossHp.get_child(0).visible:
+		bossHp.get_child(0).visible = false
+		bossHp.get_child(1).visible = false
+		get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
 
 func shootBullets():
 	var b1 = attackBolt.instance()

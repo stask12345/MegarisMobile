@@ -3,16 +3,22 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
--napis "Pokonałeś bossa"
--pokój z nagrodami(fajne tło)
+-poczytać o skalowaniu ekranu
 -teleportacja do następnej krainy
 -generowanie terenu w następnej krainie
 -skille 
 -market
+-hall of fame
+-wepon market
+-nowe bronie
 
 To optimise:
+-animacja przy podnoszniu z stołów, kupowaniu
+-napisy na innych rozdzielczosciach
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
 -lepsze wyświetlanie damage w stulu terraria
+-gdy kiedyś zapamiętywania, pamiętaj o reward skillach
+-dodać małe animację np. kołyszący się napis choose yout reward 
 
 ---------------------- ! HELP ! -----------------------
 Dodawanie itemów:

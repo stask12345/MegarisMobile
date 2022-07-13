@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/g4.png-67734faedcb9ade331425b11c02ad2d1.stex"
+path="res://.import/boss-death.png-bac2a85da4e068437791e1d875636496.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafika/terrain/g4.png"
-dest_files=[ "res://.import/g4.png-67734faedcb9ade331425b11c02ad2d1.stex" ]
+source_file="res://grafika/animation/boss-death.png"
+dest_files=[ "res://.import/boss-death.png-bac2a85da4e068437791e1d875636496.stex" ]
 
 [params]
 

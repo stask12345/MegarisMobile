@@ -1,0 +1,678 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://grafika/skills/skill1.png" type="Texture" id=1]
+[ext_resource path="res://grafika/boss-light.png" type="Texture" id=2]
+[ext_resource path="res://skrypty/RewardSkillHP.gd" type="Script" id=3]
+[ext_resource path="res://instances/Elements/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://grafika/worldElements/itemTable.png" type="Texture" id=5]
+[ext_resource path="res://skrypty/SkillTable.gd" type="Script" id=6]
+[ext_resource path="res://grafika/white.png" type="Texture" id=7]
+[ext_resource path="res://dpcomic.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="RectangleShape2D" id=85]
+extents = Vector2( 0.49866, 0.228245 )
+
+[sub_resource type="RectangleShape2D" id=87]
+extents = Vector2( 0.1533, 0.647901 )
+
+[sub_resource type="DynamicFont" id=86]
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=88]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("White3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.25098, 1, 1 ), Color( 0, 0.109804, 0.243137, 1 ), Color( 0, 0.25098, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 33, 45 )
+
+[node name="RewardRoom" type="Node"]
+
+[node name="White" type="Sprite" parent="."]
+self_modulate = Color( 0, 0.12549, 0.27451, 1 )
+position = Vector2( -28.5, 2513 )
+scale = Vector2( 1619, 440 )
+z_index = 1
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="White"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White/StaticBody2D"]
+position = Vector2( 0.00134045, -0.236182 )
+shape = SubResource( 85 )
+
+[node name="White2" type="Sprite" parent="."]
+self_modulate = Color( 0, 0.12549, 0.27451, 1 )
+position = Vector2( -32.5, 1985 )
+scale = Vector2( 1621, 720 )
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="White2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White2/StaticBody2D"]
+position = Vector2( 0.347008, 0.148855 )
+shape = SubResource( 87 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="White2"]
+position = Vector2( -0.632634, -0.0133588 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White2/StaticBody2D2"]
+position = Vector2( 0.347008, 0.148855 )
+shape = SubResource( 87 )
+
+[node name="White3" type="Sprite" parent="."]
+self_modulate = Color( 0, 0.25098, 1, 1 )
+position = Vector2( -70.5, 2301.63 )
+scale = Vector2( 1543, 0.749661 )
+z_index = 2
+texture = ExtResource( 7 )
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 12, 1802 )
+texture = ExtResource( 2 )
+color = Color( 0.607843, 0.607843, 0.607843, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -176.0
+margin_top = 1965.0
+margin_right = -50.0
+margin_bottom = 2000.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = SubResource( 86 )
+text = "Choose your reward
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 88 )
+
+[node name="Node2D" type="Node2D" parent="AnimationPlayer"]
+position = Vector2( -274, 2096 )
+
+[node name="Star2" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -148, 145 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star3" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 23, 145 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star5" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -113, -72.9999 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star4" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -175, 46 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star6" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 585.5, 141.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star7" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 733.5, -3.50024 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star8" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 756.5, 141.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star9" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 620.5, -76.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star10" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 558.5, 42.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star11" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -9.5, 180.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star12" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 138.5, 35.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star13" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 161.5, 180.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star14" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 25.5, -37.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star15" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -36.5, 81.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star16" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 412.5, 83.4996 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star17" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 560.5, -61.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star18" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 583.5, 83.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star19" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 447.5, -134.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star20" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 385.5, -15.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star21" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 218.5, 4.49963 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star22" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 366.5, -140.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star23" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 389.5, 4.49976 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star24" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 253.5, -213.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star25" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 191.5, -94.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star26" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 315.5, 131.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star27" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 463.5, -13.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star28" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 486.5, 131.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star29" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 350.5, -86.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star30" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 288.5, 32.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star31" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 79.5, -8.50037 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star32" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 227.5, -153.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star33" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 250.5, -8.50024 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star34" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 114.5, -226.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star35" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 52.5, -107.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star36" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -256.5, 149.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star37" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -108.5, 4.49976 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star38" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -85.5, 149.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star39" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -221.5, -68.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star40" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -283.5, 50.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star41" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -151.5, -33.5004 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star42" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -3.49994, -178.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star43" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 19.5, -33.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star44" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -116.5, -251.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star45" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -178.5, -132.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star46" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -36.5, -120.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star47" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 111.5, -265.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star48" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 134.5, -120.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star49" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -1.49994, -338.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star50" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -63.5, -219.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star51" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 159.5, -169.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star52" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 307.5, -314.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star53" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 330.5, -169.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star54" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 194.5, -387.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star55" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 132.5, -268.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star56" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 387.5, -161.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star57" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 535.5, -306.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star58" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 558.5, -161.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star59" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 422.5, -379.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star60" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 360.5, -260.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star61" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 647.5, -124.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star62" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 795.5, -269.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star63" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 818.5, -124.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star64" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 682.5, -342.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star65" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 620.5, -223.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star66" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 748.5, 62.4996 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star67" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 896.5, -82.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star68" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 919.5, 62.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star69" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 783.5, -155.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star70" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 721.5, -36.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star71" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -227.5, -164.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star72" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -79.5, -309.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star73" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -56.5, -164.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star74" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -192.5, -382.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star75" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -254.5, -263.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star76" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 716.5, 149.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star77" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 864.5, 4.49976 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star78" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 887.5, 149.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star79" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 751.5, -68.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star80" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 689.5, 50.4998 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star81" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 504.5, -242.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star82" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 652.5, -387.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star83" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 675.5, -242.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star84" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 539.5, -460.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star85" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 477.5, -341.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star86" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 55.5, -334.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star87" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 203.5, -479.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star88" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 226.5, -334.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star89" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 90.5001, -552.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star90" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 28.5, -433.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star91" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -323.5, 105.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star92" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -175.5, -39.5002 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star93" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -152.5, 105.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star94" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -288.5, -112.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star95" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( -350.5, 6.49982 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star96" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 105.5, 150.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star97" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 253.5, 5.49976 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star98" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 276.5, 150.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star99" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 140.5, -67.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star100" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 78.5, 51.4999 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star101" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 271.5, 151.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star102" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 419.5, 6.49976 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star103" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 442.5, 151.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star104" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 306.5, -66.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star105" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 244.5, 52.4999 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star106" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 505.5, 16.4996 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star107" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 653.5, -128.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star108" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 676.5, 16.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Star109" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 540.5, -201.5 )
+scale = Vector2( 9, 9 )
+texture = ExtResource( 7 )
+
+[node name="Star110" type="Sprite" parent="AnimationPlayer/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 478.5, -82.5001 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="Rewards" type="Node" parent="."]
+
+[node name="SkillTable" type="Sprite" parent="Rewards"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 3, 2285 )
+z_index = 7
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Rewards/SkillTable"]
+position = Vector2( 0, -50 )
+
+[node name="Skill1" type="Sprite" parent="Rewards/SkillTable/KinematicBody2D2"]
+position = Vector2( -1, -15 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Rewards/SkillTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rewards/SkillTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[connection signal="body_entered" from="Rewards/SkillTable/Area2D" to="Rewards/SkillTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Rewards/SkillTable/Area2D" to="Rewards/SkillTable" method="_on_Area2D_body_exited"]

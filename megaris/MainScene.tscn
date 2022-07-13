@@ -339,7 +339,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1.05, 1.05 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=43]
@@ -759,6 +759,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
 }
 
+[sub_resource type="DynamicFont" id=82]
+font_data = ExtResource( 52 )
+
 [sub_resource type="Animation" id=40]
 length = 0.001
 tracks/0/type = "value"
@@ -890,9 +893,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 0 ]
 }
-
-[sub_resource type="DynamicFont" id=82]
-font_data = ExtResource( 52 )
 
 [sub_resource type="DynamicFont" id=38]
 size = 31
@@ -1176,7 +1176,7 @@ extents = Vector2( 54, 66.5 )
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 33.6666, 42.3333 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=89]
 extents = Vector2( 33, 45 )
 
 [sub_resource type="RectangleShape2D" id=45]
@@ -1299,7 +1299,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=83]
 resource_name = "teleportToCastle"
-length = 2.0
+length = 7.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/TeleportationEffect:frame")
@@ -1308,7 +1308,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8 ),
+"times": PoolRealArray( 4.1, 4.15, 4.2, 4.25, 4.3, 4.35, 4.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
@@ -1320,7 +1320,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.85 ),
+"times": PoolRealArray( 0, 4.1, 4.45 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -1332,7 +1332,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.65 ),
+"times": PoolRealArray( 0, 4.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -1344,7 +1344,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.65 ),
+"times": PoolRealArray( 0, 4.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -1356,7 +1356,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 2.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -1370,14 +1370,23 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.05, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.05, 0.5, 4.2, 6.4, 6.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "makePlayerIndestructable"
 }, {
 "args": [  ],
+"method": "changeBossLabel"
+}, {
+"args": [  ],
 "method": "makePlayerInvisible"
+}, {
+"args": [  ],
+"method": "getPlayerToRewardRoom"
+}, {
+"args": [  ],
+"method": "playStartingAnimation"
 } ]
 }
 tracks/6/type = "animation"
@@ -1387,8 +1396,32 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"clips": PoolStringArray( "[stop]", "lightDisappear" ),
-"times": PoolRealArray( 0.8, 0.9 )
+"clips": PoolStringArray( "[stop]", "lightDisappear", "lightIdle" ),
+"times": PoolRealArray( 2.5, 2.65, 6.4 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CanvasLayer/Control-DeathScreen/BossMenu/BossName:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.85, 1.85, 2.65, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Player/Player/Camera2D:zoom")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.65, 4.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
 }
 
 [node name="MainScene" type="Node2D"]
@@ -1399,7 +1432,7 @@ __meta__ = {
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -962, -3362 )
+position = Vector2( -671, -3341 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1474,7 +1507,6 @@ anims/cameraShaking = SubResource( 62 )
 modulate = Color( 0.72549, 0.72549, 0.72549, 1 )
 self_modulate = Color( 0.72549, 0.72549, 0.72549, 1 )
 light_mask = 3
-scale = Vector2( 1.1, 1.1 )
 z_index = 1
 texture = ExtResource( 13 )
 texture_scale = 1.5
@@ -1877,9 +1909,6 @@ margin_left = 717.0
 margin_top = 905.0
 margin_right = 1026.0
 margin_bottom = 1057.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PickUp" type="Sprite" parent="CanvasLayer/Control4"]
 visible = false
@@ -1902,6 +1931,17 @@ margin_bottom = 46.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control4/PickUp"]
+margin_left = -167.0
+margin_top = -113.0
+margin_right = -2.0
+margin_bottom = -81.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 82 )
+text = "Name of object"
+align = 1
+valign = 2
 
 [node name="Enter" type="Sprite" parent="CanvasLayer/Control4"]
 visible = false
@@ -1992,14 +2032,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control4/Buy"]
-margin_left = -103.5
-margin_top = -79.5
-margin_right = -5.5
-margin_bottom = -63.5
+margin_left = -173.0
+margin_top = -112.0
+margin_right = -1.0
+margin_bottom = -81.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 82 )
 text = "Name of object"
 align = 1
+valign = 2
 
 [node name="DescriptionMenu" type="Node2D" parent="CanvasLayer/Control4"]
 visible = false
@@ -2808,18 +2849,15 @@ texture = ExtResource( 82 )
 
 [node name="BossName" type="RichTextLabel" parent="CanvasLayer/Control-DeathScreen/BossMenu"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 504.0
+margin_left = 483.0
 margin_top = 34.0
-margin_right = 645.0
+margin_right = 673.0
 margin_bottom = 69.0
 rect_scale = Vector2( 6, 6 )
 custom_colors/default_color = Color( 1, 0.678431, 0, 1 )
 custom_fonts/normal_font = SubResource( 74 )
 text = " Slime King"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Terrain" type="Node" parent="."]
 
@@ -3896,7 +3934,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GeneratedTerrain/ItemTable/Area2D"]
 position = Vector2( 0, -28 )
-shape = SubResource( 23 )
+shape = SubResource( 89 )
 
 [node name="Chest" type="Sprite" parent="GeneratedTerrain"]
 self_modulate = Color( 1.2, 1.2, 1.2, 1 )
@@ -3929,6 +3967,8 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="Castle" parent="." instance=ExtResource( 103 )]
 position = Vector2( 2678, 904 )
+
+[node name="Skills" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="CanvasLayer/Control5/background_unselect_button" to="CanvasLayer" method="_on_background_unselect_button_pressed"]
