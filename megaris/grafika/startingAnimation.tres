@@ -8,7 +8,7 @@ resource_name = "startingAnimation"
 length = 7.5
 step = 0.05
 tracks/0/type = "animation"
-tracks/0/path = NodePath("../Terrain/Elements/Floor/SpawnPoint/AnimationPlayer")
+tracks/0/path = NodePath("../Floor/SpawnPoint/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -66,7 +66,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../Terrain/Elements/Floor/SpawnPoint/BumEffect:visible")
+tracks/5/path = NodePath("../Floor/SpawnPoint/BumEffect:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -78,7 +78,7 @@ tracks/5/keys = {
 "values": [ false, true, false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../Terrain/Elements/Floor/SpawnPoint/BumEffect:texture")
+tracks/6/path = NodePath("../Floor/SpawnPoint/BumEffect:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false

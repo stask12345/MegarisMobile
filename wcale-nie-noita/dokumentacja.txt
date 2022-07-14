@@ -3,8 +3,8 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
--poczytać o skalowaniu ekranu
--teleportacja do następnej krainy
+-ozdoby, generowanie zamek
+-potwory(grafika)
 -generowanie terenu w następnej krainie
 -skille 
 -market
@@ -13,6 +13,8 @@ To Do:
 -nowe bronie
 
 To optimise:
+-zmiana napisów -> mniejsza skala, większy font size.
+-napisy The mine oraz the castle
 -animacja przy podnoszniu z stołów, kupowaniu
 -napisy na innych rozdzielczosciach
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu

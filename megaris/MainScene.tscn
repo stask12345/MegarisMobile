@@ -102,7 +102,6 @@
 [ext_resource path="res://skrypty/TrainingCamp.gd" type="Script" id=100]
 [ext_resource path="res://skrypty/ItemMarket.gd" type="Script" id=101]
 [ext_resource path="res://skrypty/HallOfFame.gd" type="Script" id=102]
-[ext_resource path="res://instances/Castle.tscn" type="PackedScene" id=103]
 
 [sub_resource type="Animation" id=54]
 resource_name = "idle_highlight"
@@ -660,7 +659,7 @@ tracks/3/keys = {
 radius = 26.0
 
 [sub_resource type="DynamicFont" id=35]
-size = 62
+size = 76
 font_data = ExtResource( 52 )
 
 [sub_resource type="Animation" id=24]
@@ -760,6 +759,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=82]
+size = 62
 font_data = ExtResource( 52 )
 
 [sub_resource type="Animation" id=40]
@@ -1074,6 +1074,55 @@ outline_size = 1
 outline_color = Color( 1, 0.341176, 0, 1 )
 font_data = ExtResource( 52 )
 
+[sub_resource type="Animation" id=70]
+resource_name = "crystalIdle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -45 ), Vector2( -2, -54 ), Vector2( -2, -45 ) ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "crystalSpawning"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="DynamicFont" id=75]
+font_data = ExtResource( 52 )
+
+[sub_resource type="RectangleShape2D" id=78]
+extents = Vector2( 56.5, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=79]
+extents = Vector2( 43, 65 )
+
+[sub_resource type="RectangleShape2D" id=80]
+extents = Vector2( 54, 66.5 )
+
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 33.6666, 42.3333 )
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.69428, 33.1558 )
 
@@ -1126,55 +1175,6 @@ extents = Vector2( 229.5, 37.25 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 509, 102.5 )
-
-[sub_resource type="Animation" id=70]
-resource_name = "crystalIdle"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PortalCrystal:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -2, -45 ), Vector2( -2, -54 ), Vector2( -2, -45 ) ]
-}
-
-[sub_resource type="Animation" id=71]
-resource_name = "crystalSpawning"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PortalCrystal:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="DynamicFont" id=75]
-font_data = ExtResource( 52 )
-
-[sub_resource type="RectangleShape2D" id=78]
-extents = Vector2( 56.5, 31.5 )
-
-[sub_resource type="RectangleShape2D" id=79]
-extents = Vector2( 43, 65 )
-
-[sub_resource type="RectangleShape2D" id=80]
-extents = Vector2( 54, 66.5 )
-
-[sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 33.6666, 42.3333 )
 
 [sub_resource type="RectangleShape2D" id=89]
 extents = Vector2( 33, 45 )
@@ -1295,6 +1295,118 @@ tracks/7/keys = {
 "args": [  ],
 "method": "closeExit"
 } ]
+}
+
+[sub_resource type="Animation" id=90]
+resource_name = "teleportFromHere"
+length = 7.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player/TeleportationEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.85, 2.9, 2.95, 3, 3.05, 3.1, 3.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Player/TeleportationEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.85, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Player/Player:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Player/WeponHolder:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../CanvasLayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.65 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "makeUIInVisible"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.05, 2.95, 5.15, 5.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "makePlayerIndestructable"
+}, {
+"args": [  ],
+"method": "makePlayerInvisible"
+}, {
+"args": [  ],
+"method": "getPlayerToCastle"
+}, {
+"args": [  ],
+"method": "playStartingAnimation"
+} ]
+}
+tracks/6/type = "animation"
+tracks/6/path = NodePath("../Player/AnimationPlayerLight")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": PoolStringArray( "[stop]", "lightDisappear", "lightIdle" ),
+"times": PoolRealArray( 1.25, 1.4, 5.15 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Player/Player/Camera2D:zoom")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.4, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
 }
 
 [sub_resource type="Animation" id=83]
@@ -1432,7 +1544,7 @@ __meta__ = {
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -671, -3341 )
+position = Vector2( -838, -3386 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1458,6 +1570,8 @@ texture = ExtResource( 5 )
 hframes = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player/Player"]
+position = Vector2( 16.6667, 0 )
+offset = Vector2( 0, 10 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
 
@@ -1723,18 +1837,14 @@ __meta__ = {
 }
 
 [node name="HpLabel" type="Label" parent="CanvasLayer/Control3"]
-margin_left = 208.0
-margin_top = 36.0
-margin_right = 405.0
-margin_bottom = 92.0
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = 202.0
+margin_top = 35.0
+margin_right = 447.0
+margin_bottom = 104.0
 custom_colors/font_color = Color( 0.984314, 0.772549, 0.211765, 1 )
 custom_fonts/font = SubResource( 35 )
 text = "100/100"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CrystalsPile" type="Sprite" parent="CanvasLayer/Control3"]
 position = Vector2( 56, 263 )
@@ -1933,11 +2043,11 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control4/PickUp"]
-margin_left = -167.0
-margin_top = -113.0
-margin_right = -2.0
-margin_bottom = -81.0
-rect_scale = Vector2( 2, 2 )
+margin_left = -91.5
+margin_top = -78.0
+margin_right = 275.5
+margin_bottom = -22.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 82 )
 text = "Name of object"
 align = 1
@@ -2859,6 +2969,174 @@ custom_fonts/normal_font = SubResource( 74 )
 text = " Slime King"
 scroll_active = false
 
+[node name="Floor" type="Node" parent="."]
+
+[node name="SpawnPoint" type="Sprite" parent="Floor"]
+position = Vector2( -119.5, 842.5 )
+texture = ExtResource( 64 )
+
+[node name="BumEffect" type="Sprite" parent="Floor/SpawnPoint"]
+visible = false
+position = Vector2( -2, 63 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 67 )
+
+[node name="PortalCrystal" type="Sprite" parent="Floor/SpawnPoint"]
+position = Vector2( -2, -50.625 )
+texture = ExtResource( 65 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Floor/SpawnPoint"]
+autoplay = "crystalIdle"
+anims/crystalIdle = SubResource( 70 )
+anims/crystalSpawning = SubResource( 71 )
+
+[node name="SkillMarket" type="Node" parent="Floor"]
+script = ExtResource( 96 )
+
+[node name="BuildSite" type="Sprite" parent="Floor/SkillMarket"]
+position = Vector2( 489, 825 )
+texture = ExtResource( 89 )
+
+[node name="Label" type="Label" parent="Floor/SkillMarket/BuildSite"]
+margin_left = -79.0
+margin_top = -38.0
+margin_right = -58.0
+margin_bottom = -22.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Floor/SkillMarket/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Floor/SkillMarket/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SkillMarket/BuildSite/Area2D"]
+position = Vector2( -43.5, 93.5 )
+shape = SubResource( 78 )
+
+[node name="Market" type="Sprite" parent="Floor/SkillMarket"]
+visible = false
+position = Vector2( 700, 826 )
+texture = ExtResource( 86 )
+
+[node name="ItemTable" type="Sprite" parent="Floor/SkillMarket/Market"]
+position = Vector2( -256, 107 )
+texture = ExtResource( 32 )
+
+[node name="TrainingCamp" type="Node" parent="Floor"]
+script = ExtResource( 100 )
+
+[node name="BuildSite" type="Sprite" parent="Floor/TrainingCamp"]
+position = Vector2( 1271, 848 )
+texture = ExtResource( 91 )
+
+[node name="Label" type="Label" parent="Floor/TrainingCamp/BuildSite"]
+margin_left = -18.0
+margin_top = -58.0
+margin_right = 3.0
+margin_bottom = -42.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Floor/TrainingCamp/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Floor/TrainingCamp/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TrainingCamp/BuildSite/Area2D"]
+position = Vector2( 13, 37 )
+shape = SubResource( 79 )
+
+[node name="Market" type="Sprite" parent="Floor/TrainingCamp"]
+visible = false
+position = Vector2( 1326, 848 )
+texture = ExtResource( 90 )
+
+[node name="ItemMarket" type="Node" parent="Floor"]
+script = ExtResource( 101 )
+
+[node name="BuildSite" type="Sprite" parent="Floor/ItemMarket"]
+position = Vector2( -823, 825 )
+texture = ExtResource( 95 )
+
+[node name="Label" type="Label" parent="Floor/ItemMarket/BuildSite"]
+margin_left = 12.0
+margin_top = -41.0
+margin_right = 33.0
+margin_bottom = -25.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Floor/ItemMarket/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Floor/ItemMarket/BuildSite"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/ItemMarket/BuildSite/Area2D"]
+position = Vector2( 44, 56.5 )
+shape = SubResource( 80 )
+
+[node name="Market" type="Sprite" parent="Floor/ItemMarket"]
+visible = false
+position = Vector2( -897, 825 )
+texture = ExtResource( 92 )
+
+[node name="HallOfFame" type="Node" parent="Floor"]
+script = ExtResource( 102 )
+
+[node name="BuildSite" type="Sprite" parent="Floor/HallOfFame"]
+position = Vector2( -1437, 880 )
+texture = ExtResource( 93 )
+
+[node name="Label" type="Label" parent="Floor/HallOfFame/BuildSite"]
+margin_left = -27.0
+margin_top = -92.0
+margin_right = -6.0
+margin_bottom = -76.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "100"
+align = 2
+
+[node name="Crystals" type="Sprite" parent="Floor/HallOfFame/BuildSite/Label"]
+position = Vector2( 33.3333, 5.33331 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 62 )
+
+[node name="Area2D" type="Area2D" parent="Floor/HallOfFame/BuildSite"]
+position = Vector2( -27, -86 )
+scale = Vector2( 1.5, 1.5 )
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/HallOfFame/BuildSite/Area2D"]
+position = Vector2( 19.6666, 60.3333 )
+shape = SubResource( 81 )
+
+[node name="Market" type="Sprite" parent="Floor/HallOfFame"]
+visible = false
+position = Vector2( -1458, 880 )
+texture = ExtResource( 94 )
+
 [node name="Terrain" type="Node" parent="."]
 
 [node name="Platforms" type="Node" parent="Terrain"]
@@ -3747,174 +4025,6 @@ position = Vector2( 1875, -3185 )
 scale = Vector2( 2, 60.0001 )
 texture = ExtResource( 4 )
 
-[node name="Floor" type="Node" parent="Terrain/Elements"]
-
-[node name="SpawnPoint" type="Sprite" parent="Terrain/Elements/Floor"]
-position = Vector2( -119.5, 842.5 )
-texture = ExtResource( 64 )
-
-[node name="BumEffect" type="Sprite" parent="Terrain/Elements/Floor/SpawnPoint"]
-visible = false
-position = Vector2( -2, 63 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 67 )
-
-[node name="PortalCrystal" type="Sprite" parent="Terrain/Elements/Floor/SpawnPoint"]
-position = Vector2( -2, -45 )
-texture = ExtResource( 65 )
-hframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain/Elements/Floor/SpawnPoint"]
-autoplay = "crystalIdle"
-anims/crystalIdle = SubResource( 70 )
-anims/crystalSpawning = SubResource( 71 )
-
-[node name="SkillMarket" type="Node" parent="Terrain/Elements/Floor"]
-script = ExtResource( 96 )
-
-[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
-position = Vector2( 489, 825 )
-texture = ExtResource( 89 )
-
-[node name="Label" type="Label" parent="Terrain/Elements/Floor/SkillMarket/BuildSite"]
-margin_left = -79.0
-margin_top = -38.0
-margin_right = -58.0
-margin_bottom = -22.0
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 75 )
-text = "100"
-align = 2
-
-[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 62 )
-
-[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/SkillMarket/BuildSite"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D"]
-position = Vector2( -43.5, 93.5 )
-shape = SubResource( 78 )
-
-[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket"]
-visible = false
-position = Vector2( 700, 826 )
-texture = ExtResource( 86 )
-
-[node name="ItemTable" type="Sprite" parent="Terrain/Elements/Floor/SkillMarket/Market"]
-position = Vector2( -256, 107 )
-texture = ExtResource( 32 )
-
-[node name="TrainingCamp" type="Node" parent="Terrain/Elements/Floor"]
-script = ExtResource( 100 )
-
-[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp"]
-position = Vector2( 1271, 848 )
-texture = ExtResource( 91 )
-
-[node name="Label" type="Label" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite"]
-margin_left = -18.0
-margin_top = -58.0
-margin_right = 3.0
-margin_bottom = -42.0
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 75 )
-text = "100"
-align = 2
-
-[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 62 )
-
-[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D"]
-position = Vector2( 13, 37 )
-shape = SubResource( 79 )
-
-[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/TrainingCamp"]
-visible = false
-position = Vector2( 1326, 848 )
-texture = ExtResource( 90 )
-
-[node name="ItemMarket" type="Node" parent="Terrain/Elements/Floor"]
-script = ExtResource( 101 )
-
-[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket"]
-position = Vector2( -823, 825 )
-texture = ExtResource( 95 )
-
-[node name="Label" type="Label" parent="Terrain/Elements/Floor/ItemMarket/BuildSite"]
-margin_left = 12.0
-margin_top = -41.0
-margin_right = 33.0
-margin_bottom = -25.0
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 75 )
-text = "100"
-align = 2
-
-[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 62 )
-
-[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/ItemMarket/BuildSite"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D"]
-position = Vector2( 44, 56.5 )
-shape = SubResource( 80 )
-
-[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/ItemMarket"]
-visible = false
-position = Vector2( -897, 825 )
-texture = ExtResource( 92 )
-
-[node name="HallOfFame" type="Node" parent="Terrain/Elements/Floor"]
-script = ExtResource( 102 )
-
-[node name="BuildSite" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame"]
-position = Vector2( -1437, 880 )
-texture = ExtResource( 93 )
-
-[node name="Label" type="Label" parent="Terrain/Elements/Floor/HallOfFame/BuildSite"]
-margin_left = -27.0
-margin_top = -92.0
-margin_right = -6.0
-margin_bottom = -76.0
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 75 )
-text = "100"
-align = 2
-
-[node name="Crystals" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 62 )
-
-[node name="Area2D" type="Area2D" parent="Terrain/Elements/Floor/HallOfFame/BuildSite"]
-position = Vector2( -27, -86 )
-scale = Vector2( 1.5, 1.5 )
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D"]
-position = Vector2( 19.6666, 60.3333 )
-shape = SubResource( 81 )
-
-[node name="Market" type="Sprite" parent="Terrain/Elements/Floor/HallOfFame"]
-visible = false
-position = Vector2( -1458, 880 )
-texture = ExtResource( 94 )
-
 [node name="GeneratedTerrain" type="Node" parent="."]
 script = ExtResource( 12 )
 
@@ -3960,13 +4070,11 @@ script = ExtResource( 60 )
 autoplay = "startingAnimation"
 anims/bossAnimation = SubResource( 73 )
 anims/startingAnimation = ExtResource( 70 )
+anims/teleportFromHere = SubResource( 90 )
 anims/teleportToCastle = SubResource( 83 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
-
-[node name="Castle" parent="." instance=ExtResource( 103 )]
-position = Vector2( 2678, 904 )
 
 [node name="Skills" type="Node2D" parent="."]
 
@@ -4000,17 +4108,17 @@ position = Vector2( 2678, 904 )
 [connection signal="pressed" from="CanvasLayer/Control4/ChestMenu/Back/Button" to="CanvasLayer/Control4/ChestMenu" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Exit/Button" to="CanvasLayer/Control-DeathScreen" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Reset/ButtonReset" to="CanvasLayer/Control-DeathScreen" method="_on_ButtonReset_pressed"]
+[connection signal="body_entered" from="Floor/SkillMarket/BuildSite/Area2D" to="Floor/SkillMarket" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SkillMarket/BuildSite/Area2D" to="Floor/SkillMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/TrainingCamp/BuildSite/Area2D" to="Floor/TrainingCamp" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/TrainingCamp/BuildSite/Area2D" to="Floor/TrainingCamp" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/ItemMarket/BuildSite/Area2D" to="Floor/ItemMarket" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/ItemMarket/BuildSite/Area2D" to="Floor/ItemMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/HallOfFame/BuildSite/Area2D" to="Floor/HallOfFame" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/HallOfFame/BuildSite/Area2D" to="Floor/HallOfFame" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Area2D" to="EffectGenerator" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/SkillMarket" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Terrain/Elements/Floor/SkillMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/SkillMarket" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D" to="Terrain/Elements/Floor/TrainingCamp" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Terrain/Elements/Floor/TrainingCamp/BuildSite/Area2D" to="Terrain/Elements/Floor/TrainingCamp" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/ItemMarket" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Terrain/Elements/Floor/ItemMarket/BuildSite/Area2D" to="Terrain/Elements/Floor/ItemMarket" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D" to="Terrain/Elements/Floor/HallOfFame" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Terrain/Elements/Floor/HallOfFame/BuildSite/Area2D" to="Terrain/Elements/Floor/HallOfFame" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="GeneratedTerrain/Chest/Area2D" to="GeneratedTerrain/Chest" method="_on_Area2D_body_entered"]

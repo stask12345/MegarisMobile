@@ -131,5 +131,5 @@ func addSlimes():
 	for n in 2:
 		var addSlime = slime.instance()
 		addSlime.position = Vector2(rand_range(-1600,1600),-4000)
-		get_node("/root/MainScene").add_child(addSlime)
+		get_node("/root/MainScene/EffectGenerator").add_child(addSlime)
 		n += 1

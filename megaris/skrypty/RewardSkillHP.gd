@@ -1,5 +1,6 @@
 extends skill
 
+onready var effectGenerator = get_node("/root/MainScene/EffectGenerator")
 
 func _ready():
 	#if bought: applyEffect() #nie dla reward skilly #na razie
@@ -13,4 +14,6 @@ func applyEffect():
 func buy(): #Reward Skille na razie nie mają ustawianego bought, bo nie ma ich zapisu
 	visible = false
 	applyEffect()
+	effectGenerator.get_child(0).stop()
+	effectGenerator.get_child(0).play("teleportFromHere")
 	queue_free() #tylko dla reward skilly

@@ -65,6 +65,19 @@ func getPlayerToRewardRoom():
 	get_node("/root/MainScene").add_child(rewardRoom)
 	player.global_position = Vector2(0,2100);
 
+func getPlayerToCastle():
+	var rewardRoom = get_node("/root/MainScene/RewardRoom")
+	get_node("/root/MainScene/GeneratedTerrain").queue_free()
+	get_node("/root/MainScene/Terrain").queue_free()
+	var castle = load("res://instances/Castle.tscn").instance()
+	var monsters = get_children()
+	for m in monsters:
+		if m.name != "AnimationPlayer":
+			m.queue_free()
+	get_node("/root/MainScene").add_child(castle)
+	player.global_position = Vector2(-120,906)
+	rewardRoom.queue_free()
+
 func enterBossArea():
 	get_node("/root/MainScene/Terrain/Elements/BossRoom/Area2D").queue_free()
 	player.trapped = true
