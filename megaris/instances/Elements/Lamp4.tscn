@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://grafika/light.png" type="Texture" id=1]
+[ext_resource path="res://grafika/worldElements/chandelier1.png" type="Texture" id=2]
+
+[node name="Lamp4" type="Sprite"]
+position = Vector2( 741, 1597 )
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 11 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )

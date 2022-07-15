@@ -16,7 +16,7 @@ onready var player = get_node("/root/MainScene/Player")
 
 func _process(delta):
 	if Input.is_key_pressed(16777351):
-		save()
+		get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
 	if Input.is_key_pressed(16777229):
 		get_tree().quit()
 	$Crystals.text = String(crystals)
