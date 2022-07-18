@@ -16,6 +16,7 @@ extents = Vector2( 0.49866, 0.228245 )
 extents = Vector2( 0.1533, 0.647901 )
 
 [sub_resource type="DynamicFont" id=86]
+size = 62
 font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=88]
@@ -85,14 +86,16 @@ texture = ExtResource( 2 )
 color = Color( 0.607843, 0.607843, 0.607843, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -176.0
-margin_top = 1965.0
-margin_right = -50.0
-margin_bottom = 2000.0
-rect_scale = Vector2( 3, 3 )
+margin_left = -235.0
+margin_top = 2026.0
+margin_right = 243.0
+margin_bottom = 2141.0
 custom_fonts/font = SubResource( 86 )
 text = "Choose your reward
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

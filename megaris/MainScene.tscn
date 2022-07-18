@@ -896,11 +896,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=38]
-size = 31
+size = 93
 font_data = ExtResource( 52 )
 
 [sub_resource type="DynamicFont" id=39]
-size = 31
+size = 62
 font_data = ExtResource( 52 )
 
 [sub_resource type="Animation" id=59]
@@ -936,15 +936,15 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=64]
-size = 46
+size = 93
 font_data = ExtResource( 52 )
 
 [sub_resource type="DynamicFont" id=65]
-size = 31
+size = 93
 font_data = ExtResource( 52 )
 
 [sub_resource type="DynamicFont" id=66]
-size = 31
+size = 93
 font_data = ExtResource( 52 )
 
 [sub_resource type="Animation" id=68]
@@ -1110,6 +1110,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=75]
+size = 62
 font_data = ExtResource( 52 )
 
 [sub_resource type="RectangleShape2D" id=78]
@@ -1545,7 +1546,7 @@ __meta__ = {
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -838, -3386 )
+position = Vector2( -476, 743 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1981,6 +1982,9 @@ margin_left = -960.0
 margin_top = -1080.0
 margin_right = -960.0
 margin_bottom = -1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemSlot_background" type="Sprite" parent="CanvasLayer/Control4"]
 self_modulate = Color( 0.537255, 0.223529, 0.101961, 1 )
@@ -2054,6 +2058,9 @@ custom_fonts/font = SubResource( 82 )
 text = "Name of object"
 align = 1
 valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Enter" type="Sprite" parent="CanvasLayer/Control4"]
 visible = false
@@ -2144,15 +2151,18 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control4/Buy"]
-margin_left = -173.0
-margin_top = -112.0
-margin_right = -1.0
-margin_bottom = -81.0
-rect_scale = Vector2( 2, 2 )
+margin_left = -99.0
+margin_top = -76.5
+margin_right = 268.0
+margin_bottom = -20.5
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 82 )
 text = "Name of object"
 align = 1
 valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DescriptionMenu" type="Node2D" parent="CanvasLayer/Control4"]
 visible = false
@@ -2173,9 +2183,8 @@ texture = ExtResource( 39 )
 [node name="Title" type="Label" parent="CanvasLayer/Control4/DescriptionMenu"]
 margin_left = -164.0
 margin_top = 292.0
-margin_right = 5.0
-margin_bottom = 355.0
-rect_scale = Vector2( 3, 3 )
+margin_right = 350.0
+margin_bottom = 475.0
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 38 )
 text = "HP Potion"
@@ -2189,9 +2198,8 @@ __meta__ = {
 [node name="Description" type="Label" parent="CanvasLayer/Control4/DescriptionMenu"]
 margin_left = -374.0
 margin_top = 488.0
-margin_right = -119.0
-margin_bottom = 547.0
-rect_scale = Vector2( 2, 2 )
+margin_right = 348.0
+margin_bottom = 708.0
 custom_fonts/font = SubResource( 39 )
 text = "Small healing potion. 
 Heals 10 HP."
@@ -2770,6 +2778,7 @@ __meta__ = {
 }
 
 [node name="Control-DeathScreen" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -2782,11 +2791,11 @@ script = ExtResource( 36 )
 
 [node name="YouDied" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 542.0
-margin_top = 61.0
-margin_right = 692.0
-margin_bottom = 103.0
-rect_scale = Vector2( 6, 6 )
+margin_left = 425.0
+margin_top = 23.0
+margin_right = 725.0
+margin_bottom = 107.0
+rect_scale = Vector2( 4, 4 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0.756863, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.87451, 0, 1 )
@@ -2799,11 +2808,10 @@ __meta__ = {
 
 [node name="KilledBy" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 1504.0
-margin_top = 329.0
-margin_right = 1609.0
-margin_bottom = 357.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 1462.0
+margin_top = 389.0
+margin_right = 1774.0
+margin_bottom = 473.0
 custom_fonts/font = SubResource( 65 )
 text = "Killed by:"
 __meta__ = {
@@ -2812,11 +2820,10 @@ __meta__ = {
 
 [node name="MonsterName" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 1504.0
-margin_top = 641.0
-margin_right = 1609.0
-margin_bottom = 698.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 1389.0
+margin_top = 679.0
+margin_right = 1869.0
+margin_bottom = 831.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 65 )
 text = "Monster"
@@ -2829,15 +2836,14 @@ __meta__ = {
 
 [node name="Monster" type="Node2D" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-position = Vector2( 1659, 536 )
+position = Vector2( 1610, 587 )
 
 [node name="Reach" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 163.0
-margin_top = 268.0
-margin_right = 266.0
-margin_bottom = 333.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 70.0
+margin_top = 307.0
+margin_right = 519.0
+margin_bottom = 469.0
 custom_fonts/font = SubResource( 66 )
 text = "Reached:"
 align = 1
@@ -2848,11 +2854,10 @@ __meta__ = {
 
 [node name="KillCount" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 101.0
-margin_top = 458.0
-margin_right = 246.0
-margin_bottom = 544.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 52.0
+margin_top = 519.0
+margin_right = 535.0
+margin_bottom = 670.0
 custom_fonts/font = SubResource( 66 )
 text = "Killed:"
 align = 1
@@ -2863,11 +2868,10 @@ __meta__ = {
 
 [node name="Crystals" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 137.0
-margin_top = 656.0
-margin_right = 255.0
-margin_bottom = 721.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 88.0
+margin_top = 724.0
+margin_right = 502.0
+margin_bottom = 917.0
 custom_fonts/font = SubResource( 66 )
 text = "Collected:"
 align = 1
@@ -2877,10 +2881,10 @@ __meta__ = {
 }
 
 [node name="CrystalCount" type="Label" parent="CanvasLayer/Control-DeathScreen/Crystals"]
-margin_left = -16.6667
-margin_top = 27.8333
-margin_right = 55.3333
-margin_bottom = 57.8333
+margin_left = 72.0
+margin_top = 80.0
+margin_right = 215.0
+margin_bottom = 164.0
 custom_fonts/font = SubResource( 66 )
 text = "10"
 align = 2
@@ -2890,17 +2894,17 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Control-DeathScreen/Crystals"]
-position = Vector2( 77.6667, 39.8333 )
-scale = Vector2( 0.803703, 0.791667 )
+position = Vector2( 260, 114 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 62 )
 
 [node name="Exit" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 848.0
-margin_top = 932.0
-margin_right = 928.0
-margin_bottom = 974.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 826.0
+margin_top = 910.0
+margin_right = 954.0
+margin_bottom = 994.0
+rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0.756863, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.87451, 0, 1 )
@@ -2913,18 +2917,17 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="CanvasLayer/Control-DeathScreen/Exit"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -0.333336
-margin_top = 1.83333
-margin_right = 74.6667
-margin_bottom = 35.8333
+margin_top = 2.0
+margin_right = 125.0
+margin_bottom = 70.0
 
 [node name="Reset" type="Label" parent="CanvasLayer/Control-DeathScreen"]
 visible = false
-margin_left = 718.0
-margin_top = 711.0
-margin_right = 806.0
-margin_bottom = 753.0
-rect_scale = Vector2( 6, 6 )
+margin_left = 688.0
+margin_top = 695.0
+margin_right = 863.0
+margin_bottom = 779.0
+rect_scale = Vector2( 3, 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0.756863, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.87451, 0, 1 )
@@ -2938,8 +2941,11 @@ __meta__ = {
 [node name="ButtonReset" type="Button" parent="CanvasLayer/Control-DeathScreen/Reset"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 2.0
-margin_right = 88.0
-margin_bottom = 36.0
+margin_right = 167.0
+margin_bottom = 71.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control-DeathScreen"]
 anims/deathAnimation = SubResource( 68 )
@@ -3001,19 +3007,20 @@ position = Vector2( 489, 825 )
 texture = ExtResource( 89 )
 
 [node name="Label" type="Label" parent="Floor/SkillMarket/BuildSite"]
-margin_left = -79.0
-margin_top = -38.0
-margin_right = -58.0
-margin_bottom = -22.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -84.0
+margin_top = -37.0
+margin_bottom = 19.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 75 )
 text = "100"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Crystals" type="Sprite" parent="Floor/SkillMarket/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 113.5, 25 )
 texture = ExtResource( 62 )
 
 [node name="Area2D" type="Area2D" parent="Floor/SkillMarket/BuildSite"]
@@ -3040,19 +3047,21 @@ position = Vector2( 1271, 848 )
 texture = ExtResource( 91 )
 
 [node name="Label" type="Label" parent="Floor/TrainingCamp/BuildSite"]
-margin_left = -18.0
-margin_top = -58.0
-margin_right = 3.0
-margin_bottom = -42.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -23.0
+margin_top = -57.0
+margin_right = 61.0
+margin_bottom = -1.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 75 )
 text = "100"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Crystals" type="Sprite" parent="Floor/TrainingCamp/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 112.5, 24 )
 texture = ExtResource( 62 )
 
 [node name="Area2D" type="Area2D" parent="Floor/TrainingCamp/BuildSite"]
@@ -3075,19 +3084,18 @@ position = Vector2( -823, 825 )
 texture = ExtResource( 95 )
 
 [node name="Label" type="Label" parent="Floor/ItemMarket/BuildSite"]
-margin_left = 12.0
-margin_top = -41.0
-margin_right = 33.0
-margin_bottom = -25.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 7.0
+margin_top = -40.0
+margin_right = 91.0
+margin_bottom = 16.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 75 )
 text = "100"
 align = 2
 
 [node name="Crystals" type="Sprite" parent="Floor/ItemMarket/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 113.5, 24 )
 texture = ExtResource( 62 )
 
 [node name="Area2D" type="Area2D" parent="Floor/ItemMarket/BuildSite"]
@@ -3110,19 +3118,21 @@ position = Vector2( -1437, 880 )
 texture = ExtResource( 93 )
 
 [node name="Label" type="Label" parent="Floor/HallOfFame/BuildSite"]
-margin_left = -27.0
-margin_top = -92.0
-margin_right = -6.0
-margin_bottom = -76.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -32.0
+margin_top = -91.0
+margin_right = 52.0
+margin_bottom = -35.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 75 )
 text = "100"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Crystals" type="Sprite" parent="Floor/HallOfFame/BuildSite/Label"]
-position = Vector2( 33.3333, 5.33331 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 112.5, 24 )
 texture = ExtResource( 62 )
 
 [node name="Area2D" type="Area2D" parent="Floor/HallOfFame/BuildSite"]
