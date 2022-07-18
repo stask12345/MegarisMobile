@@ -5,7 +5,6 @@ var canShoot = true
 var ladderOrWall = false
 var directionOfBlocade = false
 var shooting = false
-var getBack = false
 
 func _ready():
 	minCoins = 6

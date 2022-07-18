@@ -8,13 +8,15 @@ var jumped = false
 var ladder = false
 var waitingForJump = false
 var directionOfLadder = false
+var waitingForShooting = false
+var shooting = false
 
 func _ready():
-	minCoins = 3
-	maxCoins = 7
-	attackStrenght = 35
-	hp = 140
-	monsterName = "Mature Cave Turtle"
+	minCoins = 2
+	maxCoins = 5
+	attackStrenght = 25 
+	hp = 75
+	monsterName = "Skeleton Swordman"
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja
@@ -24,24 +26,31 @@ func _physics_process(delta):
 	if goingToPlayer: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 5:
 			goingRight = false
-			$Monster1.scale.x = -1
+			$Monster1.scale.x = 1
 		else:
 			goingRight = true
-			$Monster1.scale.x = 1
+			$Monster1.scale.x = -1
 	
-	if aggro and !destroyed and player.alive:
+	if aggro and !destroyed and player.alive and !shooting:
 		if !ladder and is_on_floor() and (global_position.x - player.global_position.x > 10 or global_position.x - player.global_position.x < -10):
 			if goingRight:
-				motion.x = 110
+				if !getBack and !playerInRange: motion.x = 100
+				if getBack and playerInRange: motion.x = -100
 				$AnimationPlayer.play("walk")
+				if !getBack and playerInRange: $AnimationPlayer.play("idle")
 			if !goingRight: 
-				motion.x = -110
+				if !getBack and !playerInRange: motion.x = -100
+				if getBack and playerInRange: motion.x = 100
 				$AnimationPlayer.play("walk")
+				if !getBack and playerInRange: $AnimationPlayer.play("idle")
 		if ladder and ((directionOfLadder and goingRight) or (!directionOfLadder and !goingRight)):
 			if waitingForJump and !jumped: motion.x = 0
 			if !waitingForJump and is_on_floor(): 
 				waitForJump()
 				motion.x = 0
+		if !waitingForShooting:
+			waitingForShooting = true
+			waitForShoot()
 	
 	if !aggro and is_on_floor(): motion.x = 0
 	
@@ -58,7 +67,7 @@ func _physics_process(delta):
 	if jump == 0:
 		motion.x = motion.x / 1.1
 	
-		if motion.x == 0: $AnimationPlayer.play("idle")
+		if motion.x == 0 and !shooting: $AnimationPlayer.play("idle")
 	
 	if !aggro and !destroyed:
 		$AnimationPlayer.play("idle")
@@ -77,6 +86,10 @@ func _physics_process(delta):
 	else : 
 		modulate = Color(1,1,1)
 	
+	if shooting:
+		$Monster1.frame = 4
+		if goingRight: motion.x = 350
+		else: motion.x = -350
 	
 	if !destroyed: move_and_slide(motion,Vector2(0,-1))
 
@@ -84,9 +97,22 @@ func waitForJump():
 	waitingForJump = true
 	$Timer2.start(1)
 	yield($Timer2,"timeout")
-	jump()
+	monsterJump()
 
-func jump():
+func waitForShoot():
+	$Timer3.start(3)
+	yield($Timer3,"timeout")
+	waitingForShooting = false
+	shoot()
+
+func shoot():
+	shooting = true
+	$Timer4.start(0.4)
+	yield($Timer4,"timeout")
+	shooting = false
+
+
+func monsterJump():
 	if player.global_position.y > global_position.y:
 		jumped = true
 		jump = 1

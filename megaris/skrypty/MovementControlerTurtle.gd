@@ -7,9 +7,13 @@ func _on_MovementControlerMonster_area_entered(area):
 		monster.ladder = true
 		if monster.global_position.x - area.global_position.x > 0: monster.directionOfLadder = false
 		else: monster.directionOfLadder = true
+	if area.get_parent().name == "Player":
+		monster.getBack = true
 
 
 func _on_MovementControlerMonster_area_exited(area):
 	if area.get_parent().name == "Ladder":
 		monster.ladder = false
+	if area.get_parent().name == "Player":
+		monster.getBack = false
 

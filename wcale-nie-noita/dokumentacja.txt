@@ -5,7 +5,6 @@ Megaris Mobile
 To Do:
 -ozdoby, generowanie zamek
 -potwory(grafika)
--generowanie terenu w następnej krainie
 -skille 
 -market
 -hall of fame
@@ -20,7 +19,7 @@ To optimise:
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
 -lepsze wyświetlanie damage w stulu terraria
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
--dodać małe animację np. kołyszący się napis choose yout reward 
+-dodać małe animację np. kołyszący się napis choose yout reward, żyrandol świeczki
 
 ---------------------- ! HELP ! -----------------------
 Dodawanie itemów:

@@ -55,6 +55,7 @@ func generateWorld():
 	var g2 = preload("res://instances/Terrain/G5.tscn")
 	var g3 = preload("res://instances/Terrain/G6.tscn")
 	var g4 = preload("res://instances/Terrain/G7.tscn")
+	var g5 = preload("res://instances/Terrain/G8.tscn")
 	var p1 = preload("res://instances/Terrain/P3.tscn")
 	
 	avilableNumbers = numberOfFloors * 14 #obliczanie ile jest wszystkich platform
@@ -84,13 +85,9 @@ func generateWorld():
 				var instanitedP = p1.instance()
 				instanitedP.set_global_position(Vector2(width - 62.5,height))
 				width += 125
-				add_child(instanitedP)
-			var randomG = randi()%4 #losuje grafike platformy
-			var instanitedG
-			if randomG == 0: instanitedG = g1.instance()
-			if randomG == 1: instanitedG = g2.instance()
-			if randomG == 2: instanitedG = g3.instance()
-			if randomG == 3: instanitedG = g4.instance()
+				add_child(instanitedP) #losuje grafike platformy
+			var platformList = [g1, g1, g1, g2, g3, g3, g3, g4, g4, g5]
+			var instanitedG = platformList[randi()%platformList.size()].instance()
 			instanitedG.set_global_position(Vector2(width,height)) #ustawianie platform
 			width += 250
 			add_child(instanitedG)
@@ -109,16 +106,18 @@ func generatePlatformDecoration(platform, passages):
 	var o4 = preload("res://instances/Terrain/O11.tscn")
 	
 	var oB1 = preload("res://instances/Terrain/O20.tscn")#duze elementy
-	var oB2 = preload("res://instances/Terrain/O21.tscn")#duze elementy
-	var oB3 = preload("res://instances/Terrain/O22.tscn")#duze elementy
+	var oB2 = preload("res://instances/Terrain/O21.tscn")
+	var oB3 = preload("res://instances/Terrain/O22.tscn")
+	var oB4 = preload("res://instances/Terrain/O23.tscn")
 
-	var os2 = preload("res://instances/Terrain/Os2.tscn")#kamien sciana1
-	var os3 = preload("res://instances/Terrain/Os3.tscn")#kamien sciana2
-	var os4 = preload("res://instances/Terrain/Os4.tscn")#kamien sciana3
-	var os5 = preload("res://instances/Terrain/Os5.tscn")#pekniecie1
-	var os6 = preload("res://instances/Terrain/Os6.tscn")#pekniecie2
+	var os0 = preload("res://instances/Terrain/Os5.tscn")
+	var os1 = preload("res://instances/Terrain/Os6.tscn")
+	var os2 = preload("res://instances/Terrain/Os7.tscn")
+	var os3 = preload("res://instances/Terrain/Os8.tscn")
+	var os4 = preload("res://instances/Terrain/Os9.tscn")
+	var os5 = preload("res://instances/Terrain/Os10.tscn")
 	
-	var decorationList = [o1,o2,o3,o4,oB1,oB2,oB3] #lista dekoracji by się nie powtarzały
+	var decorationList = [o1,o2,o3,o4,oB1,oB2,oB3,oB4] #lista dekoracji by się nie powtarzały
 	var chanceForDecoration = randi()%2 #nic, jedna ozdoba, dwie #CASTLE 3 -> 2
 	for n in chanceForDecoration:
 		var decoration = decorationList[randi()%decorationList.size()].instance()
@@ -128,19 +127,16 @@ func generatePlatformDecoration(platform, passages):
 		decoration.set_global_position(decorationPosition)
 		add_child(decoration)
 	
-#	var decorationWallList = [os1,os2,os3,os4,os5,os6] #ozdoby sciana
-#	var chancesForDecorationWall = randi()%2
-#	for n in chancesForDecorationWall:
-#		var decoration = decorationWallList[randi()%decorationWallList.size()].instance()
-#		decorationWallList.erase((decoration))
-#		var decorationPosition = generatePositionHelper(platform, decoration)
-#		decorationPosition.y += randi()%25
-#		decorationPosition.y -= randi()%100
-#		if randi()%2 == 1: decoration.scale.x = -1
-#		if randi()%2 == 1: decoration.scale.y = -1
-#		decoration.set_global_position(decorationPosition)
-#		add_child(decoration)
-	
+	var decorationWallList = [os0,os1,os2,os3,os4,os5] #ozdoby sciana
+	var chancesForDecorationWall = randi()%4 #raz na na 4 razy
+	if chancesForDecorationWall == 0:
+		var decoration = decorationWallList[randi()%decorationWallList.size()].instance()
+		decorationWallList.erase((decoration))
+		var decorationPosition = generatePositionHelper(platform, decoration)
+		decorationPosition.y -= 75
+		if randi()%2 == 1: decoration.scale.x = -1
+		decoration.set_global_position(decorationPosition)
+		add_child(decoration)
 
 #generuje belki i lampy na suficie
 func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCurrentPlatform, numberOfCurrentFloor): #generowanie obiektów które są od pącztku do końca wysokości platformy 
@@ -151,8 +147,8 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 		else: firstPassage = passages[1]
 		if firstPassage < nextPassages[0] and firstPassage < nextPassages[1] and numberOfCurrentPlatform < nextPassages[0] and numberOfCurrentPlatform < nextPassages[1]:
 			numberOfCurrentPlatform += 1
-	var o7 = preload("res://instances/Terrain/pillar1.tscn")#belki 
-	var o8 = preload("res://instances/Terrain/pillar2.tscn") 
+	var o7 = preload("res://instances/Terrain/Pillar1.tscn")#belki 
+	var o8 = preload("res://instances/Terrain/Pillar2.tscn") 
 	var og1 = preload("res://instances/Elements/Lamp3.tscn")#lampy
 	var og2 = preload("res://instances/Elements/Lamp4.tscn")
 	var chancesForDecoration = randi()%4 #tu zmien czestosc wystepowannia belek
@@ -332,14 +328,3 @@ func getItemOfTier(listOfTier,notDelete = false):
 	if !notDelete: listOfTier.erase(randomedItem)
 	return randomedItem
 
-#func generatePlatformFillers():
-#	var filler = preload("res://instances/Terrain/filler-platform.tscn")
-#	var heightOfFiller = 805
-#	for r in numberOfFloors+1:
-#		var f = filler.instance()
-#		var f1 = filler.instance()
-#		f.global_position = Vector2(-1877.15,heightOfFiller)
-#		f1.global_position = Vector2(1877.8,heightOfFiller)
-#		add_child(f)
-#		add_child(f1)
-#		heightOfFiller -= 320

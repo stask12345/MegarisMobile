@@ -23,6 +23,8 @@ var hp = 100
 var minCoins
 var maxCoins
 var monsterName : String
+var triggerTime = 1
+var getBack
 
 func _ready():
 	pass
@@ -37,6 +39,7 @@ func hpDelayTimer():
 
 func loseTriggerOnPlayer():
 	goingToPlayer = false
+	$Timer.start(triggerTime)
 	yield($Timer, "timeout")
 	if !goingToPlayer: aggro = false
 
