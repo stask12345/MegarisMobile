@@ -107,8 +107,10 @@ func waitForShoot():
 
 func shoot():
 	shooting = true
+	indestructable = true
 	$Timer4.start(0.4)
 	yield($Timer4,"timeout")
+	indestructable = false
 	shooting = false
 
 

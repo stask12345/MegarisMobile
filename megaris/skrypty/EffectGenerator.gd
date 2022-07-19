@@ -59,6 +59,7 @@ func spawnPlayer():
 	player.trapped = false
 	player.stuck = false
 	player.playerVisible = true
+	player.get_node("Area2D").invisible = false
 
 func getPlayerToRewardRoom():
 	var rewardRoom = load("res://instances/RewardRoom.tscn").instance()

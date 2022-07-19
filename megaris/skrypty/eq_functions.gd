@@ -221,6 +221,7 @@ func _on_Button_wepon_button_up():
 	descriptionMenu.hideDescription()
 
 func makeUIVisible():
+	get_node("/root/MainScene/Player/WeponHolder").visible = true
 	$Control.visible = true
 	$Control2.visible = true
 	$Control3.visible = true

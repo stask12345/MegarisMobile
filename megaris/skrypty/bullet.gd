@@ -34,5 +34,7 @@ func attackMonster(monster):
 		monster.hp -= damage
 		effectGenerator.generateDamageLabel(global_position,damage)
 		monster.get_knock(monster.goingRight)
+		var monsterAlreadyTriggered = monster.goingToPlayer;
 		monster.triggerMonster()
+		if !monsterAlreadyTriggered: monster.loseTriggerOnPlayer()
 		if monster.hp <= 0: monster.playAnimationAndDestroy()

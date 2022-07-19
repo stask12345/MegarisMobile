@@ -274,7 +274,7 @@ func generateItemTable(platform):
 	add_child(table)
 
 func generateChest(platform):
-	var chest = preload("res://instances/Elements/Chest.tscn").instance()
+	var chest = preload("res://instances/Elements/ChestGolden.tscn").instance()
 	var generatedItem # ! To Do
 	if numberOfPlatform <= (avilableNumbers/2): generatedItem = getItemOfTier(firstTierPotion,true)
 	if numberOfPlatform > (avilableNumbers/2): generatedItem = getItemOfTier(secondTierPotion,true)

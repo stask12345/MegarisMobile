@@ -25,6 +25,7 @@ var maxCoins
 var monsterName : String
 var triggerTime = 1
 var getBack
+var indestructable = false
 
 func _ready():
 	pass

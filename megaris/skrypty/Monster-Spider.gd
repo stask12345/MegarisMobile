@@ -75,7 +75,7 @@ func shoot():
 	waitForShoot()
 
 func waitForShoot():
-	$Timer2
+	$Timer2.start(2)
 	yield($Timer2,"timeout")
 	canShoot = true
 

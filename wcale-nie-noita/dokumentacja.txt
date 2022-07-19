@@ -20,6 +20,7 @@ To optimise:
 -lepsze wyświetlanie damage w stulu terraria
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
 -dodać małe animację np. kołyszący się napis choose yout reward, żyrandol świeczki
+-lepsza optymalizacja, dzięki pozbyciu się obliczeń z potworków
 
 ---------------------- ! HELP ! -----------------------
 Dodawanie itemów:
