@@ -72,8 +72,6 @@ func _physics_process(delta):
 		motion.x = 0
 	
 	if knockbackLength < knockbackMaxLength: #knockback
-		if knockbackDirection: motion.x = knockbackStrength
-		else: motion.x = -knockbackStrength
 		knockbackLength += 1
 		modulate = Color(3,3,3)
 	else : 

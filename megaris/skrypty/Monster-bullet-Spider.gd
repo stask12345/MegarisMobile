@@ -11,6 +11,7 @@ onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
 	direction = goingRight
+	attackStrenght = shootingMonster.attackStrenght
 
 func _physics_process(delta):
 	if !destroyed:

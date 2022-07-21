@@ -1,5 +1,6 @@
 extends monsterClass
 
+var attackBolt = preload("res://instances/Bullets/Sliding-monster-bullet.tscn")
 var jump = 0 
 var jumpPower = 650
 var jumpSpeed = 210 # x
@@ -12,11 +13,11 @@ var waitingForShooting = false
 var shooting = false
 
 func _ready():
-	minCoins = 2
+	minCoins = 2 #               !!!!!!! Być moze, nieśmiertelny podczas ataku
 	maxCoins = 5
 	attackStrenght = 25 
 	hp = 75
-	monsterName = "Skeleton Swordman"
+	monsterName = "Ice Golem"
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja
@@ -52,6 +53,7 @@ func _physics_process(delta):
 			waitingForShooting = true
 			waitForShoot()
 	
+	
 	if !aggro and is_on_floor(): motion.x = 0
 	
 	if jumped:
@@ -86,10 +88,6 @@ func _physics_process(delta):
 	else : 
 		modulate = Color(1,1,1)
 	
-	if shooting:
-		$Monster1.frame = 4
-		if goingRight: motion.x = 350
-		else: motion.x = -350
 	
 	if !destroyed: move_and_slide(motion,Vector2(0,-1))
 
@@ -100,19 +98,37 @@ func waitForJump():
 	monsterJump()
 
 func waitForShoot():
-	$Timer3.start(3)
+	$Timer3.start(2)
 	yield($Timer3,"timeout")
 	waitingForShooting = false
 	shoot()
 
 func shoot():
 	shooting = true
-	indestructable = true
-	$Timer4.start(0.4)
-	yield($Timer4,"timeout")
-	indestructable = false
-	shooting = false
+	$AnimationPlayer.play("charging")
 
+func shootBullets():
+	get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
+	
+	var b1 = attackBolt.instance()
+	var b2 = attackBolt.instance()
+	var height = position.y + ($Monster1.texture.get_height() / 2) - (b1.get_child(0).texture.get_height()/2)
+	var width = position.x
+	b1.shootingMonster = self
+	b2.shootingMonster = self
+	b1.goingRight = true
+	b1.position.y = height
+	b1.position.x = width
+	b2.scale.x = -1
+	b2.position.y = height
+	b2.position.x = width
+	get_parent().add_child(b2)
+	get_parent().add_child(b1)
+	b1.timerToDestroy(0.7)
+	b2.timerToDestroy(0.7)
+
+func endShoot():
+	shooting = false
 
 func monsterJump():
 	if player.global_position.y > global_position.y:

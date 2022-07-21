@@ -1,6 +1,8 @@
 extends monsterClass
 
-onready var attackBolt = preload("res://instances/Bullets/Monster-bullet-Worm.tscn")
+var bat = preload("res://instances/Monsters/Monster-Bat.tscn")
+var slime = preload("res://instances/Monsters/Monster-Slime.tscn")
+var skeleton = preload("res://instances/Monsters/Monster-Skeleton.tscn")
 var canShoot = true
 var ladderOrWall = false
 var directionOfBlocade = false
@@ -11,7 +13,7 @@ func _ready():
 	maxCoins = 10
 	attackStrenght = 40 
 	hp = 110
-	monsterName = "Mutated Worm"
+	monsterName = "Cave Spider"
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja
@@ -85,22 +87,11 @@ func destroyMonster():
 
 
 func shootBullets():
-	var b1 = attackBolt.instance()
-	var height = position.y - 20
-	var width = position.x
-	b1.shootingMonster = self
-	if goingRight: b1.scale.x = 1
-	else: b1.scale.x = -1
-	
-	if goingRight == false: b1.goingRight = false
-	else: b1.goingRight = true
-	
-	var rotationOfAttack
-	var distance = (global_position - player.global_position).length()
-	if distance < 175: rotationOfAttack = -0.1
-	else: rotationOfAttack = 0.40
-	if goingRight: b1.rotate(-rotationOfAttack)
-	else: b1.rotate(rotationOfAttack)
-	b1.position.y = height
-	b1.position.x = width
-	get_parent().add_child(b1)
+	var monsterType = randi()%3
+	var summonedMonster
+	if monsterType == 0: summonedMonster = bat.instance()
+	if monsterType == 1: summonedMonster = slime.instance()
+	if monsterType == 2: summonedMonster = skeleton.instance()
+	if scale.x == -1: summonedMonster.global_position = Vector2(position.x - 60, global_position.y)
+	else: summonedMonster.global_position = Vector2(position.x + 60, global_position.y)
+	get_parent().add_child(summonedMonster)

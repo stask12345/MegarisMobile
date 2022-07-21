@@ -5,7 +5,7 @@ onready var effectGenerator = get_node("/root/MainScene/EffectGenerator")
 func _ready():
 	#if bought: applyEffect() #nie dla reward skilly #na razie
 	rewardSkill = true
-	description = "Super Vitality: +50 Max Health"
+	description = "Super Vitality: \n+50 Max Health "
 
 func applyEffect():
 	playerStatsHp.maxHp += 50

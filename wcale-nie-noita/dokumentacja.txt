@@ -12,7 +12,6 @@ To Do:
 -nowe bronie
 
 To optimise:
--zmiana napisów -> mniejsza skala, większy font size.
 -napisy The mine oraz the castle
 -animacja przy podnoszniu z stołów, kupowaniu
 -napisy na innych rozdzielczosciach
@@ -21,6 +20,7 @@ To optimise:
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
 -dodać małe animację np. kołyszący się napis choose yout reward, żyrandol świeczki
 -lepsza optymalizacja, dzięki pozbyciu się obliczeń z potworków
+-ice golem nieśmiertelny podczas ataku?
 
 ---------------------- ! HELP ! -----------------------
 Dodawanie itemów:
