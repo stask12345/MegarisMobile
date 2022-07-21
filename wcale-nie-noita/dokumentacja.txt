@@ -12,9 +12,9 @@ To Do:
 -nowe bronie
 
 To optimise:
+-zmiana napisów -> mniejsza skala, większy font size. Jeszcze bardziej?
 -napisy The mine oraz the castle
 -animacja przy podnoszniu z stołów, kupowaniu
--napisy na innych rozdzielczosciach
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
 -lepsze wyświetlanie damage w stulu terraria
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
