@@ -13,9 +13,15 @@ func _ready():
 	bulletRange = wepon.bulletRange
 	if wepon.rangeDestroy: timerToDestroy()
 	
-	set_position(global_position)
-	get_parent().remove_child(self)
-	mainNode.add_child(self)
+	if get_parent() == null || get_parent().name == "WeponHolder": set_position(global_position)
+	else: get_parent().set_position(get_parent().global_position)
+	
+	if get_parent().name == "WeponHolder": get_parent().remove_child(self)
+	else: get_parent().get_parent().remove_child(get_parent())
+	
+	if get_parent() == null || get_parent().name == "WeponHolder": mainNode.add_child(self)
+	else: 
+		if get_parent().name != "MainScene": mainNode.add_child(self.get_parent())
 	direction = player.scale.x
 
 func timerToDestroy():

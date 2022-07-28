@@ -7,6 +7,7 @@ var fireSpeed : float
 var bulletRange : float
 var typeOfBullet : String
 var textureChangeAfterShot = false
+var textureChangeConstant = false
 var title : String
 var description : String
 var upgradeLevel = 0

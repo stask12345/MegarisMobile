@@ -3,6 +3,7 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
+-różny knockback dla broni/potworków
 -ozdoby, generowanie zamek
 -potwory(grafika)
 -skille 
@@ -12,6 +13,7 @@ To Do:
 -nowe bronie
 
 To optimise:
+-fajniejsze bronie z 1 krainy
 -zmiana napisów -> mniejsza skala, większy font size. Jeszcze bardziej?
 -napisy The mine oraz the castle
 -animacja przy podnoszniu z stołów, kupowaniu

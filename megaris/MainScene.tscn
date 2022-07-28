@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=2]
+[gd_scene load_steps=176 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -83,7 +83,6 @@
 [ext_resource path="res://grafika/monster/monster2.png" type="Texture" id=81]
 [ext_resource path="res://grafika/UI/boss-bar.png" type="Texture" id=82]
 [ext_resource path="res://skrypty/ShopMenu.gd" type="Script" id=83]
-[ext_resource path="res://instances/Wepons/Spear2.tscn" type="PackedScene" id=84]
 [ext_resource path="res://skrypty/ChestMenu.gd" type="Script" id=85]
 [ext_resource path="res://grafika/worldElements/market.png" type="Texture" id=86]
 [ext_resource path="res://grafika/UI/drink_animation.png" type="Texture" id=87]
@@ -102,7 +101,9 @@
 [ext_resource path="res://skrypty/TrainingCamp.gd" type="Script" id=100]
 [ext_resource path="res://skrypty/ItemMarket.gd" type="Script" id=101]
 [ext_resource path="res://skrypty/HallOfFame.gd" type="Script" id=102]
-[ext_resource path="res://instances/Wepons/Mace0.tscn" type="PackedScene" id=103]
+[ext_resource path="res://instances/Wepons/Spear4.tscn" type="PackedScene" id=103]
+[ext_resource path="res://instances/Wepons/Wand3.tscn" type="PackedScene" id=104]
+[ext_resource path="res://instances/Wepons/Wand2.tscn" type="PackedScene" id=105]
 
 [sub_resource type="Animation" id=54]
 resource_name = "idle_highlight"
@@ -1546,7 +1547,7 @@ __meta__ = {
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -647, -3329 )
+position = Vector2( -123, 901 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1890,8 +1891,9 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
-[node name="Mace0" parent="CanvasLayer/Control5/Slot1_b" instance=ExtResource( 103 )]
-position = Vector2( -1.5, 0 )
+[node name="Wand3" parent="CanvasLayer/Control5/Slot1_b" instance=ExtResource( 104 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Slot1" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -1913,8 +1915,7 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
-[node name="Spear2" parent="CanvasLayer/Control5/Slot2_b" instance=ExtResource( 84 )]
-position = Vector2( -2.5, 1.5 )
+[node name="Wand2" parent="CanvasLayer/Control5/Slot2_b" instance=ExtResource( 105 )]
 
 [node name="Slot2" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -1934,6 +1935,8 @@ texture = ExtResource( 40 )
 [node name="Light2" type="Sprite" parent="CanvasLayer/Control5/Slot3_b"]
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
+
+[node name="Spear4" parent="CanvasLayer/Control5/Slot3_b" instance=ExtResource( 103 )]
 
 [node name="Slot3" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )

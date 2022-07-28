@@ -92,7 +92,6 @@ extents = Vector2( 288.5, 64.5 )
 extents = Vector2( 28, 10 )
 
 [node name="Monster-Bat3" type="KinematicBody2D"]
-position = Vector2( -1408, 760 )
 collision_layer = 34
 script = ExtResource( 5 )
 

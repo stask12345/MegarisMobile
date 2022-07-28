@@ -7,11 +7,15 @@ onready var animationPlayer = get_parent().get_node("AnimationPlayerWepon")
 onready var spriteOfWepon = get_child(0).get_child(0)
 onready var weponHolder = get_parent().get_parent().get_node("CanvasLayer/Control4/WeponHolder")
 var bulletSword = preload("res://instances/Bullets/sworldBullet.tscn")
+var bulletSwordDouble = preload("res://instances/Bullets/sworldBulletDouble.tscn")
+var bulletSwordDemonic = preload("res://instances/Bullets/swordBulletDemonic.tscn")
 var bulletSlash = preload("res://instances/Bullets/slashBullet.tscn")
 var bulletArrow = preload("res://instances/Bullets/arrowBullet.tscn")
 var bulletMagic = preload("res://instances/Bullets/magicBullet.tscn")
 var bulletMagic2 = preload("res://instances/Bullets/magicBullet2.tscn")
+var bulletMagic3 = preload("res://instances/Bullets/magicBullet3.tscn")
 var bulletSpear = preload("res://instances/Bullets/spearBullet.tscn")
+var bulletSpearDouble = preload("res://instances/Bullets/spearDoubleBullet.tscn")
 var fireRate = 0 #ustawiane w ready
 var can_fire = true
 
@@ -52,13 +56,16 @@ func _process(delta):
 func shot():
 	var wepon = get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").get_child(0)
 	var shot
-	print("test")
 	if wepon.typeOfBullet == "slash": shot = bulletSlash.instance()
 	if wepon.typeOfBullet == "sword": shot = bulletSword.instance()
+	if wepon.typeOfBullet == "sword double": shot = bulletSwordDouble.instance()
+	if wepon.typeOfBullet == "sword demonic": shot = bulletSwordDemonic.instance()
 	if wepon.typeOfBullet == "pircing": shot = bulletSpear.instance()
+	if wepon.typeOfBullet == "pircing double": shot = bulletSpearDouble.instance()
 	if wepon.typeOfBullet == "arrow": shot = bulletArrow.instance()
 	if wepon.typeOfBullet == "magic": shot = bulletMagic.instance()
 	if wepon.typeOfBullet == "magic2": shot = bulletMagic2.instance()
+	if wepon.typeOfBullet == "magic3": shot = bulletMagic3.instance()
 	if scale.x == -1:
 		 shot.scale.x = -1
 	shot.set_rotation(rotation)
