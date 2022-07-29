@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name bullet
 var bulletRange = 0 # w sekundach do zniszczenia
 var destroyed = false
+var shorterRange = false #dla pocisków strzelających z kregów przyzwania specialu4
 onready var wepon = get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").get_child(0)
 onready var player = get_node("/root/MainScene/Player/WeponHolder")
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
@@ -10,7 +11,9 @@ onready var mainNode = get_node("/root/MainScene")
 var direction
 
 func _ready():
-	bulletRange = wepon.bulletRange
+	if !shorterRange: bulletRange = wepon.bulletRange
+	else: bulletRange = 1
+	
 	if wepon.rangeDestroy: timerToDestroy()
 	
 	if get_parent() == null || get_parent().name == "WeponHolder": set_position(global_position)

@@ -1,0 +1,174 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://skrypty/sworldBullet.gd" type="Script" id=1]
+[ext_resource path="res://grafika/pocisk.png" type="Texture" id=2]
+[ext_resource path="res://grafika/animation/bulletDestruction1.png" type="Texture" id=3]
+[ext_resource path="res://grafika/animation/bulletDestruction2.png" type="Texture" id=4]
+[ext_resource path="res://grafika/animation/bulletDestruction3.png" type="Texture" id=5]
+[ext_resource path="res://skrypty/slashBullet.gd" type="Script" id=6]
+[ext_resource path="res://grafika/animation/slash_animation.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 61.5 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pocisk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "destroyAnimation"
+length = 0.4
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroyAfterAnimation"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pocisk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=92]
+extents = Vector2( 6.5, 21 )
+
+[sub_resource type="RectangleShape2D" id=93]
+extents = Vector2( 1.25, 4 )
+
+[sub_resource type="Animation" id=96]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pocisk:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=97]
+resource_name = "destroyAnimation"
+length = 0.2
+step = 0.02
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroyAfterAnimation"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pocisk:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+}
+
+[node name="DoubleSwordAxeBullet" type="Node2D"]
+position = Vector2( 0, 2 )
+z_index = 2
+
+[node name="slashBullet" type="KinematicBody2D" parent="."]
+position = Vector2( 30, -2 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="Pocisk" type="Sprite" parent="slashBullet"]
+position = Vector2( 20, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+hframes = 4
+
+[node name="Area2D_attack" type="Area2D" parent="slashBullet"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slashBullet/Area2D_attack"]
+position = Vector2( 20, -1.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="slashBullet"]
+anims/RESET = SubResource( 5 )
+anims/destroyAnimation = SubResource( 6 )
+
+[node name="Bullet2" type="KinematicBody2D" parent="."]
+position = Vector2( 71, 0 )
+z_index = 2
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Pocisk" type="Sprite" parent="Bullet2"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( -34, -22 )
+texture = ExtResource( 2 )
+offset = Vector2( 34, 22 )
+
+[node name="Area2D_attack" type="Area2D" parent="Bullet2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet2/Area2D_attack"]
+position = Vector2( 10.5, 0 )
+shape = SubResource( 92 )
+
+[node name="Area2D_terrain" type="Area2D" parent="Bullet2"]
+position = Vector2( -34, -22 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet2/Area2D_terrain"]
+position = Vector2( 47.5, 21.5 )
+shape = SubResource( 93 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bullet2"]
+anims/RESET = SubResource( 96 )
+anims/destroyAnimation = SubResource( 97 )
+
+[connection signal="area_entered" from="slashBullet/Area2D_attack" to="slashBullet" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Bullet2/Area2D_attack" to="Bullet2" method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Bullet2/Area2D_terrain" to="Bullet2" method="_on_Area2D_terrain_body_entered"]

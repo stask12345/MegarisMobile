@@ -4,6 +4,5 @@
 [ext_resource path="res://skrypty/Wand3.gd" type="Script" id=2]
 
 [node name="Wand3" type="Sprite"]
-position = Vector2( 2, 1548 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

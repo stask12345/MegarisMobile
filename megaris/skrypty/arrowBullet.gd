@@ -2,8 +2,9 @@ extends bullet
 
 func _process(delta): #unikalne dla każdego pocisku
 	if !destroyed:
-		if direction == -1 and (global_rotation_degrees > 90 or global_rotation_degrees < 0): rotation = rotation - 0.04
-		if direction == 1 and (global_rotation_degrees < 90 or global_rotation_degrees < 0): rotation = rotation + 0.04
+		if !"Double" in get_parent().name:
+			if direction == -1 and (global_rotation_degrees > 90 or global_rotation_degrees < 0): rotation = rotation - 0.04
+			if direction == 1 and (global_rotation_degrees < 90 or global_rotation_degrees < 0): rotation = rotation + 0.04
 		if $Pocisk.rotation > 120:
 				$Pocisk.rotate(0.02)
 		move_and_slide(Vector2(700,0).rotated(rotation))

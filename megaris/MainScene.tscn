@@ -83,6 +83,7 @@
 [ext_resource path="res://grafika/monster/monster2.png" type="Texture" id=81]
 [ext_resource path="res://grafika/UI/boss-bar.png" type="Texture" id=82]
 [ext_resource path="res://skrypty/ShopMenu.gd" type="Script" id=83]
+[ext_resource path="res://grafika/itemy/bow7.png" type="Texture" id=84]
 [ext_resource path="res://skrypty/ChestMenu.gd" type="Script" id=85]
 [ext_resource path="res://grafika/worldElements/market.png" type="Texture" id=86]
 [ext_resource path="res://grafika/UI/drink_animation.png" type="Texture" id=87]
@@ -101,9 +102,8 @@
 [ext_resource path="res://skrypty/TrainingCamp.gd" type="Script" id=100]
 [ext_resource path="res://skrypty/ItemMarket.gd" type="Script" id=101]
 [ext_resource path="res://skrypty/HallOfFame.gd" type="Script" id=102]
-[ext_resource path="res://instances/Wepons/Spear4.tscn" type="PackedScene" id=103]
-[ext_resource path="res://instances/Wepons/Wand3.tscn" type="PackedScene" id=104]
-[ext_resource path="res://instances/Wepons/Wand2.tscn" type="PackedScene" id=105]
+[ext_resource path="res://instances/Wepons/Spear1.tscn" type="PackedScene" id=103]
+[ext_resource path="res://skrypty/Bow6.gd" type="Script" id=104]
 
 [sub_resource type="Animation" id=54]
 resource_name = "idle_highlight"
@@ -1891,9 +1891,7 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
-[node name="Wand3" parent="CanvasLayer/Control5/Slot1_b" instance=ExtResource( 104 )]
-position = Vector2( 0, 0 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Spear1" parent="CanvasLayer/Control5/Slot1_b" instance=ExtResource( 103 )]
 
 [node name="Slot1" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -1915,7 +1913,7 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
-[node name="Wand2" parent="CanvasLayer/Control5/Slot2_b" instance=ExtResource( 105 )]
+[node name="Wooden Sword" parent="CanvasLayer/Control5/Slot2_b" instance=ExtResource( 14 )]
 
 [node name="Slot2" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -1935,8 +1933,6 @@ texture = ExtResource( 40 )
 [node name="Light2" type="Sprite" parent="CanvasLayer/Control5/Slot3_b"]
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
-
-[node name="Spear4" parent="CanvasLayer/Control5/Slot3_b" instance=ExtResource( 103 )]
 
 [node name="Slot3" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -4045,7 +4041,9 @@ script = ExtResource( 33 )
 [node name="KinematicBody2D2" type="KinematicBody2D" parent="GeneratedTerrain/ItemTable"]
 position = Vector2( 0, -50 )
 
-[node name="Wooden Sword" parent="GeneratedTerrain/ItemTable/KinematicBody2D2" instance=ExtResource( 14 )]
+[node name="Bow6" type="Sprite" parent="GeneratedTerrain/ItemTable/KinematicBody2D2"]
+texture = ExtResource( 84 )
+script = ExtResource( 104 )
 
 [node name="Area2D" type="Area2D" parent="GeneratedTerrain/ItemTable"]
 monitorable = false

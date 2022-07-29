@@ -10,7 +10,7 @@ func _ready():
 	minDamage = 30
 	maxDamage = 45
 	fireSpeed = 0.6
-	bulletRange = 0.4
+	bulletRange = 0.5
 	typeOfBullet = "sword demonic"
 	title = "Gold Sword"
 	description = ""
@@ -19,14 +19,19 @@ func _ready():
 func _process(delta):
 	if !animating and get_parent().name == "WeponHolder":
 		animateSword()
+	
+	if get_parent().name == "WeponHolder":
+		rotation_degrees = 0
+	else: 
+		if "Slot" in get_parent().name: rotation_degrees = 45
 
 func animateSword():
-	var sword = swordHolder.get_wepon()
-	sword.texture = getSwordTexture(sword)
 	if get_parent().name != "WeponHolder":
 		animating = false
 		$Timer.stop()
 		return
+	var sword = swordHolder.get_wepon()
+	sword.texture = getSwordTexture(sword)
 	animating = true
 	$Timer.start(1)
 	yield($Timer,"timeout")

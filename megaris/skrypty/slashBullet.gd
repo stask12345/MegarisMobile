@@ -3,6 +3,7 @@ var playerPosition = Vector2()
 func _ready():
 	playerPosition = player.global_position
 	$AnimationPlayer.play("destroyAnimation")
+	timerToDestroy()
 
 func _process(delta):
 	global_position.x += (player.global_position.x - playerPosition.x)#Unikalne dla maczugi Atak przy graczu
