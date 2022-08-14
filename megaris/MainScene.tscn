@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=2]
+[gd_scene load_steps=227 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -83,7 +83,7 @@
 [ext_resource path="res://grafika/monster/monster2.png" type="Texture" id=81]
 [ext_resource path="res://grafika/UI/boss-bar.png" type="Texture" id=82]
 [ext_resource path="res://skrypty/ShopMenu.gd" type="Script" id=83]
-[ext_resource path="res://grafika/itemy/bow7.png" type="Texture" id=84]
+[ext_resource path="res://instances/Wepons/Bow4.tscn" type="PackedScene" id=84]
 [ext_resource path="res://skrypty/ChestMenu.gd" type="Script" id=85]
 [ext_resource path="res://grafika/worldElements/market.png" type="Texture" id=86]
 [ext_resource path="res://grafika/UI/drink_animation.png" type="Texture" id=87]
@@ -102,8 +102,50 @@
 [ext_resource path="res://skrypty/TrainingCamp.gd" type="Script" id=100]
 [ext_resource path="res://skrypty/ItemMarket.gd" type="Script" id=101]
 [ext_resource path="res://skrypty/HallOfFame.gd" type="Script" id=102]
-[ext_resource path="res://instances/Wepons/Spear1.tscn" type="PackedScene" id=103]
-[ext_resource path="res://skrypty/Bow6.gd" type="Script" id=104]
+[ext_resource path="res://skrypty/SpellFireBall1.gd" type="Script" id=103]
+[ext_resource path="res://grafika/itemy/spellFireBall1.png" type="Texture" id=104]
+[ext_resource path="res://instances/Wepons/Bow2.tscn" type="PackedScene" id=105]
+[ext_resource path="res://skrypty/MarketSkill.gd" type="Script" id=106]
+[ext_resource path="res://skrypty/Skill7Fountains.gd" type="Script" id=107]
+[ext_resource path="res://grafika/skills/skill17.png" type="Texture" id=108]
+[ext_resource path="res://skrypty/Skill8Coins.gd" type="Script" id=109]
+[ext_resource path="res://skrypty/Skill3Money.gd" type="Script" id=110]
+[ext_resource path="res://grafika/skills/skill13.png" type="Texture" id=111]
+[ext_resource path="res://skrypty/Skill4Money.gd" type="Script" id=112]
+[ext_resource path="res://grafika/skills/skill14.png" type="Texture" id=113]
+[ext_resource path="res://skrypty/Skill5PotionTimer.gd" type="Script" id=114]
+[ext_resource path="res://grafika/skills/skill15.png" type="Texture" id=115]
+[ext_resource path="res://skrypty/Skill6Armor.gd" type="Script" id=116]
+[ext_resource path="res://grafika/skills/skill4.png" type="Texture" id=117]
+[ext_resource path="res://skrypty/SkillTable.gd" type="Script" id=118]
+[ext_resource path="res://skrypty/MarketTraining.gd" type="Script" id=119]
+[ext_resource path="res://grafika/skills/skill7.png" type="Texture" id=120]
+[ext_resource path="res://skrypty/Skill9Coins.gd" type="Script" id=121]
+[ext_resource path="res://grafika/skills/skill8.png" type="Texture" id=122]
+[ext_resource path="res://skrypty/MarketItems.gd" type="Script" id=123]
+[ext_resource path="res://skrypty/MarketHallOfFame.gd" type="Script" id=124]
+[ext_resource path="res://skrypty/HallMenu.gd" type="Script" id=125]
+[ext_resource path="res://skrypty/Skill10Range.gd" type="Script" id=126]
+[ext_resource path="res://grafika/skills/skill16.png" type="Texture" id=127]
+[ext_resource path="res://skrypty/SpawnPoint.gd" type="Script" id=128]
+[ext_resource path="res://Skill11Wepon.gd" type="Script" id=129]
+[ext_resource path="res://grafika/skills/skill9.png" type="Texture" id=130]
+[ext_resource path="res://Skill13Potion.gd" type="Script" id=131]
+[ext_resource path="res://Skill12Potion.gd" type="Script" id=132]
+[ext_resource path="res://grafika/skills/skill12.png" type="Texture" id=133]
+[ext_resource path="res://grafika/skills/skill11.png" type="Texture" id=134]
+[ext_resource path="res://grafika/skills/skill27.png" type="Texture" id=135]
+[ext_resource path="res://grafika/skills/skill10.png" type="Texture" id=136]
+[ext_resource path="res://grafika/skills/skill5.png" type="Texture" id=137]
+[ext_resource path="res://grafika/skills/skill6.png" type="Texture" id=138]
+[ext_resource path="res://grafika/skills/skill3.png" type="Texture" id=139]
+[ext_resource path="res://grafika/skills/skill26.png" type="Texture" id=140]
+[ext_resource path="res://skrypty/Skill14Crystals.gd" type="Script" id=141]
+[ext_resource path="res://skrypty/Skill15Crystals.gd" type="Script" id=142]
+[ext_resource path="res://skrypty/Skill16Boss.gd" type="Script" id=143]
+[ext_resource path="res://Skill17Speed.gd" type="Script" id=144]
+[ext_resource path="res://Skill18Speed.gd" type="Script" id=145]
+[ext_resource path="res://Skill19Slime.gd" type="Script" id=146]
 
 [sub_resource type="Animation" id=54]
 resource_name = "idle_highlight"
@@ -936,6 +978,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 0 ]
 }
 
+[sub_resource type="DynamicFont" id=98]
+size = 62
+font_data = ExtResource( 52 )
+
 [sub_resource type="DynamicFont" id=64]
 size = 93
 font_data = ExtResource( 52 )
@@ -1076,6 +1122,134 @@ outline_size = 1
 outline_color = Color( 1, 0.341176, 0, 1 )
 font_data = ExtResource( 52 )
 
+[sub_resource type="Animation" id=92]
+resource_name = "castle"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ " The Forgotten Castle" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 360, 50 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0, -3.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=91]
+resource_name = "mine"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ " The Old Mine" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 210, 35 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 6, 6 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0, -3.0, 0.0 ]
+}
+
 [sub_resource type="Animation" id=70]
 resource_name = "crystalIdle"
 length = 4.0
@@ -1110,6 +1284,12 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=89]
+extents = Vector2( 33, 45 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 28, 21.5 )
+
 [sub_resource type="DynamicFont" id=75]
 size = 62
 font_data = ExtResource( 52 )
@@ -1117,14 +1297,32 @@ font_data = ExtResource( 52 )
 [sub_resource type="RectangleShape2D" id=78]
 extents = Vector2( 56.5, 31.5 )
 
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 33, 45 )
+
+[sub_resource type="DynamicFont" id=93]
+font_data = ExtResource( 52 )
+
 [sub_resource type="RectangleShape2D" id=79]
 extents = Vector2( 43, 65 )
+
+[sub_resource type="RectangleShape2D" id=95]
+extents = Vector2( 33, 45 )
+
+[sub_resource type="RectangleShape2D" id=94]
+extents = Vector2( 33, 45 )
 
 [sub_resource type="RectangleShape2D" id=80]
 extents = Vector2( 54, 66.5 )
 
+[sub_resource type="RectangleShape2D" id=96]
+extents = Vector2( 33, 45 )
+
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 33.6666, 42.3333 )
+
+[sub_resource type="RectangleShape2D" id=97]
+extents = Vector2( 111, 55 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.69428, 33.1558 )
@@ -1178,12 +1376,6 @@ extents = Vector2( 229.5, 37.25 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 509, 102.5 )
-
-[sub_resource type="RectangleShape2D" id=89]
-extents = Vector2( 33, 45 )
-
-[sub_resource type="RectangleShape2D" id=45]
-extents = Vector2( 28, 21.5 )
 
 [sub_resource type="Animation" id=73]
 resource_name = "bossAnimation"
@@ -1545,9 +1737,114 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
+[node name="Skills" type="Node2D" parent="."]
+visible = false
+
+[node name="Skill3Lesser" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -638, 1587 )
+texture = ExtResource( 111 )
+script = ExtResource( 110 )
+
+[node name="Skill4" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -537, 1591 )
+texture = ExtResource( 113 )
+script = ExtResource( 112 )
+
+[node name="Skill5" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -399, 1587 )
+texture = ExtResource( 115 )
+script = ExtResource( 114 )
+
+[node name="Skill6" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -292, 1592 )
+texture = ExtResource( 117 )
+script = ExtResource( 116 )
+
+[node name="Skill7" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -187, 1584 )
+texture = ExtResource( 108 )
+script = ExtResource( 107 )
+
+[node name="Skill8Lesser" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -634, 1669 )
+texture = ExtResource( 120 )
+script = ExtResource( 109 )
+
+[node name="Skill9" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -540, 1671 )
+texture = ExtResource( 122 )
+script = ExtResource( 121 )
+
+[node name="Skill10" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -413, 1674 )
+texture = ExtResource( 127 )
+script = ExtResource( 126 )
+
+[node name="Skill11" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -302, 1679 )
+texture = ExtResource( 130 )
+script = ExtResource( 129 )
+
+[node name="Skill17" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -624, 1769 )
+texture = ExtResource( 137 )
+script = ExtResource( 144 )
+
+[node name="Skill18" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -618, 1875 )
+texture = ExtResource( 138 )
+script = ExtResource( 145 )
+
+[node name="Skill12Lesser" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -195, 1681 )
+texture = ExtResource( 134 )
+script = ExtResource( 132 )
+
+[node name="Skill13Upper" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -194, 1771 )
+texture = ExtResource( 133 )
+script = ExtResource( 131 )
+
+[node name="Skill14Lesser" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -281, 1764 )
+texture = ExtResource( 140 )
+script = ExtResource( 141 )
+
+[node name="Skill15" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -411, 1766 )
+texture = ExtResource( 135 )
+script = ExtResource( 142 )
+
+[node name="Skill16" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -525, 1771 )
+texture = ExtResource( 136 )
+script = ExtResource( 143 )
+
+[node name="Skill19" type="Sprite" parent="Skills" groups=["saveGroup"]]
+unique_name_in_owner = true
+position = Vector2( -520, 1872 )
+texture = ExtResource( 139 )
+script = ExtResource( 146 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -123, 901 )
+position = Vector2( 818, 869 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -1891,7 +2188,11 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
-[node name="Spear1" parent="CanvasLayer/Control5/Slot1_b" instance=ExtResource( 103 )]
+[node name="SpellFireBall1" type="Sprite" parent="CanvasLayer/Control5/Slot1_b"]
+position = Vector2( 0, 0.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 104 )
+script = ExtResource( 103 )
 
 [node name="Slot1" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -1934,6 +2235,8 @@ texture = ExtResource( 40 )
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 texture = ExtResource( 39 )
 
+[node name="Bow5" parent="CanvasLayer/Control5/Slot3_b" instance=ExtResource( 105 )]
+
 [node name="Slot3" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -180, 360 )
@@ -1959,15 +2262,11 @@ texture = ExtResource( 40 )
 position = Vector2( 0, -5 )
 texture = ExtResource( 53 )
 
-[node name="SlotDeleteButton" type="Button" parent="CanvasLayer/Control5"]
+[node name="SlotDeleteButton" type="TouchScreenButton" parent="CanvasLayer/Control5"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -361.0
-margin_top = 20.0
-margin_right = -201.0
-margin_bottom = 180.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( -355, 20 )
+scale = Vector2( 160, 160 )
+normal = ExtResource( 4 )
 
 [node name="SlotDelete_anim" type="AnimationPlayer" parent="CanvasLayer/Control5"]
 root_node = NodePath("../SlotDeleteButton")
@@ -2052,7 +2351,6 @@ margin_right = 408.0
 margin_bottom = 9.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 82 )
-text = "Name of object"
 align = 1
 valign = 2
 autowrap = true
@@ -2078,6 +2376,17 @@ margin_bottom = 46.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="CanvasLayer/Control4/Enter"]
+margin_left = -195.0
+margin_top = -124.0
+margin_right = 566.0
+margin_bottom = 29.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 82 )
+align = 1
+valign = 2
+autowrap = true
 
 [node name="Open" type="Sprite" parent="CanvasLayer/Control4"]
 visible = false
@@ -2146,13 +2455,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control4/Buy"]
-margin_left = -135.0
-margin_top = -103.0
-margin_right = 405.0
-margin_bottom = 7.0
+margin_left = -195.0
+margin_top = -124.0
+margin_right = 566.0
+margin_bottom = 29.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 82 )
-text = "Name of object"
 align = 1
 valign = 2
 autowrap = true
@@ -2237,6 +2545,7 @@ margin_left = -132.308
 margin_top = -113.077
 margin_right = 122.692
 margin_bottom = -54.0769
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Blacksmith Upgrades
@@ -2250,6 +2559,7 @@ margin_left = -181.0
 margin_top = -86.0
 margin_right = -2.0
 margin_bottom = -55.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Current Wepon"
 __meta__ = {
@@ -2257,11 +2567,11 @@ __meta__ = {
 }
 
 [node name="weponCostLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = -146.0
-margin_top = 57.0
-margin_right = -40.0
-margin_bottom = 88.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -175.0
+margin_top = 63.4615
+margin_right = 1.0
+margin_bottom = 119.462
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "50 Gold"
 __meta__ = {
@@ -2269,11 +2579,11 @@ __meta__ = {
 }
 
 [node name="armorCostLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = 26.0
-margin_top = 59.5
-margin_right = 132.0
-margin_bottom = 90.5
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 21.5385
+margin_top = 66.1538
+margin_right = 225.538
+margin_bottom = 122.154
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "100 Gold"
 __meta__ = {
@@ -2281,11 +2591,11 @@ __meta__ = {
 }
 
 [node name="weponDesLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = -152.0
-margin_top = 39.5
-margin_right = 31.0
-margin_bottom = 70.5
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -182.692
+margin_top = 40.0
+margin_right = 175.308
+margin_bottom = 96.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "+5 max attack"
 __meta__ = {
@@ -2293,11 +2603,11 @@ __meta__ = {
 }
 
 [node name="armorDesLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = 41.5
-margin_top = 41.5
-margin_right = 224.5
-margin_bottom = 72.5
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 28.8462
+margin_top = 41.5385
+margin_right = 260.846
+margin_bottom = 97.5385
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "+5 armor"
 __meta__ = {
@@ -2305,11 +2615,11 @@ __meta__ = {
 }
 
 [node name="weponUpgNumLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = -68.5
-margin_top = 56.5
-margin_right = -22.5
-margin_bottom = 84.5
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -81.9231
+margin_top = 61.5385
+margin_right = 3.0769
+margin_bottom = 117.538
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "0/2"
 __meta__ = {
@@ -2317,11 +2627,11 @@ __meta__ = {
 }
 
 [node name="armorUpgNumLabel" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = 107.5
-margin_top = 59.0
-margin_right = 153.5
-margin_bottom = 87.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 126.538
+margin_top = 64.6154
+margin_right = 211.538
+margin_bottom = 120.615
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "0/3"
 __meta__ = {
@@ -2329,11 +2639,11 @@ __meta__ = {
 }
 
 [node name="BuyWepon" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = -116.5
-margin_top = 77.0
-margin_right = -60.5
-margin_bottom = 136.0
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = -123.846
+margin_top = 88.0769
+margin_right = -35.8461
+margin_bottom = 203.077
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Buy
@@ -2346,15 +2656,15 @@ __meta__ = {
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = -2.0
 margin_top = 1.0
-margin_right = 44.0
-margin_bottom = 26.0
+margin_right = 79.0
+margin_bottom = 51.0
 
 [node name="BuyArmor" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
-margin_left = 59.5
-margin_top = 77.5
-margin_right = 115.5
-margin_bottom = 136.5
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = 67.3077
+margin_top = 88.4615
+margin_right = 155.308
+margin_bottom = 203.462
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Buy
@@ -2365,10 +2675,10 @@ __meta__ = {
 
 [node name="BuyArmorButton2" type="Button" parent="CanvasLayer/Control4/AnvilMenu/BuyArmor"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -1.25
-margin_top = 2.08334
-margin_right = 44.75
-margin_bottom = 27.0833
+margin_left = -1.0
+margin_top = 2.0
+margin_right = 84.0
+margin_bottom = 49.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2378,6 +2688,7 @@ margin_left = 48.0
 margin_top = -83.5
 margin_right = 126.0
 margin_bottom = -52.5
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Armor"
 __meta__ = {
@@ -2435,11 +2746,10 @@ scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 39 )
 
 [node name="Title" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -43.0769
-margin_top = -113.846
-margin_right = 13.9231
-margin_bottom = -54.8458
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -62.3077
+margin_top = -116.538
+margin_right = 50.6923
+margin_bottom = -57.5382
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Shop"
@@ -2448,45 +2758,45 @@ __meta__ = {
 }
 
 [node name="Item1Label" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -176.154
-margin_top = -71.5385
-margin_right = -61.1538
-margin_bottom = -34.5385
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -182.692
+margin_top = -85.0
+margin_right = -17.6923
+margin_bottom = 5.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Item1"
 align = 1
-valign = 1
+valign = 2
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Item2Label" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -50.1538
-margin_top = -71.5385
-margin_right = 64.8462
-margin_bottom = -36.5385
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -50.0
+margin_top = -72.0
+margin_right = 102.0
+margin_bottom = -12.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Item2"
 align = 1
-valign = 1
+valign = 2
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Item3Label" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = 78.8461
-margin_top = -70.5385
-margin_right = 184.846
-margin_bottom = -34.5385
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 72.0
+margin_top = -71.0
+margin_right = 234.0
+margin_bottom = -15.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Item3"
 align = 1
-valign = 1
+valign = 2
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2498,7 +2808,7 @@ margin_left = -223.077
 margin_top = -15.0
 margin_right = -117.077
 margin_bottom = 16.0
-rect_scale = Vector2( 1.6, 1.6 )
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 0.760784, 0.0117647, 0.0117647, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Sold"
@@ -2513,7 +2823,7 @@ margin_left = -95.7692
 margin_top = -19.2308
 margin_right = 10.2305
 margin_bottom = 11.7692
-rect_scale = Vector2( 1.6, 1.6 )
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 0.760784, 0.0117647, 0.0117647, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Sold"
@@ -2528,7 +2838,7 @@ margin_left = 30.0
 margin_top = -17.6923
 margin_right = 136.0
 margin_bottom = 13.3077
-rect_scale = Vector2( 1.6, 1.6 )
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 0.760784, 0.0117647, 0.0117647, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Sold"
@@ -2538,11 +2848,11 @@ __meta__ = {
 }
 
 [node name="Item1Price" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -175.0
-margin_top = 61.0769
-margin_right = 8.00027
-margin_bottom = 92.0769
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -184.615
+margin_top = 60.7692
+margin_right = 19.3846
+margin_bottom = 116.769
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "100 Gold"
 __meta__ = {
@@ -2550,11 +2860,11 @@ __meta__ = {
 }
 
 [node name="Item2Price" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -46.5382
-margin_top = 61.0769
-margin_right = 55.4618
-margin_bottom = 89.0769
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -56.1536
+margin_top = 60.7692
+margin_right = 147.846
+margin_bottom = 116.769
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "200 Gold"
 __meta__ = {
@@ -2562,11 +2872,11 @@ __meta__ = {
 }
 
 [node name="Item3Price" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = 80.7695
-margin_top = 62.6154
-margin_right = 182.77
-margin_bottom = 90.6154
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 71.1541
+margin_top = 62.3077
+margin_right = 275.154
+margin_bottom = 118.308
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "300 Gold"
 __meta__ = {
@@ -2574,11 +2884,11 @@ __meta__ = {
 }
 
 [node name="BuyItem1" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -169.231
-margin_top = 81.0769
-margin_right = -113.231
-margin_bottom = 140.077
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = -163.846
+margin_top = 86.5384
+margin_right = -75.8461
+margin_bottom = 201.538
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Buy
@@ -2593,13 +2903,14 @@ margin_left = -2.0
 margin_top = 1.0
 margin_right = 44.0
 margin_bottom = 26.0
+rect_scale = Vector2( 2, 2 )
 
 [node name="BuyItem2" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = -40.7689
-margin_top = 79.1539
-margin_right = 15.2311
-margin_bottom = 138.154
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = -35.384
+margin_top = 84.6154
+margin_right = 52.616
+margin_bottom = 199.615
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Buy
@@ -2614,16 +2925,17 @@ margin_left = -1.25
 margin_top = 2.08334
 margin_right = 44.75
 margin_bottom = 27.0833
+rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BuyItem3" type="Label" parent="CanvasLayer/Control4/ShopMenu"]
-margin_left = 88.8465
-margin_top = 79.1539
-margin_right = 144.846
-margin_bottom = 138.154
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = 94.2314
+margin_top = 84.6154
+margin_right = 182.231
+margin_bottom = 199.615
+rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Buy
@@ -2638,6 +2950,7 @@ margin_left = -1.25
 margin_top = 2.08334
 margin_right = 44.75
 margin_bottom = 27.0833
+rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2659,12 +2972,12 @@ __meta__ = {
 }
 
 [node name="GoldBag" type="Sprite" parent="CanvasLayer/Control4/ShopMenu"]
-position = Vector2( -63.4615, -93.0769 )
+position = Vector2( -78.0769, -92.6923 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 51 )
 
 [node name="GoldBag2" type="Sprite" parent="CanvasLayer/Control4/ShopMenu"]
-position = Vector2( 60.7692, -93.4615 )
+position = Vector2( 65, -92.3077 )
 texture = ExtResource( 51 )
 
 [node name="ChestMenu" type="Sprite" parent="CanvasLayer/Control4"]
@@ -2675,7 +2988,7 @@ texture = ExtResource( 56 )
 script = ExtResource( 85 )
 
 [node name="ItemSlot" type="Sprite" parent="CanvasLayer/Control4/ChestMenu"]
-position = Vector2( -11.9231, 2.69229 )
+position = Vector2( -11.9231, 16.5385 )
 scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 39 )
 
@@ -2685,11 +2998,10 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 50 )
 
 [node name="TypeOfChest" type="Label" parent="CanvasLayer/Control4/ChestMenu"]
-margin_left = -117.0
+margin_left = -169.615
 margin_top = -115.0
-margin_right = 42.0
-margin_bottom = -87.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_right = 144.385
+margin_bottom = -59.0
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Normal Chest"
@@ -2699,11 +3011,11 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CanvasLayer/Control4/ChestMenu"]
-margin_left = -75.3846
-margin_top = -71.1539
-margin_right = 91.6154
-margin_bottom = -40.1539
-rect_scale = Vector2( 0.8, 0.8 )
+margin_left = -95.3846
+margin_top = -70.0
+margin_right = 234.615
+margin_bottom = -14.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 39 )
 text = "Healing Potion"
 align = 1
@@ -2716,7 +3028,6 @@ margin_left = -169.231
 margin_top = 51.5385
 margin_right = -101.231
 margin_bottom = 81.5385
-rect_scale = Vector2( 1.6, 1.6 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Leave"
@@ -2736,7 +3047,6 @@ margin_left = 45.3846
 margin_top = 53.0769
 margin_right = 104.385
 margin_bottom = 81.0769
-rect_scale = Vector2( 1.6, 1.6 )
 custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 custom_fonts/font = SubResource( 39 )
 text = "Take"
@@ -2768,6 +3078,49 @@ margin_right = 29.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="HallMenu" type="Sprite" parent="CanvasLayer/Control4"]
+visible = false
+position = Vector2( 956, 450 )
+scale = Vector2( 2.6, 2.6 )
+texture = ExtResource( 56 )
+script = ExtResource( 125 )
+
+[node name="Back" type="Sprite" parent="CanvasLayer/Control4/HallMenu"]
+self_modulate = Color( 1.1, 1.1, 1.1, 1 )
+position = Vector2( 165.769, -92.6923 )
+scale = Vector2( 0.6, 0.585577 )
+texture = ExtResource( 77 )
+
+[node name="Button" type="Button" parent="CanvasLayer/Control4/HallMenu/Back"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -26.0
+margin_top = -36.0
+margin_right = 29.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/Control4/HallMenu"]
+margin_left = -183.846
+margin_top = -111.923
+margin_right = 270.154
+margin_bottom = -55.9228
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 98 )
+text = "Skills modifications:"
+
+[node name="SkillsModifications" type="Label" parent="CanvasLayer/Control4/HallMenu"]
+margin_left = -184.0
+margin_top = -86.0
+margin_right = 525.0
+margin_bottom = 699.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 98 )
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="Control-DeathScreen" type="Control" parent="CanvasLayer"]
@@ -2969,11 +3322,36 @@ custom_fonts/normal_font = SubResource( 74 )
 text = " Slime King"
 scroll_active = false
 
+[node name="StageNameRotation" type="Node2D" parent="CanvasLayer/Control-DeathScreen"]
+position = Vector2( 1103, 63 )
+
+[node name="StageName" type="RichTextLabel" parent="CanvasLayer/Control-DeathScreen/StageNameRotation"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -639.0
+margin_top = -47.0
+margin_right = -279.0
+margin_bottom = 3.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 0.222168, -0.246939 )
+custom_colors/default_color = Color( 1, 0.678431, 0, 1 )
+custom_fonts/normal_font = SubResource( 74 )
+tab_size = 13
+text = " The Forgotten Castle"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control-DeathScreen/StageNameRotation/StageName"]
+anims/castle = SubResource( 92 )
+anims/mine = SubResource( 91 )
+
 [node name="Floor" type="Node" parent="."]
 
 [node name="SpawnPoint" type="Sprite" parent="Floor"]
 position = Vector2( -119.5, 842.5 )
 texture = ExtResource( 64 )
+script = ExtResource( 128 )
 
 [node name="BumEffect" type="Sprite" parent="Floor/SpawnPoint"]
 visible = false
@@ -2991,10 +3369,46 @@ autoplay = "crystalIdle"
 anims/crystalIdle = SubResource( 70 )
 anims/crystalSpawning = SubResource( 71 )
 
-[node name="SkillMarket" type="Node" parent="Floor"]
+[node name="ItemTable" type="Sprite" parent="Floor/SpawnPoint"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -132, 90 )
+texture = ExtResource( 32 )
+script = ExtResource( 33 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/SpawnPoint/ItemTable"]
+position = Vector2( 0, -50 )
+
+[node name="Bow4" parent="Floor/SpawnPoint/ItemTable/KinematicBody2D2" instance=ExtResource( 84 )]
+
+[node name="Area2D" type="Area2D" parent="Floor/SpawnPoint/ItemTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SpawnPoint/ItemTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 89 )
+
+[node name="Chest" type="Sprite" parent="Floor/SpawnPoint"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 124, 85 )
+texture = ExtResource( 66 )
+hframes = 4
+script = ExtResource( 68 )
+
+[node name="Area2D" type="Area2D" parent="Floor/SpawnPoint/Chest"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SpawnPoint/Chest/Area2D"]
+position = Vector2( 0, 1 )
+shape = SubResource( 45 )
+
+[node name="Potion1" parent="Floor/SpawnPoint/Chest" instance=ExtResource( 58 )]
+visible = false
+
+[node name="SkillMarket" type="Node" parent="Floor" groups=["saveGroup"]]
 script = ExtResource( 96 )
 
 [node name="BuildSite" type="Sprite" parent="Floor/SkillMarket"]
+visible = false
 position = Vector2( 489, 825 )
 texture = ExtResource( 89 )
 
@@ -3023,18 +3437,111 @@ position = Vector2( -43.5, 93.5 )
 shape = SubResource( 78 )
 
 [node name="Market" type="Sprite" parent="Floor/SkillMarket"]
-visible = false
 position = Vector2( 700, 826 )
 texture = ExtResource( 86 )
+script = ExtResource( 106 )
 
-[node name="ItemTable" type="Sprite" parent="Floor/SkillMarket/Market"]
-position = Vector2( -256, 107 )
+[node name="SkillTable" type="Sprite" parent="Floor/SkillMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -310, 107 )
+z_index = 7
 texture = ExtResource( 32 )
+script = ExtResource( 118 )
 
-[node name="TrainingCamp" type="Node" parent="Floor"]
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/SkillMarket/Market/SkillTable"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/SkillMarket/Market/SkillTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SkillMarket/Market/SkillTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[node name="Label" type="Label" parent="Floor/SkillMarket/Market/SkillTable"]
+margin_left = -85.0
+margin_top = -139.0
+margin_right = -45.0
+margin_bottom = -123.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/SkillMarket/Market/SkillTable/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="SkillTable2" type="Sprite" parent="Floor/SkillMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -440, 107 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/SkillMarket/Market/SkillTable2"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/SkillMarket/Market/SkillTable2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SkillMarket/Market/SkillTable2/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[node name="Label" type="Label" parent="Floor/SkillMarket/Market/SkillTable2"]
+margin_left = -85.0
+margin_top = -139.0
+margin_right = -45.0
+margin_bottom = -123.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/SkillMarket/Market/SkillTable2/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="SkillTable3" type="Sprite" parent="Floor/SkillMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -570, 107 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/SkillMarket/Market/SkillTable3"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/SkillMarket/Market/SkillTable3"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/SkillMarket/Market/SkillTable3/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[node name="Label" type="Label" parent="Floor/SkillMarket/Market/SkillTable3"]
+margin_left = -85.0
+margin_top = -139.0
+margin_right = -45.0
+margin_bottom = -123.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/SkillMarket/Market/SkillTable3/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="TrainingCamp" type="Node" parent="Floor" groups=["saveGroup"]]
 script = ExtResource( 100 )
 
 [node name="BuildSite" type="Sprite" parent="Floor/TrainingCamp"]
+visible = false
 position = Vector2( 1271, 848 )
 texture = ExtResource( 91 )
 
@@ -3063,15 +3570,82 @@ monitorable = false
 position = Vector2( 13, 37 )
 shape = SubResource( 79 )
 
-[node name="Market" type="Sprite" parent="Floor/TrainingCamp"]
-visible = false
+[node name="Market" type="Sprite" parent="Floor/TrainingCamp" groups=["saveGroup"]]
 position = Vector2( 1326, 848 )
 texture = ExtResource( 90 )
+script = ExtResource( 119 )
 
-[node name="ItemMarket" type="Node" parent="Floor"]
+[node name="SkillTable" type="Sprite" parent="Floor/TrainingCamp/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -109, 85 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/TrainingCamp/Market/SkillTable"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/TrainingCamp/Market/SkillTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TrainingCamp/Market/SkillTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 95 )
+disabled = true
+
+[node name="Label" type="Label" parent="Floor/TrainingCamp/Market/SkillTable"]
+margin_left = -75.0
+margin_top = -139.0
+margin_right = -35.0
+margin_bottom = -123.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/TrainingCamp/Market/SkillTable/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="SkillTable2" type="Sprite" parent="Floor/TrainingCamp/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -253, 85 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/TrainingCamp/Market/SkillTable2"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/TrainingCamp/Market/SkillTable2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TrainingCamp/Market/SkillTable2/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 94 )
+disabled = true
+
+[node name="Label" type="Label" parent="Floor/TrainingCamp/Market/SkillTable2"]
+margin_left = -79.0
+margin_top = -138.0
+margin_right = -39.0
+margin_bottom = -122.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/TrainingCamp/Market/SkillTable2/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="ItemMarket" type="Node" parent="Floor" groups=["saveGroup"]]
 script = ExtResource( 101 )
 
 [node name="BuildSite" type="Sprite" parent="Floor/ItemMarket"]
+visible = false
 position = Vector2( -823, 825 )
 texture = ExtResource( 95 )
 
@@ -3098,14 +3672,111 @@ position = Vector2( 44, 56.5 )
 shape = SubResource( 80 )
 
 [node name="Market" type="Sprite" parent="Floor/ItemMarket"]
-visible = false
-position = Vector2( -897, 825 )
+position = Vector2( -892, 825 )
 texture = ExtResource( 92 )
+script = ExtResource( 123 )
 
-[node name="HallOfFame" type="Node" parent="Floor"]
+[node name="SkillTable" type="Sprite" parent="Floor/ItemMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 254.5, 107.5 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/ItemMarket/Market/SkillTable"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/ItemMarket/Market/SkillTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/ItemMarket/Market/SkillTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 96 )
+
+[node name="Label" type="Label" parent="Floor/ItemMarket/Market/SkillTable"]
+margin_left = -85.0
+margin_top = -138.5
+margin_right = -45.0
+margin_bottom = -122.5
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/ItemMarket/Market/SkillTable/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="SkillTable2" type="Sprite" parent="Floor/ItemMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 369.5, 107.5 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/ItemMarket/Market/SkillTable2"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/ItemMarket/Market/SkillTable2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/ItemMarket/Market/SkillTable2/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 96 )
+
+[node name="Label" type="Label" parent="Floor/ItemMarket/Market/SkillTable2"]
+margin_left = -85.0
+margin_top = -138.5
+margin_right = -45.0
+margin_bottom = -122.5
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/ItemMarket/Market/SkillTable2/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="SkillTable3" type="Sprite" parent="Floor/ItemMarket/Market"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 484.5, 107.5 )
+z_index = 7
+texture = ExtResource( 32 )
+script = ExtResource( 118 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Floor/ItemMarket/Market/SkillTable3"]
+position = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="Floor/ItemMarket/Market/SkillTable3"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/ItemMarket/Market/SkillTable3/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 96 )
+
+[node name="Label" type="Label" parent="Floor/ItemMarket/Market/SkillTable3"]
+margin_left = -85.0
+margin_top = -138.5
+margin_right = -45.0
+margin_bottom = -122.5
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 93 )
+text = "100"
+align = 2
+
+[node name="Crystals2" type="Sprite" parent="Floor/ItemMarket/Market/SkillTable3/Label"]
+position = Vector2( 46.5, 7.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 62 )
+
+[node name="HallOfFame" type="Node" parent="Floor" groups=["saveGroup"]]
 script = ExtResource( 102 )
 
 [node name="BuildSite" type="Sprite" parent="Floor/HallOfFame"]
+visible = false
 position = Vector2( -1437, 880 )
 texture = ExtResource( 93 )
 
@@ -3137,9 +3808,17 @@ position = Vector2( 19.6666, 60.3333 )
 shape = SubResource( 81 )
 
 [node name="Market" type="Sprite" parent="Floor/HallOfFame"]
-visible = false
-position = Vector2( -1458, 880 )
+position = Vector2( -1485, 880 )
 texture = ExtResource( 94 )
+script = ExtResource( 124 )
+
+[node name="Area2D" type="Area2D" parent="Floor/HallOfFame/Market"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/HallOfFame/Market/Area2D"]
+position = Vector2( 213, 13 )
+shape = SubResource( 97 )
+disabled = true
 
 [node name="Terrain" type="Node" parent="."]
 
@@ -4032,43 +4711,6 @@ texture = ExtResource( 4 )
 [node name="GeneratedTerrain" type="Node" parent="."]
 script = ExtResource( 12 )
 
-[node name="ItemTable" type="Sprite" parent="GeneratedTerrain"]
-self_modulate = Color( 1.2, 1.2, 1.2, 1 )
-position = Vector2( -251.5, 932.5 )
-texture = ExtResource( 32 )
-script = ExtResource( 33 )
-
-[node name="KinematicBody2D2" type="KinematicBody2D" parent="GeneratedTerrain/ItemTable"]
-position = Vector2( 0, -50 )
-
-[node name="Bow6" type="Sprite" parent="GeneratedTerrain/ItemTable/KinematicBody2D2"]
-texture = ExtResource( 84 )
-script = ExtResource( 104 )
-
-[node name="Area2D" type="Area2D" parent="GeneratedTerrain/ItemTable"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GeneratedTerrain/ItemTable/Area2D"]
-position = Vector2( 0, -28 )
-shape = SubResource( 89 )
-
-[node name="Chest" type="Sprite" parent="GeneratedTerrain"]
-self_modulate = Color( 1.2, 1.2, 1.2, 1 )
-position = Vector2( 4.5, 927.5 )
-texture = ExtResource( 66 )
-hframes = 4
-script = ExtResource( 68 )
-
-[node name="Area2D" type="Area2D" parent="GeneratedTerrain/Chest"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GeneratedTerrain/Chest/Area2D"]
-position = Vector2( 0, 1 )
-shape = SubResource( 45 )
-
-[node name="Potion1" parent="GeneratedTerrain/Chest" instance=ExtResource( 58 )]
-visible = false
-
 [node name="EffectGenerator" type="Node" parent="."]
 script = ExtResource( 60 )
 
@@ -4082,8 +4724,6 @@ anims/teleportToCastle = SubResource( 83 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[node name="Skills" type="Node2D" parent="."]
-
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="CanvasLayer/Control5/background_unselect_button" to="CanvasLayer" method="_on_background_unselect_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control5/background_unselect_button2" to="CanvasLayer" method="_on_background_unselect_button_pressed"]
@@ -4093,7 +4733,7 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 [connection signal="released" from="CanvasLayer/Control5/Slot2" to="CanvasLayer" method="_on_Slot2_released"]
 [connection signal="pressed" from="CanvasLayer/Control5/Slot3" to="CanvasLayer" method="_on_Slot3_pressed"]
 [connection signal="released" from="CanvasLayer/Control5/Slot3" to="CanvasLayer" method="_on_Slot3_released"]
-[connection signal="pressed" from="CanvasLayer/Control5/SlotDeleteButton" to="CanvasLayer" method="_on_SlotDeleteButton_pressed"]
+[connection signal="released" from="CanvasLayer/Control5/SlotDeleteButton" to="CanvasLayer" method="_on_SlotDeleteButton_released"]
 [connection signal="button_down" from="CanvasLayer/Control4/Button_wepon" to="CanvasLayer" method="_on_Button_wepon_button_down"]
 [connection signal="button_up" from="CanvasLayer/Control4/Button_wepon" to="CanvasLayer" method="_on_Button_wepon_button_up"]
 [connection signal="pressed" from="CanvasLayer/Control4/Button_wepon" to="CanvasLayer" method="_on_Button_wepon_pressed"]
@@ -4112,20 +4752,39 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 [connection signal="pressed" from="CanvasLayer/Control4/ChestMenu/Leave/LeaveButton" to="CanvasLayer/Control4/ChestMenu" method="_on_LeaveButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/ChestMenu/Take/TakeButton" to="CanvasLayer/Control4/ChestMenu" method="_on_TakeButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control4/ChestMenu/Back/Button" to="CanvasLayer/Control4/ChestMenu" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control4/HallMenu/Back/Button" to="CanvasLayer/Control4/HallMenu" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Exit/Button" to="CanvasLayer/Control-DeathScreen" method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control-DeathScreen/Reset/ButtonReset" to="CanvasLayer/Control-DeathScreen" method="_on_ButtonReset_pressed"]
+[connection signal="body_entered" from="Floor/SpawnPoint/ItemTable/Area2D" to="Floor/SpawnPoint/ItemTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SpawnPoint/ItemTable/Area2D" to="Floor/SpawnPoint/ItemTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/SpawnPoint/Chest/Area2D" to="Floor/SpawnPoint/Chest" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SpawnPoint/Chest/Area2D" to="Floor/SpawnPoint/Chest" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Floor/SkillMarket/BuildSite/Area2D" to="Floor/SkillMarket" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Floor/SkillMarket/BuildSite/Area2D" to="Floor/SkillMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/SkillMarket/Market/SkillTable/Area2D" to="Floor/SkillMarket/Market/SkillTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SkillMarket/Market/SkillTable/Area2D" to="Floor/SkillMarket/Market/SkillTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/SkillMarket/Market/SkillTable2/Area2D" to="Floor/SkillMarket/Market/SkillTable2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SkillMarket/Market/SkillTable2/Area2D" to="Floor/SkillMarket/Market/SkillTable2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/SkillMarket/Market/SkillTable3/Area2D" to="Floor/SkillMarket/Market/SkillTable3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/SkillMarket/Market/SkillTable3/Area2D" to="Floor/SkillMarket/Market/SkillTable3" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Floor/TrainingCamp/BuildSite/Area2D" to="Floor/TrainingCamp" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Floor/TrainingCamp/BuildSite/Area2D" to="Floor/TrainingCamp" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/TrainingCamp/Market/SkillTable/Area2D" to="Floor/TrainingCamp/Market/SkillTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/TrainingCamp/Market/SkillTable/Area2D" to="Floor/TrainingCamp/Market/SkillTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/TrainingCamp/Market/SkillTable2/Area2D" to="Floor/TrainingCamp/Market/SkillTable2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/TrainingCamp/Market/SkillTable2/Area2D" to="Floor/TrainingCamp/Market/SkillTable2" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Floor/ItemMarket/BuildSite/Area2D" to="Floor/ItemMarket" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Floor/ItemMarket/BuildSite/Area2D" to="Floor/ItemMarket" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/ItemMarket/Market/SkillTable/Area2D" to="Floor/ItemMarket/Market/SkillTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/ItemMarket/Market/SkillTable/Area2D" to="Floor/ItemMarket/Market/SkillTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/ItemMarket/Market/SkillTable2/Area2D" to="Floor/ItemMarket/Market/SkillTable2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/ItemMarket/Market/SkillTable2/Area2D" to="Floor/ItemMarket/Market/SkillTable2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Floor/ItemMarket/Market/SkillTable3/Area2D" to="Floor/ItemMarket/Market/SkillTable3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Floor/ItemMarket/Market/SkillTable3/Area2D" to="Floor/ItemMarket/Market/SkillTable3" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Floor/HallOfFame/BuildSite/Area2D" to="Floor/HallOfFame" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Floor/HallOfFame/BuildSite/Area2D" to="Floor/HallOfFame" method="_on_Area2D_body_exited"]
+[connection signal="area_entered" from="Floor/HallOfFame/Market/Area2D" to="Floor/HallOfFame/Market" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Floor/HallOfFame/Market/Area2D" to="Floor/HallOfFame/Market" method="_on_Area2D_area_exited"]
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" to="Terrain/Elements/BossRoom/Monster-Slime/TriggerArea" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Terrain/Elements/BossRoom/Area2D" to="EffectGenerator" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="GeneratedTerrain/ItemTable/Area2D" to="GeneratedTerrain/ItemTable" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="GeneratedTerrain/Chest/Area2D" to="GeneratedTerrain/Chest" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="GeneratedTerrain/Chest/Area2D" to="GeneratedTerrain/Chest" method="_on_Area2D_body_exited"]

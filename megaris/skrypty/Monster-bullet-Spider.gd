@@ -13,7 +13,7 @@ func _ready():
 	direction = goingRight
 	attackStrenght = shootingMonster.attackStrenght
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !destroyed:
 		if direction == false and (global_rotation_degrees > 90 or global_rotation_degrees < 0): rotation = rotation - 0.04
 		if direction == true and (global_rotation_degrees < 90 or global_rotation_degrees < 0): rotation = rotation + 0.04
@@ -25,5 +25,5 @@ func _physics_process(delta):
 func destroyAfterAnimation(): #wywolywane przez animation pleyera
 	queue_free()
 
-func _on_Area2D_body_entered(body): #konktakt z ziemią
+func _on_Area2D_body_entered(_body): #konktakt z ziemią
 	destroyed = true

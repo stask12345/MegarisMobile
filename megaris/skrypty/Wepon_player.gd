@@ -6,6 +6,7 @@ onready var playerMovement = get_parent().get_parent().get_node("Player")
 onready var animationPlayer = get_parent().get_node("AnimationPlayerWepon")
 onready var spriteOfWepon = get_child(0).get_child(0)
 onready var weponHolder = get_parent().get_parent().get_node("CanvasLayer/Control4/WeponHolder")
+onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 var bulletSword = preload("res://instances/Bullets/sworldBullet.tscn")
 var bulletSwordDouble = preload("res://instances/Bullets/sworldBulletDouble.tscn")
 var bulletSwordDemonic = preload("res://instances/Bullets/swordBulletDemonic.tscn")
@@ -13,6 +14,7 @@ var bulletSlash = preload("res://instances/Bullets/slashBullet.tscn")
 var bulletExplosion = preload("res://instances/Bullets/explosionBullet.tscn")
 var bulletArrow = preload("res://instances/Bullets/arrowBullet.tscn")
 var bulletArrowDouble = preload("res://instances/Bullets/DoubleBowBullet.tscn")
+var bulletArrowTriple = preload("res://instances/Bullets/TripleBowBullet.tscn")
 var bulletMagic = preload("res://instances/Bullets/magicBullet.tscn")
 var bulletMagic2 = preload("res://instances/Bullets/magicBullet2.tscn")
 var bulletMagic3 = preload("res://instances/Bullets/magicBullet3.tscn")
@@ -26,7 +28,7 @@ var fireRate = 0 #ustawiane w ready
 var can_fire = true
 
 
-func _process(delta):
+func _process(_delta):
 	var rotationOfWepon = joystickWepon.get_value_rotation()#obracanie bronią
 	if rotationOfWepon == 0:
 		if player.scale.x == 1: 
@@ -56,7 +58,7 @@ func _process(delta):
 		can_fire = false
 		shot()
 		var wepon = get_parent().get_parent().get_node("CanvasLayer/Control4/WeponHolder").get_child(0)
-		yield(get_tree().create_timer(wepon.fireSpeed),"timeout")
+		yield(get_tree().create_timer(wepon.fireSpeed * playerStats.attackSpeedBonus),"timeout")
 		can_fire = true
 
 func shot():
@@ -72,6 +74,7 @@ func shot():
 	if wepon.typeOfBullet == "pircing double": shot = bulletSpearDouble.instance()
 	if wepon.typeOfBullet == "arrow": shot = bulletArrow.instance()
 	if wepon.typeOfBullet == "arrow double": shot = bulletArrowDouble.instance()
+	if wepon.typeOfBullet == "arrow double triple": shot = bulletArrowTriple.instance()
 	if wepon.typeOfBullet == "magic": shot = bulletMagic.instance()
 	if wepon.typeOfBullet == "magic2": shot = bulletMagic2.instance()
 	if wepon.typeOfBullet == "magic3": shot = bulletMagic3.instance()

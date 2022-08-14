@@ -13,8 +13,9 @@ func _ready():
 	attackStrenght = 30 #statystyki zmienne
 	hp = 10
 	monsterName = "Green Slime"
+	isSlimeMonster = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
@@ -57,7 +58,6 @@ func _physics_process(delta):
 	
 	if !destroyed: move_and_slide(motion,Vector2(0,-1))
 	
-
 
 func waitForJump():
 	$Timer2.start(2)

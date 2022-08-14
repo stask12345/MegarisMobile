@@ -16,7 +16,7 @@ func _ready():
 	hp = 140
 	monsterName = "Mature Cave Turtle"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
@@ -84,9 +84,9 @@ func waitForJump():
 	waitingForJump = true
 	$Timer2.start(1)
 	yield($Timer2,"timeout")
-	jump()
+	monsterJump()
 
-func jump():
+func monsterJump():
 	if player.global_position.y > global_position.y:
 		jumped = true
 		jump = 1

@@ -24,8 +24,11 @@ func _ready():
 	monsterName = "Slime King"
 	fullLength = bossHp.get_child(0).scale.x
 	maxHp = hp
+	triggerTime = 8
+	isBossMonster = true
+	isSlimeMonster = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if lastSetHp != hp:
 		if hp > maxHp: hp = maxHp
 		var hpPrecent : float = float(hp) / float(maxHp)

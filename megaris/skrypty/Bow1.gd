@@ -13,8 +13,9 @@ func _ready():
 	textureChangeAfterShot = true
 	title = "Wooden Bow"
 	price = 60
+	rangeDestroy = false
 
-func _process(delta):
+func _process(_delta):
 	if get_parent().name == "WeponHolder":
 		texture = unchargedBow
 	else:

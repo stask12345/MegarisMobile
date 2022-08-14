@@ -9,7 +9,6 @@ var invisible = false
 func _on_Area2D_area_entered(area):
 	var monster = area.get_parent()
 	if "monster" in area.name and !player.hpDelay and !invisible:
-		print("weszlo")
 		player.hpDelay = true
 		player.hpDelayTimer()
 		if (!monster is monsterClass or (monster is monsterClass and !monster.destroyed)): hpScript.dealDamagePlayer(monster.attackStrenght)

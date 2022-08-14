@@ -8,10 +8,12 @@ var rewardSkill = false
 var costOfSkill = 0 
 var bought = false
 var description = ""
+var lesserSkill = null
+var trainingGrounds = false
 
 func save():
 	var node_data = {
 		"bought": bought,
-		"nodePath": get_path()
+		"nodePath": "%" + name
 		}
 	return node_data

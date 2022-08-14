@@ -14,9 +14,9 @@ func saveData():
 		if node.filename.empty(): #nie jest obiektem który można zinstancjować
 			var node_data = node.call("save")
 			save_game.store_line(to_json(node_data))
-			save_game.close()
 		if !node.filename.empty():
 			pass
+	save_game.close()
 
 func loadData():
 	var save_game = File.new()
@@ -28,4 +28,5 @@ func loadData():
 		for i in node_data.keys():
 			if i != "nodePath":
 				get_node(node_data["nodePath"]).set(i,node_data[i])
+	save_game.close()
 	pass

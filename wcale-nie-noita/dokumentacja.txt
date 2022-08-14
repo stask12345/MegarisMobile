@@ -3,24 +3,21 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
+-nazwy i opisy skilli
 -różny knockback dla broni/potworków
--ozdoby, generowanie zamek
--potwory(grafika)
+-potwory
 -skille 
 -market
 -hall of fame
 -wepon market
--nowe bronie
 
 To optimise:
 -fajniejsze bronie z 1 krainy
--zmiana napisów -> mniejsza skala, większy font size. Jeszcze bardziej?
--napisy The mine oraz the castle
 -animacja przy podnoszniu z stołów, kupowaniu
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
 -lepsze wyświetlanie damage w stulu terraria
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
--dodać małe animację np. kołyszący się napis choose yout reward, żyrandol świeczki
+-dodać małe animację np. żyrandol świeczki
 -lepsza optymalizacja, dzięki pozbyciu się obliczeń z potworków
 -ice golem nieśmiertelny podczas ataku?
 

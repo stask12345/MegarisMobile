@@ -113,9 +113,12 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 3.15 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 2.65, 3.15 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "playTitleAnimation"
+}, {
 "args": [  ],
 "method": "spawnPlayer"
 } ]

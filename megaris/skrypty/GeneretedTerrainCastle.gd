@@ -1,5 +1,7 @@
 extends Node
 
+onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
+
 var avilableList = [] #przechowuje wygenerowane numery wszystkich elentów by się nie powtarzały
 var anvilList = [] #przechowuje numer platformy na ktorej ma sie wygenerowac dany element
 var shopList = []
@@ -212,7 +214,7 @@ func generateMonsters(platform,numberOfCurrentFloor):
 		add_child(generatedMonster)
 
 func generateElementsArray(): #Tu zmieniamy liczbę elementów wygenerowanych
-	generateElementsArrayHelp(fountainList,[1,3]) #generowanie fotan, ich liczba !
+	generateElementsArrayHelp(fountainList,[1,3 + playerStats.spawnMoreFountains]) #generowanie fotan, ich liczba !
 	generateElementsArrayHelp(anvilList,[1,1])
 	generateElementsArrayHelp(trapList,[3,5])
 	generateElementsArrayHelp(itemTableList,[1,2])

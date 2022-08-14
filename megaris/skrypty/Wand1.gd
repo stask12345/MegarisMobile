@@ -11,7 +11,7 @@ func _ready():
 	description = ""
 	price = 80
 
-func _process(delta):
+func _process(_delta):
 	if get_parent().name == "WeponHolder":
 		rotation_degrees = 270
 	else: 

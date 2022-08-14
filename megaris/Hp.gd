@@ -11,7 +11,7 @@ onready var player = get_node("/root/MainScene/Player")
 func _ready():
 	fullLength = scale.x
 
-func _process(delta): # ! Do usprawnienia to nie musi koniecznie się wykonywać co sekunde !
+func _process(_delta): # ! Do usprawnienia to nie musi koniecznie się wykonywać co sekunde !
 	if lastSetHp != hp:
 		if hp > maxHp: hp = maxHp
 		var hpPrecent : float = hp / maxHp
@@ -33,7 +33,7 @@ func _process(delta): # ! Do usprawnienia to nie musi koniecznie się wykonywać
 
 func dealDamagePlayer(var value):
 	if player.get_node("Area2D").invisible == false:
-		var damage = value - (get_parent().levelOfArmor * 5)
+		var damage = value - (get_parent().levelOfArmor * 5) - get_parent().armorIncrease
 		if damage < 0: damage = 0
 		hp -= damage
 		var damageLabelPosition = player.global_position

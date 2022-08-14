@@ -75,7 +75,6 @@ func destroyMonster():
 	dropGold()
 	queue_free()
 
-
 func _on_TriggerArea_body_entered(body):
 	if body.name == "Player":
 		goingToPlayer = true

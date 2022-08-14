@@ -18,7 +18,7 @@ func _ready():
 	maxGravity = 660
 	monsterName = "Gigantic Slime"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity

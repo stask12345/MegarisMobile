@@ -12,13 +12,8 @@ func _ready():
 	if bought:
 		$Market.visible = true;
 		$BuildSite.visible = false;
-
-func save():
-	var node_data = {
-		"bought": bought,
-		"nodePath": get_path()
-		}
-	return node_data
+		$Market.placeSkills()
+		get_node("BuildSite/Area2D/CollisionShape2D").disabled = true
 
 func buy():
 	var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
@@ -43,3 +38,11 @@ func _on_Area2D_body_exited(body):
 	if body.name == "Player":
 		buyButton.visible = false
 		buyButton.get_child(0).stop()
+		buyButton.get_child(2).text = ""
+
+func save():
+	var node_data = {
+		"bought": bought,
+		"nodePath": get_path()
+		}
+	return node_data

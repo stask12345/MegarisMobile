@@ -119,15 +119,6 @@ func _on_Slot3_released():
 			if inventory3.get_child_count() == 1: switchItemPlace(inventory3)
 			else: switchItemPlace(inventory3,true)
 
-func _on_SlotDeleteButton_pressed():
-	if inventoryDeleteSlot.get_child_count() > 1:
-		inventoryDeleteSlotAnimation.play("highlight_slot")
-		selectedSlot = "slotDelete"
-	else:
-		if selectedSlot != "":
-			if inventoryDeleteSlot.get_child_count() == 1: switchItemPlace(inventoryDeleteSlot)
-			else: switchItemPlace(inventoryDeleteSlot,true)
-
 func switchItemPlace(inventoryToAdd,replace = false):
 	var selectedinventory
 	if selectedSlot == "slot1": selectedinventory = inventory1
@@ -236,3 +227,13 @@ func makeUIInVisible():
 	$Control5.visible = false
 	get_node("Control/Joystick/TouchScreenButton").position = Vector2(-27.333,-28)
 	get_node("Control2/JoystickAttack/TouchScreenButton").position = Vector2(-27.333,-28)
+
+
+func _on_SlotDeleteButton_released():
+	if inventoryDeleteSlot.get_child_count() > 1:
+		inventoryDeleteSlotAnimation.play("highlight_slot")
+		selectedSlot = "slotDelete"
+	else:
+		if selectedSlot != "":
+			if inventoryDeleteSlot.get_child_count() == 1: switchItemPlace(inventoryDeleteSlot)
+			else: switchItemPlace(inventoryDeleteSlot,true)

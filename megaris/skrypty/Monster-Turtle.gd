@@ -16,7 +16,7 @@ func _ready():
 	hp = 75
 	monsterName = "Cave Turtle"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity

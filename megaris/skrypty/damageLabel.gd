@@ -3,7 +3,7 @@ extends Label
 func _ready():
 	destroyAfterTime()
 
-func _process(delta):
+func _process(_delta):
 	rect_position.y -= 1
 	
 

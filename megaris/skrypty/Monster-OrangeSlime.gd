@@ -13,8 +13,9 @@ func _ready():
 	attackStrenght = 30 #statystyki zmienne
 	hp = 30
 	monsterName = "Orange Slime"
+	isSlimeMonster = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity

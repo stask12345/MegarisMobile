@@ -13,6 +13,7 @@ var description : String
 var upgradeLevel = 0
 var rangeDestroy = true
 var price : int
+var costOfSkill = 0
 
 func _ready():
 	pass

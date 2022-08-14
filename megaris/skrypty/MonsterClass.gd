@@ -26,6 +26,10 @@ var monsterName : String
 var triggerTime = 1
 var getBack
 var indestructable = false
+var isBossMonster = false
+var isSlimeMonster = false
+
+onready var timer = $Timer
 
 func _ready():
 	pass
@@ -40,8 +44,11 @@ func hpDelayTimer():
 
 func loseTriggerOnPlayer():
 	goingToPlayer = false
-	$Timer.start(triggerTime)
-	yield($Timer, "timeout")
+	print(name)
+	if player.alive and !destroyed:
+		print("aaaaa")
+		timer.start(triggerTime)
+		yield($Timer, "timeout")
 	if !goingToPlayer: aggro = false
 
 func triggerMonster():
@@ -49,7 +56,7 @@ func triggerMonster():
 	aggro = true
 
 func dropGold():
-	var generatedCoins = minCoins + randi()%(maxCoins - minCoins)
+	var generatedCoins = minCoins + randi()%(maxCoins + playerStats.bonusCoins - minCoins)
 	while generatedCoins >= 0:
 		var coin = goldCoin.instance()
 		coin.global_position = global_position

@@ -13,6 +13,7 @@ func _ready():
 	attackStrenght = 30 #statystyki zmienne
 	hp = 30
 	monsterName = "Purple Slime"
+	isSlimeMonster = true
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja

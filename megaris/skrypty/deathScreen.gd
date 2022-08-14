@@ -24,8 +24,8 @@ func showDeathScreen():
 	$Monster.add_child(monster)
 	$MonsterName.text = monster.monsterName
 	$Reach.text += "\n" + String(abs(round((player.position.y - 805)/320))) + " Floor"
-	$Crystals/CrystalCount.text = String(playerStats.totalCollected / 10)
-	playerStats.crystals += (playerStats.totalCollected / 10)
+	$Crystals/CrystalCount.text = String(playerStats.totalCollected / (10 - playerStats.crystalBonus))
+	playerStats.crystals += (playerStats.totalCollected / (10 - playerStats.crystalBonus))
 	system.saveData()
 	$KillCount.text += "\n" + String(playerStats.killedMonster) + " Monster"
 	$AnimationPlayer.play("deathAnimation")

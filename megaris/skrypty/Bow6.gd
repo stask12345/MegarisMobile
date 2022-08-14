@@ -14,12 +14,16 @@ func _ready():
 	textureChangeAfterShot = true
 	title = "Hunter Bow"
 	price = 100
+	rangeDestroy = false
 
 func _process(delta):
 	if get_parent().name == "WeponHolder":
 		texture = unchargedBow
 	else:
 		texture = chargedBow
+	
+	if "Slot" in get_parent().name: scale = Vector2(0.8,0.8)
+	else: scale = Vector2(1,1)
 
 func changeGraphic():
 	var weponTexture = wepon.get_wepon()

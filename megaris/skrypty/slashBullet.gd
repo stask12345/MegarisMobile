@@ -5,7 +5,7 @@ func _ready():
 	$AnimationPlayer.play("destroyAnimation")
 	timerToDestroy()
 
-func _process(delta):
+func _process(_delta):
 	global_position.x += (player.global_position.x - playerPosition.x)#Unikalne dla maczugi Atak przy graczu
 	global_position.y += (player.global_position.y - playerPosition.y)
 	playerPosition = player.global_position

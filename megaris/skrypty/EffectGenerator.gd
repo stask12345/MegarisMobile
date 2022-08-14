@@ -1,6 +1,7 @@
 extends Node
 
 var labelToGenerate = preload("res://instances/damageLabel.tscn")
+var atCastle = ""
 onready var canvasModulator = get_node("/root/MainScene/CanvasModulate")
 onready var cameraShakingAnimation = get_node("/root/MainScene/Player/AnimationPlayerCamera")
 onready var player = get_node("/root/MainScene/Player")
@@ -11,12 +12,15 @@ onready var UI3 = get_node("/root/MainScene/CanvasLayer/Control")
 onready var UI4 = get_node("/root/MainScene/CanvasLayer/Control4")
 onready var UIBoss = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/BossMenu")
 
-func generateDamageLabel(positionOfDamage, value, player = false):
+func _ready():
+	atCastle = "mine"
+
+func generateDamageLabel(positionOfDamage, value, playerBool = false):
 	var damageLabel = labelToGenerate.instance()
 	damageLabel.get_child(0).text = String(value)
 	damageLabel.get_child(0).rect_global_position = positionOfDamage
 	damageLabel.get_child(0).self_modulate = Color(1,0.1,0.1)
-	if player: damageLabel.get_child(0).self_modulate = Color(1,0.5,0.5)
+	if playerBool: damageLabel.get_child(0).self_modulate = Color(1,0.5,0.5)
 	add_child(damageLabel)
 
 func deathAnimation():
@@ -62,11 +66,13 @@ func spawnPlayer():
 	player.get_node("Area2D").invisible = false
 
 func getPlayerToRewardRoom():
+	atCastle = ""
 	var rewardRoom = load("res://instances/RewardRoom.tscn").instance()
 	get_node("/root/MainScene").add_child(rewardRoom)
-	player.global_position = Vector2(0,2100);
+	player.global_position = Vector2(0,2100)
 
 func getPlayerToCastle():
+	atCastle = "castle"
 	var rewardRoom = get_node("/root/MainScene/RewardRoom")
 	get_node("/root/MainScene/GeneratedTerrain").queue_free()
 	get_node("/root/MainScene/Terrain").queue_free()
@@ -106,3 +112,9 @@ func killSlimeOnBossFight():
 	slimeToKill.minCoins = -2
 	slimeToKill.maxCoins = -1
 	slimeToKill.playAnimationAndDestroy()
+
+func playTitleAnimation():
+	if atCastle == "mine":
+		get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("mine")
+	if atCastle == "castle":
+		get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("castle")

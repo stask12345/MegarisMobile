@@ -2,7 +2,7 @@ extends bullet
 
 var monster = null
 
-func _process(delta): #unikalne dla każdego pocisku
+func _process(_delta): #unikalne dla każdego pocisku
 	if !destroyed:
 		if monster != null:
 			look_at(monster.global_position)
@@ -13,13 +13,13 @@ func _process(delta): #unikalne dla każdego pocisku
 
 func _on_Area2D_area_entered(area): #kontakt z mobkiem Area_attack
 	if area.name == "monsterBody":
-		var monster = area.get_parent()
-		if !monster.hpDelay:
-			attackMonster(monster)
+		var monsterP = area.get_parent()
+		if !monsterP.hpDelay:
+			attackMonster(monsterP)
 			destroyed = true
 
 
-func _on_Area2D_terrain_body_entered(body): #kontakt z ziemią Area_terrain
+func _on_Area2D_terrain_body_entered(_body): #kontakt z ziemią Area_terrain
 	destroyed = true
 
 

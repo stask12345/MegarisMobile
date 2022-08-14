@@ -1,6 +1,6 @@
 extends bullet
 
-func _process(delta):
+func _process(_delta):
 	if !destroyed:
 		if !"Double" in get_parent().name:
 			move_and_slide(Vector2(550,0).rotated(rotation))
@@ -21,6 +21,6 @@ func _on_Area2D_area_entered(area): #kontakt z mobkiem Area_attack
 			destroyed = true
 
 
-func _on_Area2D_terrain_body_entered(body): #kontakt z ziemią Area_terrain
+func _on_Area2D_terrain_body_entered(_body): #kontakt z ziemią Area_terrain
 	destroyed = true
 

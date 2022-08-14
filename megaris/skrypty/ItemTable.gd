@@ -1,7 +1,7 @@
 extends Sprite
 
-onready var itemInScript = get_child(0).get_child(0)
-onready var pickUpButton = get_parent().get_parent().get_node("CanvasLayer/Control4/PickUp")
+var itemInScript
+onready var pickUpButton = get_node("/root/MainScene/CanvasLayer/Control4/PickUp")
 onready var itemBody : KinematicBody2D = get_child(0)
 var maxHeight = -70
 var minHeight = -50
@@ -12,6 +12,8 @@ var target1 = Vector2(0,0)
 var movingUp = true
 
 func _ready():
+	itemInScript = get_child(0).get_child(0)
+	print(itemInScript.name)
 	target = Vector2(itemBody.position.x,maxHeight)
 	target1 = Vector2(itemBody.position.x,minHeight)
 
