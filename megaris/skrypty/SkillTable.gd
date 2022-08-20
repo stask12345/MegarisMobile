@@ -45,11 +45,13 @@ func _on_Area2D_body_entered(body):
 			pickUpButton.get_child(2).text = skillInScript.description
 			pickUpButton.visible = true
 			pickUpButton.itemToPick = skillInScript
+			pickUpButton.tableToPickUpFrom = self
 			var animationPlayer = pickUpButton.get_child(0)
 			animationPlayer.play("pick_up_sight_animation")
 		
 		if (skillInScript is skill and !skillInScript.rewardSkill) or skillInScript is wepon or skillInScript is item:
 				buyButton.objectToBuy = skillInScript
+				buyButton.tableToPickUpFrom = self
 				if skillInScript is skill: buyButton.get_child(2).text = skillInScript.description
 				if skillInScript is wepon or skillInScript is item: buyButton.get_child(2).text = skillInScript.title
 				buyButton.visible = true
@@ -62,12 +64,14 @@ func _on_Area2D_body_exited(body):
 		if skillInScript is skill and skillInScript.rewardSkill:
 			pickUpButton.visible = false
 			pickUpButton.get_child(2).text = ""
+			pickUpButton.tableToPickUpFrom = null
 			var animationPlayer = pickUpButton.get_child(0)
 			animationPlayer.stop()
 		
 		if (skillInScript is skill and !skillInScript.rewardSkill) or skillInScript is wepon or skillInScript is item:
 			buyButton.visible = false
 			buyButton.get_child(2).text = ""
+			buyButton.tableToPickUpFrom = null
 			var animationPlayer = buyButton.get_child(0)
 			animationPlayer.stop()
 
@@ -77,3 +81,6 @@ func showCostLabel():
 		$Label.visible = true
 	else: 
 		$Label.visible = false
+
+func playEffectAnimation():
+	$ItemTableAnimation/AnimationPlayer.play("idle")

@@ -17,6 +17,7 @@ func _ready():
 	attackStrenght = 25 
 	hp = 75
 	monsterName = "Skeleton Swordman"
+	isSkeletonMonster = true
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja

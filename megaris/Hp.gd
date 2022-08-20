@@ -13,6 +13,7 @@ func _ready():
 
 func _process(_delta): # ! Do usprawnienia to nie musi koniecznie się wykonywać co sekunde !
 	if lastSetHp != hp:
+		if maxHp > get_parent().maxHpAcquired: get_parent().maxHpAcquired = maxHp
 		if hp > maxHp: hp = maxHp
 		var hpPrecent : float = hp / maxHp
 		if hpPrecent < 0: hpPrecent = 0

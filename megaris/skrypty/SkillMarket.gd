@@ -23,6 +23,7 @@ func buy():
 		buyButton.visible = false
 		get_node("BuildSite/Area2D/CollisionShape2D").disabled = true
 		get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
+		$BuildingEffect/AnimationPlayer.play("idle")
 		_ready()
 
 

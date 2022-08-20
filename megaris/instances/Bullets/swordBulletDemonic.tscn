@@ -139,6 +139,10 @@ shape = SubResource( 93 )
 anims/RESET = SubResource( 94 )
 anims/destroyAnimation = SubResource( 95 )
 
+[node name="Timer" type="Timer" parent="Bullet"]
+
+[node name="TimerD" type="Timer" parent="Bullet"]
+
 [node name="Bullet2" type="KinematicBody2D" parent="."]
 position = Vector2( 11, 0 )
 scale = Vector2( 2, 2 )
@@ -172,6 +176,10 @@ shape = SubResource( 93 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bullet2"]
 anims/RESET = SubResource( 96 )
 anims/destroyAnimation = SubResource( 97 )
+
+[node name="Timer" type="Timer" parent="Bullet2"]
+
+[node name="TimerD" type="Timer" parent="Bullet2"]
 
 [connection signal="area_entered" from="Bullet/Area2D_attack" to="Bullet" method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Bullet/Area2D_terrain" to="Bullet" method="_on_Area2D_terrain_body_entered"]

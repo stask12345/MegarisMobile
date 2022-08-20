@@ -14,6 +14,8 @@ var selectedSlot = ""
 var showDescription = false
 var showedDescription = false
 var recentlyClicked = false
+var atTutorial = false
+var atTutorialUseBlocade = false
 
 func pickUpItem(itemToEquip,PlaceTodeleteItemFrom,ScriptTodeleteItemFrom): #gdy nie wiemy jaki typ i czy już mamy broń
 	if weponHolder.get_child_count() == 0 and itemToEquip is wepon:
@@ -45,7 +47,7 @@ func _on_Slot1_released():
 	if inventory1.get_child_count() > 1:
 		if !showedDescription:
 			if recentlyClicked and selectedSlot == "slot1":
-				if inventory1.get_child(1) is item and inventory1.get_child(1).usable:
+				if !atTutorialUseBlocade and inventory1.get_child(1) is item and inventory1.get_child(1).usable:
 					inventory1.get_child(1).use()
 					_on_background_unselect_button_pressed()
 					return
@@ -120,23 +122,24 @@ func _on_Slot3_released():
 			else: switchItemPlace(inventory3,true)
 
 func switchItemPlace(inventoryToAdd,replace = false):
-	var selectedinventory
-	if selectedSlot == "slot1": selectedinventory = inventory1
-	if selectedSlot == "slot2": selectedinventory = inventory2
-	if selectedSlot == "slot3": selectedinventory = inventory3
-	if selectedSlot == "slotDelete": selectedinventory = inventoryDeleteSlot
-	var selectedItem = selectedinventory.get_child(1)
-	if replace:
-		var item1
-		if inventoryToAdd.get_child_count() > 1: item1 = inventoryToAdd.get_child(1)
-		if inventoryToAdd.get_child_count() > 0: item1 = inventoryToAdd.get_child(0)
-		if inventoryToAdd.get_child_count() == 0: item1 = null
-		if item1 != null:
-			inventoryToAdd.remove_child(item1)
-			selectedinventory.add_child(item1)
-	selectedinventory.remove_child(selectedItem)
-	inventoryToAdd.add_child(selectedItem)
-	stopSlotAnimation()
+	if !atTutorial:
+		var selectedinventory
+		if selectedSlot == "slot1": selectedinventory = inventory1
+		if selectedSlot == "slot2": selectedinventory = inventory2
+		if selectedSlot == "slot3": selectedinventory = inventory3
+		if selectedSlot == "slotDelete": selectedinventory = inventoryDeleteSlot
+		var selectedItem = selectedinventory.get_child(1)
+		if replace:
+			var item1
+			if inventoryToAdd.get_child_count() > 1: item1 = inventoryToAdd.get_child(1)
+			if inventoryToAdd.get_child_count() > 0: item1 = inventoryToAdd.get_child(0)
+			if inventoryToAdd.get_child_count() == 0: item1 = null
+			if item1 != null:
+				inventoryToAdd.remove_child(item1)
+				selectedinventory.add_child(item1)
+		selectedinventory.remove_child(selectedItem)
+		inventoryToAdd.add_child(selectedItem)
+		stopSlotAnimation()
 
 func stopSlotAnimation():
 	inventory1.modulate = Color.white

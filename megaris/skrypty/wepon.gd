@@ -14,6 +14,7 @@ var upgradeLevel = 0
 var rangeDestroy = true
 var price : int
 var costOfSkill = 0
+var tier = 1
 
 func _ready():
 	pass

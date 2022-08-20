@@ -9,17 +9,17 @@ onready var shopSlot3 = get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu/
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player" and weponHolder.get_child_count() > 0:
-		if $ItemSlot1.get_child(0):
+		if $ItemSlot1.get_child_count() > 0 and $ItemSlot1.get_child(0):
 			var itemInSlot = $ItemSlot1.get_child(0)
 			itemInSlot.get_parent().remove_child(itemInSlot)
 			shopSlot1.add_child(itemInSlot)
 		
-		if $ItemSlot2.get_child(0):
+		if $ItemSlot2.get_child_count() > 0 and $ItemSlot2.get_child(0):
 			var itemInSlot = $ItemSlot2.get_child(0)
 			itemInSlot.get_parent().remove_child(itemInSlot)
 			shopSlot2.add_child(itemInSlot)
 		
-		if $ItemSlot3.get_child(0):
+		if $ItemSlot3.get_child_count() > 0 and $ItemSlot3.get_child(0):
 			var itemInSlot = $ItemSlot3.get_child(0)
 			itemInSlot.get_parent().remove_child(itemInSlot)
 			shopSlot3.add_child(itemInSlot)
@@ -34,7 +34,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
+		shopMenu.returnItemsToShopObject()
 		enterButton.visible = false
 		enterButton.get_child(0).stop()
 		shopMenu.visible = false
-		shopMenu.returnItemsToShopObject()

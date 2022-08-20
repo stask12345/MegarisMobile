@@ -3,6 +3,7 @@ extends TouchScreenButton
 var radious = Vector2(26,26)
 var boundary = 65 #65 do poprawy w razie błedu
 var drag_state = -1 #stan dragu -1 bez inputu, inne wartości to poszczególne klikniecia
+var lockJoyStick = false
 
 func getButtonPosition():
 	return position + radious
@@ -14,7 +15,7 @@ func _process(delta): #wracanie nie natychmiastowe po puszczeniu dla grafiki
 		position += pos_diffrence * returnSpeed * delta
 
 func _input(event):
-	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
+	if !lockJoyStick and event is InputEventScreenDrag or (!lockJoyStick and event is InputEventScreenTouch and event.is_pressed()):
 		var event_world_position = get_canvas_transform().xform_inv(event.position)
 		var distance_from_center = (event_world_position - get_parent().global_position).length()
 		

@@ -12,19 +12,33 @@ func _ready():
 
 func showArmory():
 	$WeponImage.texture = weponHolder.get_child(0).texture
+	if $WeponImage.texture.get_height() > 80:
+		$WeponImage.scale = Vector2(1.1,1.1)
+	else:
+		$WeponImage.scale = Vector2(1.3,1.3)
 	$ArmorImage.texture = player.texture
+	
 	if weponHolder.get_child(0).upgradeLevel < 2:
-		$weponCostLabel.text = String(costOfWeponUpgrade[weponHolder.get_child(0).upgradeLevel]) + " Gold"
+		$weponCostLabel.text = String(costOfWeponUpgrade[weponHolder.get_child(0).upgradeLevel])
+		$weponDesLabel.text = "+" + String((weponHolder.get_child(0).upgradeLevel + 1)*5) + " max attack"
 	else: $weponCostLabel.text = ""
 	if playerStats.levelOfArmor < 3:
-		$armorCostLabel.text = String(costOfArmorUpgrade[playerStats.levelOfArmor]) + " Gold"
+		$armorDesLabel.text = "+" + String((playerStats.levelOfArmor + 1)*5) + " armor"
+		$armorCostLabel.text = String(costOfArmorUpgrade[playerStats.levelOfArmor])
 	else: $armorCostLabel.text = ""
-	$weponUpgNumLabel.text = String(weponHolder.get_child(0).upgradeLevel) + "/2"
-	$armorUpgNumLabel.text = String(playerStats.levelOfArmor) + "/3"
-	if weponHolder.get_child(0).upgradeLevel == 2: $BuyWepon.text = "Max"
-	else: $BuyWepon.text = "Buy"
-	if playerStats.levelOfArmor == 3: $BuyArmor.text = "Max"
-	else: $BuyArmor.text = "Buy"
+	
+	if weponHolder.get_child(0).upgradeLevel == 2: 
+		$BuyWepon.text = "Max Level"
+		$weponCostLabel/GoldBag.visible = false
+	else: 
+		$BuyWepon.text = "Upgrade"
+		$weponCostLabel/GoldBag.visible = true
+	if playerStats.levelOfArmor == 3: 
+		$BuyArmor.text = "Max Level"
+		$armorCostLabel/GoldBag.visible = false
+	else: 
+		$BuyArmor.text = "Upgrade"
+		$armorCostLabel/GoldBag.visible = true
 
 
 func _on_Button_pressed(): #back button
@@ -36,6 +50,7 @@ func _on_BuyWeponButton_pressed():
 		playerStats.gold -= costOfWeponUpgrade[weponHolder.get_child(0).upgradeLevel]
 		weponHolder.get_child(0).upgradeLevel += 1
 		weponHolder.get_child(0).maxDamage += 5
+		$AnimationPlayer.play("upgradeWepon")
 		showArmory()
 
 
@@ -44,4 +59,5 @@ func _on_BuyArmorButton2_pressed():
 		playerStats.gold -= costOfArmorUpgrade[playerStats.levelOfArmor]
 		playerStats.levelOfArmor += 1
 		playerStats.updatePlayerLook()
+		$AnimationPlayer.play("armorAnimation")
 		showArmory()

@@ -7,6 +7,10 @@ func _ready():
 	placeSkills()
 
 func placeSkills():
+	placeWeponSkills()
+	placeHpSkills()
+
+func placeWeponSkills():
 	var itemToAdd
 	if levelOfWeponSkill == 0:
 		itemToAdd = preload("res://instances/Skills/SkillW1.tscn").instance()
@@ -25,7 +29,9 @@ func placeSkills():
 	$SkillTable/KinematicBody2D2.add_child(itemToAdd)
 	$SkillTable.skillInScript = itemToAdd
 	$SkillTable.showCostLabel()
-	
+
+func placeHpSkills():
+	var itemToAdd
 	if levelOfHpSkill == 0:
 		itemToAdd = preload("res://instances/Skills/SkillH1.tscn").instance()
 	if levelOfHpSkill == 1:

@@ -1,6 +1,6 @@
 extends Control
 
-var gold = 0
+var gold = 200
 var totalCollected = 0
 var crystals = 0
 var levelOfArmor = 0
@@ -18,6 +18,12 @@ var crystalBonus = 0
 var bossSlayerBonus = 1
 var attackSpeedBonus = 1
 var slimeAttackBonus = 1
+var slimesSlayed = 0
+var skeletonsSlayed = 0
+var slayedFirstBoss = 0
+var slayedSecondBoss = 0
+var maxHpAcquired = 0
+var maxGoldAcquired = 0
 var playerAnimationWalking1 = preload("res://grafika/animation/player_animation1.png")
 var playerAnimationWalking2 = preload("res://grafika/animation/player_animation2.png")
 var playerAnimationWalking3 = preload("res://grafika/animation/player_animation3.png")
@@ -66,6 +72,11 @@ func make_stronger(strongerTime):
 func save():
 	var node_data = {
 		"crystals": crystals,
+		"slimesSlayed": slimesSlayed,
+		"slayedFirstBoss": slayedFirstBoss,
+		"slayedSecondBoss": slayedSecondBoss,
+		"maxHpAcquired": maxHpAcquired,
+		"maxGoldAcquired": maxGoldAcquired,
 		"nodePath": get_path()
-		}
+	}
 	return node_data

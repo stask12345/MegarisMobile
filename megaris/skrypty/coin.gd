@@ -19,5 +19,6 @@ func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		money.gold += 1
 		money.totalCollected += 1
+		if money.totalCollected > money.maxGoldAcquired: money.maxGoldAcquired = money.totalCollected
 		if get_child_count() > 0 and get_child(0).name == "coin": $Coin.queue_free()
 		playAnimation()

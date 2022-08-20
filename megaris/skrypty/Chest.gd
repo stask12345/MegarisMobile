@@ -8,11 +8,11 @@ var visibleFrame
 func _ready():
 	visibleFrame = randi()%2 #losowanie grafiki skrzyni
 	frame = visibleFrame
-	get_child(1).visible = false
+	get_child(2).visible = false
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player" and get_child_count() > 1:
-		chestMenu.showChest(get_child(1))
+	if body.name == "Player" and get_child_count() > 2:
+		chestMenu.showChest(get_child(2))
 		openButton.visible = true
 		var animationPlayer = openButton.get_child(0)
 		openButton.menuToEnter = chestMenu

@@ -16,7 +16,7 @@ func showShop(): #Skaluje wielkość broni i itenów by dobrze wyglądały / pot
 		if item1 is item:
 			item1.scale = Vector2(0.4,0.4)
 		$Item1Label.text = item1.title
-		$Item1Price.text = String(item1.price) + " Gold"
+		$Item1Price.text = String(item1.price)
 	
 	if $ShopSlot1.get_child_count() == 0:
 		$Item1Slod.visible = true
@@ -35,7 +35,7 @@ func showShop(): #Skaluje wielkość broni i itenów by dobrze wyglądały / pot
 		if item2 is item:
 			item2.scale = Vector2(0.4,0.4)
 		$Item2Label.text = item2.title
-		$Item2Price.text = String(item2.price) + " Gold"
+		$Item2Price.text = String(item2.price)
 	
 	if $ShopSlot2.get_child_count() == 0:
 		$Item2Slod.visible = true
@@ -54,7 +54,7 @@ func showShop(): #Skaluje wielkość broni i itenów by dobrze wyglądały / pot
 		if item3 is item:
 			item3.scale = Vector2(0.4,0.4)
 		$Item3Label.text = item3.title
-		$Item3Price.text = String(item3.price) + " Gold"
+		$Item3Price.text = String(item3.price)
 	
 	if $ShopSlot3.get_child_count() == 0:
 		$Item3Slod.visible = true
@@ -64,21 +64,21 @@ func showShop(): #Skaluje wielkość broni i itenów by dobrze wyglądały / pot
 
 
 func _on_Button_pressed():
-	visible = false
 	returnItemsToShopObject()
+	visible = false
 
 func returnItemsToShopObject():
-	if $ShopSlot1.get_child(0): 
+	if $ShopSlot1.get_child_count() > 0 and $ShopSlot1.get_child(0): 
 		var itemInSlot = $ShopSlot1.get_child(0)
 		itemInSlot.get_parent().remove_child(itemInSlot)
 		currentShop.get_node("ItemSlot1").add_child(itemInSlot)
 	
-	if $ShopSlot2.get_child(0): 
+	if $ShopSlot2.get_child_count() > 0 and  $ShopSlot2.get_child(0): 
 		var itemInSlot = $ShopSlot2.get_child(0)
 		itemInSlot.get_parent().remove_child(itemInSlot)
 		currentShop.get_node("ItemSlot2").add_child(itemInSlot)
 	
-	if $ShopSlot3.get_child(0): 
+	if $ShopSlot3.get_child_count() > 0 and  $ShopSlot3.get_child(0): 
 		var itemInSlot = $ShopSlot3.get_child(0)
 		itemInSlot.get_parent().remove_child(itemInSlot)
 		currentShop.get_node("ItemSlot3").add_child(itemInSlot)

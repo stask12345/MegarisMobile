@@ -1,0 +1,1429 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://instances/Wepons/Sword1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://instances/Items/PotionHealing1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dpcomic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://skrypty/Dummy.gd" type="Script" id=4]
+[ext_resource path="res://skrypty/Chest.gd" type="Script" id=5]
+[ext_resource path="res://skrypty/Wooden Sword.gd" type="Script" id=6]
+[ext_resource path="res://grafika/itemy/wepon1.png" type="Texture" id=7]
+[ext_resource path="res://skrypty/PotionHeal1.gd" type="Script" id=8]
+[ext_resource path="res://grafika/itemy/potion1.png" type="Texture" id=9]
+[ext_resource path="res://skrypty/ItemTable.gd" type="Script" id=10]
+[ext_resource path="res://grafika/worldElements/itemTable.png" type="Texture" id=11]
+[ext_resource path="res://grafika/worldElements/chest.png" type="Texture" id=12]
+[ext_resource path="res://grafika/animation/chestAnimation.png" type="Texture" id=13]
+[ext_resource path="res://grafika/white.png" type="Texture" id=14]
+[ext_resource path="res://grafika/animation/itemTableAnimation.png" type="Texture" id=15]
+[ext_resource path="res://skrypty/Tutorial.gd" type="Script" id=16]
+[ext_resource path="res://skrypty/SpawnPointTutorial.gd" type="Script" id=17]
+[ext_resource path="res://grafika/terrain/t1.png" type="Texture" id=18]
+[ext_resource path="res://grafika/terrain/b1.png" type="Texture" id=19]
+[ext_resource path="res://grafika/transparent.png" type="Texture" id=20]
+[ext_resource path="res://grafika/terrain/s2.png" type="Texture" id=21]
+[ext_resource path="res://grafika/worldElements/spawnPoint.png" type="Texture" id=22]
+[ext_resource path="res://grafika/terrain/s3.png" type="Texture" id=23]
+[ext_resource path="res://grafika/worldElements/portalCrystal.png" type="Texture" id=24]
+[ext_resource path="res://grafika/terrain/s1.png" type="Texture" id=25]
+[ext_resource path="res://grafika/UI/helpArrow.png" type="Texture" id=26]
+[ext_resource path="res://grafika/worldElements/dummyDestroyed.png" type="Texture" id=27]
+[ext_resource path="res://grafika/worldElements/dummy.png" type="Texture" id=28]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.69428, 33.1558 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 82.25, 172.471 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 82.743, 172.736 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 68.7475, 90 )
+
+[sub_resource type="RectangleShape2D" id=89]
+extents = Vector2( 33, 45 )
+
+[sub_resource type="Animation" id=118]
+resource_name = "idle"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=119]
+resource_name = "idle"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 28, 21.5 )
+
+[sub_resource type="RectangleShape2D" id=138]
+extents = Vector2( 27.5, 45.5 )
+
+[sub_resource type="Animation" id=140]
+resource_name = "leftAttack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dummy:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=141]
+resource_name = "monster_death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dummy:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 27 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Dummy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 65 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroyMonster"
+} ]
+}
+
+[sub_resource type="Animation" id=139]
+resource_name = "rightAttack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dummy:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=120]
+resource_name = "crystalIdle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -45 ), Vector2( -2, -54 ), Vector2( -2, -45 ) ]
+}
+
+[sub_resource type="Animation" id=121]
+resource_name = "crystalSpawning"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PortalCrystal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=149]
+extents = Vector2( 7.8125, 58.8149 )
+
+[sub_resource type="Animation" id=126]
+resource_name = "endingAnimation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label/HelpArrow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label/HelpArrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 341.429, 190 ), Vector2( 341.429, 160 ), Vector2( 341.429, 190 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Tutorial")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSecondStep"
+} ]
+}
+
+[sub_resource type="Animation" id=130]
+resource_name = "endingAnimation1"
+length = 2.0
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../Tutorial")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.95 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialThirdStep"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/HelpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2097, 2745 ), Vector2( -2097, 2755 ), Vector2( -2097, 2745 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.95 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Tutorial/Label:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.95 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=131]
+resource_name = "endingAnimation2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control5/Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 885, 27.143 ), Vector2( 915, 27.143 ), Vector2( 885, 27.143 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control5/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Tutorial")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialFourStep1"
+} ]
+}
+
+[sub_resource type="Animation" id=134]
+resource_name = "endingAnimation3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control5/Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 885, 27.143 ), Vector2( 915, 27.143 ), Vector2( 885, 27.143 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control5/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Tutorial")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialFifthStep1"
+} ]
+}
+
+[sub_resource type="Animation" id=137]
+resource_name = "endingAnimation4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/HelpArrow2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1680, 2700 ), Vector2( -1680, 2690 ), Vector2( -1680, 2700 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Tutorial")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSixthStep0"
+} ]
+}
+
+[sub_resource type="Animation" id=144]
+resource_name = "endingAnimation5"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control2/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control2/Label/HelpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 830, 60 ), Vector2( 850, 60 ), Vector2( 830, 60 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Tutorial")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSevenStep1"
+} ]
+}
+
+[sub_resource type="Animation" id=145]
+resource_name = "endingAnimation6"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/Label3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/HelpArrow3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1278, 2680 ), Vector2( -1278, 2690 ), Vector2( -1278, 2680 ) ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 341.429, 190 ), Vector2( 341.429, 160 ), Vector2( 341.429, 190 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Tutorial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialFirstStepComplete"
+} ]
+}
+
+[sub_resource type="Animation" id=129]
+resource_name = "idle1"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2097, 2745 ), Vector2( -2097, 2755 ), Vector2( -2097, 2745 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Tutorial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSecondStepComplete"
+} ]
+}
+
+[sub_resource type="Animation" id=132]
+resource_name = "idle2"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control5/Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 885, 27.143 ), Vector2( 915, 27.143 ), Vector2( 885, 27.143 ) ]
+}
+
+[sub_resource type="Animation" id=136]
+resource_name = "idle3"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/HelpArrow2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1680, 2700 ), Vector2( -1680, 2690 ), Vector2( -1680, 2700 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Tutorial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialFifthStepComplete"
+} ]
+}
+
+[sub_resource type="Animation" id=143]
+resource_name = "idle4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control2/Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 830, 60 ), Vector2( 850, 60 ), Vector2( 830, 60 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Tutorial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSixtStepComplete"
+} ]
+}
+
+[sub_resource type="Animation" id=146]
+resource_name = "idle5"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/HelpArrow3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1278, 2680 ), Vector2( -1278, 2690 ), Vector2( -1278, 2680 ) ]
+}
+
+[sub_resource type="Animation" id=124]
+resource_name = "startingAnimation"
+length = 6.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label/HelpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 341.429, 190 ), Vector2( 341.429, 160 ), Vector2( 341.429, 190 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label/HelpArrow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Tutorial")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 4.1, 4.4, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "endFall"
+}, {
+"args": [  ],
+"method": "endChangeColor"
+}, {
+"args": [  ],
+"method": "tutorialFirstStep1"
+} ]
+}
+tracks/4/type = "animation"
+tracks/4/path = NodePath("../../Player/AnimationPlayerCamera")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "CameraShakingShort" ),
+"times": PoolRealArray( 4.1 )
+}
+
+[sub_resource type="Animation" id=128]
+resource_name = "startingAnimation1"
+length = 2.0
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../Tutorial")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSecondStep1"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/HelpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2097, 2745 ), Vector2( -2097, 2755 ), Vector2( -2097, 2745 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Tutorial/Label:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=133]
+resource_name = "startingAnimation2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control5/Label/HelpArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 885, 27.143 ), Vector2( 915, 27.143 ), Vector2( 885, 27.143 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control5/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Tutorial")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialThirdStepComplete"
+}, {
+"args": [  ],
+"method": "tutorialThirdStep1"
+} ]
+}
+
+[sub_resource type="Animation" id=135]
+resource_name = "startingAnimation3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/HelpArrow2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1680, 2700 ), Vector2( -1680, 2690 ), Vector2( -1680, 2700 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Tutorial")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialFifthStep2"
+} ]
+}
+
+[sub_resource type="Animation" id=142]
+resource_name = "startingAnimation5"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control2/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control2/Label/HelpArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 830, 60 ), Vector2( 850, 60 ), Vector2( 830, 60 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Tutorial")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSixthStep1"
+} ]
+}
+
+[sub_resource type="Animation" id=147]
+resource_name = "startingAnimation6"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Tutorial/Label3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Tutorial/HelpArrow3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Tutorial/HelpArrow3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1278, 2680 ), Vector2( -1278, 2690 ), Vector2( -1278, 2680 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Tutorial")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tutorialSevenStep2"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=125]
+extents = Vector2( 0.71642, 0.735775 )
+
+[sub_resource type="DynamicFont" id=127]
+size = 62
+font_data = ExtResource( 3 )
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="T1" type="Sprite" parent="Terrain"]
+position = Vector2( -1487, 2909 )
+texture = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/T1"]
+position = Vector2( 146.5, 112 )
+scale = Vector2( 56.06, 2.64 )
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/T1/StaticBody2D"]
+position = Vector2( -2.595, -41.465 )
+shape = SubResource( 2 )
+
+[node name="T3" type="Sprite" parent="Terrain"]
+position = Vector2( -2237, 2909 )
+texture = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/T3"]
+position = Vector2( 146.5, 112 )
+scale = Vector2( 56.06, 2.64 )
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/T3/StaticBody2D"]
+position = Vector2( -2.6, -41.455 )
+shape = SubResource( 2 )
+
+[node name="T4" type="Sprite" parent="Terrain"]
+position = Vector2( -737, 2909 )
+texture = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/T4"]
+position = Vector2( 146.5, 112 )
+scale = Vector2( 56.06, 2.64 )
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/T4/StaticBody2D"]
+position = Vector2( -2.6, -41.455 )
+shape = SubResource( 2 )
+
+[node name="S8" type="Sprite" parent="Terrain"]
+position = Vector2( -2695, 2652 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S8"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S8/StaticBody2D"]
+position = Vector2( -0.244019, -0.229004 )
+shape = SubResource( 9 )
+
+[node name="S10" type="Sprite" parent="Terrain"]
+position = Vector2( -2695, 2307 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 23 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S10"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S10/StaticBody2D"]
+position = Vector2( 0.256958, -0.264496 )
+shape = SubResource( 11 )
+
+[node name="S11" type="Sprite" parent="Terrain"]
+position = Vector2( -2694.5, 1962.5 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S11"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S11/StaticBody2D"]
+position = Vector2( -0.244019, -0.229004 )
+shape = SubResource( 9 )
+
+[node name="S12" type="Sprite" parent="Terrain"]
+position = Vector2( -2694.5, 1617.5 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 23 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S12"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S12/StaticBody2D"]
+position = Vector2( 0.256958, -0.264496 )
+shape = SubResource( 11 )
+
+[node name="S9" type="Sprite" parent="Terrain"]
+position = Vector2( -2694, 2914 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 21 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S9"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S9/StaticBody2D"]
+position = Vector2( -13.7476, 0 )
+shape = SubResource( 10 )
+
+[node name="White" type="Sprite" parent="Terrain"]
+modulate = Color( 0.301961, 0.180392, 0.160784, 1 )
+position = Vector2( -621.524, 3973.89 )
+scale = Vector2( 4318.7, -327.929 )
+texture = ExtResource( 14 )
+offset = Vector2( -0.0688, 2.494 )
+
+[node name="White2" type="Sprite" parent="Terrain"]
+modulate = Color( 0.301961, 0.180392, 0.160784, 1 )
+position = Vector2( -2958.06, 7424.02 )
+scale = Vector2( 457, -1996 )
+texture = ExtResource( 14 )
+offset = Vector2( -0.0688, 2.494 )
+
+[node name="White3" type="Sprite" parent="Terrain"]
+modulate = Color( 0.301961, 0.180392, 0.160784, 1 )
+position = Vector2( 39, 7272 )
+scale = Vector2( 457, -1996 )
+texture = ExtResource( 14 )
+offset = Vector2( -0.0688, 2.494 )
+
+[node name="B2" type="Sprite" parent="Terrain"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+self_modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( -2083.5, 2505.5 )
+z_index = -10
+texture = ExtResource( 19 )
+
+[node name="B4" type="Sprite" parent="Terrain"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+self_modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( -2080, 1882 )
+z_index = -10
+texture = ExtResource( 19 )
+
+[node name="B3" type="Sprite" parent="Terrain"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+self_modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( -1009, 2503 )
+z_index = -10
+texture = ExtResource( 19 )
+
+[node name="B5" type="Sprite" parent="Terrain"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+self_modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( -76, 2507 )
+z_index = -10
+texture = ExtResource( 19 )
+
+[node name="S1" type="Sprite" parent="Terrain"]
+position = Vector2( -279.5, 2651.47 )
+texture = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S1"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S1/StaticBody2D"]
+position = Vector2( -0.244019, -0.229004 )
+shape = SubResource( 9 )
+
+[node name="S2" type="Sprite" parent="Terrain"]
+position = Vector2( -279.5, 2913.97 )
+texture = ExtResource( 21 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S2"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S2/StaticBody2D"]
+position = Vector2( -13.7476, 0 )
+shape = SubResource( 10 )
+
+[node name="S3" type="Sprite" parent="Terrain"]
+position = Vector2( -279.5, 2306.5 )
+texture = ExtResource( 23 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain/S3"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/S3/StaticBody2D"]
+position = Vector2( 0.256958, -0.264496 )
+shape = SubResource( 11 )
+
+[node name="ItemTable" type="Sprite" parent="."]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -1680, 2807 )
+texture = ExtResource( 11 )
+script = ExtResource( 10 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="ItemTable"]
+position = Vector2( 0, -50 )
+
+[node name="Wooden Sword" type="Sprite" parent="ItemTable/KinematicBody2D2" instance=ExtResource( 1 )]
+texture = ExtResource( 7 )
+script = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="ItemTable"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemTable/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 89 )
+
+[node name="ItemTableAnimation" type="Sprite" parent="ItemTable"]
+visible = false
+position = Vector2( 0, -55 )
+texture = ExtResource( 15 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemTable/ItemTableAnimation"]
+anims/idle = SubResource( 118 )
+
+[node name="Chest" type="Sprite" parent="."]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -2099, 2806 )
+texture = ExtResource( 12 )
+offset = Vector2( 3.5, -4.5 )
+hframes = 4
+script = ExtResource( 5 )
+
+[node name="ItemTableAnimation" type="Sprite" parent="Chest"]
+visible = false
+position = Vector2( 4, -35 )
+texture = ExtResource( 13 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chest/ItemTableAnimation"]
+anims/idle = SubResource( 119 )
+
+[node name="Area2D" type="Area2D" parent="Chest"]
+position = Vector2( 15, -8 )
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/Area2D"]
+position = Vector2( -11, 6 )
+shape = SubResource( 45 )
+
+[node name="Potion1" type="Sprite" parent="Chest" instance=ExtResource( 2 )]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+script = ExtResource( 8 )
+
+[node name="Dummy" type="KinematicBody2D" parent="."]
+position = Vector2( -1278, 2780 )
+script = ExtResource( 4 )
+
+[node name="monsterBody" type="Area2D" parent="Dummy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy/monsterBody"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 138 )
+
+[node name="Dummy" type="Sprite" parent="Dummy"]
+position = Vector2( 0, 46 )
+texture = ExtResource( 28 )
+offset = Vector2( 0, -49 )
+
+[node name="Timer" type="Timer" parent="Dummy"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dummy"]
+anims/leftAttack = SubResource( 140 )
+anims/monster_death = SubResource( 141 )
+anims/rightAttack = SubResource( 139 )
+
+[node name="SpawnPoint" type="Sprite" parent="."]
+position = Vector2( -795.625, 2716.37 )
+texture = ExtResource( 22 )
+script = ExtResource( 17 )
+
+[node name="PortalCrystal" type="Sprite" parent="SpawnPoint"]
+position = Vector2( -3, -45 )
+texture = ExtResource( 24 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpawnPoint"]
+autoplay = "crystalIdle"
+anims/crystalIdle = SubResource( 120 )
+anims/crystalSpawning = SubResource( 121 )
+
+[node name="Area2D" type="Area2D" parent="SpawnPoint"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoint/Area2D"]
+position = Vector2( -2.1875, 48.8149 )
+shape = SubResource( 149 )
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
+root_node = NodePath("../../CanvasLayer/Control")
+anims/endingAnimation = SubResource( 126 )
+anims/endingAnimation1 = SubResource( 130 )
+anims/endingAnimation2 = SubResource( 131 )
+anims/endingAnimation3 = SubResource( 134 )
+anims/endingAnimation4 = SubResource( 137 )
+anims/endingAnimation5 = SubResource( 144 )
+anims/endingAnimation6 = SubResource( 145 )
+anims/idle = SubResource( 123 )
+anims/idle1 = SubResource( 129 )
+anims/idle2 = SubResource( 132 )
+anims/idle3 = SubResource( 136 )
+anims/idle4 = SubResource( 143 )
+anims/idle5 = SubResource( 146 )
+anims/startingAnimation = SubResource( 124 )
+anims/startingAnimation1 = SubResource( 128 )
+anims/startingAnimation2 = SubResource( 133 )
+anims/startingAnimation3 = SubResource( 135 )
+anims/startingAnimation5 = SubResource( 142 )
+anims/startingAnimation6 = SubResource( 147 )
+
+[node name="Transparent" type="Sprite" parent="."]
+position = Vector2( -1798, 2671 )
+scale = Vector2( 16.7499, 320.75 )
+texture = ExtResource( 20 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Transparent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transparent/StaticBody2D"]
+position = Vector2( 2.903, -0.253701 )
+shape = SubResource( 125 )
+
+[node name="Transparent2" type="Sprite" parent="."]
+position = Vector2( -1034.63, 2668.37 )
+scale = Vector2( 16.7499, 320.75 )
+texture = ExtResource( 20 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Transparent2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transparent2/StaticBody2D"]
+position = Vector2( 2.903, -0.253701 )
+shape = SubResource( 125 )
+
+[node name="Transparent3" type="Sprite" parent="."]
+position = Vector2( -2219, 2670 )
+scale = Vector2( 16.7499, 320.75 )
+texture = ExtResource( 20 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Transparent3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transparent3/StaticBody2D"]
+position = Vector2( 2.903, -0.253701 )
+shape = SubResource( 125 )
+
+[node name="HelpArrow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -2097, 2745 )
+texture = ExtResource( 26 )
+
+[node name="HelpArrow2" type="Sprite" parent="."]
+position = Vector2( -1680, 2700 )
+texture = ExtResource( 26 )
+
+[node name="HelpArrow3" type="Sprite" parent="."]
+position = Vector2( -1278, 2680 )
+texture = ExtResource( 26 )
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -2158.0
+margin_top = 2688.0
+margin_right = -1903.0
+margin_bottom = 2744.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 127 )
+text = "Open chest"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -1782.0
+margin_top = 2631.0
+margin_right = -1356.0
+margin_bottom = 2687.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 127 )
+text = "Pick up the sword"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = -1394.0
+margin_top = 2622.0
+margin_right = -918.0
+margin_bottom = 2678.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 127 )
+text = "Destroy the dummy!"
+
+[connection signal="body_entered" from="ItemTable/Area2D" to="ItemTable" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="ItemTable/Area2D" to="ItemTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Chest/Area2D" to="Chest" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Chest/Area2D" to="Chest" method="_on_Area2D_body_exited"]
+[connection signal="area_entered" from="SpawnPoint/Area2D" to="SpawnPoint" method="_on_Area2D_area_entered"]

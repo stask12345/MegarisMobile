@@ -27,7 +27,6 @@ func _physics_process(_delta):
 			goingRight = true
 		if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
 			waitingForJump = true
-			print("czeka na skok")
 			waitForJump()
 	
 	if jumped:

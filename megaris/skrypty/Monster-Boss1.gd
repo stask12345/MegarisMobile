@@ -97,6 +97,7 @@ func waitForJump():
 
 func destroyMonster():
 	if bossHp.get_child(0).visible:
+		playerStats.slayedFirstBoss = 1
 		bossHp.get_child(0).visible = false
 		bossHp.get_child(1).visible = false
 		get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")

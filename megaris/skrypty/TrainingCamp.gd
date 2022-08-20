@@ -22,6 +22,7 @@ func buy():
 		bought = true
 		buyButton.visible = false
 		get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
+		$BuildingEffect/AnimationPlayer.play("idle")
 		_ready()
 
 

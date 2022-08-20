@@ -13,7 +13,8 @@ func _ready():
 	maxCoins = 10
 	attackStrenght = 40 
 	hp = 110
-	monsterName = "Cave Spider"
+	monsterName = "Skeleton Mage"
+	isSkeletonMonster = true
 
 func _physics_process(delta):
 	motion.y += gravity #grawitacja

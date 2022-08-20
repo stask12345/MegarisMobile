@@ -70,4 +70,6 @@ anims/RESET = SubResource( 5 )
 anims/destroyAnimation = SubResource( 6 )
 anims/idle = SubResource( 7 )
 
+[node name="TimerD" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D_attack" to="." method="_on_Area2D_area_entered"]

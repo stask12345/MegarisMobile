@@ -17,7 +17,8 @@ func _ready():
 		else: bulletRange = wepon.bulletRange * playerStats.bulletRangeImprovement
 	else: bulletRange = 1
 	
-	if wepon.rangeDestroy: timerToDestroy()
+	if wepon.rangeDestroy: 
+		timerToDestroy()
 	
 	if get_parent() == null || get_parent().name == "WeponHolder": set_position(global_position)
 	else: get_parent().set_position(get_parent().global_position)
@@ -31,7 +32,8 @@ func _ready():
 	direction = player.scale.x
 
 func timerToDestroy():
-	yield(get_tree().create_timer(bulletRange),"timeout")
+	$TimerD.start(bulletRange)
+	yield($TimerD,"timeout")
 	if !destroyed: queue_free()
 
 func destroyAfterAnimation(): #wywolywane przez animation pleyera
@@ -41,10 +43,12 @@ func attackMonster(monster):
 	if !monster.destroyed:
 		monster.hpDelay = true
 		monster.hpDelayTimer()
-		var damage = randi()%(wepon.maxDamage - wepon.minDamage + 1 + playerStats.maxDamageIncrease) + wepon.minDamage
+		var damage = randi()%(wepon.maxDamage - wepon.minDamage + 1) + wepon.minDamage
 		damage = damage * playerStats.strengthIncrease
+		damage = damage * playerStats.maxDamageIncrease
 		if monster.isBossMonster == true: damage = damage * playerStats.bossSlayerBonus
 		if monster.isSlimeMonster == true: damage = damage * playerStats.slimeAttackBonus
+		damage = round(damage)
 		monster.hp -= damage
 		effectGenerator.generateDamageLabel(global_position,damage)
 		monster.get_knock(monster.goingRight)

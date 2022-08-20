@@ -23,6 +23,7 @@ var stuck = false #jak trapped ale nie więzi w y
 var redColor = false
 var alive = true
 var playerVisible = false
+var falling = false
 
 func _ready():
 	$Player.visible = false
@@ -64,7 +65,7 @@ func _physics_process(delta):
 				$AnimationPlayer.play("idle_right")
 				
 		else: 
-			if joystickScript.get_value().y < -0.2:
+			if joystickScript.get_value().y < -0.2 or falling:
 				if motion.y < 0: $AnimationPlayer.play("jump")
 				else:  $AnimationPlayer.play("fall")
 		

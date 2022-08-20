@@ -2,6 +2,7 @@ extends Node
 
 var labelToGenerate = preload("res://instances/damageLabel.tscn")
 var atCastle = ""
+var tutorialComplete = false
 onready var canvasModulator = get_node("/root/MainScene/CanvasModulate")
 onready var cameraShakingAnimation = get_node("/root/MainScene/Player/AnimationPlayerCamera")
 onready var player = get_node("/root/MainScene/Player")
@@ -13,7 +14,11 @@ onready var UI4 = get_node("/root/MainScene/CanvasLayer/Control4")
 onready var UIBoss = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/BossMenu")
 
 func _ready():
-	atCastle = "mine"
+	if tutorialComplete: atCastle = "mine"
+	else:
+		var tutorial = preload("res://instances/Tutorial.tscn").instance()
+		get_node("/root/MainScene").call_deferred("add_child",tutorial)
+		get_node("/root/MainScene/Player").global_position = Vector2(-2455,1996)
 
 func generateDamageLabel(positionOfDamage, value, playerBool = false):
 	var damageLabel = labelToGenerate.instance()
@@ -85,6 +90,15 @@ func getPlayerToCastle():
 	player.global_position = Vector2(-120,906)
 	rewardRoom.queue_free()
 
+func getPlayerToStartingPoint():
+	atCastle = "mine"
+	var tutorialRoom = get_node("/root/MainScene/Tutorial")
+	var monsters = get_children()
+	player.global_position = Vector2(-120,906)
+	tutorialRoom.queue_free()
+	tutorialComplete = true
+	get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("mine")
+
 func enterBossArea():
 	get_node("/root/MainScene/Terrain/Elements/BossRoom/Area2D").queue_free()
 	player.trapped = true
@@ -118,3 +132,10 @@ func playTitleAnimation():
 		get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("mine")
 	if atCastle == "castle":
 		get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("castle")
+
+func save():
+	var node_data = {
+		"tutorialComplete": tutorialComplete,
+		"nodePath": get_path()
+	}
+	return node_data

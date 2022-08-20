@@ -22,7 +22,6 @@ func _physics_process(_delta):
 	motion.y += gravity #grawitacja
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
-	if motion.y > 0: motion.y = motion.y * 1.1
 	
 	if aggro and jump == 0: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 0:
@@ -33,12 +32,10 @@ func _physics_process(_delta):
 			waitingForJump = true
 			waitForJump()
 	
-	if jump == 0:
-		motion.x = motion.x / 1.1
 	
 	if jumped and (!is_on_floor() or jump != 0):
 		if jump < maxJump:
-			$AnimationPlayer.play("flying")
+			if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("flying")
 			if goingRight: motion.x = jumpSpeed 
 			else: motion.x = -jumpSpeed 
 			motion.y = -jumpPower
@@ -48,10 +45,13 @@ func _physics_process(_delta):
 			waitingForJump = false
 			jumped = false
 	
+	if jump == 0:
+		motion.x = motion.x / 1.1
+	
 	if is_on_floor():
 		if jump != 0 and jump > jumpPower+1:
 			shootBullets()
-			$AnimationPlayer.play("idle")
+			if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("idle")
 		jump = 0
 		motion.x = 0
 	
@@ -70,11 +70,11 @@ func _physics_process(_delta):
 func waitForJump():
 	$Timer2.start(1)
 	yield($Timer2,"timeout")
-	$AnimationPlayer.play("jumping")
+	if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("jumping")
 	$Timer2.start(2)
 	yield($Timer2,"timeout")
 	jumped = true
-	jump = 1
+	jump = 1 
 
 
 func destroyMonster():

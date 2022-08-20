@@ -30,12 +30,16 @@ func _physics_process(delta):
 				velocity = itemBody.move_and_slide(velocity)
 			else: movingUp = true
 
+func playEffectAnimation():
+	$ItemTableAnimation/AnimationPlayer.play("idle")
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player" and itemInScript:
 		pickUpButton.visible = true
 		var animationPlayer = pickUpButton.get_child(0)
 		pickUpButton.itemToPick = itemInScript
+		pickUpButton.tableToPickUpFrom = self
+		
 		animationPlayer.play("pick_up_sight_animation")
 
 
@@ -44,3 +48,4 @@ func _on_Area2D_body_exited(body):
 		var animationPlayer = pickUpButton.get_child(0)
 		animationPlayer.stop()
 		pickUpButton.visible = false
+		pickUpButton.tableToPickUpFrom = null

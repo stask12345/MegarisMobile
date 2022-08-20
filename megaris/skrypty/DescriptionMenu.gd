@@ -2,9 +2,6 @@ extends Node2D
 
 var itemDescription
 
-func _ready():
-	pass
-
 func showDescription(itemToShow):
 	itemDescription = itemToShow
 	$ItemImage.texture = itemDescription.texture
@@ -18,6 +15,14 @@ func showDescription(itemToShow):
 	if itemDescription is item: $Description.text = itemDescription.description
 	if itemDescription is wepon: 
 		$Description.text = "Damage: " + String(itemDescription.minDamage) + " - " + String(itemDescription.maxDamage) + "\nRange: " + String(itemDescription.bulletRange*100) + "\nFire Speed: " + String(itemDescription.fireSpeed)
+	
+	var ts = $Tier.get_children()
+	for t in ts:
+		print(itemToShow.tier)
+		print(ts.find(t))
+		t.visible = false
+		if ts.find(t) + 1 <= itemToShow.tier: t.visible = true
+	
 	visible = true
 
 func hideDescription():

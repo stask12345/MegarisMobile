@@ -8,11 +8,17 @@ var invisible = false
 
 func _on_Area2D_area_entered(area):
 	var monster = area.get_parent()
-	if "monster" in area.name and !player.hpDelay and !invisible:
+	if "monster" in area.name and !player.hpDelay and !invisible and monster.name != "Dummy":
 		player.hpDelay = true
 		player.hpDelayTimer()
 		if (!monster is monsterClass or (monster is monsterClass and !monster.destroyed)): hpScript.dealDamagePlayer(monster.attackStrenght)
 		player.get_knock(monster.goingRight)
 		deathScreen.changeKillerMonster(monster)
+		exitShopAndAnvil()
 		if monster is monsterClass and monster.flying: #zatrzymywanie latających po ataku
 			monster.stayInPlace()
+
+func exitShopAndAnvil():
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").returnItemsToShopObject()
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").visible = false
+	get_node("/root/MainScene/CanvasLayer/Control4/AnvilMenu").visible = false

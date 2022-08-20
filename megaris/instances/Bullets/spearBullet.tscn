@@ -47,4 +47,6 @@ shape = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/destroyAnimation = SubResource( 3 )
 
+[node name="TimerD" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D_attack" to="." method="_on_Area2D_area_entered"]

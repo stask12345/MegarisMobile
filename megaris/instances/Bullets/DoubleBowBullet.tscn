@@ -64,6 +64,8 @@ shape = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/destroyAnimation = SubResource( 6 )
 
+[node name="TimerD" type="Timer" parent="BulletArrow2"]
+
 [node name="BulletArrow" type="KinematicBody2D" parent="."]
 position = Vector2( 1, -12 )
 collision_layer = 0
@@ -93,6 +95,8 @@ shape = SubResource( 4 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BulletArrow"]
 anims/RESET = SubResource( 5 )
 anims/destroyAnimation = SubResource( 6 )
+
+[node name="TimerD" type="Timer" parent="BulletArrow"]
 
 [connection signal="area_entered" from="BulletArrow2/Area2D_attack" to="BulletArrow2" method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="BulletArrow2/Area2D_terrain" to="BulletArrow2" method="_on_Area2D_terrain_body_entered"]
