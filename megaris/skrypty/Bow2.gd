@@ -6,15 +6,16 @@ var chargedBow = preload("res://grafika/itemy/bow5.png")
 onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 
 func _ready():
-	minDamage = 30
-	maxDamage = 70
-	fireSpeed = 0.9
+	minDamage = 25
+	maxDamage = 40
+	fireSpeed = 1.2
 	bulletRange = 2
 	typeOfBullet = "arrow"
 	textureChangeAfterShot = true
 	title = "Hunter Bow"
 	price = 100
 	rangeDestroy = false
+	tier = 3
 
 func _process(_delta):
 	if get_parent().name == "WeponHolder":

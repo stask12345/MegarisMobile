@@ -3,6 +3,7 @@ extends skill
 func _ready():
 	if bought: applyEffect()
 	description = "Slime Slayer: \n +10% Damage Against Slimes"
+	costOfSkill = 20
 
 func applyEffect():
 	playerStats.slimeAttackBonus += 0.2

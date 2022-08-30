@@ -13,10 +13,10 @@ var waitingForShooting = false
 var shooting = false
 
 func _ready():
-	minCoins = 2 #               !!!!!!! Być moze, nieśmiertelny podczas ataku
-	maxCoins = 5
-	attackStrenght = 25 
-	hp = 75
+	minCoins = 3 #               !!!!!!! Być moze, nieśmiertelny podczas ataku
+	maxCoins = 6
+	attackStrenght = 40
+	hp = 125
 	monsterName = "Ice Golem"
 
 func _physics_process(delta):

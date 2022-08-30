@@ -2,7 +2,8 @@ extends skill
 
 func _ready():
 	if bought: applyEffect()
-	description = "Rich Monsters I: \nMonsters Drops More Gold"
+	description = "Rich Monsters: \nMonsters Drops More Gold"
+	costOfSkill = 60
 
 func applyEffect():
 	playerStats.bonusCoins += 1

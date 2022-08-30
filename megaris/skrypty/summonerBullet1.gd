@@ -13,7 +13,7 @@ func shoot():
 		b.global_position = global_position
 		b.look_at(monster.global_position)
 	
-	$Timer.start(0.5)
+	$Timer.start(0.4)
 	yield($Timer,"timeout")
 	shoot()
 

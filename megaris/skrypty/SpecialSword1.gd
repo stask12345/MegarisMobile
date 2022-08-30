@@ -1,11 +1,13 @@
 extends wepon
 
 func _ready():
-	minDamage = 30
-	maxDamage = 50
-	fireSpeed = 0.7
-	bulletRange = 0.4
+	minDamage = 75
+	maxDamage = 100
+	fireSpeed = 0.8
+	bulletRange = 0.5
 	typeOfBullet = "explosion"
 	title = "War Hammer"
-	price = 150
+	price = 300
 	rangeDestroy = false
+	costOfSkill = 30
+	tier = 6

@@ -10,10 +10,10 @@ var waitingForJump = false
 var directionOfLadder = false
 
 func _ready():
-	minCoins = 3
-	maxCoins = 7
-	attackStrenght = 35
-	hp = 140
+	minCoins = 2
+	maxCoins = 5
+	attackStrenght = 30
+	hp = 100
 	monsterName = "Mature Cave Turtle"
 
 func _physics_process(_delta):
@@ -21,7 +21,7 @@ func _physics_process(_delta):
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
 	
-	if goingToPlayer: #kierunek w którym idzie wróg
+	if goingToPlayer or aggro: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 5:
 			goingRight = false
 			$Monster1.scale.x = -1
@@ -58,7 +58,7 @@ func _physics_process(_delta):
 	if jump == 0:
 		motion.x = motion.x / 1.1
 	
-		if motion.x == 0: $AnimationPlayer.play("idle")
+		if motion.x == 0 and !destroyed: $AnimationPlayer.play("idle")
 	
 	if !aggro and !destroyed:
 		$AnimationPlayer.play("idle")

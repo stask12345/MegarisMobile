@@ -3,7 +3,7 @@ extends bullet
 func _process(_delta):
 	if !destroyed:
 		if !"Double" in get_parent().name:
-			move_and_slide(Vector2(550,0).rotated(rotation))
+			move_and_slide(Vector2(450,0).rotated(rotation))
 		else:
 			if get_parent().scale.x == 1: move_and_slide(Vector2(550,0).rotated(get_parent().rotation))
 			else: move_and_slide(Vector2(550,0).rotated(get_parent().rotation-135))

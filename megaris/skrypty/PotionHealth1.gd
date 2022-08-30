@@ -8,8 +8,10 @@ var additionalHealth = 20
 func _ready():
 	title = "Health I"
 	usable = true
-	price = 70
+	price = 55
 	description = "Health potion\nPermanently adds " + String(additionalHealth) + " HP"
+	costOfSkill = 15
+	tier = 3
 
 func use():
 	playerHealth.maxHp += additionalHealth

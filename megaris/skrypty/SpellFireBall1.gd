@@ -3,13 +3,13 @@ extends item
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 onready var player = get_node("/root/MainScene/Player")
 onready var bold = preload("res://instances/Bullets/FireBallBullet1.tscn")
-var damage = 75
-
+var damage = 100
 func _ready():
 	title = "FireBall II"
 	usable = true
 	price = 75
 	description = "Fires a powerful bold. \nDamage: " + String(damage)
+	costOfSkill = 10
 
 func use():
 	var b = bold.instance()

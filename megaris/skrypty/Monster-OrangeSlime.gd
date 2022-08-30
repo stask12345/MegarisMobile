@@ -8,7 +8,7 @@ var jumped = false
 var waitingForJump = false
 
 func _ready():
-	minCoins = 1
+	minCoins = 0
 	maxCoins = 2
 	attackStrenght = 30 #statystyki zmienne
 	hp = 30
@@ -27,7 +27,6 @@ func _physics_process(_delta):
 			goingRight = true
 		if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
 			waitingForJump = true
-			print("czeka na skok")
 			waitForJump()
 	
 	if jumped:

@@ -4,7 +4,7 @@ func _ready():
 	bought = true #tylko dla skilli w training grounds
 	if bought: applyEffect()
 	description = "Wepon Mastery V: \n+20% Damage Increase"
-	costOfSkill = 1
+	costOfSkill = 150
 	trainingGrounds = true
 
 func applyEffect():

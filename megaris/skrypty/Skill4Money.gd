@@ -4,6 +4,7 @@ func _ready():
 	lesserSkill = get_node("%Skill3Lesser")
 	if bought: applyEffect()
 	description = "Pocket Money+: \n+50 Gold On Start"
+	costOfSkill = 100
 
 func applyEffect():
 	playerStats.gold += 20

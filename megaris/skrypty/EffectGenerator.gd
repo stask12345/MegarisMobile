@@ -12,13 +12,17 @@ onready var UI2 = get_node("/root/MainScene/CanvasLayer/Control2")
 onready var UI3 = get_node("/root/MainScene/CanvasLayer/Control")
 onready var UI4 = get_node("/root/MainScene/CanvasLayer/Control4")
 onready var UIBoss = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/BossMenu")
+var whiteGraphic = preload("res://grafika/transparent.png")
 
 func _ready():
-	if tutorialComplete: atCastle = "mine"
+	if tutorialComplete:
+		atCastle = "mine"
+		$AnimationPlayer.play("startingAnimation")
 	else:
 		var tutorial = preload("res://instances/Tutorial.tscn").instance()
 		get_node("/root/MainScene").call_deferred("add_child",tutorial)
 		get_node("/root/MainScene/Player").global_position = Vector2(-2455,1996)
+		$AnimationPlayer.play("startingAnimationTutorial")
 
 func generateDamageLabel(positionOfDamage, value, playerBool = false):
 	var damageLabel = labelToGenerate.instance()
@@ -97,6 +101,8 @@ func getPlayerToStartingPoint():
 	player.global_position = Vector2(-120,906)
 	tutorialRoom.queue_free()
 	tutorialComplete = true
+	get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").remove_child(get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").get_child(0))
+	get_node("/root/MainScene/Player/WeponHolder/swordRotation/spriteOfWepon").texture = whiteGraphic
 	get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").play("mine")
 
 func enterBossArea():

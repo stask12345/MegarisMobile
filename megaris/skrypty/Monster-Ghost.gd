@@ -12,10 +12,10 @@ func _ready():
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8
 	knockbackStrength = 1200
-	attackStrenght = 20 #statystyki zmienne
-	hp = 30
+	attackStrenght = 40 #statystyki zmienne
+	hp = 100
 	minCoins = 2
-	maxCoins = 3
+	maxCoins = 6
 	monsterName = "Lost Ghost"
 
 func _physics_process(delta):

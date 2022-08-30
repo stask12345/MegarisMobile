@@ -3,10 +3,11 @@ extends skill
 func _ready():
 	lesserSkill = get_node("%Skill8Lesser")
 	if bought: applyEffect()
-	description = "Rich Monsters II: \nMonsters Drops Even"
+	description = "Rich Monsters+: \nMonsters Drops More Gold"
+	costOfSkill = 200
 
 func applyEffect():
-	playerStats.bonusCoins += 2
+	playerStats.bonusCoins += 1
 
 func buy():
 	applyEffect()

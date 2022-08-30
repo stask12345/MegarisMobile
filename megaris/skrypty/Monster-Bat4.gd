@@ -11,11 +11,11 @@ func _ready():
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8
 	knockbackStrength = 1200
-	attackStrenght = 20 #statystyki zmienne
-	hp = 10
+	attackStrenght = 35 #statystyki zmienne
+	hp = 80
 	minCoins = 2
-	maxCoins = 3
-	monsterName = "Young Bat"
+	maxCoins = 4
+	monsterName = "Monstrous Bat"
 
 func _physics_process(delta):
 	

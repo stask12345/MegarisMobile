@@ -2,7 +2,8 @@ extends skill
 
 func _ready():
 	if bought and !get_node("%Skill13Upper").bought: applyEffect()
-	description = "Better Potions: \n Healing Potion II On Start"
+	description = "Alchemist: \n Healing Potion II On Start"
+	costOfSkill = 30
 
 func applyEffect():
 	playerStats.levelOfItem += 1

@@ -17,8 +17,8 @@ onready var bossHp = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/B
 func _ready():
 	minCoins = 100
 	maxCoins = 200
-	attackStrenght = 30 #statystyki zmienne
-	hp = 65
+	attackStrenght = 40 #statystyki zmienne
+	hp = 330
 	gravity = 50
 	maxGravity = 660
 	monsterName = "Slime King"

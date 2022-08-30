@@ -3,10 +3,11 @@ extends wepon
 
 func _ready():
 	minDamage = 30
-	maxDamage = 45
-	fireSpeed = 0.6
-	bulletRange = 0.4
+	maxDamage = 35
+	fireSpeed = 0.65
+	bulletRange = 0.3
 	typeOfBullet = "sword"
-	title = "Gold Sword"
+	title = "Golden Sword"
 	description = ""
-	price = 150
+	price = 80
+	tier = 3

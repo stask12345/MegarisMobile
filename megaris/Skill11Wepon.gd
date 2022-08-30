@@ -2,7 +2,8 @@ extends skill
 
 func _ready():
 	if bought: applyEffect()
-	description = "Better Wepon: \nSteel Sword On Start"
+	description = "Weaponsmith: \nSteel Sword On Start"
+	costOfSkill = 100
 
 func applyEffect():
 	playerStats.levelOfWepon += 1

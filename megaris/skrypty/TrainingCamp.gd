@@ -1,7 +1,7 @@
 extends Node
 
 onready var buyButton = get_node("/root/MainScene/CanvasLayer/Control4/Buy")
-var costOfSkillMarket = 1
+var costOfSkillMarket = 20
 var bought = false
 
 func _ready():

@@ -7,6 +7,7 @@ var thirdStepOnce = false
 var fifthStep = false
 var sixthStep = false
 var seventhStep = false
+var seventhStep1 = false
 var changeColor = false
 var dummyDestroyed = false
 
@@ -40,7 +41,7 @@ func _process(_delta):
 	if sixthStep and $ItemTable/KinematicBody2D2.get_child_count() == 0: tutorialSixthStep()
 	if seventhStep and get_node("/root/MainScene/CanvasLayer/Control2/JoystickAttack/TouchScreenButton").get_value_attack() != Vector2(0,0):
 		tutorialSevenStep()
-	if dummyDestroyed: tutorialSevenStepComplete()
+	if dummyDestroyed and seventhStep1 == true: tutorialSevenStepComplete()
 	if changeColor: get_node("/root/MainScene/Player").changeColor(Color.red)
 
 func tutorialFirstStep():
@@ -116,6 +117,7 @@ func tutorialSevenStep():
 	$AnimationPlayer1.play("endingAnimation5")
 
 func tutorialSevenStep1():
+	seventhStep1 = true
 	$AnimationPlayer1.play("startingAnimation6")
 
 func tutorialSevenStep2():
@@ -125,3 +127,6 @@ func tutorialSevenStepComplete():
 	dummyDestroyed = false
 	$Transparent2/StaticBody2D/CollisionShape2D.disabled = true
 	$AnimationPlayer1.play("endingAnimation6")
+
+func tutorialComplete():
+	$AnimationPlayer1.play("endingAnimation7")

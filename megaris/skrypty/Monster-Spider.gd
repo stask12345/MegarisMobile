@@ -7,10 +7,10 @@ var directionOfBlocade = false
 var shooting = false
 
 func _ready():
-	minCoins = 6
-	maxCoins = 10
-	attackStrenght = 40 
-	hp = 110
+	minCoins = 2
+	maxCoins = 5
+	attackStrenght = 35
+	hp = 80
 	monsterName = "Cave Spider"
 
 func _physics_process(delta):
@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
 	
-	if goingToPlayer: #kierunek w którym idzie wróg
+	if goingToPlayer or aggro: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 0:
 			goingRight = false
 			$Monster1.scale.x = 1

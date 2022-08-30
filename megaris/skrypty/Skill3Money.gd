@@ -3,6 +3,7 @@ extends skill
 func _ready():
 	if bought: applyEffect()
 	description = "Pocket Money: \n+30 Gold On Start"
+	costOfSkill = 40
 
 func applyEffect():
 	playerStats.gold += 30

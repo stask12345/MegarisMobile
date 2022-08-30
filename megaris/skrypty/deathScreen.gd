@@ -23,11 +23,11 @@ func showDeathScreen():
 	if monster.get_node("Monster1").texture.get_height() >= 200: monster.scale = Vector2(1,1)
 	$Monster.add_child(monster)
 	$MonsterName.text = monster.monsterName
-	$Reach.text += "\n" + String(abs(round((player.position.y - 805)/320))) + " Floor"
+	$Reach.text += "\n" + String(abs(round((player.position.y - 805)/320))) + "th Floor"
 	$Crystals/CrystalCount.text = String(playerStats.totalCollected / (10 - playerStats.crystalBonus))
 	playerStats.crystals += (playerStats.totalCollected / (10 - playerStats.crystalBonus))
 	system.saveData()
-	$KillCount.text += "\n" + String(playerStats.killedMonster) + " Monster"
+	$KillCount.text += "\n" + String(playerStats.killedMonster) + " Monsters"
 	$AnimationPlayer.play("deathAnimation")
 
 

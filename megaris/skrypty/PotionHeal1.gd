@@ -10,6 +10,7 @@ func _ready():
 	usable = true
 	price = 30
 	description = "Small healing potion\nHeals: " + String(healPower) + " HP"
+	tier = 2
 
 func use():
 	playerHealth.hp += healPower

@@ -3,19 +3,11 @@ Megaris Mobile
 30.01.2022r Niedziela #początek!
 
 To Do:
--nazwy i opisy skilli
 -różny knockback dla broni/potworków
 -potwory
--skille 
--market
--hall of fame
--wepon market
 
 To optimise:
--fajniejsze bronie z 1 krainy
--animacja przy podnoszniu z stołów, kupowaniu
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
--lepsze wyświetlanie damage w stulu terraria
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
 -dodać małe animację np. żyrandol świeczki
 -lepsza optymalizacja, dzięki pozbyciu się obliczeń z potworków
@@ -32,34 +24,79 @@ Dodawanie itemów:
 ---------------------- ! Balans ! ----------------------
 Ulepszenia:
 - armor1 50g
-- armor2 150g
-- armor3 250g
+- armor2 100g
+- armor3 200g
+- armor4 300g
+- armor5 450g
 - bron1  20g
 - bron2  30g
 
 Bronie:
-- miecz1 10-15       0
-- miecz2 20-30       100g
-- miecz3 30-45       150g
-- luk 20-30          60g
-- luk2 30-70         100g
-- maczuga 15-30      70g
-- maczuga1 20-40     110g
-- mzczuga2 30-50     150g
-- wlucznia 15-20     80g
-- wlucznia1 25-35    120g
-- ognista 50-80      120g
-- wodnista 5-10      80g
+- miecz0     10-15
+- miecz1     20-25   50
+- miecz2     30-35   80
+- miecz3     30-40d  140
+- miecz4     40-70d  200
+- luk        15-30   65
+- luk2       25-40   100
+- luk3       35-50   160
+- luk4       45-80   240
+- maczuga1   20-40   50
+- maczuga2   30-50   75
+- mzczuga3   40-60   130
+- maczuga4   50-90  190
+- wlucznia1  15-25   60
+- wlucznia2  25-35   90
+- wlucznia3  30-40   145
+- wlucznia4  45-55   225
+- wodnista   02-03   60
+- ognista    40-60   95
+- naprowa    40-50   150
+- laser      60-80   260
+- special1   25-35   80
+- special2   30-40   125
+- special3   45-60   175
+- special4   75      300
 Itemy:
-- healing1 30g
-- healing2 60g
-- healing3 100g
-- invicibl 75g
-- strenght 75g
+- healing1 30
+- healing2 50
+- healing3 75
+- healing4 100
+- invicibl 50
+- invicibl1 150
+- strenght 50
+- strenght1 150
+- FireBal1 30
+- Explosi1 40
+- FireBal2 75
+- Explosi2 100
+
 Potwory:
-- slime1 30        1-2
-- nietoperz1 30    2-3      Area1: 2,5*14=35g*5=175
-- duzy slime 65    4-5
-- slime2 70        4-5
-- nietoperz2 65    5-6      Area2: 6*14=84g*5=420
-- pajak 120        6-10
+- slime1 30       10hp 0-1
+- nietoperz1 30   10hp 0-1      Area1: 0,5*14*2= 14
+
+- slime2          30hp 1-2
+- nitoperz2       30hp 1-2
+- big slime       60hp 1-3+2
+- żów             70hp 2-3      Area2: 2*14*5= 140 C=15                        
+
+- slime3          50hp 2-3 
+- nietoperz3      50hp 2-3
+- pajak           80hp 3-5
+- big slime       60hp 1-3+2
+- żów2            99hp 3-5      Area3: 3*14*5= 210 C=36                    350 + 950 = 1300
+
+- slime4          80hp 3-4
+- nietoperz4      80hp 3-4
+- mimic           200hp 5-8
+- duch1           100hp 3-6
+- lodowy          125hp 4-6
+- mag             100hp 4-6
+- szkielet        90hp 4-5      Area4: 4,5*14*6= 380 C=74
+
+                            Area5: 6,75*14*6= 570 C=130
+
+pp  5-7 / 12 2-3
+
+
+p   13/100 15-100

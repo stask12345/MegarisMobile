@@ -5,7 +5,7 @@ onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 onready var player = get_node("/root/MainScene/Player/Player")
 
 var costOfWeponUpgrade = [20,30]
-var costOfArmorUpgrade = [50,150,250]
+var costOfArmorUpgrade = [50,100,200,300,450]
 
 func _ready():
 	pass
@@ -22,7 +22,7 @@ func showArmory():
 		$weponCostLabel.text = String(costOfWeponUpgrade[weponHolder.get_child(0).upgradeLevel])
 		$weponDesLabel.text = "+" + String((weponHolder.get_child(0).upgradeLevel + 1)*5) + " max attack"
 	else: $weponCostLabel.text = ""
-	if playerStats.levelOfArmor < 3:
+	if playerStats.levelOfArmor < 5:
 		$armorDesLabel.text = "+" + String((playerStats.levelOfArmor + 1)*5) + " armor"
 		$armorCostLabel.text = String(costOfArmorUpgrade[playerStats.levelOfArmor])
 	else: $armorCostLabel.text = ""
@@ -33,7 +33,7 @@ func showArmory():
 	else: 
 		$BuyWepon.text = "Upgrade"
 		$weponCostLabel/GoldBag.visible = true
-	if playerStats.levelOfArmor == 3: 
+	if playerStats.levelOfArmor == 5: 
 		$BuyArmor.text = "Max Level"
 		$armorCostLabel/GoldBag.visible = false
 	else: 
@@ -55,7 +55,7 @@ func _on_BuyWeponButton_pressed():
 
 
 func _on_BuyArmorButton2_pressed():
-	if playerStats.levelOfArmor < 3 and playerStats.gold >= costOfArmorUpgrade[playerStats.levelOfArmor]:
+	if playerStats.levelOfArmor < 5 and playerStats.gold >= costOfArmorUpgrade[playerStats.levelOfArmor]:
 		playerStats.gold -= costOfArmorUpgrade[playerStats.levelOfArmor]
 		playerStats.levelOfArmor += 1
 		playerStats.updatePlayerLook()

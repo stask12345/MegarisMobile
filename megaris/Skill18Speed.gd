@@ -3,7 +3,8 @@ extends skill
 func _ready():
 	lesserSkill = get_node("%Skill17")
 	if bought: applyEffect()
-	description = "Quick Shooting II: \n +20% Attack Speed"
+	description = "Quick Shooting+: \n +20% Attack Speed"
+	costOfSkill = 150
 
 func applyEffect():
 	playerStats.attackSpeedBonus -= 0.1

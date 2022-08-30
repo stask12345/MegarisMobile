@@ -9,8 +9,8 @@ var waitingForJump = false
 
 
 func _ready():
-	minCoins = 1
-	maxCoins = 2
+	minCoins = 0
+	maxCoins = 1
 	attackStrenght = 20 #statystyki zmienne
 	hp = 20
 	monsterName = "Blue Slime"

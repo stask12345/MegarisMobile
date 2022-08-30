@@ -2,7 +2,8 @@ extends skill
 
 func _ready():
 	if bought: applyEffect()
-	description = "Crystal Investor I: \n 10% More Crystals"
+	description = "Crystal Investor: \n 10% More Crystals"
+	costOfSkill = 35
 
 func applyEffect():
 	playerStats.crystalBonus += 1

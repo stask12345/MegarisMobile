@@ -10,3 +10,4 @@ func _ready():
 	title = "Wooden Sword"
 	description = ""
 	price = 30
+	tier = 1

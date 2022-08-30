@@ -8,10 +8,10 @@ var jumped = false
 var waitingForJump = false
 
 func _ready():
-	minCoins = 4
-	maxCoins = 5
-	attackStrenght = 30 #statystyki zmienne
-	hp = 70
+	minCoins = 1
+	maxCoins = 3
+	attackStrenght = 35 #statystyki zmienne
+	hp = 50
 	monsterName = "Red Slime"
 	isSlimeMonster = true
 
@@ -27,7 +27,6 @@ func _physics_process(_delta):
 			goingRight = true
 		if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
 			waitingForJump = true
-			print("czeka na skok")
 			waitForJump()
 	
 	if jumped:

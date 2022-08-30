@@ -3,13 +3,15 @@ onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 
 func _ready():
 	minDamage = 15
-	maxDamage = 20
-	fireSpeed = 0.7
-	bulletRange = 0.3
+	maxDamage = 25
+	fireSpeed = 1
+	bulletRange = 0.25
 	typeOfBullet = "pircing"
 	textureChangeAfterShot = true
-	title = "Spear"
-	price = 80
+	title = "Basic Spear"
+	price = 60
+	costOfSkill = 20
+	tier = 2
 
 func _process(_delta):
 	if get_parent().name == "WeponHolder":

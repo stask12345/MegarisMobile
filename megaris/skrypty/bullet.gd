@@ -4,6 +4,8 @@ var bulletRange = 0 # w sekundach do zniszczenia
 var destroyed = false
 var shorterRange = false #dla pocisków strzelających z kregów przyzwania specialu4
 var doubleArrowsRotated = false #dla double arrows by ustawić rotację
+var scroolBullet = false
+var scroolDamage = 0
 onready var wepon = get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").get_child(0)
 onready var player = get_node("/root/MainScene/Player/WeponHolder")
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
@@ -43,7 +45,9 @@ func attackMonster(monster):
 	if !monster.destroyed:
 		monster.hpDelay = true
 		monster.hpDelayTimer()
-		var damage = randi()%(wepon.maxDamage - wepon.minDamage + 1) + wepon.minDamage
+		var damage
+		if !scroolBullet:  damage = randi()%(wepon.maxDamage - wepon.minDamage + 1) + wepon.minDamage
+		else: damage = scroolDamage
 		damage = damage * playerStats.strengthIncrease
 		damage = damage * playerStats.maxDamageIncrease
 		if monster.isBossMonster == true: damage = damage * playerStats.bossSlayerBonus

@@ -5,10 +5,10 @@ var exposed = false
 var canShoot = true
 
 func _ready():
-	minCoins = 1
-	maxCoins = 2
-	attackStrenght = 30 #statystyki zmienne
-	hp = 50
+	minCoins = 4
+	maxCoins = 8
+	attackStrenght = 50 #statystyki zmienne
+	hp = 200
 	monsterName = "Chest Mimic"
 
 func _physics_process(delta):

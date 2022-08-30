@@ -2,14 +2,15 @@ extends wepon
 onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 
 func _ready():
-	minDamage = 25
-	maxDamage = 35
-	fireSpeed = 0.6
-	bulletRange = 0.4
+	minDamage = 45
+	maxDamage = 55
+	fireSpeed = 0.75
+	bulletRange = 0.3
 	typeOfBullet = "pircing double"
 	textureChangeAfterShot = true
-	title = "Spear"
-	price = 120
+	title = "Emperor's Trident"
+	price = 225
+	tier = 5
 
 func _process(delta):
 	if get_parent().name == "WeponHolder":

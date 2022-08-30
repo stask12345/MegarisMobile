@@ -37,7 +37,7 @@ tracks/1/keys = {
 }
 
 [node name="ItemTable" type="Sprite"]
-self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+self_modulate = Color( 1.41176, 1.41176, 1.2, 1 )
 position = Vector2( -306, 932 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

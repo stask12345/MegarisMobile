@@ -6,7 +6,7 @@ onready var skillLabel = get_node("SkillsModifications")
 
 onready var fullLength = $ProgressBar.scale.x
 var questProgress = 0
-var rewards = [50,50,100,100,100,200]
+var rewards = [30,40,50,60,75,100]
 var canProgress = false
 
 func _on_Button_pressed():
@@ -49,9 +49,9 @@ func calculateQuest():
 	var current = 0
 	
 	if questProgress == 0:
-		$QuestName.text = "Slay 100 Slimes!"
+		$QuestName.text = "Slay 200 Slimes!"
 		current = playerStats.slimesSlayed
-		goal = 100
+		goal = 200
 	if questProgress == 1:
 		$QuestName.text = "Possess 300 Gold Coins!"
 		current = playerStats.maxGoldAcquired
@@ -101,8 +101,8 @@ func calculateQuest():
 func _on_TouchScreenButton_released():
 	if canProgress:
 		$Claim/AnimationPlayer.stop()
-		questProgress += 1
 		if questProgress < rewards.size(): playerStats.crystals += rewards[questProgress]
+		questProgress += 1
 		calculateQuest()
 		canProgress = false
 

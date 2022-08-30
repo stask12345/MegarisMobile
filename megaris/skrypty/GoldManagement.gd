@@ -1,6 +1,6 @@
 extends Control
 
-var gold = 200
+var gold = 0
 var totalCollected = 0
 var crystals = 0
 var levelOfArmor = 0
@@ -27,9 +27,13 @@ var maxGoldAcquired = 0
 var playerAnimationWalking1 = preload("res://grafika/animation/player_animation1.png")
 var playerAnimationWalking2 = preload("res://grafika/animation/player_animation2.png")
 var playerAnimationWalking3 = preload("res://grafika/animation/player_animation3.png")
+var playerAnimationWalking4 = preload("res://grafika/animation/player_animation4.png")
+var playerAnimationWalking5 = preload("res://grafika/animation/player_animation5.png")
 var playerAnimationCliming1 = preload("res://grafika/animation/player_climing_animation1.png")
 var playerAnimationCliming2 = preload("res://grafika/animation/player_climing_animation2.png")
 var playerAnimationCliming3 = preload("res://grafika/animation/player_climing_animation3.png")
+var playerAnimationCliming4 = preload("res://grafika/animation/player_climing_animation4.png")
+var playerAnimationCliming5 = preload("res://grafika/animation/player_climing_animation5.png")
 onready var player = get_node("/root/MainScene/Player")
 
 func _process(_delta):
@@ -50,6 +54,12 @@ func updatePlayerLook():
 	if levelOfArmor == 3:
 		player.get_node("Player").texture = playerAnimationWalking3
 		player.get_node("PlayerCliming").texture = playerAnimationCliming3
+	if levelOfArmor == 4:
+		player.get_node("Player").texture = playerAnimationWalking4
+		player.get_node("PlayerCliming").texture = playerAnimationCliming4
+	if levelOfArmor == 5:
+		player.get_node("Player").texture = playerAnimationWalking5
+		player.get_node("PlayerCliming").texture = playerAnimationCliming5
 
 func make_invisible(InvisibleTime):
 	InvisibleTime += potionDuration

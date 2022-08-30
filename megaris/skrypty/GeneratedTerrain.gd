@@ -17,13 +17,14 @@ var sword2 = preload("res://instances/Wepons/Sword2.tscn")
 var sword3 = preload("res://instances/Wepons/Sword3.tscn")
 var spear1 = preload("res://instances/Wepons/Spear1.tscn")
 var spear2 = preload("res://instances/Wepons/Spear2.tscn")
-var mace1 = preload("res://instances/Wepons/Mace0.tscn")
-var mace2 = preload("res://instances/Wepons/Mace1.tscn")
-var mace3 = preload("res://instances/Wepons/Mace2.tscn")
+var mace1 = preload("res://instances/Wepons/Mace1.tscn")
+var mace2 = preload("res://instances/Wepons/Mace2.tscn")
 var bow1 = preload("res://instances/Wepons/Bow1.tscn")
 var bow2 = preload("res://instances/Wepons/Bow2.tscn")
 var wand1 = preload("res://instances/Wepons/Wand1.tscn")
 var wand2 = preload("res://instances/Wepons/Wand2.tscn")
+var special1 = preload("res://instances/Wepons/SpecialWand4.tscn")
+var special2 = preload("res://instances/Wepons/SpecialSword2.tscn")
 
 var healingPotion1 = preload("res://instances/Items/PotionHealing1.tscn")
 var healingPotion2 = preload("res://instances/Items/PotionHealing2.tscn")
@@ -31,12 +32,15 @@ var healingPotion3 = preload("res://instances/Items/PotionHealing3.tscn")
 var healthPotion = preload("res://instances/Items/PotionHealth1.tscn")
 var invisibilityPotion = preload("res://instances/Items/PotionInvisibility1.tscn")
 var StrengthPotion = preload("res://instances/Items/PotionStrength1.tscn")
+var scroolExplosion1 = preload("res://instances/Items/SpellExplosion.tscn")
+var scroolFireBall1 = preload("res://instances/Items/SpellFireBall.tscn")
 
-var firstTierPotion = [healingPotion1,healthPotion,invisibilityPotion]
-var secondTierPotion = [healingPotion2,healthPotion,invisibilityPotion,StrengthPotion]
-var firstTierWeponList = [sword1,spear1,mace1,bow1,wand1]
-var secondTierWeponList = [sword2,spear2,mace2,bow2,wand2]
-var SpecialTierList = [wand1,wand2,mace3,sword3,healingPotion3]
+
+var firstTierPotion = [healingPotion1,healingPotion1,healthPotion,invisibilityPotion,scroolFireBall1]
+var secondTierPotion = [healingPotion2,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion1]
+var firstTierWeponList = [sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,special1]
+var secondTierWeponList = [sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,special2]
+var SpecialTierList = [wand1,wand2,special1,special2,healingPotion3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,7 +89,7 @@ func generateWorld():
 				var instanitedP = p1.instance()
 				instanitedP.set_global_position(Vector2(width - 62.5,height))
 				width += 125
-				add_child(instanitedP)
+				addChildHelper(instanitedP,f)
 			var randomG = randi()%3 #losuje grafike platformy
 			var instanitedG
 			if randomG == 0: instanitedG = g1.instance()
@@ -93,16 +97,16 @@ func generateWorld():
 			if randomG == 2: instanitedG = g3.instance()
 			instanitedG.set_global_position(Vector2(width,height)) #ustawianie platform
 			width += 250
-			add_child(instanitedG)
-			checkAndGenerateElements(instanitedG)
-			generatePlatformDecoration(instanitedG, randomedPassages)
+			addChildHelper(instanitedG,f)
+			checkAndGenerateElements(instanitedG,f)
+			generatePlatformDecoration(instanitedG, randomedPassages,f)
 			generateMonsters(instanitedG,f+1)
 			generatePlatformDecorationBars(instanitedG, randomedPassages, nextRandomedPassages, n, f+1)
 			numberOfPlatform += 1
 		height -= 320 #ustawianie pozycji dla kolejnego rzędu
 		width = -1750
 
-func generatePlatformDecoration(platform, _passages):
+func generatePlatformDecoration(platform, _passages, f):
 	var o1 = preload("res://instances/Terrain/O1.tscn")#kamien
 	var o2 = preload("res://instances/Terrain/O2.tscn")#trawa
 	var o3 = preload("res://instances/Terrain/O3.tscn")#kamien2
@@ -127,7 +131,7 @@ func generatePlatformDecoration(platform, _passages):
 		var decorationPosition = generatePositionHelper(platform,decoration)
 		if randi()%2 == 1: decoration.scale.x = -1
 		decoration.set_global_position(decorationPosition)
-		add_child(decoration)
+		addChildHelper(decoration,f)
 	
 	var decorationWallList = [os1,os2,os3,os4,os5,os6] #ozdoby sciana
 	var chancesForDecorationWall = randi()%2
@@ -140,7 +144,7 @@ func generatePlatformDecoration(platform, _passages):
 		if randi()%2 == 1: decoration.scale.x = -1
 		if randi()%2 == 1: decoration.scale.y = -1
 		decoration.set_global_position(decorationPosition)
-		add_child(decoration)
+		addChildHelper(decoration,f)
 	
 
 #generuje belki i lampy na suficie
@@ -163,7 +167,7 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 			var decoration = o7.instance()
 			var positionOfDecoration = generatePositionHelper(platform, decoration)
 			decoration.set_global_position(positionOfDecoration)
-			add_child(decoration)
+			addChildHelper(decoration,numberOfCurrentFloor-1)
 		
 		if chancesForDecorationCeling == 1:
 			var decoration = decorationCelingList[randi()%decorationCelingList.size()].instance()
@@ -173,7 +177,7 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 			decorationPosition.y += 55
 			decorationPosition.y -= 320
 			decoration.set_global_position(decorationPosition)
-			add_child(decoration)
+			addChildHelper(decoration,numberOfCurrentFloor-1)
 
 func generateMonsters(platform,numberOfCurrentFloor):
 	var slime0 = preload("res://instances/Monsters/Monster-Slime.tscn")
@@ -211,7 +215,7 @@ func generateMonsters(platform,numberOfCurrentFloor):
 		if generatedMonster.flying == true: monsterPosition.y -= (randi()%200 + 40)
 		
 		generatedMonster.set_global_position(monsterPosition)
-		add_child(generatedMonster)
+		addChildHelper(generatedMonster,numberOfCurrentFloor-1)
 
 func generateElementsArray(): #Tu zmieniamy liczbę elementów wygenerowanych
 	generateElementsArrayHelp(fountainList,[1,3 + playerStats.spawnMoreFountains]) #generowanie fotan, ich liczba !
@@ -237,35 +241,35 @@ func generateElementsArrayHelp(listType,numberOfPossibleElements): #zakres iloś
 		listType.push_front(element)
 		avilableList.push_front(element)
 
-func checkAndGenerateElements(platform):
+func checkAndGenerateElements(platform,f):
 	if avilableList.has(numberOfPlatform): #sprawdzanie czy element na platformie i jaki
-		if fountainList.has(numberOfPlatform): generateFountain(platform)
-		if anvilList.has(numberOfPlatform): generateAnvil(platform)
-		if trapList.has(numberOfPlatform): generateTrap(platform)
-		if itemTableList.has(numberOfPlatform): generateItemTable(platform)
-		if chestList.has(numberOfPlatform): generateChest(platform)
-		if shopList.has(numberOfPlatform): generateShop(platform)
+		if fountainList.has(numberOfPlatform): generateFountain(platform,f)
+		if anvilList.has(numberOfPlatform): generateAnvil(platform,f)
+		if trapList.has(numberOfPlatform): generateTrap(platform,f)
+		if itemTableList.has(numberOfPlatform): generateItemTable(platform,f)
+		if chestList.has(numberOfPlatform): generateChest(platform,f)
+		if shopList.has(numberOfPlatform): generateShop(platform,f)
 
-func generateFountain(platform): #generowanie poszczególnych elementów
+func generateFountain(platform,f): #generowanie poszczególnych elementów
 	var fountain = preload("res://instances/Elements/Fontain.tscn").instance()
 	var positionOfFountain = generatePositionHelper(platform, fountain)
 	positionOfFountain.y -= 40
 	fountain.set_global_position(positionOfFountain)
-	add_child(fountain)
+	addChildHelper(fountain,f)
 
-func generateAnvil(platform):
+func generateAnvil(platform,f):
 	var anvil = preload("res://instances/Elements/Anvil.tscn").instance()
 	var positionOfAnvil = generatePositionHelper(platform, anvil)
 	anvil.set_global_position(positionOfAnvil)
-	add_child(anvil)
+	addChildHelper(anvil,f)
 
-func generateTrap(platform):
+func generateTrap(platform,f):
 	var trap = preload("res://instances/Elements/Trap1.tscn").instance()
 	var positionOfTrap = generatePositionHelper(platform, trap)
 	trap.set_global_position(positionOfTrap)
-	add_child(trap)
+	addChildHelper(trap,f)
 
-func generateItemTable(platform):
+func generateItemTable(platform,f):
 	var table = preload("res://instances/Elements/ItemTable.tscn").instance()
 	var generatedWepon
 	if numberOfPlatform <= (avilableNumbers/2): generatedWepon = getItemOfTier(firstTierWeponList)
@@ -273,9 +277,9 @@ func generateItemTable(platform):
 	table.get_child(0).add_child(generatedWepon)
 	var positionOfTable = generatePositionHelper(platform, table)
 	table.set_global_position(positionOfTable)
-	add_child(table)
+	addChildHelper(table,f)
 
-func generateChest(platform):
+func generateChest(platform,f):
 	var chest = preload("res://instances/Elements/Chest.tscn").instance()
 	var generatedItem # ! To Do
 	if numberOfPlatform <= (avilableNumbers/2): generatedItem = getItemOfTier(firstTierPotion,true)
@@ -283,9 +287,9 @@ func generateChest(platform):
 	chest.add_child(generatedItem)
 	var positionOfChest = generatePositionHelper(platform, chest)
 	chest.set_global_position(positionOfChest)
-	add_child(chest)
+	addChildHelper(chest,f)
 
-func generateShop(platform):
+func generateShop(platform,f):
 	var shop = preload("res://instances/Elements/Door.tscn").instance()
 	var generatedItems = [] # ! To Do
 	
@@ -315,7 +319,7 @@ func generateShop(platform):
 	
 	var positionOfChest = generatePositionHelper(platform, shop)
 	shop.set_global_position(positionOfChest)
-	add_child(shop)
+	addChildHelper(shop,f)
 
 func generatePositionHelper(platform, object):
 	var height = platform.global_position.y - 35 #35 to połowa wysokości platformy
@@ -341,3 +345,23 @@ func generatePlatformFillers():
 		add_child(f)
 		add_child(f1)
 		heightOfFiller -= 320
+
+func addChildHelper(object,currentFloor):
+	if currentFloor < 2:
+		$Stage1.add_child(object)
+		return
+	if currentFloor < 4 and currentFloor > 1:
+		$Stage2.add_child(object)
+		return
+	if currentFloor < 6 and currentFloor > 3:
+		$Stage3.add_child(object)
+		return
+	if currentFloor < 8 and currentFloor > 5:
+		$Stage4.add_child(object)
+		return
+	if currentFloor < 10 and currentFloor > 7:
+		$Stage5.add_child(object)
+		return
+	if currentFloor < 12 and currentFloor > 9:
+		$Stage6.add_child(object)
+		return

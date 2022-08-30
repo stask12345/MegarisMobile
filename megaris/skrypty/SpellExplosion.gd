@@ -3,13 +3,14 @@ extends item
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 onready var player = get_node("/root/MainScene/Player")
 onready var bold = preload("res://instances/Bullets/spellExplosionBullet.tscn")
-var damage = 75
+var damage = 60
 
 func _ready():
 	title = "Explosion I"
 	usable = true
 	price = 75
 	description = "Fires a powerful exposion. \nDamage: " + String(damage)
+	costOfSkill = 100
 
 func use():
 	var b = bold.instance()

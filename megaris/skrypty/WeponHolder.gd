@@ -19,7 +19,6 @@ func get_wepon_in_right_place():
 	if "Bow" in weponToEquip.name: playerHand = get_parent().get_parent().get_parent().get_node("Player/WeponHolder/bowRotation/spriteOfWepon")
 	if "Spear" in weponToEquip.name or "Wand" in weponToEquip.name: 
 		playerHand = get_node("/root/MainScene/Player/WeponHolder/spearRotation/spriteOfWepon")
-		print("tak tak tak")
 	return playerHand
 
 func unEquipGraphic():

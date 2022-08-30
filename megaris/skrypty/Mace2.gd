@@ -6,6 +6,7 @@ func _ready():
 	fireSpeed = 0.5
 	bulletRange = 0.05
 	typeOfBullet = "slash"
-	title = "Mace"
-	price = 150
+	title = "Hunter Mace"
+	price = 75
 	rangeDestroy = false
+	tier = 3

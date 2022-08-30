@@ -3,6 +3,7 @@ extends skill
 func _ready():
 	if bought: applyEffect()
 	description = "Water Blessing: \nMore Fountains"
+	costOfSkill = 75
 
 func applyEffect():
 	playerStats.spawnMoreFountains += 1

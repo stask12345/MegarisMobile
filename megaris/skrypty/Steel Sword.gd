@@ -2,10 +2,12 @@ extends "res://skrypty/wepon.gd"
 
 func _ready():
 	minDamage = 20
-	maxDamage = 30
+	maxDamage = 25
 	fireSpeed = 0.7
-	bulletRange = 0.3
+	bulletRange = 0.25
 	typeOfBullet = "sword"
-	title = "Steel Sword"
+	title = "Basic Sword"
 	description = ""
-	price = 100
+	price = 50
+	costOfSkill = 20
+	tier = 2

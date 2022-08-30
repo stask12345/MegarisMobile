@@ -12,10 +12,10 @@ var waitingForShooting = false
 var shooting = false
 
 func _ready():
-	minCoins = 2
+	minCoins = 3
 	maxCoins = 5
-	attackStrenght = 25 
-	hp = 75
+	attackStrenght = 40
+	hp = 90
 	monsterName = "Skeleton Swordman"
 	isSkeletonMonster = true
 
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if motion.y >= maxGravity:
 		motion.y = maxGravity
 	
-	if goingToPlayer: #kierunek w którym idzie wróg
+	if goingToPlayer or aggro: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 5:
 			goingRight = false
 			$Monster1.scale.x = 1
@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if jump == 0:
 		motion.x = motion.x / 1.1
 	
-		if motion.x == 0 and !shooting: $AnimationPlayer.play("idle")
+		if motion.x == 0 and !shooting and !destroyed: $AnimationPlayer.play("idle")
 	
 	if !aggro and !destroyed and !shooting:
 		$AnimationPlayer.play("idle")

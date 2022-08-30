@@ -7,14 +7,15 @@ var swordTexture3 = preload("res://grafika/itemy/sword4_3.png")
 var animating = false
 
 func _ready():
-	minDamage = 30
-	maxDamage = 45
-	fireSpeed = 0.6
-	bulletRange = 0.5
+	minDamage = 40
+	maxDamage = 70
+	fireSpeed = 0.9
+	bulletRange = 0.4
 	typeOfBullet = "sword demonic"
-	title = "Gold Sword"
+	title = "Demonic Sword"
 	description = ""
-	price = 150
+	price = 200
+	tier = 5
 
 func _process(delta):
 	if !animating and get_parent().name == "WeponHolder":

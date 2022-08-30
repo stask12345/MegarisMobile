@@ -13,8 +13,8 @@ func _ready():
 	knockbackStrength = 1200
 	attackStrenght = 20 #statystyki zmienne
 	hp = 30
-	minCoins = 2
-	maxCoins = 3
+	minCoins = 0
+	maxCoins = 2
 	monsterName = "Normal Bat"
 
 func _physics_process(delta):

@@ -8,10 +8,10 @@ func _init(): #by przyznawało wartość zmiennej przed ładowaniem w scene #wym
 	flying = true
 
 func _ready():
-	minCoins = 5
-	maxCoins = 6
+	minCoins = 1
+	maxCoins = 3
 	attackStrenght = 30 #statystyki zmienne
-	hp = 65
+	hp = 50
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8
 	knockbackStrength = 1200

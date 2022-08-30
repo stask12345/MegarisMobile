@@ -4,7 +4,7 @@ func _ready():
 	bought = true #tylko dla skilli w training grounds
 	if bought: applyEffect()
 	description = "Body Training I: \n+10 Max Hp"
-	costOfSkill = 1
+	costOfSkill = 25
 	trainingGrounds = true
 
 func applyEffect():

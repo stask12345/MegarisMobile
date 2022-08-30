@@ -12,31 +12,33 @@ var itemTableList = []
 var avilableNumbers #numery wszystkich platform
 var numberOfPlatform = 1
 
-var sword1 = preload("res://instances/Wepons/Sword1.tscn")
-var sword2 = preload("res://instances/Wepons/Sword2.tscn")
-var sword3 = preload("res://instances/Wepons/Sword3.tscn")
-var spear1 = preload("res://instances/Wepons/Spear1.tscn")
-var spear2 = preload("res://instances/Wepons/Spear2.tscn")
-var mace1 = preload("res://instances/Wepons/Mace0.tscn")
-var mace2 = preload("res://instances/Wepons/Mace1.tscn")
-var mace3 = preload("res://instances/Wepons/Mace2.tscn")
-var bow1 = preload("res://instances/Wepons/Bow1.tscn")
-var bow2 = preload("res://instances/Wepons/Bow2.tscn")
-var wand1 = preload("res://instances/Wepons/Wand1.tscn")
-var wand2 = preload("res://instances/Wepons/Wand2.tscn")
+var sword4 = preload("res://instances/Wepons/Sword4.tscn")
+var sword5 = preload("res://instances/Wepons/Sword5.tscn")
+var spear3 = preload("res://instances/Wepons/Spear3.tscn")
+var spear4 = preload("res://instances/Wepons/Spear4.tscn")
+var mace3 = preload("res://instances/Wepons/Mace3.tscn")
+var mace4 = preload("res://instances/Wepons/Mace4.tscn")
+var bow3 = preload("res://instances/Wepons/Bow3.tscn")
+var bow4 = preload("res://instances/Wepons/Bow4.tscn")
+var wand3 = preload("res://instances/Wepons/Wand3.tscn")
+var wand4 = preload("res://instances/Wepons/Wand4.tscn")
 
-var healingPotion1 = preload("res://instances/Items/PotionHealing1.tscn")
-var healingPotion2 = preload("res://instances/Items/PotionHealing2.tscn")
 var healingPotion3 = preload("res://instances/Items/PotionHealing3.tscn")
-var healthPotion = preload("res://instances/Items/PotionHealth1.tscn")
-var invisibilityPotion = preload("res://instances/Items/PotionInvisibility1.tscn")
-var StrengthPotion = preload("res://instances/Items/PotionStrength1.tscn")
+var healingPotion4 = preload("res://instances/Items/PotionHealing4.tscn")
+var healthPotion = preload("res://instances/Items/PotionHealth2.tscn")
+var invisibilityPotion = preload("res://instances/Items/PotionInvisibility2.tscn")
+var StrengthPotion = preload("res://instances/Items/PotionStrength2.tscn")
 
-var firstTierPotion = []
-var secondTierPotion = []
-var firstTierWeponList = []
-var secondTierWeponList = []
-var SpecialTierList = []
+var scroolFireBall = preload("res://instances/Items/SpellFireBall1.tscn")
+var scroolExplosion = preload("res://instances/Items/SpellExplosion1.tscn")
+var specialSword = preload("res://instances/Wepons/SpecialSword2.tscn")
+var specialWand = preload("res://instances/Wepons/SpecialWand4.tscn")
+
+var firstTierPotion = [healingPotion3,healingPotion3,healthPotion,invisibilityPotion,scroolFireBall]
+var secondTierPotion = [healingPotion4,healingPotion4,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion]
+var firstTierWeponList = [sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,specialWand]
+var secondTierWeponList = [sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,specialSword]
+var SpecialTierList = [specialWand,specialSword,scroolExplosion,wand4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -93,9 +95,9 @@ func generateWorld():
 			instanitedG.set_global_position(Vector2(width,height)) #ustawianie platform
 			width += 250
 			add_child(instanitedG)
-#			checkAndGenerateElements(instanitedG)
+			checkAndGenerateElements(instanitedG)
 			generatePlatformDecoration(instanitedG, randomedPassages)
-#			generateMonsters(instanitedG,f+1)
+			generateMonsters(instanitedG,f+1)
 			generatePlatformDecorationBars(instanitedG, randomedPassages, nextRandomedPassages, n, f+1)
 			numberOfPlatform += 1
 		height -= 320 #ustawianie pozycji dla kolejnego rzędu
@@ -176,31 +178,23 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 			add_child(decoration)
 
 func generateMonsters(platform,numberOfCurrentFloor):
-	var slime0 = preload("res://instances/Monsters/Monster-Slime.tscn")
-	var slime1 = preload("res://instances/Monsters/Monster-OrangeSlime.tscn")
-	var slime2 = preload("res://instances/Monsters/Monster-RedSlime.tscn")
-	var slime3 = preload("res://instances/Monsters/Monster-BlueSlime.tscn")
-	var bat0 = preload("res://instances/Monsters/Monster-Bat3.tscn")
-	var bat1 = preload("res://instances/Monsters/Monster-Bat.tscn")
-	var bat2 = preload("res://instances/Monsters/Monster-Bat2.tscn")
-	var spider = preload("res://instances/Monsters/Monster-Spider.tscn")
-	var turtle = preload("res://instances/Monsters/Monster-Turtle.tscn")
-	var turtle1 = preload("res://instances/Monsters/Monster-BigTurtle.tscn")
+	var slime4 = preload("res://instances/Monsters/Monster-PurpleSlime.tscn")
+	var bat3 = preload("res://instances/Monsters/Monster-Bat4.tscn")
+	var ghost = preload("res://instances/Monsters/Monster-Ghost.tscn")
+	var skeleton = preload("res://instances/Monsters/Monster-Skeleton.tscn")
+	var mage = preload("res://instances/Monsters/Monster-Mage.tscn")
+	var iceGolem = preload("res://instances/Monsters/Monster-IceGolem.tscn")
+	var mimic = preload("res://instances/Monsters/Monster-Chest.tscn")
 	
-	var monsterList0 = [slime0,slime0,bat0]
-	var monsterList1 = [slime1,slime1,slime1,bat1,bat1,slime3,turtle]
-	var monsterList2 = [slime2,slime2,slime2,bat2,bat2,spider,turtle1,slime3]
+	var monsterList1 = [slime4,slime4,bat3,bat3,ghost,ghost,ghost,skeleton,skeleton,skeleton,skeleton,mage,mage,iceGolem,iceGolem,mimic]
+	var monsterList2 = [slime4]
 	
 	var numberOfMonster = randi()%3# od 0 do 2 potworków na platformę # tu można to zmienić
 	for i in numberOfMonster:
 		var generatedMonster
-		var list0 = monsterList0
 		var list1 = monsterList1
 		var list2 = monsterList2
-		if numberOfCurrentFloor <= 2:
-			generatedMonster = list0[randi()%list0.size()].instance()
-			list0.erase(generatedMonster)
-		if  numberOfCurrentFloor > 2 and numberOfCurrentFloor <= 7: 
+		if  numberOfCurrentFloor <= 7: 
 			generatedMonster = list1[randi()%list1.size()].instance()
 			list1.erase(generatedMonster)
 		if numberOfCurrentFloor > 7 and numberOfCurrentFloor <= 12: 
@@ -260,7 +254,7 @@ func generateAnvil(platform):
 	add_child(anvil)
 
 func generateTrap(platform):
-	var trap = preload("res://instances/Elements/Trap1.tscn").instance()
+	var trap = preload("res://instances/Elements/Trap2.tscn").instance()
 	var positionOfTrap = generatePositionHelper(platform, trap)
 	trap.set_global_position(positionOfTrap)
 	add_child(trap)

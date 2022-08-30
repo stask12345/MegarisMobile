@@ -2,14 +2,15 @@ extends wepon
 
 
 func _ready():
-	minDamage = 50
+	minDamage = 60
 	maxDamage = 80
-	fireSpeed = 2
-	bulletRange = 1.5
+	fireSpeed = 1.2
+	bulletRange = 1
 	typeOfBullet = "magic4"
 	title = "Laser Wand"
 	description = ""
-	price = 120
+	price = 260
+	tier = 6
 
 func _process(delta):
 	if get_parent().name == "WeponHolder":

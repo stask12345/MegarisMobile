@@ -8,8 +8,9 @@ var healPower = 75
 func _ready():
 	title = "Healing III"
 	usable = true
-	price = 100
+	price = 75
 	description = "Big healing potion\nHeals: " + String(healPower) + " HP"
+	tier = 4
 
 func use():
 	playerHealth.hp += healPower

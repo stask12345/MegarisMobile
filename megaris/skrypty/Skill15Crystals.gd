@@ -3,7 +3,8 @@ extends skill
 func _ready():
 	lesserSkill = get_node("%Skill14Lesser")
 	if bought: applyEffect()
-	description = "Crystal Investor II: \n 20% More Crystals"
+	description = "Crystal Investor+: \n 20% More Crystals"
+	costOfSkill = 70
 
 func applyEffect():
 	playerStats.crystalBonus += 1

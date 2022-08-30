@@ -3,6 +3,7 @@ extends skill
 func _ready():
 	if bought: applyEffect()
 	description = "Defense Technique: \n+2 Defence"
+	costOfSkill = 40
 
 func applyEffect():
 	playerStats.armorIncrease += 2

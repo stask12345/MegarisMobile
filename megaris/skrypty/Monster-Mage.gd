@@ -9,10 +9,10 @@ var directionOfBlocade = false
 var shooting = false
 
 func _ready():
-	minCoins = 6
-	maxCoins = 10
-	attackStrenght = 40 
-	hp = 110
+	minCoins = 3
+	maxCoins = 6
+	attackStrenght = 30 
+	hp = 100
 	monsterName = "Skeleton Mage"
 	isSkeletonMonster = true
 
@@ -95,4 +95,6 @@ func shootBullets():
 	if monsterType == 2: summonedMonster = skeleton.instance()
 	if scale.x == -1: summonedMonster.global_position = Vector2(position.x - 60, global_position.y)
 	else: summonedMonster.global_position = Vector2(position.x + 60, global_position.y)
+	summonedMonster.minCoins = 0
+	summonedMonster.maxCoins = 1
 	get_parent().add_child(summonedMonster)

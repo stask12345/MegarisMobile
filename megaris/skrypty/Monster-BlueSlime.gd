@@ -10,10 +10,10 @@ var attackBolt = preload("res://instances/Bullets/Sliding-monster-bullet.tscn")
 var smallBlueSlime = preload("res://instances/Monsters/Monster-SmallBlueSlime.tscn")
 
 func _ready():
-	minCoins = 4
-	maxCoins = 5
+	minCoins = 0
+	maxCoins = 3
 	attackStrenght = 30 #statystyki zmienne
-	hp = 65
+	hp = 60
 	gravity = 50
 	maxGravity = 660
 	monsterName = "Gigantic Slime"

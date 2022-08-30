@@ -80,7 +80,7 @@ func showCostLabel():
 		$Label.text = String(skillInScript.costOfSkill)
 		$Label.visible = true
 	else: 
-		$Label.visible = false
+		if !skillInScript.rewardSkill: $Label.visible = false
 
 func playEffectAnimation():
 	$ItemTableAnimation/AnimationPlayer.play("idle")
