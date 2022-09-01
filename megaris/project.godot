@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://skrypty/skill.gd"
 }, {
 "base": "Sprite",
+"class": "trap",
+"language": "GDScript",
+"path": "res://skrypty/Trap1.gd"
+}, {
+"base": "Sprite",
 "class": "wepon",
 "language": "GDScript",
 "path": "res://skrypty/wepon.gd"
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "item": "",
 "monsterClass": "",
 "skill": "",
+"trap": "",
 "wepon": ""
 }
 

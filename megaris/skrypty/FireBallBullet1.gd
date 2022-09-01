@@ -30,7 +30,7 @@ func attackMonster(monster):
 		var attackdDamage = damage
 		attackdDamage = attackdDamage * playerStats.strengthIncrease
 		monster.hp -= attackdDamage
-		effectGenerator.generateDamageLabel(global_position,attackdDamage)
+		effectGenerator.generateDamageLabel(monster.global_position,attackdDamage)
 		monster.get_knock(monster.goingRight)
 		var monsterAlreadyTriggered = monster.goingToPlayer;
 		monster.triggerMonster()

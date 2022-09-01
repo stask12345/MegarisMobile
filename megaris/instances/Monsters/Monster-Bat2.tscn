@@ -129,5 +129,7 @@ shape = SubResource( 31 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="TimerS" type="Timer" parent="."]
+
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_TriggerArea_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="." method="_on_TriggerArea_body_exited"]

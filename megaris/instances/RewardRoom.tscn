@@ -85,8 +85,8 @@ tracks/1/keys = {
 
 [node name="White" type="Sprite" parent="."]
 self_modulate = Color( 0, 0.12549, 0.27451, 1 )
-position = Vector2( -28.5, 2513 )
-scale = Vector2( 1619, 440 )
+position = Vector2( -33.0001, 2513 )
+scale = Vector2( 2028, 440 )
 z_index = 1
 texture = ExtResource( 7 )
 
@@ -98,8 +98,8 @@ shape = SubResource( 85 )
 
 [node name="White2" type="Sprite" parent="."]
 self_modulate = Color( 0, 0.12549, 0.27451, 1 )
-position = Vector2( -32.5, 1985 )
-scale = Vector2( 1621, 720 )
+position = Vector2( -32.5001, 1985 )
+scale = Vector2( 2027, 720 )
 texture = ExtResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="White2"]
@@ -117,8 +117,8 @@ shape = SubResource( 87 )
 
 [node name="White3" type="Sprite" parent="."]
 self_modulate = Color( 0, 0.25098, 1, 1 )
-position = Vector2( -70.5, 2301.63 )
-scale = Vector2( 1543, 0.749661 )
+position = Vector2( -41.4999, 2300.88 )
+scale = Vector2( 2045, -0.749661 )
 z_index = 2
 texture = ExtResource( 7 )
 

@@ -18,7 +18,7 @@ func _ready():
 	minCoins = 100
 	maxCoins = 200
 	attackStrenght = 40 #statystyki zmienne
-	hp = 330
+	hp = 500
 	gravity = 50
 	maxGravity = 660
 	monsterName = "Slime King"

@@ -2562,7 +2562,7 @@ script = ExtResource( 146 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 light_mask = 3
-position = Vector2( -121, 905 )
+position = Vector2( -133, 903 )
 z_index = 10
 collision_layer = 512
 collision_mask = 513
@@ -5503,7 +5503,8 @@ texture = ExtResource( 11 )
 
 [node name="Elements" type="Node" parent="Terrain"]
 
-[node name="BossRoom" type="Node" parent="Terrain/Elements"]
+[node name="BossRoom" type="Node2D" parent="Terrain/Elements"]
+script = ExtResource( 105 )
 
 [node name="Monster-Slime" type="KinematicBody2D" parent="Terrain/Elements/BossRoom"]
 position = Vector2( 0, -3228 )
@@ -5664,6 +5665,10 @@ texture = ExtResource( 150 )
 [node name="MonsterSight2" type="Sprite" parent="Terrain/Elements/BossRoom"]
 position = Vector2( 813, -3040 )
 texture = ExtResource( 150 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Terrain/Elements/BossRoom"]
+position = Vector2( -10.5, -3256 )
+scale = Vector2( 191.45, 55.6 )
 
 [node name="GeneratedTerrain" type="Node" parent="."]
 script = ExtResource( 12 )

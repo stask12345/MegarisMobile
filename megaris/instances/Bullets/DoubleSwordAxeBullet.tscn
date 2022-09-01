@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://skrypty/sworldBullet.gd" type="Script" id=1]
 [ext_resource path="res://grafika/pocisk.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://grafika/animation/bulletDestruction3.png" type="Texture" id=5]
 [ext_resource path="res://skrypty/slashBullet.gd" type="Script" id=6]
 [ext_resource path="res://grafika/animation/slash_animation.png" type="Texture" id=7]
+[ext_resource path="res://skrypty/DoubleBulletContainer.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17, 61.5 )
@@ -112,6 +113,7 @@ tracks/1/keys = {
 [node name="DoubleSwordAxeBullet" type="Node2D"]
 position = Vector2( 0, 2 )
 z_index = 2
+script = ExtResource( 8 )
 
 [node name="slashBullet" type="KinematicBody2D" parent="."]
 position = Vector2( 30, -2 )

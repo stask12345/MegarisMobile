@@ -4,10 +4,11 @@
 [ext_resource path="res://grafika/worldElements/lamp2.png" type="Texture" id=2]
 
 [node name="Lamp2" type="Sprite"]
-position = Vector2( -755, 724 )
+position = Vector2( 1, 0 )
 texture = ExtResource( 2 )
 hframes = 2
 
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, 27 )
+[node name="Joystick1" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.890196, 0, 0.0980392 )
+position = Vector2( 0, 28 )
 texture = ExtResource( 1 )

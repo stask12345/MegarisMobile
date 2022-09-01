@@ -68,7 +68,8 @@ func afterHitFlaying():
 
 func stayInPlace():
 	stayInPlaceVar = true
-	yield(get_tree().create_timer(0.3), "timeout")
+	$TimerS.start(0.3)
+	yield($TimerS,"timeout")
 	stayInPlaceVar = false
 
 func destroyMonster():

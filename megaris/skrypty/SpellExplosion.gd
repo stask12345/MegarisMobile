@@ -3,7 +3,7 @@ extends item
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 onready var player = get_node("/root/MainScene/Player")
 onready var bold = preload("res://instances/Bullets/spellExplosionBullet.tscn")
-var damage = 60
+var damage = 80
 
 func _ready():
 	title = "Explosion I"

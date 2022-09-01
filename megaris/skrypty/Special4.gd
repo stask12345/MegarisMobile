@@ -10,6 +10,7 @@ func _ready():
 	title = "Summoner Wand"
 	description = ""
 	price = 80
+	costOfSkill = 75
 	tier = 3
 
 func _process(delta):

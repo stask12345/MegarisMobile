@@ -10,7 +10,7 @@ func _ready():
 	title = "Necromancer Wand"
 	description = ""
 	price = 175
-	costOfSkill = 30
+	costOfSkill = 55
 	tier = 5
 
 func _process(delta):

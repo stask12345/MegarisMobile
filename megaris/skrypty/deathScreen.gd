@@ -7,20 +7,25 @@ onready var system = get_node("/root/MainScene")
 
 func changeKillerMonster(monster):
 	if monsterKiller: monsterKiller.queue_free()
-	if monster is monsterClass: monsterKiller = monster.duplicate()
+	if monster is monsterClass or monster is trap: monsterKiller = monster.duplicate()
 	else: monsterKiller = monster.shootingMonster.duplicate()
 
 func showDeathScreen():
 	visible = true
 	var monster = monsterKiller
-	monster.position = Vector2(0,0)
-	monster.gravity = 0
-	monster.maxGravity = 0
-	monster.get_node("monsterBody").monitorable = false
-	monster.get_node("monsterBody").monitoring = false
-	monster.destroyed = true
-	monster.scale = Vector2(3,3)
-	if monster.get_node("Monster1").texture.get_height() >= 200: monster.scale = Vector2(1,1)
+	if monster is monsterClass:
+		monster.position = Vector2(0,0)
+		monster.gravity = 0
+		monster.maxGravity = 0
+		monster.get_node("monsterBody").monitorable = false
+		monster.get_node("monsterBody").monitoring = false
+		monster.destroyed = true
+		monster.scale = Vector2(3,3)
+		if monster.get_node("Monster1").texture.get_height() >= 200: monster.scale = Vector2(1,1)
+	if monster is trap:
+		monster.get_child(0).get_child(0).disabled = true
+		monster.scale = Vector2(3,3)
+		monster.position = Vector2(12,0)
 	$Monster.add_child(monster)
 	$MonsterName.text = monster.monsterName
 	$Reach.text += "\n" + String(abs(round((player.position.y - 805)/320))) + "th Floor"

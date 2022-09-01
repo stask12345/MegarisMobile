@@ -8,4 +8,5 @@ func _ready():
 	typeOfBullet = "slash and sword"
 	title = "Warrior Axe"
 	price = 125
+	costOfSkill = 40
 	tier = 4
