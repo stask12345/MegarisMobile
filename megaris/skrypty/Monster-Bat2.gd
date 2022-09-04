@@ -10,7 +10,7 @@ func _init(): #by przyznawało wartość zmiennej przed ładowaniem w scene #wym
 func _ready():
 	minCoins = 1
 	maxCoins = 3
-	attackStrenght = 30 #statystyki zmienne
+	attackStrenght = 25 #statystyki zmienne
 	hp = 50
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8

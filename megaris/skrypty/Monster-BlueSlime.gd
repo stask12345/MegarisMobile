@@ -12,7 +12,7 @@ var smallBlueSlime = preload("res://instances/Monsters/Monster-SmallBlueSlime.ts
 func _ready():
 	minCoins = 0
 	maxCoins = 3
-	attackStrenght = 30 #statystyki zmienne
+	attackStrenght = 25 #statystyki zmienne
 	hp = 60
 	gravity = 50
 	maxGravity = 660

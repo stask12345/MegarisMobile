@@ -1,9 +1,9 @@
 extends wepon
 
 func _ready():
-	minDamage = 30
-	maxDamage = 50
-	fireSpeed = 0.5
+	minDamage = 25
+	maxDamage = 45
+	fireSpeed = 0.65
 	bulletRange = 0.05
 	typeOfBullet = "slash"
 	title = "Hunter Mace"

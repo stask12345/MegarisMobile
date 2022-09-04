@@ -9,7 +9,7 @@ var shooting = false
 func _ready():
 	minCoins = 2
 	maxCoins = 5
-	attackStrenght = 35
+	attackStrenght = 25
 	hp = 80
 	monsterName = "Cave Spider"
 

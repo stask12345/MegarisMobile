@@ -41,8 +41,8 @@ Bronie:
 - luk2       25-40   100
 - luk3       35-50   160
 - luk4       45-80   240
-- maczuga1   20-40   50
-- maczuga2   30-50   75
+- maczuga1   15-35   50
+- maczuga2   25-45   75
 - mzczuga3   40-60   130
 - maczuga4   50-90  190
 - wlucznia1  15-25   60

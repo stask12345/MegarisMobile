@@ -19,7 +19,7 @@ func _input(event):
 		var event_world_position = get_canvas_transform().xform_inv(event.position)
 		var distance_from_center = (event_world_position - get_parent().global_position).length()
 		
-		if distance_from_center <= ((boundary * global_scale.x) + 135) or event.get_index() == drag_state:
+		if distance_from_center <= ((boundary * global_scale.x) + 180) or event.get_index() == drag_state:
 			set_global_position(event_world_position - radious * global_scale)
 			set_global_position(event_world_position - radious * global_scale)
 			if getButtonPosition().length() > boundary:

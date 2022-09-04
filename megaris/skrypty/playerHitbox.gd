@@ -12,7 +12,7 @@ func _on_Area2D_area_entered(area):
 		player.hpDelay = true
 		player.hpDelayTimer()
 		if (!monster is monsterClass or (monster is monsterClass and !monster.destroyed)): hpScript.dealDamagePlayer(monster.attackStrenght)
-		player.get_knock(monster.goingRight)
+		if !monster.destroyed: player.get_knock(monster.goingRight)
 		deathScreen.changeKillerMonster(monster)
 		exitShopAndAnvil()
 		if monster is monsterClass and monster.flying: #zatrzymywanie latających po ataku

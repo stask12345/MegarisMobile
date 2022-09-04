@@ -11,7 +11,7 @@ func _ready():
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8
 	knockbackStrength = 1200
-	attackStrenght = 20 #statystyki zmienne
+	attackStrenght = 15 #statystyki zmienne
 	hp = 30
 	minCoins = 0
 	maxCoins = 2

@@ -3,7 +3,7 @@ extends wepon
 
 func _ready():
 	minDamage = 2
-	maxDamage = 3
+	maxDamage = 5
 	fireSpeed = 0.2
 	bulletRange = 0.4
 	typeOfBullet = "magic"

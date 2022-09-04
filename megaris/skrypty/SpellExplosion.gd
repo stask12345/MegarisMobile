@@ -10,7 +10,7 @@ func _ready():
 	usable = true
 	price = 75
 	description = "Fires a powerful exposion. \nDamage: " + String(damage)
-	costOfSkill = 100
+	costOfSkill = 15
 
 func use():
 	var b = bold.instance()

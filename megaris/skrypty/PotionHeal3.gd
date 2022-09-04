@@ -9,6 +9,7 @@ func _ready():
 	title = "Healing III"
 	usable = true
 	price = 75
+	costOfSkill = 15
 	description = "Big healing potion\nHeals: " + String(healPower) + " HP"
 	tier = 4
 

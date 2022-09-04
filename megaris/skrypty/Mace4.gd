@@ -5,7 +5,7 @@ func _ready():
 	maxDamage = 90
 	fireSpeed = 0.7
 	bulletRange = 0.05
-	typeOfBullet = "slash"
+	typeOfBullet = "slash big"
 	title = "Emperor's Mace"
 	price = 190
 	rangeDestroy = false

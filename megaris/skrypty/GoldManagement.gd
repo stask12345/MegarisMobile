@@ -83,6 +83,7 @@ func save():
 	var node_data = {
 		"crystals": crystals,
 		"slimesSlayed": slimesSlayed,
+		"skeletonsSlayed": skeletonsSlayed,
 		"slayedFirstBoss": slayedFirstBoss,
 		"slayedSecondBoss": slayedSecondBoss,
 		"maxHpAcquired": maxHpAcquired,

@@ -1,7 +1,7 @@
 extends TouchScreenButton
 
 var radious = Vector2(26,26)
-var boundary = 65
+var boundary = 65 #65
 var drag_state = -1 #stan dragu -1 bez inputu, inne wartości to poszczególne klikniecia
 var clickGlobalPosition = Vector2(0,0)
 onready var joystickCenter = get_parent().get_node("CenterPoiter")
@@ -20,7 +20,7 @@ func _input(event):
 		var event_world_position = get_canvas_transform().xform_inv(event.position)
 		var distance_from_center = (event_world_position - get_parent().global_position).length()
 		
-		if distance_from_center <= ((boundary * global_scale.x) + 135) or event.get_index() == drag_state:
+		if distance_from_center <= ((boundary * global_scale.x) + 180) or event.get_index() == drag_state:
 			clickGlobalPosition = event_world_position
 			set_global_position(event_world_position - radious * global_scale)
 			set_global_position(event_world_position - radious * global_scale)

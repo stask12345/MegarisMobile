@@ -49,9 +49,9 @@ func calculateQuest():
 	var current = 0
 	
 	if questProgress == 0:
-		$QuestName.text = "Slay 200 Slimes!"
+		$QuestName.text = "Slay 250 Slimes!"
 		current = playerStats.slimesSlayed
-		goal = 200
+		goal = 250
 	if questProgress == 1:
 		$QuestName.text = "Possess 300 Gold Coins!"
 		current = playerStats.maxGoldAcquired
@@ -65,9 +65,9 @@ func calculateQuest():
 		current = playerStats.skeletonsSlayed
 		goal = 75
 	if questProgress == 4:
-		$QuestName.text = "Obtain 160 Max Hp!"
+		$QuestName.text = "Obtain 200 Max Hp!"
 		current = playerStats.maxHpAcquired
-		goal = 160
+		goal = 200
 	if questProgress == 5:
 		$QuestName.text = "Defeat The Final Boss!"
 		current = playerStats.slayedSecondBoss
@@ -84,6 +84,7 @@ func calculateQuest():
 	var hpPrecent : float = current / goal
 	print(hpPrecent)
 	$ProgressBar.scale.x = fullLength * hpPrecent
+	if $ProgressBar.scale.x > fullLength: $ProgressBar.scale.x = fullLength
 	print($ProgressBar.scale.x)
 	$QuestBar/Title3.text = String(current) + "/" + String(goal)
 	
@@ -95,6 +96,11 @@ func calculateQuest():
 		$Claim.visible = true
 		$Claim/AnimationPlayer.play("idle")
 		canProgress = true
+	else:
+		$Reward.visible = true
+		$Claim.visible = false
+		$Claim/AnimationPlayer.stop()
+		canProgress = false
 
 
 
@@ -104,7 +110,6 @@ func _on_TouchScreenButton_released():
 		if questProgress < rewards.size(): playerStats.crystals += rewards[questProgress]
 		questProgress += 1
 		calculateQuest()
-		canProgress = false
 
 func save():
 	var node_data = {

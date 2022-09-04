@@ -9,5 +9,5 @@ func _ready():
 	title = "War Hammer"
 	price = 300
 	rangeDestroy = false
-	costOfSkill = 30
+	costOfSkill = 60
 	tier = 6
