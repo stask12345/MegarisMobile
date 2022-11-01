@@ -3,14 +3,15 @@ onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 
 func _ready():
 	minDamage = 30
-	maxDamage = 40
-	fireSpeed = 1.2
+	maxDamage = 45
+	fireSpeed = 0.9
 	bulletRange = 0.25
 	typeOfBullet = "pircing double"
 	textureChangeAfterShot = true
 	title = "Royal Trident"
 	price = 145
 	tier = 4
+	costOfSkill = 35
 
 func _process(delta):
 	if get_parent().name == "WeponHolder":

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hq-explosion-6288.mp3-1a451713000a64958da4e923faad6af6.mp3str"
+
+[deps]
+
+source_file="res://muzyka/hq-explosion-6288.mp3"
+dest_files=[ "res://.import/hq-explosion-6288.mp3-1a451713000a64958da4e923faad6af6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

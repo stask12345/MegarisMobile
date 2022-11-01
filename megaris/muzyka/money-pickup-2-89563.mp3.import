@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/money-pickup-2-89563.mp3-24c0c25b7ea6491eb9290adc0aeb6bab.mp3str"
+
+[deps]
+
+source_file="res://muzyka/money-pickup-2-89563.mp3"
+dest_files=[ "res://.import/money-pickup-2-89563.mp3-24c0c25b7ea6491eb9290adc0aeb6bab.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

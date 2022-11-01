@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 onready var money = get_node("/root/MainScene/CanvasLayer/Control3")
+var destroyed = false
 
 func _ready():
 	pass
@@ -16,7 +17,9 @@ func playAnimation():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and !destroyed:
+		destroyed = true
+		get_node("/root/MainScene/MusicPlayer").playCoin()
 		money.gold += 1
 		money.totalCollected += 1
 		if money.totalCollected > money.maxGoldAcquired: money.maxGoldAcquired = money.totalCollected

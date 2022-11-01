@@ -16,4 +16,5 @@ func _ready():
 func use():
 	playerStats.make_invisible(invisibleTime)
 	player.changeColor(Color.blue,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

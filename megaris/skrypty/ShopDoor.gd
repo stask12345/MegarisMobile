@@ -38,3 +38,21 @@ func _on_Area2D_body_exited(body):
 		enterButton.visible = false
 		enterButton.get_child(0).stop()
 		shopMenu.visible = false
+
+func getItem1():
+	if $ItemSlot1.get_child_count() > 0:
+		return $ItemSlot1.get_child(0).filename
+	else:
+		return null
+
+func getItem2():
+	if $ItemSlot2.get_child_count() > 0:
+		return $ItemSlot2.get_child(0).filename
+	else:
+		return null
+
+func getItem3():
+	if $ItemSlot3.get_child_count() > 0:
+		return $ItemSlot3.get_child(0).filename
+	else:
+		return null

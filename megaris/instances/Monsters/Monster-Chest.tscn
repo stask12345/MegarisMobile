@@ -78,8 +78,8 @@ extents = Vector2( 28, 19 )
 
 [node name="Monster-Chest" type="KinematicBody2D"]
 position = Vector2( 3, -11 )
-z_index = 1
-collision_layer = 2
+z_index = 2
+collision_layer = 0
 script = ExtResource( 1 )
 
 [node name="Monster1" type="Sprite" parent="."]
@@ -108,6 +108,7 @@ position = Vector2( 1.5, -4 )
 shape = SubResource( 13 )
 
 [node name="monsterBody" type="Area2D" parent="."]
+collision_layer = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -115,7 +116,6 @@ position = Vector2( 0, 11 )
 shape = SubResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
 

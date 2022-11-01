@@ -15,4 +15,5 @@ func _ready():
 func use():
 	playerStats.make_stronger(strongerTime)
 	player.changeColor(Color.red,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

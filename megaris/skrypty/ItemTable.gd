@@ -12,8 +12,7 @@ var target1 = Vector2(0,0)
 var movingUp = true
 
 func _ready():
-	itemInScript = get_child(0).get_child(0)
-	print(itemInScript.name)
+	if $KinematicBody2D2.get_child_count() > 0: itemInScript = get_child(0).get_child(0)
 	target = Vector2(itemBody.position.x,maxHeight)
 	target1 = Vector2(itemBody.position.x,minHeight)
 
@@ -49,3 +48,9 @@ func _on_Area2D_body_exited(body):
 		animationPlayer.stop()
 		pickUpButton.visible = false
 		pickUpButton.tableToPickUpFrom = null
+
+func getItem():
+	if $KinematicBody2D2.get_child_count() > 0:
+		return $KinematicBody2D2.get_child(0).filename
+	else: 
+		return null

@@ -22,6 +22,7 @@ func _ready():
 func endFall():
 	get_node("/root/MainScene/Player").falling = false
 	changeColor = true
+	get_node("/root/MainScene/MusicPlayer").playThump()
 	get_node("/root/MainScene/Player/AnimationPlayerJumpEffect").play("jumpEffect")
 	get_node("/root/MainScene/CanvasLayer/Control3/Hp").hp -= 30
 	get_node("/root/MainScene/CanvasLayer/Control/Joystick/TouchScreenButton").lockJoyStick = false

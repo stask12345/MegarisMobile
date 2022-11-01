@@ -12,9 +12,7 @@ func applyEffect():
 	playerStats.maxDamageIncrease = 1.2
 
 func buy():
-	if playerStats.crystals >= costOfSkill:
-		playerStats.crystals -= costOfSkill
-		applyEffect()
-		get_node("/root/MainScene/Floor/TrainingCamp/Market").levelOfWeponSkill += 1
-		get_node("/root/MainScene/Floor/TrainingCamp/Market").placeWeponSkills()
-		queue_free()
+	applyEffect()
+	get_node("/root/MainScene/Floor/TrainingCamp/Market").levelOfWeponSkill += 1
+	get_node("/root/MainScene/Floor/TrainingCamp/Market").placeWeponSkills()
+	queue_free()

@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player" and itemBody.get_child_count() > 0:
-		if skillInScript is skill and skillInScript.rewardSkill:
+		if skillInScript and skillInScript is skill and skillInScript.rewardSkill:
 			pickUpButton.get_child(2).text = skillInScript.description
 			pickUpButton.visible = true
 			pickUpButton.itemToPick = skillInScript
@@ -49,7 +49,7 @@ func _on_Area2D_body_entered(body):
 			var animationPlayer = pickUpButton.get_child(0)
 			animationPlayer.play("pick_up_sight_animation")
 		
-		if (skillInScript is skill and !skillInScript.rewardSkill) or skillInScript is wepon or skillInScript is item:
+		if (skillInScript and skillInScript is skill and !skillInScript.rewardSkill) or skillInScript is wepon or skillInScript is item:
 				buyButton.objectToBuy = skillInScript
 				buyButton.tableToPickUpFrom = self
 				if skillInScript is skill: buyButton.get_child(2).text = skillInScript.description

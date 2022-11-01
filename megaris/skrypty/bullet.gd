@@ -41,8 +41,8 @@ func timerToDestroy():
 func destroyAfterAnimation(): #wywolywane przez animation pleyera
 	queue_free()
 
-func attackMonster(monster):
-	if !monster.destroyed:
+func attackMonster(monster,labelOnMonster = false):
+	if !monster.destroyed and !monster.indestructable:
 		monster.hpDelay = true
 		monster.hpDelayTimer()
 		var damage
@@ -54,7 +54,8 @@ func attackMonster(monster):
 		if monster.isSlimeMonster == true: damage = damage * playerStats.slimeAttackBonus
 		damage = round(damage)
 		monster.hp -= damage
-		effectGenerator.generateDamageLabel(global_position,damage)
+		if !labelOnMonster: effectGenerator.generateDamageLabel(global_position,damage)
+		else: effectGenerator.generateDamageLabel(monster.global_position,damage)
 		monster.get_knock(monster.goingRight)
 		var monsterAlreadyTriggered = monster.goingToPlayer;
 		monster.triggerMonster()

@@ -18,4 +18,5 @@ func use():
 	b.scale.x = player.get_node("Player").scale.x
 	b.global_position = player.global_position
 	get_node("/root/MainScene").add_child(b)
+	get_node("/root/MainScene/MusicPlayer").playExpolosion()
 	queue_free()

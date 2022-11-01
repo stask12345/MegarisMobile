@@ -12,12 +12,10 @@ func applyEffect():
 	playerStatsHp.hp += 40
 
 func buy():
-	if playerStats.crystals >= costOfSkill:
-		playerStats.crystals -= costOfSkill
-		get_node("/root/MainScene/Floor/TrainingCamp/Market").levelOfHpSkill += 1
-		get_node("/root/MainScene/Floor/TrainingCamp/Market").placeHpSkills()
-		
-		playerStatsHp.maxHp -= 40 #By przy kupowaniu kilku upg pod rząd hp się nie nawarstwiało
-		playerStatsHp.hp -= 40
-		
-		queue_free()
+	get_node("/root/MainScene/Floor/TrainingCamp/Market").levelOfHpSkill += 1
+	get_node("/root/MainScene/Floor/TrainingCamp/Market").placeHpSkills()
+	
+	playerStatsHp.maxHp -= 40 #By przy kupowaniu kilku upg pod rząd hp się nie nawarstwiało
+	playerStatsHp.hp -= 40
+	
+	queue_free()

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://grafika/terrain/box.png" type="Texture" id=1]
 
-[node name="Box" type="Sprite"]
+[node name="Box" type="Sprite" groups=["saveGroupTerrain"]]
 self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 position = Vector2( -535, 900 )
 z_index = -2

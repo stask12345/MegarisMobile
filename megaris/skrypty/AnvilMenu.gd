@@ -7,10 +7,8 @@ onready var player = get_node("/root/MainScene/Player/Player")
 var costOfWeponUpgrade = [20,30]
 var costOfArmorUpgrade = [50,100,200,300,450]
 
-func _ready():
-	pass
-
-func showArmory():
+func showArmory(resetAnimation = false):
+	if !resetAnimation: $AnimationPlayer.stop()
 	$WeponImage.texture = weponHolder.get_child(0).texture
 	if $WeponImage.texture.get_height() > 80:
 		$WeponImage.scale = Vector2(1.1,1.1)
@@ -50,8 +48,9 @@ func _on_BuyWeponButton_pressed():
 		playerStats.gold -= costOfWeponUpgrade[weponHolder.get_child(0).upgradeLevel]
 		weponHolder.get_child(0).upgradeLevel += 1
 		weponHolder.get_child(0).maxDamage += 5
+		$SoundEffectAnvil.play()
 		$AnimationPlayer.play("upgradeWepon")
-		showArmory()
+		showArmory(true)
 
 
 func _on_BuyArmorButton2_pressed():
@@ -59,5 +58,6 @@ func _on_BuyArmorButton2_pressed():
 		playerStats.gold -= costOfArmorUpgrade[playerStats.levelOfArmor]
 		playerStats.levelOfArmor += 1
 		playerStats.updatePlayerLook()
+		$SoundEffectAnvil.play()
 		$AnimationPlayer.play("armorAnimation")
-		showArmory()
+		showArmory(true)

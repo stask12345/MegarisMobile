@@ -20,7 +20,7 @@ func calculateSkillModifications():
 	if trainingCamp.levelOfWeponSkill != 0:
 		skillLabel.text = skillLabel.text + "- " + "Max Attack +" + String(trainingCamp.levelOfWeponSkill * 2)
 	if trainingCamp.levelOfHpSkill != 0:
-		skillLabel.text = skillLabel.text + "\n- " + "Max Hp +" + String(trainingCamp.levelOfHpSkill * 10)
+		skillLabel.text = skillLabel.text + "\n- " + "Max Hp +" + String(trainingCamp.levelOfHpSkill)
 	if playerStats.attackSpeedBonus != 1:
 		skillLabel.text = skillLabel.text + "\n- " + "Attack Speed +" + String((1 - playerStats.attackSpeedBonus)*100) + "%"
 	if playerStats.potionDuration != 0:
@@ -43,6 +43,8 @@ func calculateSkillModifications():
 		skillLabel.text = skillLabel.text + "\n- " + "Healing Potion II On Start"
 	if playerStats.levelOfItem == 2:
 		skillLabel.text = skillLabel.text + "\n- " + "Healing Potion III On Start"
+	if playerStats.addedCash != 0:
+		skillLabel.text = skillLabel.text + "\n- +" + String(playerStats.addedCash) + " Coins On Start"
 
 func calculateQuest():
 	var goal = 0
@@ -108,8 +110,11 @@ func _on_TouchScreenButton_released():
 	if canProgress:
 		$Claim/AnimationPlayer.stop()
 		if questProgress < rewards.size(): playerStats.crystals += rewards[questProgress]
+		get_node("ChestAnimationWhite/AnimationPlayer").play("idle")
+		get_node("ChestAnimationWhite1/AnimationPlayer").play("idle")
 		questProgress += 1
 		calculateQuest()
+		get_node("/root/MainScene").saveData()
 
 func save():
 	var node_data = {

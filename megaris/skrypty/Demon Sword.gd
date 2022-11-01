@@ -8,7 +8,7 @@ var animating = false
 
 func _ready():
 	minDamage = 40
-	maxDamage = 70
+	maxDamage = 60
 	fireSpeed = 0.9
 	bulletRange = 0.4
 	typeOfBullet = "sword demonic"

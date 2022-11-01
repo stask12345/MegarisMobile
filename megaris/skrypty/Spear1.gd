@@ -4,7 +4,7 @@ onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 func _ready():
 	minDamage = 15
 	maxDamage = 25
-	fireSpeed = 1
+	fireSpeed = 0.8
 	bulletRange = 0.25
 	typeOfBullet = "pircing"
 	textureChangeAfterShot = true

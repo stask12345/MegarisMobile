@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wooden-chest-being-picked-up-from-soft-surface-94389-[AudioTrimmer.com].mp3-f109a3ae3268af50707af345639b8881.mp3str"
+
+[deps]
+
+source_file="res://muzyka/wooden-chest-being-picked-up-from-soft-surface-94389-[AudioTrimmer.com].mp3"
+dest_files=[ "res://.import/wooden-chest-being-picked-up-from-soft-surface-94389-[AudioTrimmer.com].mp3-f109a3ae3268af50707af345639b8881.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

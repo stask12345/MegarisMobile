@@ -92,7 +92,9 @@ func _on_BuyItem1Button_pressed():
 		
 		var price = item1.price
 		eq_scripts.pickUpItem(item1,$ShopSlot1,null)
-		if $ShopSlot1.get_child_count() == 0: playerStats.gold -= price
+		if $ShopSlot1.get_child_count() == 0: 
+			playerStats.gold -= price
+			$SoundEffectShop.play()
 		showShop()
 
 
@@ -104,7 +106,9 @@ func _on_BuyItem2Button_pressed():
 		
 		var price = item2.price
 		eq_scripts.pickUpItem(item2,$ShopSlot2,null)
-		if $ShopSlot2.get_child_count() == 0: playerStats.gold -= price
+		if $ShopSlot2.get_child_count() == 0: 
+			playerStats.gold -= price
+			$SoundEffectShop.play()
 		showShop()
 
 
@@ -116,5 +120,7 @@ func _on_BuyItem3Button_pressed():
 		
 		var price = item3.price
 		eq_scripts.pickUpItem(item3,$ShopSlot3,null)
-		if $ShopSlot3.get_child_count() == 0: playerStats.gold -= price
+		if $ShopSlot3.get_child_count() == 0: 
+			playerStats.gold -= price
+			$SoundEffectShop.play()
 		showShop()

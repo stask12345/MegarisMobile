@@ -8,7 +8,7 @@ onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 func _ready():
 	minDamage = 25
 	maxDamage = 40
-	fireSpeed = 1.2
+	fireSpeed = 0.9
 	bulletRange = 2
 	typeOfBullet = "arrow"
 	textureChangeAfterShot = true

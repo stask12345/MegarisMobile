@@ -8,6 +8,8 @@ func _ready():
 	description = "Super Vitality: \n+50 Max Health "
 
 func applyEffect():
+	effectGenerator.duringRewards = false
+	effectGenerator.duringCastle = true
 	playerStatsHp.maxHp += 50
 	playerStatsHp.hp += 50
 

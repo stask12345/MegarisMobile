@@ -10,6 +10,7 @@ extents = Vector2( 34, 37 )
 [node name="Anvil" type="Sprite"]
 self_modulate = Color( 1.2, 1.2, 1.2, 1 )
 position = Vector2( -1789, 935 )
+z_index = 1
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 

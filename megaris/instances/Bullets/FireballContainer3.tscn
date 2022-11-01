@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://instances/Bullets/Monster-bullet-meteor.tscn" type="PackedScene" id=1]
+
+[node name="FireballContainer3" type="Node2D"]
+
+[node name="Monster-bullet-meteor" parent="." instance=ExtResource( 1 )]
+rotation = 0.0
+
+[node name="Monster-bullet-meteor2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -30 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -60 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -90 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -120 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor11" parent="." instance=ExtResource( 1 )]
+position = Vector2( -600, 0 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor12" parent="." instance=ExtResource( 1 )]
+position = Vector2( -600, -30 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor13" parent="." instance=ExtResource( 1 )]
+position = Vector2( -600, -60 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor14" parent="." instance=ExtResource( 1 )]
+position = Vector2( -600, -90 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor15" parent="." instance=ExtResource( 1 )]
+position = Vector2( -600, -120 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor6" parent="." instance=ExtResource( 1 )]
+position = Vector2( -315, -156 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor7" parent="." instance=ExtResource( 1 )]
+position = Vector2( -315, -186 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -315, -216 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor9" parent="." instance=ExtResource( 1 )]
+position = Vector2( -315, -246 )
+rotation = 0.0
+
+[node name="Monster-bullet-meteor10" parent="." instance=ExtResource( 1 )]
+position = Vector2( -315, -276 )
+rotation = 0.0

@@ -10,11 +10,12 @@ func _ready():
 	usable = true
 	price = 160
 	description = "Health potion\nPermanently adds " + String(additionalHealth) + " HP"
-	costOfSkill = 15
+	costOfSkill = 20
 	tier = 5
 
 func use():
 	playerHealth.maxHp += additionalHealth
 	playerHealth.hp += additionalHealth
 	player.changeColor(Color.green,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

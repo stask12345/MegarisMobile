@@ -74,6 +74,7 @@ tracks/2/keys = {
 extents = Vector2( 119.5, 74 )
 
 [node name="BulletSeeking" type="KinematicBody2D"]
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )

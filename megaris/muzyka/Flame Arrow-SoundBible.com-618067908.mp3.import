@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Flame Arrow-SoundBible.com-618067908.mp3-919feb1dca734982855dd1c48c786725.mp3str"
+
+[deps]
+
+source_file="res://muzyka/Flame Arrow-SoundBible.com-618067908.mp3"
+dest_files=[ "res://.import/Flame Arrow-SoundBible.com-618067908.mp3-919feb1dca734982855dd1c48c786725.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

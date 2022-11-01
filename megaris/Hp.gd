@@ -40,3 +40,12 @@ func dealDamagePlayer(var value):
 		var damageLabelPosition = player.global_position
 		damageLabelPosition.y -= 40
 		effectGenerator.generateDamageLabel(damageLabelPosition,damage,true)
+
+func saveCurrent():
+	var node_data = {
+		"type": "normal",
+		"hp": hp,
+		"maxHp": maxHp,
+		"nodePath": get_path()
+	}
+	return node_data

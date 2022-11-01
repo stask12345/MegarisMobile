@@ -130,6 +130,7 @@ func switchItemPlace(inventoryToAdd,replace = false):
 		if selectedSlot == "slotDelete": selectedinventory = inventoryDeleteSlot
 		var selectedItem = selectedinventory.get_child(1)
 		if replace:
+			$Control5/SoundEffectEqSwitch.play()
 			var item1
 			if inventoryToAdd.get_child_count() > 1: item1 = inventoryToAdd.get_child(1)
 			if inventoryToAdd.get_child_count() > 0: item1 = inventoryToAdd.get_child(0)
@@ -137,6 +138,7 @@ func switchItemPlace(inventoryToAdd,replace = false):
 			if item1 != null:
 				inventoryToAdd.remove_child(item1)
 				selectedinventory.add_child(item1)
+		$Control5/SoundEffectEqPut.play()
 		selectedinventory.remove_child(selectedItem)
 		inventoryToAdd.add_child(selectedItem)
 		stopSlotAnimation()
@@ -159,15 +161,13 @@ func _on_background_unselect_button_pressed():
 
 
 func _on_Button_wepon_pressed():
-	if selectedSlot != "":
-		var selectedinventory
-		if selectedSlot == "slot1": selectedinventory = inventory1
-		if selectedSlot == "slot2": selectedinventory = inventory2
-		if selectedSlot == "slot3": selectedinventory = inventory3
-		var selectedItem = selectedinventory.get_child(1)
-		if selectedItem is wepon:
-			switchItemPlace(weponHolder,true)
-			weponHolder.equipWepon()
+	if weponHolder.get_child_count() > 0:
+		showedDescription = false
+		showDescription = true
+		yield(get_tree().create_timer(0.3),"timeout")
+		if showDescription == true: 
+			descriptionMenu.showDescription(weponHolder.get_child(0))
+			showedDescription = true
 
 
 
@@ -240,3 +240,23 @@ func _on_SlotDeleteButton_released():
 		if selectedSlot != "":
 			if inventoryDeleteSlot.get_child_count() == 1: switchItemPlace(inventoryDeleteSlot)
 			else: switchItemPlace(inventoryDeleteSlot,true)
+
+
+func _on_Button_GameMenu_pressed():
+	get_tree().paused = true
+	get_node("Control4/GameMenu").visible = true
+
+
+func _on_Button_wepon_released():
+	showDescription = false
+	descriptionMenu.hideDescription()
+	
+	if selectedSlot != "":
+		var selectedinventory
+		if selectedSlot == "slot1": selectedinventory = inventory1
+		if selectedSlot == "slot2": selectedinventory = inventory2
+		if selectedSlot == "slot3": selectedinventory = inventory3
+		var selectedItem = selectedinventory.get_child(1)
+		if selectedItem is wepon:
+			switchItemPlace(weponHolder,true)
+			weponHolder.equipWepon()

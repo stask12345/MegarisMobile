@@ -15,9 +15,10 @@ func _ready():
 	monsterName = "Totally Normal Slime"
 
 func _physics_process(delta):
-	motion.y += gravity #grawitacja
-	if motion.y >= maxGravity:
-		motion.y = maxGravity
+	if motion.y < maxGravity:
+		motion.y += gravity #grawitacja
+		if motion.y >= maxGravity:
+			motion.y = maxGravity
 	
 	if aggro and jump == 0: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 0:
@@ -55,7 +56,9 @@ func _physics_process(delta):
 		modulate = Color(1,1,1)
 	
 	
-	if !destroyed: move_and_slide(motion,Vector2(0,-1))
+	if !destroyed:
+			if motion.x != 0 or motion.y != maxGravity:
+				 move_and_slide(motion,Vector2(0,-1))
 	
 
 

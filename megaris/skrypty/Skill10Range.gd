@@ -3,7 +3,7 @@ extends skill
 func _ready():
 	if bought: applyEffect()
 	description = "Accuracy Improvement: \nBullets rangne increase"
-	costOfSkill = 75
+	costOfSkill = 60
 
 func applyEffect():
 	playerStats.bulletRangeImprovement = 1.2

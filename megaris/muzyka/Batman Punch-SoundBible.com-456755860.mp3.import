@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Batman Punch-SoundBible.com-456755860.mp3-753dcbf1f4a89b836a4c4942b5643f6d.mp3str"
+
+[deps]
+
+source_file="res://muzyka/Batman Punch-SoundBible.com-456755860.mp3"
+dest_files=[ "res://.import/Batman Punch-SoundBible.com-456755860.mp3-753dcbf1f4a89b836a4c4942b5643f6d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

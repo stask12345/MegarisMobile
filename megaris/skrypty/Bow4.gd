@@ -6,9 +6,9 @@ var chargedBow = preload("res://grafika/itemy/bow10.png")
 onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 
 func _ready():
-	minDamage = 45
+	minDamage = 50
 	maxDamage = 80
-	fireSpeed = 1
+	fireSpeed = 0.9
 	bulletRange = 2
 	typeOfBullet = "arrow double triple"
 	textureChangeAfterShot = true

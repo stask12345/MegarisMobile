@@ -24,6 +24,7 @@ var redColor = false
 var alive = true
 var playerVisible = false
 var falling = false
+var playMusic = false
 
 func _ready():
 	$Player.visible = false
@@ -99,14 +100,21 @@ func _physics_process(delta):
 		if !trapped and !stuck: motion = move_and_slide(motion, Vector2(0,-1)) #ten 2 vector określa gdzie jest góra dla is on floor
 		if stuck: move_and_slide(Vector2(0,motion.y), Vector2(0,-1)) #Do walki z bossem 
 		if is_on_floor(): 
+			if jump > 6000:
+				if playMusic: $SoundEffectLand.play()
 			if jump > 9950 and !running:
 				jump = 0
 				$AnimationPlayerJumpEffect.play("jumpEffect")
 			jump = 0
 			jumped = false
-		pass
 
-func get_knock(direction): #knockback z obrażeń #direction ture - prawo #wiecej ustawien w skrypcie u góry
+func get_knock(direction,bossHit = false): #knockback z obrażeń #direction ture - prawo #wiecej ustawien w skrypcie u góry
+	if bossHit:
+		knockbackMaxLength = 7
+		knockbackStrength = 2
+	else:
+		knockbackMaxLength = 3
+		knockbackStrength = 1
 	knockbackLength = 0
 	knockbackDirection = direction
 	motion.y -= 300
@@ -130,3 +138,12 @@ func changeColor(color, instant=false):
 		if color == Color.green: $AnimationPlayerColor.play("colorGreen")
 		if color == Color.blue: $AnimationPlayerColor.play("colorBlue")
 		if color == Color.red: $AnimationPlayerColor.play("colorRed")
+
+func saveCurrent():
+	var node_data = {
+		"type": "player",
+		"pos_x": position.x,
+		"pos_y": position.y,
+		"nodePath": get_path()
+	}
+	return node_data

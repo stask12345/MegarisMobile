@@ -6,9 +6,10 @@ onready var eq_scripts = get_node("/root/MainScene/CanvasLayer")
 var visibleFrame
 
 func _ready():
-	visibleFrame = randi()%2 #losowanie grafiki skrzyni
-	frame = visibleFrame
-	get_child(2).visible = false
+	if frame != 2: 
+		visibleFrame = randi()%2 #losowanie grafiki skrzyni
+		frame = visibleFrame
+	if get_child_count() > 2: get_child(2).visible = false
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player" and get_child_count() > 2:
@@ -26,5 +27,14 @@ func _on_Area2D_body_exited(body):
 		chestMenu.visible = false
 
 func emptyChest():
-	visibleFrame += 2
-	frame = visibleFrame
+	if visibleFrame:
+		visibleFrame += 2
+		frame = visibleFrame
+	else:
+		frame = 2
+
+func getItem(): #Dla zapisu danych
+	if get_child_count() > 2:
+		return get_child(2).filename
+	else:
+		return null

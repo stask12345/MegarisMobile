@@ -1,9 +1,11 @@
-extends Node
+extends Node2D
 
 onready var buyButton = get_node("/root/MainScene/CanvasLayer/Control4/Buy")
+onready var visibility_notifier := $VisibilityNotifier2D
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 var costOfSkillMarket = 20
 var bought = false
+var doOnce = false
 
 func _ready():
 	$BuildSite/Label.text = String(costOfSkillMarket)
@@ -16,6 +18,12 @@ func _ready():
 		if playerStats.slayedFirstBoss: $Market/Statue1.visible = true
 		get_node("Market/Area2D/CollisionShape2D").disabled = false
 		get_node("BuildSite/Area2D/CollisionShape2D").disabled = true
+	
+	if !doOnce:
+		doOnce = true
+		visibility_notifier.connect("screen_entered",self,"show")
+		visibility_notifier.connect("screen_exited",self,"hide")
+		visible = false
 
 func buy():
 	if playerStats.crystals >= costOfSkillMarket:
@@ -25,6 +33,8 @@ func buy():
 		get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
 		$BuildingEffect/AnimationPlayer.play("idle")
 		_ready()
+		get_node("/root/MainScene").saveData()
+		get_node("/root/MainScene/MusicPlayer").playRumble()
 
 
 func _on_Area2D_body_entered(body):

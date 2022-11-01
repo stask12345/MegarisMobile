@@ -10,3 +10,4 @@ func _ready():
 	price = 130
 	rangeDestroy = false
 	tier = 4
+	costOfSkill = 40

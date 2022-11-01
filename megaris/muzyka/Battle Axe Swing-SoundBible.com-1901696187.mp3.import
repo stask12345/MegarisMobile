@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Battle Axe Swing-SoundBible.com-1901696187.mp3-515cd824d01c659bde12c9969faa26f2.mp3str"
+
+[deps]
+
+source_file="res://muzyka/Battle Axe Swing-SoundBible.com-1901696187.mp3"
+dest_files=[ "res://.import/Battle Axe Swing-SoundBible.com-1901696187.mp3-515cd824d01c659bde12c9969faa26f2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

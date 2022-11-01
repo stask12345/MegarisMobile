@@ -2,7 +2,7 @@
 
 [ext_resource path="res://grafika/terrain/o3.png" type="Texture" id=1]
 
-[node name="O3" type="Sprite"]
+[node name="O3" type="Sprite" groups=["saveGroupTerrain"]]
 self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
 position = Vector2( -1001, 283 )
 texture = ExtResource( 1 )

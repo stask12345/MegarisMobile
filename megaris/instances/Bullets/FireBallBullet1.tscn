@@ -159,6 +159,7 @@ tracks/0/keys = {
 
 [node name="FireBallBullet1" type="KinematicBody2D"]
 position = Vector2( 626, 1505 )
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )

@@ -3,6 +3,7 @@ extends monsterClass
 onready var attackBolt = preload("res://instances/Bullets/Monster-bullet-Spider.tscn")
 var exposed = false
 var canShoot = true
+var powerfullShoot = true
 
 func _ready():
 	minCoins = 4
@@ -12,29 +13,32 @@ func _ready():
 	monsterName = "Chest Mimic"
 
 func _physics_process(delta):
-	motion.y += gravity #grawitacja
-	if motion.y >= maxGravity:
-		motion.y = maxGravity
-	
-	if aggro and !destroyed:
-		if global_position.x - player.global_position.x >= 0:
-			goingRight = false
-		else:
-			goingRight = true
+	if get_parent().visible == true:
+		if motion.y < maxGravity:
+			motion.y += gravity #grawitacja
+			if motion.y >= maxGravity:
+				motion.y = maxGravity
 		
-		if !exposed:
-			$AnimationPlayer.play("monsterExpose")
+		if aggro and !destroyed:
+			if global_position.x - player.global_position.x >= 0:
+				goingRight = false
+			else:
+				goingRight = true
+			
+			if !exposed:
+				get_node("/root/MainScene/MusicPlayer").playMonsterGrowl()
+				$AnimationPlayer.play("monsterExpose")
+			
+			if exposed:
+				$AnimationPlayer.play("idle")
+				if canShoot: shoot()
 		
-		if exposed:
-			$AnimationPlayer.play("idle")
-			if canShoot: shoot()
-	
-	
-	if knockbackLength < knockbackMaxLength: #knockback
-		knockbackLength += 1
-		modulate = Color(1,0,0)
-	else : 
-		modulate = Color(1,1,1)
+		
+		if knockbackLength < knockbackMaxLength: #knockback
+			knockbackLength += 1
+			modulate = Color(1,0,0)
+		else : 
+			modulate = Color(1,1,1)
 
 func startShooting():
 	exposed = true
@@ -44,37 +48,43 @@ func shoot():
 	canShoot = false
 	
 #	shootSingleStrongBold()
+
+	get_node("/root/MainScene/MusicPlayer").playMonsterShoot()
 	
-	var b1 = attackBolt.instance()
-	var b2 = attackBolt.instance()
-	var b3 = attackBolt.instance()
-	var b4 = attackBolt.instance()
-	var height = position.y
-	var width = position.x
-	b1.shootingMonster = self
-	b2.shootingMonster = self
-	b3.shootingMonster = self
-	b4.shootingMonster = self
-	b3.scale.x = -1
-	b4.scale.x = -1
-	b1.goingRight = true
-	b3.goingRight = false
-	b2.goingRight = true
-	b4.goingRight = false
-	b1.rotate(0.1)
-	b3.rotate(-0.1)
-	b2.rotate(-0.4)
-	b4.rotate(0.4)
-	b1.position = Vector2(width, height-30)
-	b2.position = Vector2(width, height-20)
-	b3.position = Vector2(width, height-30)
-	b4.position = Vector2(width, height-20)
-	get_parent().add_child(b1)
-	get_parent().add_child(b2)
-	get_parent().add_child(b3)
-	get_parent().add_child(b4)
+	if powerfullShoot:
+		var b1 = attackBolt.instance()
+		var b2 = attackBolt.instance()
+		var b3 = attackBolt.instance()
+		var b4 = attackBolt.instance()
+		var height = position.y
+		var width = position.x
+		b1.shootingMonster = self
+		b2.shootingMonster = self
+		b3.shootingMonster = self
+		b4.shootingMonster = self
+		b3.scale.x = -1
+		b4.scale.x = -1
+		b1.goingRight = true
+		b3.goingRight = false
+		b2.goingRight = true
+		b4.goingRight = false
+		b1.rotate(0.1)
+		b3.rotate(-0.1)
+		b2.rotate(-0.4)
+		b4.rotate(0.4)
+		b1.position = Vector2(width, height-30)
+		b2.position = Vector2(width, height-20)
+		b3.position = Vector2(width, height-30)
+		b4.position = Vector2(width, height-20)
+		get_parent().add_child(b1)
+		get_parent().add_child(b2)
+		get_parent().add_child(b3)
+		get_parent().add_child(b4)
+		powerfullShoot = false
+	else:
+		shootSingleStrongBold()
 	
-	$Timer2.start(2)
+	$Timer2.start(3)
 	yield($Timer2,"timeout")
 	canShoot = true
 

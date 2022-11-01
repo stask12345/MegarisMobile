@@ -185,25 +185,28 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1.6 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.1, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "playRumble"
+}, {
 "args": [  ],
 "method": "destroyMonster"
 } ]
 }
 
-[node name="Monster-BlueSlime2" type="KinematicBody2D"]
+[node name="Monster-Boss" type="KinematicBody2D"]
 z_index = 2
-collision_layer = 2
+collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Monster1" type="Sprite" parent="."]
 modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
-position = Vector2( -1.5, 13.5 )
+position = Vector2( -1, -26 )
 z_index = 2
 texture = ExtResource( 3 )
-offset = Vector2( 5, -36 )
+offset = Vector2( 4.5, 3.5 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -232,6 +235,7 @@ shape = SubResource( 13 )
 
 [node name="monsterBody" type="Area2D" parent="."]
 position = Vector2( -1.5, -1.5 )
+collision_layer = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -239,7 +243,6 @@ position = Vector2( 16.5, 23 )
 shape = SubResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="AnimationPlayerDeath" type="AnimationPlayer" parent="."]
 anims/BossDeath = SubResource( 42 )

@@ -54,7 +54,7 @@ extents = Vector2( 81.5, 12 )
 [node name="Monster-Turtle" type="KinematicBody2D"]
 position = Vector2( -607, 870 )
 z_index = 1
-collision_layer = 2
+collision_layer = 0
 script = ExtResource( 6 )
 
 [node name="Monster1" type="Sprite" parent="."]
@@ -64,7 +64,6 @@ texture = ExtResource( 1 )
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 anims/idle = SubResource( 15 )
 anims/monster_death = ExtResource( 3 )
 anims/walk = SubResource( 19 )
@@ -84,6 +83,8 @@ position = Vector2( 5.75, 14 )
 shape = SubResource( 13 )
 
 [node name="monsterBody" type="Area2D" parent="."]
+collision_layer = 0
+input_pickable = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -91,9 +92,10 @@ position = Vector2( -3.5, 1 )
 shape = SubResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="MovementControlerMonster" type="Area2D" parent="."]
+collision_mask = 0
+input_pickable = false
 monitorable = false
 script = ExtResource( 4 )
 

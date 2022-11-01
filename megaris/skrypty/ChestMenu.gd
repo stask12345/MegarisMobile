@@ -21,6 +21,8 @@ func _on_Button_pressed():
 
 func _on_TakeButton_pressed():
 	var chest = itemInChest.get_parent()
+	if chest.name == "startingChest":
+		$"../../../Floor/SpawnPoint".potionTaken = true
 	itemInChest.visible = true
 	eq_scripts.pickUpItem(itemInChest,itemInChest.get_parent(),null)
 	itemInChest = null
@@ -28,5 +30,6 @@ func _on_TakeButton_pressed():
 		chest.get_child(2).visible = false
 	else: 
 		chest.emptyChest()
+		get_node("/root/MainScene/MusicPlayer").playTable()
 		chest.get_node("ItemTableAnimation/AnimationPlayer").play("idle")
 	visible = false

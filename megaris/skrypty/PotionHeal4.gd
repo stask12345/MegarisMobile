@@ -10,9 +10,11 @@ func _ready():
 	usable = true
 	price = 100
 	description = "Super healing potion\nHeals: " + String(healPower) + " HP"
+	costOfSkill = 25
 	tier = 5
 
 func use():
 	playerHealth.hp += healPower
 	player.changeColor(Color.green,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

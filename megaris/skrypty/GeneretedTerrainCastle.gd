@@ -31,8 +31,8 @@ var StrengthPotion = preload("res://instances/Items/PotionStrength2.tscn")
 
 var scroolFireBall = preload("res://instances/Items/SpellFireBall1.tscn")
 var scroolExplosion = preload("res://instances/Items/SpellExplosion1.tscn")
-var specialSword = preload("res://instances/Wepons/SpecialSword2.tscn")
-var specialWand = preload("res://instances/Wepons/SpecialWand4.tscn")
+var specialSword = preload("res://instances/Wepons/SpecialSword1.tscn")
+var specialWand = preload("res://instances/Wepons/SpecialWand3.tscn")
 
 var firstTierPotion = [healingPotion3,healingPotion3,healthPotion,invisibilityPotion,scroolFireBall]
 var secondTierPotion = [healingPotion4,healingPotion4,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion]
@@ -43,7 +43,13 @@ var SpecialTierList = [specialWand,specialSword,scroolExplosion,wand4]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	generateWorld()
+	if !get_node("/root/MainScene/EffectGenerator").loadedData: 
+		generateWorld()
+		saveTerrain()
+	if get_node("/root/MainScene/EffectGenerator").loadedData: 
+		print("GWIAZDA")
+		get_node("/root/MainScene").loadDataCurrent()
+		loadWorld()
 
 var numberOfTerrain = 14 #platform na 1 poziomie
 var numberOfFloors = 12 #liczba poziomów 
@@ -89,7 +95,7 @@ func generateWorld():
 				var instanitedP = p1.instance()
 				instanitedP.set_global_position(Vector2(width - 62.5,height))
 				width += 125
-				add_child(instanitedP) #losuje grafike platformy
+				addChildHelper(instanitedP,f) #losuje grafike platformy
 			var platformList = [g1, g1, g1, g2, g3, g3, g3, g4, g4, g5]
 			var instanitedG = platformList[randi()%platformList.size()].instance()
 			instanitedG.set_global_position(Vector2(width,height)) #ustawianie platform
@@ -121,7 +127,11 @@ func generatePlatformDecoration(platform, passages, f):
 	var os4 = preload("res://instances/Terrain/Os9.tscn")
 	var os5 = preload("res://instances/Terrain/Os10.tscn")
 	
-	var decorationList = [o1,o2,o3,o4,oB1,oB2,oB3,oB4] #lista dekoracji by się nie powtarzały
+	var decorationList #lista dekoracji by się nie powtarzały
+	if fountainList.has(numberOfPlatform) or anvilList.has(numberOfPlatform) or shopList.has(numberOfPlatform):
+		decorationList = [o1,o2,o3,o4]
+	else:
+		decorationList = [o1,o2,o3,o4,oB1,oB2,oB3,oB4]
 	var chanceForDecoration = randi()%2 #nic, jedna ozdoba, dwie #CASTLE 3 -> 2
 	for n in chanceForDecoration:
 		var decoration = decorationList[randi()%decorationList.size()].instance()
@@ -131,8 +141,12 @@ func generatePlatformDecoration(platform, passages, f):
 		decoration.set_global_position(decorationPosition)
 		addChildHelper(decoration,f)
 	
-	var decorationWallList = [os0,os1,os2,os3,os4,os5] #ozdoby sciana
+	var decorationWallList #ozdoby sciana
 	var chancesForDecorationWall = randi()%4 #raz na na 4 razy
+	if fountainList.has(numberOfPlatform) or anvilList.has(numberOfPlatform) or shopList.has(numberOfPlatform):
+		decorationWallList = [os0,os1,os3,os4,os5]
+	else:
+		decorationWallList = [os0,os1,os2,os3,os4,os5]
 	if chancesForDecorationWall == 0:
 		var decoration = decorationWallList[randi()%decorationWallList.size()].instance()
 		decorationWallList.erase((decoration))
@@ -155,9 +169,12 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 	var o8 = preload("res://instances/Terrain/Pillar2.tscn") 
 	var og1 = preload("res://instances/Elements/Lamp3.tscn")#lampy
 	var og2 = preload("res://instances/Elements/Lamp4.tscn")
+	var og3 = preload("res://instances/Terrain/Baner1.tscn")
+	var og4 = preload("res://instances/Terrain/Baner2.tscn")
+	var og5 = preload("res://instances/Terrain/Baner3.tscn")
 	var chancesForDecoration = randi()%4 #tu zmien czestosc wystepowannia belek
-	var decorationCelingList = [og1,og2] #czestość generowania na suficie
-	var chancesForDecorationCeling = randi()%4
+	var decorationCelingList = [og1,og2,og3,og4,og5] #czestość generowania na suficie
+	var chancesForDecorationCeling = randi()%3 # gdy za dużo na suficie to "4"
 	if !nextPassages.has(numberOfCurrentPlatform) and numberOfCurrentFloor != numberOfFloors:
 		if chancesForDecoration == 1:#obecnie jedna belka znajduje się 1/3 w platformie #!może trzeba zmniejszyć tą liczbę
 			var decoration
@@ -172,7 +189,7 @@ func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCu
 			decorationCelingList.erase(decoration)
 			var decorationPosition = generatePositionHelper(platform, decoration)
 			decorationPosition.y += decoration.texture.get_height()
-			decorationPosition.y += 55
+			decorationPosition.y += 59
 			decorationPosition.y -= 320
 			decoration.set_global_position(decorationPosition)
 			addChildHelper(decoration,numberOfCurrentFloor-1)
@@ -185,9 +202,19 @@ func generateMonsters(platform,numberOfCurrentFloor):
 	var mage = preload("res://instances/Monsters/Monster-Mage.tscn")
 	var iceGolem = preload("res://instances/Monsters/Monster-IceGolem.tscn")
 	var mimic = preload("res://instances/Monsters/Monster-Chest.tscn")
+	var worm = preload("res://instances/Monsters/Monster-Worm.tscn")
 	
-	var monsterList1 = [slime4,slime4,bat3,bat3,ghost,ghost,ghost,skeleton,skeleton,skeleton,skeleton,mage,mage,iceGolem,iceGolem,mimic]
-	var monsterList2 = [slime4]
+	var slime5 = preload("res://instances/Monsters/Monster-GoldenSlime.tscn")
+	var bat4 = preload("res://instances/Monsters/Monster-Bat5.tscn")
+	var ghost1 = preload("res://instances/Monsters/Monster-Ghost2.tscn")
+	var skeleton1 = preload("res://instances/Monsters/Monster-SkeletonWarrior.tscn")
+	var mage1 = preload("res://instances/Monsters/Monster-Mage2.tscn")
+	var fireGolem = preload("res://instances/Monsters/Monster-FireGolem.tscn")
+	var worm1 = preload("res://instances/Monsters/Monster-Worm2.tscn")
+	var turtle = preload("res://instances/Monsters/Monster-GiganticTurtle.tscn")
+	
+	var monsterList1 = [slime4,slime4,bat3,bat3,ghost,ghost,ghost,skeleton,skeleton,skeleton,skeleton,mage,mage,worm,worm,iceGolem,iceGolem, slime4,slime4,bat3,bat3,ghost,ghost,ghost,skeleton,skeleton,skeleton,skeleton,mage,mage,worm,worm,iceGolem,iceGolem,mimic]
+	var monsterList2 = [turtle,turtle,turtle,turtle,slime5,slime5,bat4,bat4,ghost1,ghost1,skeleton1,skeleton1,mage1,mage1,worm1,worm1,fireGolem,fireGolem, slime5,slime5,bat4,bat4,ghost1,ghost1,skeleton1,skeleton1,mage1,mage1,worm1,worm1,fireGolem,fireGolem, mimic]
 	
 	var numberOfMonster = randi()%3# od 0 do 2 potworków na platformę # tu można to zmienić
 	for i in numberOfMonster:
@@ -343,3 +370,237 @@ func addChildHelper(object,currentFloor):
 	if currentFloor < 12 and currentFloor > 9:
 		$Stage6.add_child(object)
 		return
+
+
+func saveTerrain():
+	var save_game = File.new()
+	save_game.open("user://savegameTerrain.save", File.WRITE)
+	
+	for t in $Stage1.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage2.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage3.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage4.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage5.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage6.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	save_game.close()
+
+func saveElements():
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").returnItemsToShopObject()
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").visible = false
+	
+	var save_game = File.new()
+	save_game.open("user://savegameElements.save", File.WRITE)
+	
+	for t in $Stage1.get_children() + $Stage2.get_children() + $Stage3.get_children() + $Stage4.get_children() + $Stage5.get_children() + $Stage6.get_children():
+		if t.name == "Fontain":
+			var node_data = {
+				"type": "fontain",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path(),
+				"full": t.full
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Chest" or t.name == "ChestGolden":
+			var node_data = {
+				"type": "chest",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path(),
+				"item": t.getItem()
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Anvil":
+			var node_data = {
+				"type": "anvil",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "ItemTable":
+			var node_data = {
+					"type": "itemTable",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"item": t.getItem()
+				}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Trap1" or t.name == "Trap2":
+			var node_data = {
+					"type": "trap",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"used": t.used
+				}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Door":
+			var node_data = {
+					"type": "shop",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"item1": t.getItem1(),
+					"item2": t.getItem2(),
+					"item3": t.getItem3()
+				}
+			save_game.store_line(to_json(node_data))
+	
+	save_game.close()
+
+func saveMonsters():
+	var save_game = File.new()
+	save_game.open("user://savegameMonsters.save", File.WRITE)
+	
+	for t in $Stage1.get_children() + $Stage2.get_children() + $Stage3.get_children() + $Stage4.get_children() + $Stage5.get_children() + $Stage6.get_children():
+		if t is monsterClass:
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	save_game.close()
+
+func loadWorld():
+	#get_node("/root/MainScene").loadDataCurrent()
+	loadTerrain()
+	loadElements()
+	loadMonsters()
+
+func loadTerrain():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameTerrain.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameTerrain.save", File.READ)
+	while save_game.get_position() < save_game.get_len():#obiektów do skopiowania
+		var node_data = parse_json(save_game.get_line())
+		var o = load(node_data["filename"]).instance()
+		get_node(node_data["parentPath"]).add_child(o)
+		o.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+	save_game.close()
+
+func loadMonsters():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameMonsters.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameMonsters.save", File.READ)
+	while save_game.get_position() < save_game.get_len():
+		var node_data = parse_json(save_game.get_line())
+		var m =load(node_data["filename"]).instance()
+		get_node(node_data["parentPath"]).add_child(m)
+		m.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+	save_game.close()
+
+func loadElements():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameElements.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameElements.save", File.READ)
+	while save_game.get_position() < save_game.get_len():#obiektów do skopiowania
+		var node_data = parse_json(save_game.get_line())
+		var o = load(node_data["filename"]).instance()
+		o.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+		
+		if node_data["type"] == "fontain":
+			if node_data["full"] == false:
+				o.makeEmpty()
+		
+		if node_data["type"] == "chest":
+			if node_data["item"] != null:
+				var i = load(node_data["item"]).instance()
+				o.add_child(i)
+			else:
+				o.emptyChest()
+		
+		if node_data["type"] == "itemTable":
+			if node_data["item"] != null:
+				var i = load(node_data["item"]).instance()
+				o.get_child(0).add_child(i)
+		
+		if node_data["type"] == "trap":
+			if node_data["used"] == true:
+				o.makeUsed()
+		
+		if node_data["type"] == "shop":
+			var i
+			if node_data["item1"] != null:
+				i = load(node_data["item1"]).instance()
+				o.get_node("ItemSlot1").add_child(i)
+			if node_data["item2"] != null:
+				i = load(node_data["item2"]).instance()
+				o.get_node("ItemSlot2").add_child(i)
+			if node_data["item3"] != null:
+				i = load(node_data["item3"]).instance()
+				o.get_node("ItemSlot3").add_child(i)
+		
+		get_node(node_data["parentPath"]).add_child(o)
+	save_game.close()

@@ -11,6 +11,7 @@ var jumped = false
 var waitingForJump = false
 var attackBolt = preload("res://instances/Bullets/Sliding-monster-bullet.tscn")
 var smallBlueSlime = preload("res://instances/Monsters/Monster-SmallBlueSlime.tscn")
+var slime = preload("res://instances/Monsters/Monster-OrangeSlime.tscn")
 onready var playerCamera = get_node("/root/MainScene/Player/AnimationPlayerCamera")
 onready var bossHp = get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/BossMenu")
 
@@ -18,7 +19,7 @@ func _ready():
 	minCoins = 100
 	maxCoins = 200
 	attackStrenght = 40 #statystyki zmienne
-	hp = 500
+	hp = 1 #850
 	gravity = 50
 	maxGravity = 660
 	monsterName = "Slime King"
@@ -41,11 +42,13 @@ func _physics_process(_delta):
 		motion.y = maxGravity
 	if motion.y > 0: motion.y = motion.y * 1.1
 	
-	if aggro and jump == 0: #kierunek w którym idzie wróg
+	if aggro: #kierunek w którym idzie wróg
 		if global_position.x - player.global_position.x >= 0:
 			goingRight = false
 		else:
 			goingRight = true
+	
+	if aggro and jump == 0: #kierunek w którym idzie wróg
 		if !waitingForJump and is_on_floor() and !destroyed: #czekanie pomiędzy skokami
 			waitingForJump = true
 			waitForJump()
@@ -67,6 +70,7 @@ func _physics_process(_delta):
 	
 	if is_on_floor():
 		if jump != 0 and jump > jumpPower+1:
+			get_node("/root/MainScene/MusicPlayer").playRumble()
 			shootBullets()
 			$AnimationPlayer.play("idle")
 			addSlimes()
@@ -82,7 +86,8 @@ func _physics_process(_delta):
 	
 	
 	if !destroyed: move_and_slide(motion,Vector2(0,-1))
-	else: move_and_slide(Vector2(0,motion.y),Vector2(0,-1))
+	else:
+		if get_parent().name != "Monster": move_and_slide(Vector2(0,motion.y),Vector2(0,-1))
 	
 
 func waitForJump():
@@ -96,7 +101,7 @@ func waitForJump():
 
 
 func destroyMonster():
-	if bossHp.get_child(0).visible:
+	if bossHp.get_child(0).visible and player.alive:
 		playerStats.slayedFirstBoss = 1
 		bossHp.get_child(0).visible = false
 		bossHp.get_child(1).visible = false
@@ -125,13 +130,17 @@ func shootBullets():
 	b2.timerToDestroy(1.2)
 
 func playAnimation():
-	get_node("/root/MainScene/Player/AnimationPlayerCamera").play("cameraShaking")
-	$AnimationPlayerDeath.play("BossDeath")
+	if player.alive:
+		get_node("/root/MainScene/Player/AnimationPlayerCamera").play("cameraShaking")
+		$AnimationPlayerDeath.play("BossDeath")
 
 func addSlimes():
-	var slime = preload("res://instances/Monsters/Monster-Slime.tscn")
 	for n in 2:
 		var addSlime = slime.instance()
 		addSlime.position = Vector2(rand_range(-1600,1600),-4000)
 		get_node("/root/MainScene/EffectGenerator").add_child(addSlime)
+		addSlime.dropped = true
 		n += 1
+
+func playRumble():
+	get_node("/root/MainScene/MusicPlayer").playRumble()

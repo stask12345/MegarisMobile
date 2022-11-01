@@ -82,11 +82,12 @@ extents = Vector2( 23, 10 )
 
 [node name="Monster-SmallBlueSlime" type="KinematicBody2D"]
 z_index = 1
-collision_layer = 2
+collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Monster1" type="Sprite" parent="."]
 modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+z_index = 2
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -110,6 +111,7 @@ position = Vector2( 0, -25 )
 shape = SubResource( 13 )
 
 [node name="monsterBody" type="Area2D" parent="."]
+collision_layer = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -117,7 +119,6 @@ position = Vector2( 0, 2 )
 shape = SubResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
 

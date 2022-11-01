@@ -18,8 +18,6 @@ func showDescription(itemToShow):
 	
 	var ts = $Tier.get_children()
 	for t in ts:
-		print(itemToShow.tier)
-		print(ts.find(t))
 		t.visible = false
 		if ts.find(t) + 1 <= itemToShow.tier: t.visible = true
 	

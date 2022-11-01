@@ -54,6 +54,7 @@ tracks/1/keys = {
 
 [node name="slashBulletBig" type="KinematicBody2D"]
 position = Vector2( -1203.44, 2026.48 )
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )

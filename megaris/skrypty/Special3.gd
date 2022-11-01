@@ -2,15 +2,15 @@ extends wepon
 
 
 func _ready():
-	minDamage = 45
-	maxDamage = 60
+	minDamage = 35
+	maxDamage = 50
 	fireSpeed = 2
 	bulletRange = 3
 	typeOfBullet = "special3"
 	title = "Necromancer Wand"
 	description = ""
 	price = 175
-	costOfSkill = 40
+	costOfSkill = 45
 	tier = 5
 
 func _process(delta):

@@ -4,7 +4,7 @@ extends wepon
 func _ready():
 	minDamage = 60
 	maxDamage = 80
-	fireSpeed = 1.2
+	fireSpeed = 1
 	bulletRange = 1
 	typeOfBullet = "magic4"
 	title = "Laser Wand"

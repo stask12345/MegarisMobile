@@ -3,7 +3,7 @@ extends skill
 func _ready():
 	if bought and !get_node("%Skill13Upper").bought: applyEffect()
 	description = "Alchemist: \n Healing Potion II On Start"
-	costOfSkill = 30
+	costOfSkill = 20
 
 func applyEffect():
 	playerStats.levelOfItem += 1

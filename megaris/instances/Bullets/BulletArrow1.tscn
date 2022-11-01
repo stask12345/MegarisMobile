@@ -33,6 +33,7 @@ tracks/0/keys = {
 
 [node name="BulletArrow1" type="KinematicBody2D"]
 position = Vector2( 0, 1473 )
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )

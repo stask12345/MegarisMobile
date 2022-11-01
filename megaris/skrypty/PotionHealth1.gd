@@ -17,4 +17,5 @@ func use():
 	playerHealth.maxHp += additionalHealth
 	playerHealth.hp += additionalHealth
 	player.changeColor(Color.green,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

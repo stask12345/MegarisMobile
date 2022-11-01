@@ -2,7 +2,7 @@
 
 [ext_resource path="res://grafika/terrain/os6.png" type="Texture" id=1]
 
-[node name="Os6" type="Sprite"]
+[node name="Os6" type="Sprite" groups=["saveGroupTerrain"]]
 modulate = Color( 1, 1, 1, 0.54902 )
 position = Vector2( -1131, 675 )
 z_index = -3

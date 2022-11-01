@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://grafika/animation/bat_death3.png" type="Texture" id=1]
 [ext_resource path="res://grafika/animation/bat_death2.png" type="Texture" id=2]
 [ext_resource path="res://grafika/animation/bat_death1.png" type="Texture" id=3]
-[ext_resource path="res://grafika/monster/monster-bat1.png" type="Texture" id=4]
+[ext_resource path="res://muzyka/Slime Splash-SoundBible.com-1894179558.mp3" type="AudioStream" id=4]
 [ext_resource path="res://skrypty/Monster-Bat3.gd" type="Script" id=5]
+[ext_resource path="res://grafika/monster/monster-bat11.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=27]
 length = 0.001
@@ -18,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -92,17 +93,17 @@ extents = Vector2( 288.5, 64.5 )
 extents = Vector2( 28, 10 )
 
 [node name="Monster-Bat3" type="KinematicBody2D"]
-collision_layer = 34
+z_index = 1
+collision_layer = 32
 script = ExtResource( 5 )
 
 [node name="Monster1" type="Sprite" parent="."]
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Monster1")
-autoplay = "idle"
 anims/RESET = SubResource( 27 )
 anims/idle = SubResource( 28 )
 anims/monster_death = SubResource( 32 )
@@ -112,6 +113,8 @@ position = Vector2( 0.5, -4.5 )
 shape = SubResource( 29 )
 
 [node name="TriggerArea" type="Area2D" parent="."]
+collision_mask = 0
+input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
@@ -119,6 +122,8 @@ position = Vector2( -0.5, 19.5 )
 shape = SubResource( 30 )
 
 [node name="monsterBody" type="Area2D" parent="."]
+collision_layer = 0
+input_pickable = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -128,6 +133,9 @@ shape = SubResource( 31 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerS" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_TriggerArea_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="." method="_on_TriggerArea_body_exited"]

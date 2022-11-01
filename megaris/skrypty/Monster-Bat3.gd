@@ -3,6 +3,7 @@ extends monsterClass
 var speed = 10000
 var stayInPlaceVar = false
 var afterHit = false
+var screak = false
 
 func _init(): #by przyznawało wartość zmiennej przed ładowaniem w scene #wymagane przy generowaniu mobów
 	flying = true
@@ -18,46 +19,52 @@ func _ready():
 	monsterName = "Young Bat"
 
 func _physics_process(delta):
-	
-	if goingToPlayer: #kierunek w którym idzie wróg
-		if global_position.x - player.global_position.x >= 0:
-			goingRight = false
-		else:
-			goingRight = true
+	if get_parent().visible == true:
+		if !$AnimationPlayer.is_playing(): $AnimationPlayer.play("idle")
 		
-	
-	if knockbackLength < knockbackMaxLength: #knockback
-		if knockbackDirection: motion.x = knockbackStrength
-		else: motion.x = -knockbackStrength
-		knockbackLength += 1
-		modulate = Color(1,0,0)
-	else : 
-		modulate = Color(1,1,1)
-	
-	if !destroyed and aggro:
-		var target = player.position
-		target.y -= 10 #robie to bo chce by przecienik by na poziomie glowy
-		motion = position.direction_to(target) * speed * delta
+		if goingToPlayer: #kierunek w którym idzie wróg
+			if global_position.x - player.global_position.x >= 0:
+				goingRight = false
+			else:
+				goingRight = true
+			
 		
-		if knockbackLength < knockbackMaxLength:
-			if knockbackDirection: motion.x += knockbackStrength
-			else: motion.x += -knockbackStrength
-			if knockbackDirection: 
-				motion.y += -knockbackStrength
-			else: 
-				motion.y += -knockbackStrength
+		if knockbackLength < knockbackMaxLength: #knockback
+			if knockbackDirection: motion.x = knockbackStrength
+			else: motion.x = -knockbackStrength
 			knockbackLength += 1
 			modulate = Color(1,0,0)
-		else:
+		else : 
 			modulate = Color(1,1,1)
 		
-		if position.distance_to(target) > 5 and (!stayInPlaceVar or knockbackLength < knockbackMaxLength):
-			if !afterHit: motion = move_and_slide(motion)
-			else: 
-				motion.y -= 50
-				if knockbackDirection: motion.x -= (50 + (player.position - position).length()/3)
-				else: motion.x += ( 50 + (player.position - position).length()/3)
-				motion = move_and_slide(motion)
+		if !destroyed and aggro:
+			if !screak: 
+				screak = true
+				get_node("/root/MainScene/MusicPlayer").playBat()
+			
+			var target = player.position
+			target.y -= 10 #robie to bo chce by przecienik by na poziomie glowy
+			motion = position.direction_to(target) * speed * delta
+			
+			if knockbackLength < knockbackMaxLength:
+				if knockbackDirection: motion.x += knockbackStrength
+				else: motion.x += -knockbackStrength
+				if knockbackDirection: 
+					motion.y += -knockbackStrength
+				else: 
+					motion.y += -knockbackStrength
+				knockbackLength += 1
+				modulate = Color(1,0,0)
+			else:
+				modulate = Color(1,1,1)
+			
+			if position.distance_to(target) > 5 and (!stayInPlaceVar or knockbackLength < knockbackMaxLength):
+				if !afterHit: motion = move_and_slide(motion)
+				else: 
+					motion.y -= 50
+					if knockbackDirection: motion.x -= (50 + (player.position - position).length()/3)
+					else: motion.x += ( 50 + (player.position - position).length()/3)
+					motion = move_and_slide(motion)
 
 
 func afterHitFlaying(): #ta funkcja jest wywoływana z player hitboxa 

@@ -4,14 +4,12 @@ Megaris Mobile
 
 To Do:
 -różny knockback dla broni/potworków
--potwory
 
 To optimise:
 -gdy invisible potworki takie jak: turtle dziwnie sie zachowują, przy samym graczu
 -gdy kiedyś zapamiętywania, pamiętaj o reward skillach
 -dodać małe animację np. żyrandol świeczki
 -lepsza optymalizacja, dzięki pozbyciu się obliczeń z potworków
--ice golem nieśmiertelny podczas ataku?
 
 ---------------------- ! HELP ! -----------------------
 Dodawanie itemów:
@@ -89,12 +87,19 @@ Potwory:
 - slime4          80hp 3-4
 - nietoperz4      80hp 3-4
 - mimic           200hp 5-8
-- duch1           100hp 3-6
-- lodowy          125hp 4-6
-- mag             100hp 4-6
-- szkielet        90hp 4-5      Area4: 4,5*14*6= 380 C=74
+- duch1           110hp 3-6
+- lodowy          200hp 4-6
+- mag             140hp 4-6
+- szkielet        110hp 4-5      Area4: 4,5*14*6= 380 C=74
 
-                            Area5: 6,75*14*6= 570 C=130
+- slime5          125hp 4-5
+- nietoperz4      125hp 4-5  
+- mimic           200hp 5-8
+- duch2           150hp 4-7
+- ognisty         250hp 5-8
+- mag2            180hp 5-7
+- szkielet2       150hp 5-6
+- żów3            225hp 5-6  Area5: 6,75*14*6= 570 C=130
 
 pp  5-7 / 12 2-3
 

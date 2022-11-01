@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bear-trap-103800.mp3-389c4da97971801d7a25d9b33483d408.mp3str"
+
+[deps]
+
+source_file="res://muzyka/bear-trap-103800.mp3"
+dest_files=[ "res://.import/bear-trap-103800.mp3-389c4da97971801d7a25d9b33483d408.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

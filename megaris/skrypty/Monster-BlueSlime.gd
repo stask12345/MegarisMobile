@@ -17,54 +17,64 @@ func _ready():
 	gravity = 50
 	maxGravity = 660
 	monsterName = "Gigantic Slime"
+	dropped = true
 
 func _physics_process(_delta):
-	motion.y += gravity #grawitacja
-	if motion.y >= maxGravity:
-		motion.y = maxGravity
-	
-	if aggro and jump == 0: #kierunek w którym idzie wróg
-		if global_position.x - player.global_position.x >= 0:
-			goingRight = false
-		else:
-			goingRight = true
-		if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
-			waitingForJump = true
-			waitForJump()
-	
-	
-	if jumped and (!is_on_floor() or jump != 0):
-		if jump < maxJump:
-			if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("flying")
-			if goingRight: motion.x = jumpSpeed 
-			else: motion.x = -jumpSpeed 
-			motion.y = -jumpPower
-			jump += jumpPower
-		else:
-#			$AnimationPlayer.play("falling")
-			waitingForJump = false
-			jumped = false
-	
-	if jump == 0:
-		motion.x = motion.x / 1.1
-	
-	if is_on_floor():
-		if jump != 0 and jump > jumpPower+1:
-			shootBullets()
-			if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("idle")
-		jump = 0
-		motion.x = 0
-	
-	if knockbackLength < knockbackMaxLength: #knockback
-		if knockbackDirection: motion.x = knockbackStrength
-		else: motion.x = -knockbackStrength
-		knockbackLength += 1
-		modulate = Color(3,3,3)
-	else : 
-		modulate = Color(1,1,1)
-	
-	
-	if !destroyed: move_and_slide(motion,Vector2(0,-1))
+	if get_parent().visible == true:
+		if !$AnimationPlayer.is_playing(): $AnimationPlayer.play("idle")
+		
+		if motion.y < maxGravity:
+			motion.y += gravity #grawitacja
+			if motion.y >= maxGravity:
+				motion.y = maxGravity
+		
+		if aggro and jump == 0: #kierunek w którym idzie wróg
+			if global_position.x - player.global_position.x >= 0:
+				goingRight = false
+			else:
+				goingRight = true
+			if !waitingForJump and is_on_floor(): #czekanie pomiędzy skokami
+				waitingForJump = true
+				waitForJump()
+		
+		
+		if jumped and (!is_on_floor() or jump != 0):
+			if jump < maxJump:
+				if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("flying")
+				if goingRight: motion.x = jumpSpeed 
+				else: motion.x = -jumpSpeed 
+				motion.y = -jumpPower
+				jump += jumpPower
+			else:
+	#			$AnimationPlayer.play("falling")
+				waitingForJump = false
+				jumped = false
+		
+		if jump == 0:
+			motion.x = motion.x / 1.1
+		
+		if is_on_floor():
+			dropped = false
+			if jump != 0 and jump > jumpPower+1:
+				get_node("/root/MainScene/MusicPlayer").playSlime()
+				get_node("/root/MainScene/MusicPlayer").playThump()
+				shootBullets()
+				if $AnimationPlayer.current_animation != "monster_death": $AnimationPlayer.play("idle")
+			jump = 0
+			motion.x = 0
+		
+		if knockbackLength < knockbackMaxLength: #knockback
+			if knockbackDirection: motion.x = knockbackStrength
+			else: motion.x = -knockbackStrength
+			knockbackLength += 1
+			modulate = Color(3,3,3)
+		else : 
+			modulate = Color(1,1,1)
+		
+		
+		if !destroyed:
+			if motion.x != 0 or motion.y != maxGravity or dropped:
+				 move_and_slide(motion,Vector2(0,-1))
 	
 
 func waitForJump():
@@ -94,8 +104,8 @@ func shootBullets():
 	var b2 = attackBolt.instance()
 	var height = position.y + ($Monster1.texture.get_height() / 2) - (b1.get_child(0).texture.get_height()) + 1
 	var width = position.x
-	b1.shootingMonster = self
-	b2.shootingMonster = self
+	b1.shootingMonster = duplicate()
+	b2.shootingMonster = duplicate()
 	b1.goingRight = true
 	b1.position.y = height
 	b1.position.x = width

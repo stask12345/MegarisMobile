@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 124.5, 30 )
 
-[node name="G3" type="Sprite"]
+[node name="G3" type="Sprite" groups=["saveGroupTerrain"]]
 position = Vector2( -1351, 403 )
 z_index = 1
 texture = ExtResource( 1 )

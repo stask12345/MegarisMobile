@@ -3,11 +3,11 @@
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=1]
 [ext_resource path="res://grafika/worldElements/chandelier1.png" type="Texture" id=2]
 
-[node name="Lamp4" type="Sprite"]
+[node name="Lamp4" type="Sprite" groups=["saveGroupTerrain"]]
 texture = ExtResource( 2 )
 
 [node name="SlotBackgroudLights" type="Sprite" parent="."]
-self_modulate = Color( 1, 0.796078, 0, 0.0980392 )
-position = Vector2( 0, 20 )
-scale = Vector2( 3, 3 )
+self_modulate = Color( 1, 0.796078, 0, 0.117647 )
+position = Vector2( 0, 14 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )

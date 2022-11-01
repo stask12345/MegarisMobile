@@ -10,5 +10,6 @@ func _ready():
 	title = "Emerald Sword"
 	description = ""
 	price = 140
+	costOfSkill = 35
 	tier = 4
 

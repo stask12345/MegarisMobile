@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://skrypty/Monster-Mage.gd" type="Script" id=1]
 [ext_resource path="res://skrypty/playerDetection.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://skrypty/RangeAreaMonster.gd" type="Script" id=5]
 [ext_resource path="res://grafika/monster/monster-mage.png" type="Texture" id=6]
 [ext_resource path="res://grafika/worldElements/teleportationEffect.png" type="Texture" id=7]
+[ext_resource path="res://muzyka/teleport-14639.mp3" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=91]
 length = 0.001
@@ -139,9 +140,8 @@ extents = Vector2( 259, 40.5 )
 extents = Vector2( 148, 12 )
 
 [node name="Monster-Mage" type="KinematicBody2D"]
-position = Vector2( -1367, -3341 )
 z_index = 1
-collision_layer = 2
+collision_layer = 0
 script = ExtResource( 1 )
 
 [node name="Monster1" type="Sprite" parent="."]
@@ -180,6 +180,8 @@ position = Vector2( 0, 3.5 )
 shape = SubResource( 94 )
 
 [node name="monsterBody" type="Area2D" parent="."]
+collision_layer = 0
+input_pickable = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monsterBody"]
@@ -188,6 +190,8 @@ shape = SubResource( 18 )
 
 [node name="RangeArea" type="Area2D" parent="."]
 collision_layer = 513
+collision_mask = 0
+input_pickable = false
 monitorable = false
 script = ExtResource( 5 )
 
@@ -196,6 +200,8 @@ position = Vector2( 1, 7.5 )
 shape = SubResource( 95 )
 
 [node name="MovementControlerMonster" type="Area2D" parent="."]
+collision_mask = 0
+input_pickable = false
 monitorable = false
 script = ExtResource( 4 )
 
@@ -204,9 +210,12 @@ position = Vector2( 6, 12 )
 shape = SubResource( 96 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
+
+[node name="SoundEffectSummon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -24.0
 
 [connection signal="body_entered" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="TriggerArea" method="_on_Area2D_body_exited"]

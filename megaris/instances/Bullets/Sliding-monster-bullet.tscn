@@ -16,7 +16,7 @@ extents = Vector2( 24.5, 10 )
 
 [node name="Sliding-monster-bullet" type="KinematicBody2D"]
 position = Vector2( -444, 940 )
-z_index = 1
+z_index = 2
 script = ExtResource( 2 )
 
 [node name="SlidingAttack1" type="Sprite" parent="."]

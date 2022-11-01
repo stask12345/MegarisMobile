@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bow_release-85040-[AudioTrimmer.com].mp3-daeec89a81a580b4c97701ec7d61ad55.mp3str"
+
+[deps]
+
+source_file="res://muzyka/bow_release-85040-[AudioTrimmer.com].mp3"
+dest_files=[ "res://.import/bow_release-85040-[AudioTrimmer.com].mp3-daeec89a81a580b4c97701ec7d61ad55.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

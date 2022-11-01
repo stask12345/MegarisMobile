@@ -36,16 +36,27 @@ var scroolExplosion1 = preload("res://instances/Items/SpellExplosion.tscn")
 var scroolFireBall1 = preload("res://instances/Items/SpellFireBall.tscn")
 
 
-var firstTierPotion = [healingPotion1,healingPotion1,healthPotion,invisibilityPotion,scroolFireBall1]
+var firstTierPotion = [healingPotion1,healthPotion,invisibilityPotion,scroolFireBall1]
 var secondTierPotion = [healingPotion2,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion1]
 var firstTierWeponList = [sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,special1]
 var secondTierWeponList = [sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,special2]
 var SpecialTierList = [wand1,wand2,special1,special2,healingPotion3]
 
+var loadSave = false
+var loadCastle = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if loadCastle:
+		get_node("/root/MainScene/EffectGenerator").getPlayerToCastleLoad()
+	
 	randomize()
-	generateWorld()
+	if !loadSave and !loadCastle: 
+		generateWorld()
+		saveTerrain()
+	if loadSave and !loadCastle: 
+		get_node("/root/MainScene").loadDataCurrent()
+		loadWorld()
 
 var numberOfTerrain = 14 #platform na 1 poziomie
 var numberOfFloors = 12 #liczba poziomów 
@@ -73,7 +84,6 @@ func generateWorld():
 	currentFloorPassages.erase(nextRandomedPassages[1])
 	
 	for f in numberOfFloors:
-		
 		currentFloorPassages = passages.duplicate() #losowanie przejść
 		if nextRandomedPassages[0] != null: currentFloorPassages.erase(nextRandomedPassages[0])
 		if nextRandomedPassages[1] != null: currentFloorPassages.erase(nextRandomedPassages[1])
@@ -145,7 +155,6 @@ func generatePlatformDecoration(platform, _passages, f):
 		if randi()%2 == 1: decoration.scale.y = -1
 		decoration.set_global_position(decorationPosition)
 		addChildHelper(decoration,f)
-	
 
 #generuje belki i lampy na suficie
 func generatePlatformDecorationBars(platform, passages, nextPassages, numberOfCurrentPlatform, numberOfCurrentFloor): #generowanie obiektów które są od pącztku do końca wysokości platformy 
@@ -365,3 +374,244 @@ func addChildHelper(object,currentFloor):
 	if currentFloor < 12 and currentFloor > 9:
 		$Stage6.add_child(object)
 		return
+
+func save():
+	var node_data = {
+		"loadSave": loadSave,
+		"nodePath": get_path()
+	}
+	return node_data
+
+func saveTerrain():
+	var save_game = File.new()
+	save_game.open("user://savegameTerrain.save", File.WRITE)
+	
+	for t in $Stage1.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage2.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage3.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage4.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage5.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	for t in $Stage6.get_children():
+		if t.is_in_group("saveGroupTerrain"):
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	save_game.close()
+
+func saveElements():
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").returnItemsToShopObject()
+	get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu").visible = false
+	
+	var save_game = File.new()
+	save_game.open("user://savegameElements.save", File.WRITE)
+	
+	for t in $Stage1.get_children() + $Stage2.get_children() + $Stage3.get_children() + $Stage4.get_children() + $Stage5.get_children() + $Stage6.get_children():
+		if t.name == "Fontain":
+			var node_data = {
+				"type": "fontain",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path(),
+				"full": t.full
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Chest" or t.name == "ChestGolden":
+			var node_data = {
+				"type": "chest",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path(),
+				"item": t.getItem()
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Anvil":
+			var node_data = {
+				"type": "anvil",
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "ItemTable":
+			var node_data = {
+					"type": "itemTable",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"item": t.getItem()
+				}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Trap1" or t.name == "Trap2":
+			var node_data = {
+					"type": "trap",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"used": t.used
+				}
+			save_game.store_line(to_json(node_data))
+		
+		if t.name == "Door":
+			var node_data = {
+					"type": "shop",
+					"filename": t.filename,
+					"pos_x": t.position.x,
+					"pos_y": t.position.y,
+					"parentPath": t.get_parent().get_path(),
+					"item1": t.getItem1(),
+					"item2": t.getItem2(),
+					"item3": t.getItem3()
+				}
+			save_game.store_line(to_json(node_data))
+	
+	save_game.close()
+
+func saveMonsters():
+	var save_game = File.new()
+	save_game.open("user://savegameMonsters.save", File.WRITE)
+	
+	for t in $Stage1.get_children() + $Stage2.get_children() + $Stage3.get_children() + $Stage4.get_children() + $Stage5.get_children() + $Stage6.get_children():
+		if t is monsterClass:
+			var node_data = {
+				"filename": t.filename,
+				"pos_x": t.position.x,
+				"pos_y": t.position.y,
+				"parentPath": t.get_parent().get_path()
+			}
+			save_game.store_line(to_json(node_data))
+	
+	save_game.close()
+
+func loadWorld():
+	#get_node("/root/MainScene").loadDataCurrent()
+	loadTerrain()
+	loadElements()
+	loadMonsters()
+	generatePlatformFillers()
+
+func loadTerrain():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameTerrain.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameTerrain.save", File.READ)
+	while save_game.get_position() < save_game.get_len():#obiektów do skopiowania
+		var node_data = parse_json(save_game.get_line())
+		var o = load(node_data["filename"]).instance()
+		get_node(node_data["parentPath"]).add_child(o)
+		o.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+	save_game.close()
+
+func loadMonsters():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameMonsters.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameMonsters.save", File.READ)
+	while save_game.get_position() < save_game.get_len():
+		var node_data = parse_json(save_game.get_line())
+		var m =load(node_data["filename"]).instance()
+		get_node(node_data["parentPath"]).add_child(m)
+		m.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+	save_game.close()
+
+func loadElements():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegameElements.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("user://savegameElements.save", File.READ)
+	while save_game.get_position() < save_game.get_len():#obiektów do skopiowania
+		var node_data = parse_json(save_game.get_line())
+		var o = load(node_data["filename"]).instance()
+		o.position = Vector2(node_data["pos_x"],node_data["pos_y"])
+		
+		if node_data["type"] == "fontain":
+			if node_data["full"] == false:
+				o.makeEmpty()
+		
+		if node_data["type"] == "chest":
+			if node_data["item"] != null:
+				var i = load(node_data["item"]).instance()
+				o.add_child(i)
+			else:
+				o.emptyChest()
+		
+		if node_data["type"] == "itemTable":
+			if node_data["item"] != null:
+				var i = load(node_data["item"]).instance()
+				o.get_child(0).add_child(i)
+		
+		if node_data["type"] == "trap":
+			if node_data["used"] == true:
+				o.makeUsed()
+		
+		if node_data["type"] == "shop":
+			var i
+			if node_data["item1"] != null:
+				i = load(node_data["item1"]).instance()
+				o.get_node("ItemSlot1").add_child(i)
+			if node_data["item2"] != null:
+				i = load(node_data["item2"]).instance()
+				o.get_node("ItemSlot2").add_child(i)
+			if node_data["item3"] != null:
+				i = load(node_data["item3"]).instance()
+				o.get_node("ItemSlot3").add_child(i)
+		
+		get_node(node_data["parentPath"]).add_child(o)
+	save_game.close()

@@ -2,7 +2,8 @@
 
 [ext_resource path="res://grafika/terrain/os9.png" type="Texture" id=1]
 
-[node name="Os9" type="Sprite"]
+[node name="Os9" type="Sprite" groups=["saveGroupTerrain"]]
+self_modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
 position = Vector2( 106, 1629 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 1 )

@@ -27,6 +27,7 @@ var bulletSpear = preload("res://instances/Bullets/spearBullet.tscn")
 var bulletSpearDouble = preload("res://instances/Bullets/spearDoubleBullet.tscn")
 var fireRate = 0 #ustawiane w ready
 var can_fire = true
+var playMusic = true
 
 
 func _process(_delta):
@@ -65,24 +66,60 @@ func _process(_delta):
 func shot():
 	var wepon = get_node("/root/MainScene/CanvasLayer/Control4/WeponHolder").get_child(0)
 	var shot
-	if wepon.typeOfBullet == "slash": shot = bulletSlash.instance()
-	if wepon.typeOfBullet == "slash big": shot = bulletSlashBig.instance()
-	if wepon.typeOfBullet == "sword": shot = bulletSword.instance()
-	if wepon.typeOfBullet == "slash and sword": shot = bulletSpecial2.instance()
-	if wepon.typeOfBullet == "explosion": shot = bulletExplosion.instance()
-	if wepon.typeOfBullet == "sword double": shot = bulletSwordDouble.instance()
-	if wepon.typeOfBullet == "sword demonic": shot = bulletSwordDemonic.instance()
-	if wepon.typeOfBullet == "pircing": shot = bulletSpear.instance()
-	if wepon.typeOfBullet == "pircing double": shot = bulletSpearDouble.instance()
-	if wepon.typeOfBullet == "arrow": shot = bulletArrow.instance()
-	if wepon.typeOfBullet == "arrow double": shot = bulletArrowDouble.instance()
-	if wepon.typeOfBullet == "arrow double triple": shot = bulletArrowTriple.instance()
-	if wepon.typeOfBullet == "magic": shot = bulletMagic.instance()
-	if wepon.typeOfBullet == "magic2": shot = bulletMagic2.instance()
-	if wepon.typeOfBullet == "magic3": shot = bulletMagic3.instance()
-	if wepon.typeOfBullet == "magic4": shot = bulletMagic4.instance()
-	if wepon.typeOfBullet == "special4": shot = bulletSpecial4.instance()
-	if wepon.typeOfBullet == "special3": shot = bulletSpecial3.instance()
+	if wepon.typeOfBullet == "slash": 
+		shot = bulletSlash.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "slash big": 
+		shot = bulletSlashBig.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "sword": 
+		shot = bulletSword.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "slash and sword": 
+		shot = bulletSpecial2.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "explosion": 
+		shot = bulletExplosion.instance()
+		if playMusic: get_node("/root/MainScene/MusicPlayer").playExpolosionQuiet()
+	if wepon.typeOfBullet == "sword double": 
+		shot = bulletSwordDouble.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "sword demonic": 
+		shot = bulletSwordDemonic.instance()
+		if playMusic: $SoundEffectSword.play()
+	if wepon.typeOfBullet == "pircing": 
+		shot = bulletSpear.instance()
+		if playMusic: $SoundEffectSpear.play()
+	if wepon.typeOfBullet == "pircing double": 
+		shot = bulletSpearDouble.instance()
+		if playMusic: $SoundEffectSpear.play()
+	if wepon.typeOfBullet == "arrow": 
+		shot = bulletArrow.instance()
+		if playMusic: $SoundEffectBow.play()
+	if wepon.typeOfBullet == "arrow double": 
+		shot = bulletArrowDouble.instance()
+		if playMusic: $SoundEffectBow.play()
+	if wepon.typeOfBullet == "arrow double triple": 
+		shot = bulletArrowTriple.instance()
+		if playMusic: $SoundEffectBow.play()
+	if wepon.typeOfBullet == "magic": 
+		shot = bulletMagic.instance()
+		if playMusic: $SoundEffectWand.play()
+	if wepon.typeOfBullet == "magic2": 
+		shot = bulletMagic2.instance()
+		if playMusic: $SoundEffectWand.play()
+	if wepon.typeOfBullet == "magic3": 
+		shot = bulletMagic3.instance()
+		if playMusic: $SoundEffectWand.play()
+	if wepon.typeOfBullet == "magic4": 
+		shot = bulletMagic4.instance()
+		if playMusic: $SoundEffectWand.play()
+	if wepon.typeOfBullet == "special4": 
+		shot = bulletSpecial4.instance()
+		if playMusic: $SoundEffectSummon.play()
+	if wepon.typeOfBullet == "special3": 
+		shot = bulletSpecial3.instance()
+		if playMusic: $SoundEffectSummon.play()
 	if scale.x == -1:
 		 shot.scale.x = -1
 	shot.set_rotation(rotation)

@@ -1,0 +1,183 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://grafika/light.png" type="Texture" id=1]
+[ext_resource path="res://grafika/worldElements/teleportationEffect.png" type="Texture" id=2]
+[ext_resource path="res://skrypty/summonerCircle.gd" type="Script" id=3]
+[ext_resource path="res://muzyka/teleport-14639.mp3" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=154]
+resource_name = "idle"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("summonerBullet/Light2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 0.0, -90.0, -180.0, -270.0, -360.0, -90.0, 90.0, -270.0, -360.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("summonerBullet/Light:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0, 90.0, 180.0, 270.0, 360.0, 90.0, 180.0, 270.0, 360.0, 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("summonerBullet:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 0.0, 180.0, 0.0, 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("summonerBullet:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3.8, 4, 4.9, 5, 5.9, 6, 6.9, 7, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "playSummon"
+}, {
+"args": [  ],
+"method": "summonMonsterAnimation"
+}, {
+"args": [  ],
+"method": "playSummon"
+}, {
+"args": [  ],
+"method": "summonMonsterAnimation"
+}, {
+"args": [  ],
+"method": "playSummon"
+}, {
+"args": [  ],
+"method": "summonMonsterAnimation"
+}, {
+"args": [  ],
+"method": "playSummon"
+}, {
+"args": [  ],
+"method": "summonMonsterAnimation"
+}, {
+"args": [  ],
+"method": "destroy"
+} ]
+}
+
+[sub_resource type="Animation" id=155]
+resource_name = "summonAnimation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("TeleportationEffect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TeleportationEffect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "summonMonster"
+} ]
+}
+
+[node name="summonerCircle" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 3 )
+
+[node name="summonerBullet" type="Sprite" parent="."]
+self_modulate = Color( 0.615686, 0, 0.721569, 1 )
+position = Vector2( 3.00001, 1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+
+[node name="Light" type="Sprite" parent="summonerBullet"]
+self_modulate = Color( 0.756863, 0, 1, 1 )
+position = Vector2( 1, 1 )
+rotation = -1.5708
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 1 )
+
+[node name="Light2" type="Sprite" parent="summonerBullet"]
+self_modulate = Color( 0.654902, 0, 0.729412, 1 )
+position = Vector2( 1, 1 )
+rotation = 1.5708
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 154 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/summonAnimation = SubResource( 155 )
+
+[node name="TeleportationEffect" type="Sprite" parent="."]
+visible = false
+z_index = 12
+texture = ExtResource( 2 )
+hframes = 7
+frame = 6
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SoundEffectSummon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -24.0
+pitch_scale = 1.2

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Harpoon-SoundBible.com-673032123.mp3-2294c025c06e0f48b683b5174a7cc030.mp3str"
+
+[deps]
+
+source_file="res://muzyka/Harpoon-SoundBible.com-673032123.mp3"
+dest_files=[ "res://.import/Harpoon-SoundBible.com-673032123.mp3-2294c025c06e0f48b683b5174a7cc030.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

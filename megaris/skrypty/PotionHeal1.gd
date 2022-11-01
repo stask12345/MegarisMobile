@@ -15,4 +15,5 @@ func _ready():
 func use():
 	playerHealth.hp += healPower
 	player.changeColor(Color.green,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

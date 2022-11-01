@@ -3,7 +3,7 @@ extends "res://skrypty/wepon.gd"
 func _ready():
 	minDamage = 20
 	maxDamage = 25
-	fireSpeed = 0.7
+	fireSpeed = 0.6
 	bulletRange = 0.25
 	typeOfBullet = "sword"
 	title = "Basic Sword"

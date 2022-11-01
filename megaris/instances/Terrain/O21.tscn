@@ -2,6 +2,7 @@
 
 [ext_resource path="res://grafika/terrain/o21.png" type="Texture" id=1]
 
-[node name="O21" type="Sprite"]
+[node name="O21" type="Sprite" groups=["saveGroupTerrain"]]
+self_modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
 position = Vector2( 63, 1657 )
 texture = ExtResource( 1 )

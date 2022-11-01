@@ -10,10 +10,11 @@ func _ready():
 	usable = true
 	price = 150
 	description = "Makes you invisibe \nDuration: " + String(invisibleTime) + " sec."
-	costOfSkill = 15
+	costOfSkill = 20
 	tier = 5
 
 func use():
 	playerStats.make_invisible(invisibleTime)
 	player.changeColor(Color.blue,true)
+	get_node("/root/MainScene/MusicPlayer").playDrink()
 	queue_free()

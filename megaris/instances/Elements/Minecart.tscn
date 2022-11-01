@@ -3,7 +3,7 @@
 [ext_resource path="res://grafika/terrain/minecart.png" type="Texture" id=1]
 [ext_resource path="res://grafika/terrain/pickaxe.png" type="Texture" id=2]
 
-[node name="Minecart" type="Sprite"]
+[node name="Minecart" type="Sprite" groups=["saveGroupTerrain"]]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 position = Vector2( -400, 923 )
 z_index = -2

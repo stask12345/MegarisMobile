@@ -4,15 +4,15 @@
 [ext_resource path="res://grafika/worldElements/ladder.png" type="Texture" id=2]
 [ext_resource path="res://skrypty/Area2D.gd" type="Script" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 4.75, 25 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 26.5, 65.5 )
 
-[node name="P1" type="Sprite"]
+[node name="P1" type="Sprite" groups=["saveGroupTerrain"]]
 position = Vector2( -1110, 411 )
+z_index = 1
 texture = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

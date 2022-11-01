@@ -1,5 +1,6 @@
 extends Control
 
+var addedCash = 0 #Dla pokazywania statystyk
 var gold = 0
 var totalCollected = 0
 var crystals = 0
@@ -40,7 +41,11 @@ func _process(_delta):
 #	if Input.is_key_pressed(16777351):
 #		get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
 	if Input.is_key_pressed(16777229):
-		get_tree().quit()
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+	if Input.is_key_pressed(KEY_P):
+		player.position = Vector2(-1040,-3279)
+	if Input.is_key_pressed(KEY_O):
+		player.position = Vector2(-1040,-4500)
 	$Crystals.text = String(crystals)
 	$Gold.text = String(gold)
 
@@ -72,12 +77,14 @@ func make_invisible(InvisibleTime):
 	player.get_node("Area2D").invisible = false
 
 func make_stronger(strongerTime):
+	player.get_node("HighLight/AnimationPlayer").play("idle_highlight")
 	strongerTime += potionDuration
-	player.get_node("HighLight").enabled = true#to do by naprawde zwiekszało damage
+	player.get_node("HighLight").visible = true
 	strengthIncrease = 2
 	yield(get_tree().create_timer(strongerTime),"timeout")
-	player.get_node("HighLight").enabled = false#to do by naprawde zwiekszało damage
+	player.get_node("HighLight").visible = false
 	strengthIncrease = 1
+	player.get_node("HighLight/AnimationPlayer").stop()
 
 func save():
 	var node_data = {
@@ -88,6 +95,16 @@ func save():
 		"slayedSecondBoss": slayedSecondBoss,
 		"maxHpAcquired": maxHpAcquired,
 		"maxGoldAcquired": maxGoldAcquired,
+		"addedCash": addedCash,
+		"nodePath": get_path()
+	}
+	return node_data
+
+func saveCurrent():
+	var node_data = {
+		"type": "normal",
+		"gold": gold,
+		"levelOfArmor": levelOfArmor,
 		"nodePath": get_path()
 	}
 	return node_data

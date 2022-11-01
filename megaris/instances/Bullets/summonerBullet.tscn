@@ -49,6 +49,7 @@ extents = Vector2( 143.5, 72 )
 
 [node name="summonerBullet" type="KinematicBody2D"]
 position = Vector2( 177, 0 )
+z_index = 2
 script = ExtResource( 2 )
 
 [node name="summonerBullet" type="Sprite" parent="."]

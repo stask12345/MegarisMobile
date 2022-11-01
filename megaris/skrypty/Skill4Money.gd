@@ -8,6 +8,7 @@ func _ready():
 
 func applyEffect():
 	playerStats.gold += 20
+	playerStats.addedCash += 20
 
 func buy():
 	applyEffect()

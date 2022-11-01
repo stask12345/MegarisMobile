@@ -13,89 +13,95 @@ var waitingForShooting = false
 var shooting = false
 
 func _ready():
-	minCoins = 3 #               !!!!!!! Być moze, nieśmiertelny podczas ataku
+	minCoins = 3 
 	maxCoins = 6
 	attackStrenght = 40
-	hp = 125
+	hp = 200
 	monsterName = "Ice Golem"
+	dropped = true
 
 func _physics_process(delta):
-	motion.y += gravity #grawitacja
-	if motion.y >= maxGravity:
-		motion.y = maxGravity
-	
-	if goingToPlayer: #kierunek w którym idzie wróg
-		if global_position.x - player.global_position.x >= 5:
-			goingRight = false
-			$Monster1.scale.x = 1
-		else:
-			goingRight = true
-			$Monster1.scale.x = -1
-	
-	if aggro and !destroyed and player.alive and !shooting:
-		if !ladder and is_on_floor() and (global_position.x - player.global_position.x > 10 or global_position.x - player.global_position.x < -10):
-			if goingRight:
-				if !getBack and !playerInRange: motion.x = 100
-				if getBack and playerInRange: motion.x = -100
-				if !getBack and playerInRange: $AnimationPlayer.play("idle")
-				else: $AnimationPlayer.play("walk")
-			if !goingRight: 
-				if !getBack and !playerInRange: motion.x = -100
-				if getBack and playerInRange: motion.x = 100
-				if !getBack and playerInRange: $AnimationPlayer.play("idle")
-				else: $AnimationPlayer.play("walk")
-		if ladder and ((directionOfLadder and goingRight) or (!directionOfLadder and !goingRight)):
-			if waitingForJump and !jumped: motion.x = 0
-			if !waitingForJump and is_on_floor(): 
-				waitForJump()
-				motion.x = 0
-		if !waitingForShooting:
-			waitingForShooting = true
-			waitForShoot()
-	
-	
-	if !aggro and is_on_floor(): motion.x = 0
-	
-	if jumped:
-		if jump < maxJump:
-			if goingRight: motion.x = jumpSpeed 
-			else: motion.x = -jumpSpeed 
-			motion.y = -jumpPower
-			jump += jumpPower
-		else:
-			waitingForJump = false
-			jumped = false
-	
-	if jump == 0:
-		motion.x = motion.x / 1.1
-	
-		if motion.x == 0 and !shooting: $AnimationPlayer.play("idle")
-	
-	if !aggro and !destroyed and !shooting:
-		$AnimationPlayer.play("idle")
-	
-#	if jump == 0:
-#		motion.x = motion.x / 1.001
-	
-	if is_on_floor():
-		jump = 0
-	
-	if knockbackLength < knockbackMaxLength: #knockback
-		if knockbackDirection: motion.x = knockbackStrength
-		else: motion.x = -knockbackStrength
-		knockbackLength += 1
-		modulate = Color(1,0,0)
-	else : 
-		modulate = Color(1,1,1)
-	
-	
-	if !destroyed: move_and_slide(motion,Vector2(0,-1))
+	if get_parent().visible == true:
+		if !$AnimationPlayer.is_playing(): $AnimationPlayer.play("idle")
+		
+		if motion.y < maxGravity:
+			motion.y += gravity #grawitacja
+			if motion.y >= maxGravity:
+				motion.y = maxGravity
+		
+		if aggro: #kierunek w którym idzie wróg
+			if global_position.x - player.global_position.x >= 5:
+				goingRight = false
+				$Monster1.scale.x = 1
+			else:
+				goingRight = true
+				$Monster1.scale.x = -1
+		
+		if aggro and !destroyed and player.alive and !shooting:
+			if !ladder and is_on_floor() and (global_position.x - player.global_position.x > 10 or global_position.x - player.global_position.x < -10):
+				if goingRight:
+					if !getBack and !playerInRange: motion.x = 100
+					if getBack and playerInRange: motion.x = -100
+					if !getBack and playerInRange: $AnimationPlayer.play("idle")
+					else: $AnimationPlayer.play("walk")
+				if !goingRight: 
+					if !getBack and !playerInRange: motion.x = -100
+					if getBack and playerInRange: motion.x = 100
+					if !getBack and playerInRange: $AnimationPlayer.play("idle")
+					else: $AnimationPlayer.play("walk")
+			if ladder and ((directionOfLadder and goingRight) or (!directionOfLadder and !goingRight)):
+				if waitingForJump and !jumped: motion.x = 0
+				if !waitingForJump and is_on_floor(): 
+					waitForJump()
+					motion.x = 0
+			if !waitingForShooting:
+				waitingForShooting = true
+				waitForShoot()
+		
+		
+		if !aggro and is_on_floor(): motion.x = 0
+		
+		if jumped:
+			if jump < maxJump:
+				if goingRight: motion.x = jumpSpeed 
+				else: motion.x = -jumpSpeed 
+				motion.y = -jumpPower
+				jump += jumpPower
+			else:
+				waitingForJump = false
+				jumped = false
+		
+		if jump == 0:
+			motion.x = motion.x / 1.1
+		
+			if motion.x == 0 and !shooting and !destroyed: $AnimationPlayer.play("idle")
+		
+		if !aggro and !destroyed and !shooting:
+			$AnimationPlayer.play("idle")
+		
+	#	if jump == 0:
+	#		motion.x = motion.x / 1.001
+		
+		if is_on_floor():
+			dropped = false
+			jump = 0
+		
+		if knockbackLength < knockbackMaxLength: #knockback
+			knockbackLength += 1
+			modulate = Color(1,0,0)
+		else : 
+			modulate = Color(1,1,1)
+		
+		
+		if !destroyed:
+			if motion.x != 0 or motion.y != maxGravity or dropped:
+				 move_and_slide(motion,Vector2(0,-1))
 
 func waitForJump():
 	waitingForJump = true
 	$Timer2.start(1)
 	yield($Timer2,"timeout")
-	monsterJump()
+	if !shooting: monsterJump()
 
 func waitForShoot():
 	$Timer3.start(2)
@@ -105,17 +111,18 @@ func waitForShoot():
 
 func shoot():
 	shooting = true
-	$AnimationPlayer.play("charging")
+	if !destroyed: $AnimationPlayer.play("charging")
 
 func shootBullets():
 	get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
+	$SoundEffectGolem.play()
 	
 	var b1 = attackBolt.instance()
 	var b2 = attackBolt.instance()
 	var height = position.y + ($Monster1.texture.get_height() / 2) - (b1.get_child(0).texture.get_height()/2)
 	var width = position.x
-	b1.shootingMonster = self
-	b2.shootingMonster = self
+	b1.shootingMonster = duplicate()
+	b2.shootingMonster = duplicate()
 	b1.goingRight = true
 	b1.position.y = height
 	b1.position.x = width
@@ -131,12 +138,12 @@ func endShoot():
 	shooting = false
 
 func monsterJump():
-	if player.global_position.y > global_position.y:
+	if player.global_position.y - 5 > global_position.y:
 		jumped = true
 		jump = 1
-		jumpSpeed = 250
-		maxJump = 1800
-		jumpPower = 650
+		jumpSpeed = 275
+		maxJump = 1900
+		jumpPower = 700
 	else:
 		jumped = true
 		jump = 1

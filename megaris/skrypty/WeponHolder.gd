@@ -26,3 +26,24 @@ func unEquipGraphic():
 	if playerHand != null:
 		playerHand.texture = whiteGraphic
 		playerHand.self_modulate.a = 0
+
+func get_wepon_for_save():
+	if get_child_count() > 0:
+		return get_child(0).filename
+	else:
+		return null
+
+func get_wepon_upgrade():
+	if get_child_count() > 0:
+		return get_child(0).upgradeLevel
+	else:
+		return 0
+
+func saveCurrent():
+	var node_data = {
+		"type": "wepon",
+		"wepon": get_wepon_for_save(),
+		"upgrade": get_wepon_upgrade(),
+		"nodePath": get_path()
+	}
+	return node_data

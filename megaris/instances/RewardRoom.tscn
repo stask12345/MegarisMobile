@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://grafika/skills/skill1.png" type="Texture" id=1]
 [ext_resource path="res://grafika/boss-light.png" type="Texture" id=2]
@@ -8,7 +8,11 @@
 [ext_resource path="res://skrypty/SkillTable.gd" type="Script" id=6]
 [ext_resource path="res://grafika/white.png" type="Texture" id=7]
 [ext_resource path="res://dpcomic.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://grafika/animation/itemTableAnimation.png" type="Texture" id=9]
+[ext_resource path="res://grafika/animation/itemTableAnimation1.png" type="Texture" id=9]
+[ext_resource path="res://grafika/itemy/potion11.png" type="Texture" id=10]
+[ext_resource path="res://skrypty/RewardSkillPotion.gd" type="Script" id=11]
+[ext_resource path="res://grafika/skills/skillR.png" type="Texture" id=12]
+[ext_resource path="res://skrypty/SkillRewardResorses.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=85]
 extents = Vector2( 0.49866, 0.228245 )
@@ -81,6 +85,64 @@ tracks/1/keys = {
 "values": [ false, true, false ]
 }
 
+[sub_resource type="Animation" id=90]
+resource_name = "idle"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=91]
+resource_name = "idle"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
 [node name="RewardRoom" type="Node"]
 
 [node name="White" type="Sprite" parent="."]
@@ -121,11 +183,6 @@ position = Vector2( -41.4999, 2300.88 )
 scale = Vector2( 2045, -0.749661 )
 z_index = 2
 texture = ExtResource( 7 )
-
-[node name="Light2D2" type="Light2D" parent="."]
-position = Vector2( 12, 1802 )
-texture = ExtResource( 2 )
-color = Color( 0.607843, 0.607843, 0.607843, 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -235.0
@@ -525,7 +582,7 @@ position = Vector2( 478.5, -82.5001 )
 
 [node name="SkillTable" type="Sprite" parent="Rewards"]
 self_modulate = Color( 1.2, 1.2, 1.2, 1 )
-position = Vector2( 3, 2285 )
+position = Vector2( 9, 2285 )
 z_index = 7
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
@@ -547,6 +604,7 @@ shape = SubResource( 23 )
 
 [node name="ItemTableAnimation" type="Sprite" parent="Rewards/SkillTable"]
 visible = false
+self_modulate = Color( 1, 0.784314, 0, 1 )
 position = Vector2( 0, -55 )
 texture = ExtResource( 9 )
 hframes = 4
@@ -554,5 +612,80 @@ hframes = 4
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rewards/SkillTable/ItemTableAnimation"]
 anims/idle = SubResource( 89 )
 
+[node name="SkillTable2" type="Sprite" parent="Rewards"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( 127, 2285 )
+z_index = 7
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Rewards/SkillTable2"]
+position = Vector2( 0, -50 )
+
+[node name="Skill1" type="Sprite" parent="Rewards/SkillTable2/KinematicBody2D2"]
+position = Vector2( -1, -15 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="Rewards/SkillTable2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rewards/SkillTable2/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[node name="ItemTableAnimation" type="Sprite" parent="Rewards/SkillTable2"]
+visible = false
+self_modulate = Color( 1, 0.784314, 0, 1 )
+position = Vector2( 0, -55 )
+texture = ExtResource( 9 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rewards/SkillTable2/ItemTableAnimation"]
+anims/idle = SubResource( 90 )
+
+[node name="SkillTable3" type="Sprite" parent="Rewards"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -105, 2285 )
+z_index = 7
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="Rewards/SkillTable3"]
+position = Vector2( 0, -50 )
+
+[node name="Skill1" type="Sprite" parent="Rewards/SkillTable3/KinematicBody2D2"]
+position = Vector2( -1, -15 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+
+[node name="Area2D" type="Area2D" parent="Rewards/SkillTable3"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rewards/SkillTable3/Area2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 23 )
+
+[node name="ItemTableAnimation" type="Sprite" parent="Rewards/SkillTable3"]
+visible = false
+self_modulate = Color( 1, 0.784314, 0, 1 )
+position = Vector2( 0, -55 )
+texture = ExtResource( 9 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rewards/SkillTable3/ItemTableAnimation"]
+anims/idle = SubResource( 91 )
+
+[node name="Light2D" type="Sprite" parent="."]
+self_modulate = Color( 4, 3.2, 1.4, 0.15 )
+position = Vector2( 13, 1801 )
+z_index = 1
+texture = ExtResource( 2 )
+
 [connection signal="body_entered" from="Rewards/SkillTable/Area2D" to="Rewards/SkillTable" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Rewards/SkillTable/Area2D" to="Rewards/SkillTable" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Rewards/SkillTable2/Area2D" to="Rewards/SkillTable2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Rewards/SkillTable2/Area2D" to="Rewards/SkillTable2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Rewards/SkillTable3/Area2D" to="Rewards/SkillTable3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Rewards/SkillTable3/Area2D" to="Rewards/SkillTable3" method="_on_Area2D_body_exited"]

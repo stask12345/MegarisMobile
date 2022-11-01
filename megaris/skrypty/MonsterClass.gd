@@ -29,6 +29,8 @@ var indestructable = false
 var isBossMonster = false
 var isSlimeMonster = false
 var isSkeletonMonster = false
+var bossMinion = false
+var dropped = false #Dla potworów zrzucanych z powietrza #normalnie lewitowałyby ze względu na optymalizacje
 
 onready var timer = $Timer
 
@@ -45,7 +47,7 @@ func hpDelayTimer():
 
 func loseTriggerOnPlayer():
 	goingToPlayer = false
-	if player.alive and !destroyed:
+	if player.alive and !destroyed and get_parent():
 		timer.start(triggerTime)
 		yield($Timer, "timeout")
 	if !goingToPlayer: aggro = false
@@ -77,6 +79,7 @@ func dropGold():
 		generatedCoins -= 1
 
 func playAnimationAndDestroy():
+	if !isBossMonster: get_node("/root/MainScene/MusicPlayer").playMonsterDeath()
 	playerStats.killedMonster += 1
 	destroyed = true
 	$AnimationPlayer.play("monster_death")

@@ -39,6 +39,7 @@ extents = Vector2( 28, 21.5 )
 [node name="ChestGolden" type="Sprite"]
 self_modulate = Color( 1.2, 1.2, 1.2, 1 )
 position = Vector2( 1169, 444 )
+z_index = 1
 texture = ExtResource( 2 )
 hframes = 4
 script = ExtResource( 1 )

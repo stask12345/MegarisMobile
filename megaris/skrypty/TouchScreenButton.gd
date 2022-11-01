@@ -4,6 +4,8 @@ var radious = Vector2(26,26)
 var boundary = 65 #65 do poprawy w razie błedu
 var drag_state = -1 #stan dragu -1 bez inputu, inne wartości to poszczególne klikniecia
 var lockJoyStick = false
+var remoteControl = false
+var remoteControlVector = Vector2()
 
 func getButtonPosition():
 	return position + radious
@@ -31,8 +33,11 @@ func _input(event):
 var errorMargin = 10 #margines od którego wykrywa ruch na joysticku
 func get_value():
 	var buttonCenterPosition = getButtonPosition()
-	if buttonCenterPosition.length() > errorMargin:
-		return Vector2(calculatePercentValuesOfJoystick(buttonCenterPosition.x),calculatePercentValuesOfJoystick(buttonCenterPosition.y))
+	if !remoteControl:
+		if buttonCenterPosition.length() > errorMargin:
+			return Vector2(calculatePercentValuesOfJoystick(buttonCenterPosition.x),calculatePercentValuesOfJoystick(buttonCenterPosition.y))
+	if remoteControl:
+		return remoteControlVector
 	return Vector2(0,0)
 
 func calculatePercentValuesOfJoystick(value):

@@ -8,13 +8,14 @@ onready var wepon = get_node("/root/MainScene/Player/WeponHolder")
 func _ready():
 	minDamage = 35
 	maxDamage = 50
-	fireSpeed = 0.9
+	fireSpeed = 0.8
 	bulletRange = 2
 	typeOfBullet = "arrow double"
 	textureChangeAfterShot = true
 	title = "Royal Bow"
 	price = 160
 	rangeDestroy = false
+	costOfSkill = 35
 	tier = 4
 
 func _process(delta):

@@ -1,16 +1,15 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://instances/Wepons/Sword1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Items/PotionHealing1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dpcomic.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://skrypty/Dummy.gd" type="Script" id=4]
 [ext_resource path="res://skrypty/Chest.gd" type="Script" id=5]
+[ext_resource path="res://grafika/animation/chestAnimationWhite.png" type="Texture" id=6]
 [ext_resource path="res://skrypty/ItemTable.gd" type="Script" id=10]
 [ext_resource path="res://grafika/worldElements/itemTable.png" type="Texture" id=11]
 [ext_resource path="res://grafika/worldElements/chest.png" type="Texture" id=12]
-[ext_resource path="res://grafika/animation/chestAnimation.png" type="Texture" id=13]
 [ext_resource path="res://grafika/white.png" type="Texture" id=14]
-[ext_resource path="res://grafika/animation/itemTableAnimation.png" type="Texture" id=15]
 [ext_resource path="res://skrypty/Tutorial.gd" type="Script" id=16]
 [ext_resource path="res://skrypty/SpawnPointTutorial.gd" type="Script" id=17]
 [ext_resource path="res://grafika/terrain/t1.png" type="Texture" id=18]
@@ -122,6 +121,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=141]
 resource_name = "monster_death"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Dummy:texture")
 tracks/0/interp = 1
@@ -134,25 +134,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 28 ), ExtResource( 27 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Dummy:position")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 65 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -1252,8 +1240,9 @@ shape = SubResource( 154 )
 
 [node name="ItemTableAnimation" type="Sprite" parent="ItemTable"]
 visible = false
+self_modulate = Color( 0.901961, 0, 1, 1 )
 position = Vector2( 0, -55 )
-texture = ExtResource( 15 )
+texture = ExtResource( 6 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ItemTable/ItemTableAnimation"]
@@ -1269,8 +1258,9 @@ script = ExtResource( 5 )
 
 [node name="ItemTableAnimation" type="Sprite" parent="Chest"]
 visible = false
+self_modulate = Color( 0.901961, 0, 1, 1 )
 position = Vector2( 4, -35 )
-texture = ExtResource( 13 )
+texture = ExtResource( 6 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chest/ItemTableAnimation"]
@@ -1298,7 +1288,7 @@ position = Vector2( 0.5, 0.5 )
 shape = SubResource( 138 )
 
 [node name="Dummy" type="Sprite" parent="Dummy"]
-position = Vector2( 0, 46 )
+position = Vector2( 0, 43 )
 texture = ExtResource( 28 )
 offset = Vector2( 0, -49 )
 
