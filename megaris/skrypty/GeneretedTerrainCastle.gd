@@ -38,7 +38,7 @@ var firstTierPotion = [healingPotion3,healingPotion3,healthPotion,invisibilityPo
 var secondTierPotion = [healingPotion4,healingPotion4,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion]
 var firstTierWeponList = [sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,sword4,spear3,mace3,bow3,wand3,specialWand]
 var secondTierWeponList = [sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,sword5,spear4,mace4,bow4,wand4,specialSword]
-var SpecialTierList = [specialWand,specialSword,scroolExplosion,wand4]
+var SpecialTierList = [specialWand,specialSword,scroolExplosion,wand4,healingPotion4,invisibilityPotion,StrengthPotion]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

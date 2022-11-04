@@ -1,4 +1,4 @@
-[gd_scene load_steps=310 format=2]
+[gd_scene load_steps=312 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -193,6 +193,7 @@
 [ext_resource path="res://skrypty/Detector4.gd" type="Script" id=191]
 [ext_resource path="res://skrypty/Detector5.gd" type="Script" id=192]
 [ext_resource path="res://grafika/UI/tytul.png" type="Texture" id=193]
+[ext_resource path="res://instances/Monsters/Monster-Worm2.tscn" type="PackedScene" id=194]
 [ext_resource path="res://grafika/UI/menu-music2.png" type="Texture" id=195]
 [ext_resource path="res://grafika/UI/menu-music3.png" type="Texture" id=196]
 [ext_resource path="res://grafika/UI/menu-music1.png" type="Texture" id=197]
@@ -1030,6 +1031,57 @@ font_data = ExtResource( 52 )
 [sub_resource type="DynamicFont" id=39]
 size = 62
 font_data = ExtResource( 52 )
+
+[sub_resource type="Animation" id=161]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("UpgradeEffect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UpgradeEffect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArmorImage:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WeponImage:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=117]
 resource_name = "armorAnimation"
@@ -2341,7 +2393,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 5.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.392157, 0.392157, 0.392157, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.352941, 0.352941, 0.352941, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("../Player/Light2D:energy")
@@ -2521,6 +2573,30 @@ tracks/10/keys = {
 "args": [  ],
 "method": "playRumble"
 } ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../CanvasModulate:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 5.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.352941, 0.352941, 0.352941, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../Player/Light2D:energy")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 5.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=154]
@@ -3093,6 +3169,30 @@ tracks/9/keys = {
 "method": "playRewardTheme"
 } ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("../CanvasModulate:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.05, 6.4, 6.45 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.352941, 0.352941, 0.352941, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../Player/Light2D:energy")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( -0.1, 0, 6.4, 6.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 0.0, 1.0 ]
+}
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 63 )
@@ -3283,10 +3383,11 @@ light_mask = 3
 z_index = 1
 texture = ExtResource( 13 )
 texture_scale = 1.5
-color = Color( 0.607843, 0.607843, 0.607843, 1 )
+color = Color( 0.647059, 0.647059, 0.647059, 1 )
 range_item_cull_mask = 3
 
 [node name="WeponHolder" type="Sprite" parent="Player"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -3 )
 texture = ExtResource( 4 )
@@ -3380,7 +3481,7 @@ position = Vector2( 1, -4.99268 )
 z_index = 12
 texture = ExtResource( 69 )
 hframes = 7
-frame = 2
+frame = 6
 
 [node name="SoundEffectLand" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource( 157 )
@@ -3962,6 +4063,7 @@ texture = ExtResource( 56 )
 script = ExtResource( 78 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control4/AnvilMenu"]
+anims/RESET = SubResource( 161 )
 anims/armorAnimation = SubResource( 117 )
 anims/upgradeWepon = SubResource( 116 )
 
@@ -3989,13 +4091,13 @@ texture = ExtResource( 45 )
 [node name="UpgradeEffect" type="Sprite" parent="CanvasLayer/Control4/AnvilMenu"]
 visible = false
 self_modulate = Color( 0.360784, 1, 0, 1 )
-position = Vector2( -87, -20 )
+position = Vector2( -87, -1.47368 )
 texture = ExtResource( 154 )
 
 [node name="UpgradeEffect2" type="Sprite" parent="CanvasLayer/Control4/AnvilMenu"]
 visible = false
 self_modulate = Color( 0.360784, 1, 0, 1 )
-position = Vector2( 86.154, -24 )
+position = Vector2( 86.154, -0.421053 )
 texture = ExtResource( 154 )
 
 [node name="Title" type="Label" parent="CanvasLayer/Control4/AnvilMenu"]
@@ -4079,6 +4181,7 @@ align = 1
 
 [node name="BuyWeponButton" type="TouchScreenButton" parent="CanvasLayer/Control4/AnvilMenu/BuyWepon"]
 self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 41.0769, 1.84616 )
 scale = Vector2( 2.33654, 0.73077 )
 normal = ExtResource( 40 )
 
@@ -4095,6 +4198,7 @@ align = 1
 
 [node name="BuyArmorButton2" type="TouchScreenButton" parent="CanvasLayer/Control4/AnvilMenu/BuyArmor"]
 self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 37.0769, -1.38458 )
 scale = Vector2( 2.36538, 0.692308 )
 normal = ExtResource( 40 )
 
@@ -5975,193 +6079,193 @@ offset = Vector2( -0.3856, -0.71101 )
 [node name="Background" type="Node" parent="Terrain"]
 
 [node name="B2" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -268.5, 633.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B3" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 805.5, 628.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B4" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1685.5, 628.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B5" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1343.5, -11.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B6" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -268.5, -11.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B7" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 805.5, -11.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B8" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1685.5, -11.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B1" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1343.5, 633.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B9" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -598.5, -651.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B10" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 475.5, -656.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B11" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1355.5, -656.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B12" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1673.5, -1296.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B13" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -598.5, -1296.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B14" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 475.5, -1296.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B15" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1355.5, -1296.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B16" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1673.5, -651.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B17" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -618.5, -1941.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B18" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 456.5, -1941.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B19" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1531, -1941 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B20" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1693.5, -2586.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B21" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -618.5, -2586.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B22" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 456.5, -2581.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B23" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1395, -2580 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B25" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1693.5, -3231.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B26" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -618.5, -3231.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B27" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 456.5, -3226.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B28" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1379, -3225 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B29" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1693.5, -3876.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B30" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -618.5, -3876.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B31" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 456.5, -3871.5 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B32" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( 1379, -3870 )
 z_index = -10
 texture = ExtResource( 11 )
 
 [node name="B24" type="Sprite" parent="Terrain/Background"]
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 position = Vector2( -1693.5, -1941.5 )
 z_index = -10
 texture = ExtResource( 11 )
@@ -6511,7 +6615,7 @@ anims/teleportFromTutorial = SubResource( 148 )
 anims/teleportToCastle = SubResource( 83 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.392157, 0.392157, 0.392157, 1 )
+color = Color( 0.352941, 0.352941, 0.352941, 1 )
 
 [node name="MusicPlayer" type="Node" parent="."]
 pause_mode = 2
@@ -6522,15 +6626,16 @@ stream = ExtResource( 84 )
 
 [node name="BackgroundAudioDeflaut" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 158 )
-volume_db = 6.0
+volume_db = 8.0
 autoplay = true
 
 [node name="BackgroundAudioBoss" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 182 )
-volume_db = -4.0
+volume_db = -2.0
 
 [node name="BackgroundAudioVictory" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 173 )
+volume_db = 2.0
 
 [node name="BackgroundAudioDefeat" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 184 )
@@ -6613,6 +6718,9 @@ volume_db = 4.0
 
 [node name="SoundEffectSummon" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 171 )
+
+[node name="Monster-Worm2" parent="." instance=ExtResource( 194 )]
+position = Vector2( -674, 811 )
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_MainScene_child_exiting_tree"]
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_Area2D_area_entered"]

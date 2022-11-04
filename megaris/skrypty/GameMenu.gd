@@ -47,6 +47,8 @@ func musicSettings():
 		get_node("/root/MainScene/Player").playMusic = false
 		get_node("/root/MainScene/Player/WeponHolder").playMusic = false
 		get_node("/root/MainScene/Player/SoundEffectOuch").stream_paused = true
+		get_node("/root/MainScene/CanvasLayer/Control4/AnvilMenu/SoundEffectAnvil").stream_paused = true
+		get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu/SoundEffectShop").stream_paused = true
 	
 	if sound:
 		get_node("/root/MainScene/MusicPlayer/SoundEffectTeleportation").stream_paused = false
@@ -73,6 +75,8 @@ func musicSettings():
 		get_node("/root/MainScene/Player").playMusic = true
 		get_node("/root/MainScene/Player/WeponHolder").playMusic = true
 		get_node("/root/MainScene/Player/SoundEffectOuch").stream_paused = false
+		get_node("/root/MainScene/CanvasLayer/Control4/AnvilMenu/SoundEffectAnvil").stream_paused = false
+		get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu/SoundEffectShop").stream_paused = false
 
 func setMenu():
 	if music:

@@ -10,7 +10,7 @@ func _ready():
 	minCoins = 4
 	maxCoins = 5
 	attackStrenght = 45
-	hp = 110
+	hp = 145
 	monsterName = "Mutated Worm"
 
 func _physics_process(delta):
@@ -93,6 +93,7 @@ func shootBullets():
 	var height = position.y - 20
 	var width = position.x
 	b1.shootingMonster = duplicate()
+	b1.attackStrenght = attackStrenght
 	if goingRight: b1.scale.x = 1
 	else: b1.scale.x = -1
 	

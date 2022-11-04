@@ -40,7 +40,7 @@ var firstTierPotion = [healingPotion1,healthPotion,invisibilityPotion,scroolFire
 var secondTierPotion = [healingPotion2,healthPotion,invisibilityPotion,StrengthPotion,scroolExplosion1]
 var firstTierWeponList = [sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,sword2,spear1,mace1,bow1,wand1,special1]
 var secondTierWeponList = [sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,sword3,spear2,mace2,bow2,wand2,special2]
-var SpecialTierList = [wand1,wand2,special1,special2,healingPotion3]
+var SpecialTierList = [wand1,wand2,wand1,wand2,special1,special2,healingPotion3,healingPotion3]
 
 var loadSave = false
 var loadCastle = false

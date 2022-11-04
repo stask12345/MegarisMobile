@@ -8,7 +8,7 @@ var flyToGoal = false
 func _ready():
 	minCoins = -1
 	maxCoins = 0
-	attackStrenght = 30 #statystyki zmienne
+	attackStrenght = 45 #statystyki zmienne
 	hp = 600
 	knockbackLength = 9 #knockback
 	knockbackMaxLength = 8

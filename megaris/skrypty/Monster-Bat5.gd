@@ -1,6 +1,6 @@
 extends monsterClass
 
-var speed = 13000
+var speed = 13500
 var stayInPlaceVar = false
 var afterHit = false
 var screak = false
@@ -13,7 +13,7 @@ func _ready():
 	knockbackMaxLength = 8
 	knockbackStrength = 1200
 	attackStrenght = 45 #statystyki zmienne
-	hp = 125
+	hp = 160
 	minCoins = 3
 	maxCoins = 5
 	monsterName = "Alfa Bat"

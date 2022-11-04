@@ -16,7 +16,7 @@ func _ready():
 	minCoins = 4
 	maxCoins = 9
 	attackStrenght = 50
-	hp = 250
+	hp = 255
 	monsterName = "Fire Golem"
 	dropped = true
 
@@ -142,6 +142,7 @@ func shootMeteors():
 	b.position = player.position
 	b.position.y -= 200
 	b.shootingMonster = duplicate()
+	b.attackStrenght = attackStrenght
 	b.scale = Vector2(1.5,1.5)
 	get_parent().add_child(b)
 

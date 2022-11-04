@@ -8,7 +8,7 @@ var costOfWeponUpgrade = [20,30]
 var costOfArmorUpgrade = [50,100,200,300,450]
 
 func showArmory(resetAnimation = false):
-	if !resetAnimation: $AnimationPlayer.stop()
+	if !resetAnimation: $AnimationPlayer.play("RESET")
 	$WeponImage.texture = weponHolder.get_child(0).texture
 	if $WeponImage.texture.get_height() > 80:
 		$WeponImage.scale = Vector2(1.1,1.1)
@@ -40,6 +40,7 @@ func showArmory(resetAnimation = false):
 
 
 func _on_Button_pressed(): #back button
+	$AnimationPlayer.play("RESET")
 	visible = false
 
 

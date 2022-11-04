@@ -11,7 +11,7 @@ func _ready():
 	minCoins = 3
 	maxCoins = 6
 	attackStrenght = 50 #statystyki zmienne
-	hp = 125
+	hp = 200
 	monsterName = "Golden Slime"
 	isSlimeMonster = true
 	dropped = true

@@ -13,7 +13,7 @@ func _ready():
 	knockbackMaxLength = 8
 	knockbackStrength = 1200
 	attackStrenght = 35 #statystyki zmienne
-	hp = 80
+	hp = 100
 	minCoins = 2
 	maxCoins = 4
 	monsterName = "Monstrous Bat"

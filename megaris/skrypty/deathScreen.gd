@@ -31,7 +31,7 @@ func showDeathScreen():
 		monster.destroyed = true
 		monster.scale = Vector2(3,3)
 		monster.modulate = Color.white
-		if monster.get_node("Monster1").texture.get_height() >= 90: monster.scale = Vector2(2,2)
+		if monster.get_node("Monster1").texture.get_height() >= 80: monster.scale = Vector2(2,2)
 		if monster.get_node("Monster1").texture.get_height() >= 200: #Boss
 			monster.scale = Vector2(1,1)
 	if monster is trap:

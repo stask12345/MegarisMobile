@@ -10,7 +10,7 @@ func _ready():
 	minCoins = 5
 	maxCoins = 7
 	attackStrenght = 55
-	hp = 150
+	hp = 180
 	monsterName = "Dragon Worm"
 
 func _physics_process(delta):
@@ -68,7 +68,7 @@ func _physics_process(delta):
 		
 		motion.x = motion.x * delta
 		if !destroyed:
-			if motion.x != 0 or motion.y != maxGravity:
+			if motion.x != 0 or motion.y != maxGravity or dropped:
 				 move_and_slide(motion,Vector2(0,-1))
 		
 
@@ -90,9 +90,11 @@ func destroyMonster():
 
 func shootBullets():
 	var b1 = attackBolt.instance()
+	b1.attackStrenght = attackStrenght
 	var height = position.y - 20
 	var width = position.x
 	b1.shootingMonster = duplicate()
+	b1.attackStrenght = attackStrenght
 	if goingRight: b1.scale.x = 1
 	else: b1.scale.x = -1
 	

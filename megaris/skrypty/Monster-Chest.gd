@@ -90,6 +90,7 @@ func shoot():
 
 func shootSingleStrongBold():
 	var b1 = attackBolt.instance()
+	b1.attackStrenght = attackStrenght
 	var height = position.y - 20
 	var width = position.x
 	b1.shootingMonster = self

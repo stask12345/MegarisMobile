@@ -16,7 +16,7 @@ func _ready():
 	minCoins = 3 
 	maxCoins = 6
 	attackStrenght = 40
-	hp = 200
+	hp = 230
 	monsterName = "Ice Golem"
 	dropped = true
 

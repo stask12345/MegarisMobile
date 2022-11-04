@@ -97,8 +97,6 @@ func getPlayerToRewardRoom():
 
 func getPlayerToRewardRoomLoad():#Przy wczytywaniu
 	get_node("/root/MainScene/CanvasLayer/Control-DeathScreen/StageNameRotation/StageName/AnimationPlayer").stop()
-	get_node("/root/MainScene/CanvasModulate").color = Color.white
-	get_node("/root/MainScene/Player/Light2D").energy = 0
 	atCastle = ""
 	var rewardRoom = load("res://instances/RewardRoom.tscn").instance()
 	get_node("/root/MainScene").call_deferred("add_child",rewardRoom) #Dla 
@@ -122,8 +120,6 @@ func getPlayerToCastle():
 	duringCastle = true
 
 func getPlayerToCastleLoad():
-	get_node("/root/MainScene/CanvasModulate").color = Color.white
-	get_node("/root/MainScene/Player/Light2D").energy = 0
 	atCastle = "castle"
 	get_node("/root/MainScene/GeneratedTerrain").queue_free()
 	get_node("/root/MainScene/Terrain").queue_free()

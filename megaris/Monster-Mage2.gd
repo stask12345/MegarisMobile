@@ -12,7 +12,7 @@ func _ready():
 	minCoins = 5
 	maxCoins = 8
 	attackStrenght = 40
-	hp = 180
+	hp = 225
 	monsterName = "Skeleton Archmage"
 	isSkeletonMonster = true
 

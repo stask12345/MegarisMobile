@@ -14,8 +14,8 @@ var shooting = false
 func _ready():
 	minCoins = 4
 	maxCoins = 6
-	attackStrenght = 40
-	hp = 110
+	attackStrenght = 45
+	hp = 200
 	monsterName = "Skeleton Champion"
 	isSkeletonMonster = true
 	dropped = true

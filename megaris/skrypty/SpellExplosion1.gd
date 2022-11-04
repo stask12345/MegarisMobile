@@ -11,6 +11,7 @@ func _ready():
 	price = 40
 	description = "Fires a powerful exposion. \nDamage: " + String(damage)
 	costOfSkill = 25
+	tier = 5
 
 func use():
 	var b = bold.instance()

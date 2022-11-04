@@ -13,7 +13,7 @@ func _ready():
 	minCoins = 4
 	maxCoins = 6
 	attackStrenght = 40
-	hp = 225
+	hp = 280
 	monsterName = "Demonic Turtle"
 	dropped = true
 

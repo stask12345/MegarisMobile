@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var motion = Vector2()
-var attackStrenght = 30
+var attackStrenght = 50
 var goingRight = false
 var destroyed = false
 var direction
@@ -11,8 +11,6 @@ onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
 	direction = goingRight
-	if shootingMonster: attackStrenght = shootingMonster.attackStrenght
-	else: attackStrenght = 40
 	var time = 2
 	if !shootingMonster: time = 4
 	yield(get_tree().create_timer(time), "timeout")

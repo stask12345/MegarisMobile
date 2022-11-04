@@ -112,6 +112,7 @@ func _on_TouchScreenButton_released():
 		if questProgress < rewards.size(): playerStats.crystals += rewards[questProgress]
 		get_node("ChestAnimationWhite/AnimationPlayer").play("idle")
 		get_node("ChestAnimationWhite1/AnimationPlayer").play("idle")
+		$"../../../MusicPlayer".playSkill()
 		questProgress += 1
 		calculateQuest()
 		get_node("/root/MainScene").saveData()

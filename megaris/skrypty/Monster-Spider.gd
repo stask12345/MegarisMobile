@@ -9,7 +9,7 @@ var shooting = false
 func _ready():
 	minCoins = 2
 	maxCoins = 5
-	attackStrenght = 25
+	attackStrenght = 35
 	hp = 80
 	monsterName = "Cave Spider"
 
@@ -96,6 +96,7 @@ func shootBullets():
 	var height = position.y - 20
 	var width = position.x
 	b1.shootingMonster = duplicate()
+	b1.attackStrenght = attackStrenght
 	if goingRight: b1.scale.x = 1
 	else: b1.scale.x = -1
 	
