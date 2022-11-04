@@ -1,4 +1,4 @@
-[gd_scene load_steps=312 format=2]
+[gd_scene load_steps=311 format=2]
 
 [ext_resource path="res://grafika/UI/joystick.png" type="Texture" id=1]
 [ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=2]
@@ -193,7 +193,6 @@
 [ext_resource path="res://skrypty/Detector4.gd" type="Script" id=191]
 [ext_resource path="res://skrypty/Detector5.gd" type="Script" id=192]
 [ext_resource path="res://grafika/UI/tytul.png" type="Texture" id=193]
-[ext_resource path="res://instances/Monsters/Monster-Worm2.tscn" type="PackedScene" id=194]
 [ext_resource path="res://grafika/UI/menu-music2.png" type="Texture" id=195]
 [ext_resource path="res://grafika/UI/menu-music3.png" type="Texture" id=196]
 [ext_resource path="res://grafika/UI/menu-music1.png" type="Texture" id=197]
@@ -6718,9 +6717,6 @@ volume_db = 4.0
 
 [node name="SoundEffectSummon" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource( 171 )
-
-[node name="Monster-Worm2" parent="." instance=ExtResource( 194 )]
-position = Vector2( -674, 811 )
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_MainScene_child_exiting_tree"]
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_Area2D_area_entered"]
