@@ -49,6 +49,8 @@ func musicSettings():
 		get_node("/root/MainScene/Player/SoundEffectOuch").stream_paused = true
 		get_node("/root/MainScene/CanvasLayer/Control4/AnvilMenu/SoundEffectAnvil").stream_paused = true
 		get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu/SoundEffectShop").stream_paused = true
+		get_node("/root/MainScene/CanvasLayer/Control5/SoundEffectEqSwitch").stream_paused = true
+		get_node("/root/MainScene/CanvasLayer/Control5/SoundEffectEqPut").stream_paused = true
 	
 	if sound:
 		get_node("/root/MainScene/MusicPlayer/SoundEffectTeleportation").stream_paused = false
@@ -77,6 +79,8 @@ func musicSettings():
 		get_node("/root/MainScene/Player/SoundEffectOuch").stream_paused = false
 		get_node("/root/MainScene/CanvasLayer/Control4/AnvilMenu/SoundEffectAnvil").stream_paused = false
 		get_node("/root/MainScene/CanvasLayer/Control4/ShopMenu/SoundEffectShop").stream_paused = false
+		get_node("/root/MainScene/CanvasLayer/Control5/SoundEffectEqSwitch").stream_paused = false
+		get_node("/root/MainScene/CanvasLayer/Control5/SoundEffectEqPut").stream_paused = false
 
 func setMenu():
 	if music:
@@ -131,6 +135,3 @@ func save():
 		}
 	return node_data
 
-
-func _on_ButtonKill_pressed():
-	get_node("/root/MainScene/CanvasLayer/Control3/Hp").hp = 0

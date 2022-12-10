@@ -20,6 +20,7 @@ func showDeathScreen():
 	get_node("/root/MainScene/EffectGenerator").duringBossFight = false
 	get_node("/root/MainScene/EffectGenerator").duringRewards = false
 	get_node("/root/MainScene/EffectGenerator").duringCastle = false
+	get_node("/root/MainScene/EffectGenerator").winnedLastFight = false
 	visible = true
 	var monster = monsterKiller
 	if monster is monsterClass:

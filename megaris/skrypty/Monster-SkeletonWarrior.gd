@@ -115,7 +115,8 @@ func waitForShoot():
 	shoot()
 
 func shoot():
-	$SoundEffectCharge.play()
+	var musicPlayer = get_node("/root/MainScene/CanvasLayer/Control4/GameMenu")
+	if musicPlayer.sound: $SoundEffectCharge.play()
 	shooting = true
 	indestructable = true
 	$Monster1.self_modulate = Color.blue

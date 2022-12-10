@@ -4,6 +4,7 @@ var labelToGenerate = preload("res://instances/damageLabel.tscn")
 var atCastle = ""
 var tutorialComplete = false
 var duringBossFight = false
+var winnedLastFight = false
 var duringRewards = false
 var duringCastle = false
 var loadSave = false
@@ -27,6 +28,7 @@ func _ready():
 			$AnimationPlayer.advance(7)
 		if !loadSave:
 			duringBossFight = false
+			get_node("/root/MainScene/EffectGenerator").winnedLastFight = false
 			duringRewards = false
 		loadSave = true
 	else:
@@ -108,16 +110,18 @@ func getPlayerToCastle():
 	get_node("/root/MainScene/GeneratedTerrain").queue_free()
 	get_node("/root/MainScene/Terrain").queue_free()
 	if get_node("/root/MainScene/Floor/ItemMarket").bought: get_node("/root/MainScene/Floor/ItemMarket/Market").clearTables()
+	player.global_position = Vector2(-120,906)
+	rewardRoom.queue_free()
+	get_node("/root/MainScene/MusicPlayer").playDeflautTheme()
+	duringCastle = true
+
+func getPlayerToCastleEarly(): #funckcja wywoływana przed getPlayerToCastle() #Dla zapisu
 	var castle = load("res://instances/Castle.tscn").instance()
 	var monsters = get_children()
 	for m in monsters:
 		if m.name != "AnimationPlayer":
 			m.queue_free()
 	get_node("/root/MainScene").add_child(castle)
-	player.global_position = Vector2(-120,906)
-	rewardRoom.queue_free()
-	get_node("/root/MainScene/MusicPlayer").playDeflautTheme()
-	duringCastle = true
 
 func getPlayerToCastleLoad():
 	atCastle = "castle"
@@ -153,6 +157,18 @@ func enterBossArea():
 	duringBossFight = true
 	get_node("/root/MainScene").saveData()
 
+func fixBossView():
+	var slimeToKill = get_node("/root/MainScene/Terrain/Elements/BossRoom/Monster-Slime")
+	if player.global_position.x - slimeToKill.global_position.x > 0:
+		player.get_node("Player").scale.x = -1
+	else: player.get_node("Player").scale.x = 1
+
+func fixBossViewCastle():
+	var bossPoint = get_node("/root/MainScene/Castle/Terrain/BossRoom/Boss-room-trone")
+	if player.global_position.x - bossPoint.global_position.x > 0:
+		player.get_node("Player").scale.x = -1
+	else: player.get_node("Player").scale.x = 1
+
 func enterBossAreaCastle():
 	get_node("/root/MainScene/Castle/Terrain/BossRoom/Area2DBoss").queue_free()
 	player.trapped = true
@@ -183,8 +199,6 @@ func spawBossCastle():
 	add_child(boss2)
 
 func changeBossLabel():
-	duringBossFight = false
-	duringRewards = true
 	UIBoss.get_child(2).text = " Boss defeated!"
 
 func changeBossLabelCastle():
@@ -209,6 +223,7 @@ func save():
 		"loadSave": loadSave,
 		"tutorialComplete": tutorialComplete,
 		"duringBossFight": duringBossFight,
+		"winnedLastFight": winnedLastFight,
 		"duringRewards": duringRewards,
 		"duringCastle": duringCastle,
 		"nodePath": get_path()

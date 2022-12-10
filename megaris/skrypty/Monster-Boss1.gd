@@ -105,6 +105,8 @@ func destroyMonster():
 		playerStats.slayedFirstBoss = 1
 		bossHp.get_child(0).visible = false
 		bossHp.get_child(1).visible = false
+		get_node("/root/MainScene/EffectGenerator").duringBossFight = false
+		get_node("/root/MainScene/EffectGenerator").duringRewards = true
 		get_node("/root/MainScene/EffectGenerator/AnimationPlayer").play("teleportToCastle")
 
 func shootBullets():

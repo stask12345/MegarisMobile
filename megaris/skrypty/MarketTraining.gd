@@ -24,7 +24,7 @@ func placeWeponSkills():
 		itemToAdd = preload("res://instances/Skills/SkillW5.tscn").instance()
 	if levelOfWeponSkill == 5:
 		itemToAdd = preload("res://instances/Skills/SkillW6.tscn").instance()
-		$SkillTable/Area2D/CollisionShape2D.disabled = true
+		$SkillTable/Area2D/CollisionShape2D.set_deferred("disabled",true)
 		$SkillTable/Label.text = ""
 		$SkillTable/Label/Crystals2.visible = false
 	
@@ -46,7 +46,7 @@ func placeHpSkills():
 		itemToAdd = preload("res://instances/Skills/SkillH5.tscn").instance()
 	if levelOfHpSkill == 5:
 		itemToAdd = preload("res://instances/Skills/SkillH6.tscn").instance()
-		$SkillTable2/Area2D/CollisionShape2D.disabled = true
+		$SkillTable2/Area2D/CollisionShape2D.set_deferred("disabled",true)
 		$SkillTable2/Label.text = ""
 		$SkillTable2/Label/Crystals2.visible = false
 	

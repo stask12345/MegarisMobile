@@ -32,8 +32,9 @@ func ChangeStartingItems():
 	
 	if playerStats.levelOfItem == 2 and !potionTaken:
 		var itemToAdd = healingPotion3.instance()
-		if get_node("startingChest").get_child_count() > 1: get_node("startingChest").get_child(1).queue_free()
-		get_node("startingChest").add_child(itemToAdd)
+		if get_node("startingChest").get_child_count() > 2: 
+			get_node("startingChest").get_child(2).queue_free()
+			get_node("startingChest").add_child(itemToAdd)
 		itemToAdd.visible = false
 	
 	if swordTaken:

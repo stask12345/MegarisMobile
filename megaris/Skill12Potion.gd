@@ -6,7 +6,7 @@ func _ready():
 	costOfSkill = 20
 
 func applyEffect():
-	playerStats.levelOfItem += 1
+	playerStats.levelOfItem = 1
 
 func buy():
 	applyEffect()

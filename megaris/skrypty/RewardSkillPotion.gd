@@ -24,4 +24,7 @@ func buy(): #Reward Skille na razie nie mają ustawianego bought, bo nie ma ich 
 		get_node("/root/MainScene/Player/Area2D").invisible = false
 		effectGenerator.get_child(0).stop()
 		effectGenerator.get_child(0).play("teleportFromHere")
+		effectGenerator.atCastle = "rewardRoom"
+		effectGenerator.duringCastle = true
+		effectGenerator.getPlayerToCastleEarly()
 		queue_free() #tylko dla reward skilly

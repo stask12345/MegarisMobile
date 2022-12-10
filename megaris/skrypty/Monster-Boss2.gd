@@ -182,6 +182,7 @@ func bossDeath():
 
 func finalBossDefetedLabel():
 	get_node("/root/MainScene/EffectGenerator").finalBossDefeted()
+	get_node("/root/MainScene/EffectGenerator").winnedLastFight = true
 
 func playRumble():
 	get_node("/root/MainScene/MusicPlayer").playRumble()

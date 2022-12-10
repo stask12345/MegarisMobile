@@ -2,7 +2,6 @@ extends Control
 
 var addedCash = 0 #Dla pokazywania statystyk
 var gold = 0
-var totalCollected : int = 0
 var crystals = 0
 var levelOfArmor = 0
 var armorIncrease = 0
@@ -13,6 +12,7 @@ var potionDuration = 0
 var spawnMoreFountains = 0
 var bonusCoins = 0
 var bulletRangeImprovement = 0
+var totalCollected : int = 0
 var levelOfWepon = 0
 var levelOfItem = 0
 var crystalBonus = 0
@@ -104,9 +104,9 @@ func saveCurrent():
 	var node_data = {
 		"type": "normal",
 		"gold": gold,
+		"totalCollected": totalCollected,
 		"levelOfArmor": levelOfArmor,
 		"killedMonster": killedMonster,
-		"totalCollected": totalCollected,
 		"nodePath": get_path()
 	}
 	return node_data

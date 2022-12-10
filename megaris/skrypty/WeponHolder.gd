@@ -11,6 +11,7 @@ func equipWepon():
 	var weponToEquip = get_child(0)
 	playerHand.texture = weponToEquip.texture
 	playerHand.self_modulate.a = 1
+	if $"../AnvilMenu".visible: $"../AnvilMenu".showArmory()
 
 func get_wepon_in_right_place():
 	var weponToEquip = get_child(0)

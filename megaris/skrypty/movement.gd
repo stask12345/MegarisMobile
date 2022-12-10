@@ -140,10 +140,19 @@ func changeColor(color, instant=false):
 		if color == Color.red: $AnimationPlayerColor.play("colorRed")
 
 func saveCurrent():
-	var node_data = {
-		"type": "player",
-		"pos_x": position.x,
-		"pos_y": position.y,
-		"nodePath": get_path()
-	}
+	var node_data
+	if get_node("/root/MainScene/EffectGenerator").atCastle != "rewardRoom":
+		node_data = {
+			"type": "player",
+			"pos_x": position.x,
+			"pos_y": position.y,
+			"nodePath": get_path()
+		}
+	else: #Po podniesieniu skilla, gdy castle jeszcze nie załadowany
+		node_data = {
+			"type": "player",
+			"pos_x": -122,
+			"pos_y": 904,
+			"nodePath": get_path()
+		}
 	return node_data

@@ -18,9 +18,9 @@ func calculateSkillModifications():
 	
 	skillLabel.text = ""
 	if trainingCamp.levelOfWeponSkill != 0:
-		skillLabel.text = skillLabel.text + "- " + "Max Attack +" + String(trainingCamp.levelOfWeponSkill * 2)
+		skillLabel.text = skillLabel.text + "- " + "Max Attack +" + String(trainingCamp.levelOfWeponSkill * 4) + "%"
 	if trainingCamp.levelOfHpSkill != 0:
-		skillLabel.text = skillLabel.text + "\n- " + "Max Hp +" + String(trainingCamp.levelOfHpSkill)
+		skillLabel.text = skillLabel.text + "\n- " + "Max Hp +" + String(trainingCamp.levelOfHpSkill*10)
 	if playerStats.attackSpeedBonus != 1:
 		skillLabel.text = skillLabel.text + "\n- " + "Attack Speed +" + String((1 - playerStats.attackSpeedBonus)*100) + "%"
 	if playerStats.potionDuration != 0:
@@ -55,9 +55,9 @@ func calculateQuest():
 		current = playerStats.slimesSlayed
 		goal = 250
 	if questProgress == 1:
-		$QuestName.text = "Possess 300 Gold Coins!"
+		$QuestName.text = "Possess 275 Gold At Once!"
 		current = playerStats.maxGoldAcquired
-		goal = 300
+		goal = 275
 	if questProgress == 2:
 		$QuestName.text = "Kill Slime King!"
 		current = playerStats.slayedFirstBoss
@@ -99,7 +99,7 @@ func calculateQuest():
 		$Claim/AnimationPlayer.play("idle")
 		canProgress = true
 	else:
-		$Reward.visible = true
+		if questProgress != 6: $Reward.visible = true
 		$Claim.visible = false
 		$Claim/AnimationPlayer.stop()
 		canProgress = false

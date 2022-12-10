@@ -115,7 +115,8 @@ func shoot():
 
 func shootBullets():
 	get_node("/root/MainScene/Player/AnimationPlayerCamera").play("CameraShakingShort")
-	$SoundEffectGolem.play()
+	var musicPlayer = get_node("/root/MainScene/CanvasLayer/Control4/GameMenu")
+	if musicPlayer.sound: $SoundEffectGolem.play()
 	
 	var b1 = attackBolt.instance()
 	var b2 = attackBolt.instance()

@@ -7,6 +7,7 @@ func showWinScreen():
 	get_node("/root/MainScene/EffectGenerator").duringBossFight = false
 	get_node("/root/MainScene/EffectGenerator").duringRewards = false
 	get_node("/root/MainScene/EffectGenerator").duringCastle = false
+	get_node("/root/MainScene/EffectGenerator").winnedLastFight = false
 	get_node("/root/MainScene/EffectGenerator").loadSave = false
 	$YouWon/AnimationPlayer.play("idle")
 	$Crystals/CrystalCount.text = String(250)

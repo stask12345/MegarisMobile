@@ -221,6 +221,8 @@ func makeUIVisible():
 	$Control3.visible = true
 	$Control4.visible = true
 	$Control5.visible = true
+	$Control/Joystick/TouchScreenButton.position = Vector2(-26,-26)
+	$Control2/JoystickAttack/TouchScreenButton.position = Vector2(-26,-26)
 
 func makeUIInVisible():
 	$Control.visible = false
@@ -228,8 +230,8 @@ func makeUIInVisible():
 	$Control3.visible = false
 	$Control4.visible = false
 	$Control5.visible = false
-	get_node("Control/Joystick/TouchScreenButton").position = Vector2(-27.333,-28)
-	get_node("Control2/JoystickAttack/TouchScreenButton").position = Vector2(-27.333,-28)
+	$Control/Joystick/TouchScreenButton.position = Vector2(-26,-26)
+	$Control2/JoystickAttack/TouchScreenButton.position = Vector2(-26,-26)
 
 
 func _on_SlotDeleteButton_released():

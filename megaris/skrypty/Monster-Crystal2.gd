@@ -16,6 +16,7 @@ func _ready():
 	monsterName = "Magical Crystal"
 	indestructable = true
 	bossMinion = true
+	isBossMonster = true
 
 func _physics_process(delta):
 	if global_position.x - player.global_position.x >= 0:

@@ -79,6 +79,17 @@ func loadDataCurrent():
 			if get_node("/root/MainScene/EffectGenerator").duringBossFight:
 				get_node("/root/MainScene/Player").position = Vector2(-658, -3266)
 				get_node("/root/MainScene/EffectGenerator").duringBossFight = false
+				if get_node("/root/MainScene/EffectGenerator").winnedLastFight:
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/Area2DBoss/CollisionShape2D").disabled = true
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/Area2DBoss").monitoring = false
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/Area2DBoss").monitorable = false
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/P1").closeExit()
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/P2").closeExit()
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/Ladders/LadderLong").visible = true
+					get_node("/root/MainScene/Castle/Terrain/BossRoom/Ladders/LadderLong/Area2D/CollisionShape2D").disabled = false
+					get_node("/root/MainScene/CanvasModulate").color = Color.white
+					get_node("/root/MainScene/Player/Light2D").energy = 0
+					get_node("/root/MainScene/Player").position = Vector2(0, -3266)
 				saveData()
 			else:
 				if get_node("/root/MainScene/EffectGenerator").duringRewards:

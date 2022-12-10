@@ -92,7 +92,8 @@ func destroyMonster():
 
 
 func shootBullets():
-	$SoundEffectSummon.play()
+	var musicPlayer = get_node("/root/MainScene/CanvasLayer/Control4/GameMenu")
+	if musicPlayer.sound: $SoundEffectSummon.play()
 	var monsterType = randi()%3
 	var summonedMonster
 	if monsterType == 0: summonedMonster = bat.instance()
