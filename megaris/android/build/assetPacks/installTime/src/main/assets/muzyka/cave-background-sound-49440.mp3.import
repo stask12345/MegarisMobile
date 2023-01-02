@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cave-background-sound-49440.mp3-33180a7bda418adaf13c3f4920793656.mp3str"
+
+[deps]
+
+source_file="res://muzyka/cave-background-sound-49440.mp3"
+dest_files=[ "res://.import/cave-background-sound-49440.mp3-33180a7bda418adaf13c3f4920793656.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

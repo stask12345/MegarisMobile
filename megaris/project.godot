@@ -88,7 +88,7 @@ config={
 "rewarded": {
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-3940256099942544/5224354917"
+"standard": "ca-app-pub-7058687167809239/5622337706"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/1712485313"

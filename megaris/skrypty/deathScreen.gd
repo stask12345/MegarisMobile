@@ -1,6 +1,8 @@
 extends Control
 
 var monsterKiller
+var adCrystals
+var crystals
 onready var player = get_node("/root/MainScene/Player")
 onready var playerStats = get_node("/root/MainScene/CanvasLayer/Control3")
 onready var system = get_node("/root/MainScene")
@@ -17,10 +19,6 @@ func changeKillerMonster(monster):
 		else: monsterKiller = preload("res://instances/Monsters/Monster-Boss2.tscn").instance()
 
 func showDeathScreen():
-	get_node("/root/MainScene/EffectGenerator").duringBossFight = false
-	get_node("/root/MainScene/EffectGenerator").duringRewards = false
-	get_node("/root/MainScene/EffectGenerator").duringCastle = false
-	get_node("/root/MainScene/EffectGenerator").winnedLastFight = false
 	visible = true
 	var monster = monsterKiller
 	if monster is monsterClass:
@@ -43,12 +41,17 @@ func showDeathScreen():
 	$MonsterName.text = monster.monsterName
 	$Reach.text += "\n" + String(abs(round((player.position.y - 805)/320))) + "th Floor"
 	$Crystals/CrystalCount.text = String(playerStats.totalCollected / (10 - playerStats.crystalBonus))
-	playerStats.crystals += (playerStats.totalCollected / (10 - playerStats.crystalBonus))
-	get_node("/root/MainScene/EffectGenerator").loadSave = false
-	system.saveData()
+	crystals = playerStats.totalCollected / (10 - playerStats.crystalBonus)
+	$Crystals/Tv/FreeHp.text = "+"+String(calculateAdCrystals(playerStats.totalCollected / (10 - playerStats.crystalBonus)))
+	adCrystals = calculateAdCrystals(playerStats.totalCollected / (10 - playerStats.crystalBonus))
 	$KillCount.text += "\n" + String(playerStats.killedMonster) + " Monsters"
 	$AnimationPlayer.play("deathAnimation")
 
+func calculateAdCrystals(number):
+	var guaranteed = 5
+	if number > 10: guaranteed = 10
+	var earned = round(number/3)
+	return guaranteed + earned
 
 func _on_Button_pressed():
 	get_tree().quit()

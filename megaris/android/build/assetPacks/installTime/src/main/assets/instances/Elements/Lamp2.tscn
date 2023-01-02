@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://grafika/UI/joystick_1.png" type="Texture" id=1]
+[ext_resource path="res://grafika/worldElements/lamp2.png" type="Texture" id=2]
+
+[node name="Lamp2" type="Sprite" groups=["saveGroupTerrain"]]
+position = Vector2( 1, 0 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="Joystick1" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.890196, 0, 0.117647 )
+position = Vector2( 0, 28 )
+texture = ExtResource( 1 )

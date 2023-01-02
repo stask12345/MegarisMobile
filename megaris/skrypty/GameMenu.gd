@@ -124,7 +124,7 @@ func _on_ButtonSound_pressed():
 
 
 func _on_ButtonCredits_pressed():
-	pass # Replace with function body.
+	$credits.visible = true
 
 func save():
 	var node_data = {
@@ -135,3 +135,11 @@ func save():
 		}
 	return node_data
 
+
+
+func _on_TouchScreenButton_pressed():
+	OS.shell_open("https://play.google.com/store/apps/details?id=org.godotengine.megaris")
+
+
+func _on_TouchScreenButtonCredits_pressed():
+	$credits.visible = false

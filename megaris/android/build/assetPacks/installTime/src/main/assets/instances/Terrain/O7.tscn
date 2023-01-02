@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grafika/terrain/o7.png" type="Texture" id=1]
+
+[node name="O7" type="Sprite" groups=["saveGroupTerrain"]]
+modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
+self_modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+position = Vector2( -898, 492.845 )
+z_index = -1
+texture = ExtResource( 1 )

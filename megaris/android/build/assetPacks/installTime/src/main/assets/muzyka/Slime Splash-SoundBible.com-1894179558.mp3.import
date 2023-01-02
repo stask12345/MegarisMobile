@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Slime Splash-SoundBible.com-1894179558.mp3-111c19e2994e7a4431197a7527724532.mp3str"
+
+[deps]
+
+source_file="res://muzyka/Slime Splash-SoundBible.com-1894179558.mp3"
+dest_files=[ "res://.import/Slime Splash-SoundBible.com-1894179558.mp3-111c19e2994e7a4431197a7527724532.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

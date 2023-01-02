@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/075747_inception-horn-victory-82997.mp3-9d5666dbce1c79121a8c0e895beba5a3.mp3str"
+
+[deps]
+
+source_file="res://muzyka/075747_inception-horn-victory-82997.mp3"
+dest_files=[ "res://.import/075747_inception-horn-victory-82997.mp3-9d5666dbce1c79121a8c0e895beba5a3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

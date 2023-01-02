@@ -16,6 +16,7 @@ func _ready():
 		$Market.visible = true;
 		$BuildSite.visible = false;
 		if playerStats.slayedFirstBoss: $Market/Statue1.visible = true
+		if playerStats.slayedSecondBoss: $Market/Statue2.visible = true
 		get_node("Market/Area2D/CollisionShape2D").disabled = false
 		get_node("BuildSite/Area2D/CollisionShape2D").disabled = true
 	

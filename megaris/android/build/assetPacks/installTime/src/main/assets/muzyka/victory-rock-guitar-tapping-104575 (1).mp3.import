@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/victory-rock-guitar-tapping-104575 (1).mp3-1511cf13fd18360720590851a65e8cd7.mp3str"
+
+[deps]
+
+source_file="res://muzyka/victory-rock-guitar-tapping-104575 (1).mp3"
+dest_files=[ "res://.import/victory-rock-guitar-tapping-104575 (1).mp3-1511cf13fd18360720590851a65e8cd7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

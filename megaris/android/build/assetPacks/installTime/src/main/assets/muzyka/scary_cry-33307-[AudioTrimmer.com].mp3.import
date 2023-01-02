@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scary_cry-33307-[AudioTrimmer.com].mp3-d8736bafdd68106ec2e60e18c42032c0.mp3str"
+
+[deps]
+
+source_file="res://muzyka/scary_cry-33307-[AudioTrimmer.com].mp3"
+dest_files=[ "res://.import/scary_cry-33307-[AudioTrimmer.com].mp3-d8736bafdd68106ec2e60e18c42032c0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

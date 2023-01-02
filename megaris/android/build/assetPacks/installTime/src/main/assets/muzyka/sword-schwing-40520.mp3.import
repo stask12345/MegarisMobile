@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sword-schwing-40520.mp3-0ea8c512de0be6a220d0f0e98e0b7a87.mp3str"
+
+[deps]
+
+source_file="res://muzyka/sword-schwing-40520.mp3"
+dest_files=[ "res://.import/sword-schwing-40520.mp3-0ea8c512de0be6a220d0f0e98e0b7a87.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

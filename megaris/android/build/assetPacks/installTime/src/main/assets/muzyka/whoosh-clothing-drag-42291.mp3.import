@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/whoosh-clothing-drag-42291.mp3-45065bf1024fc87247d8273939cdbb87.mp3str"
+
+[deps]
+
+source_file="res://muzyka/whoosh-clothing-drag-42291.mp3"
+dest_files=[ "res://.import/whoosh-clothing-drag-42291.mp3-45065bf1024fc87247d8273939cdbb87.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

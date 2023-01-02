@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/jingle-intro-theme-outro-rhodes-piano-15771.mp3-8344288c2e5e5069c2eb52681d9f2791.mp3str"
+
+[deps]
+
+source_file="res://muzyka/jingle-intro-theme-outro-rhodes-piano-15771.mp3"
+dest_files=[ "res://.import/jingle-intro-theme-outro-rhodes-piano-15771.mp3-8344288c2e5e5069c2eb52681d9f2791.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

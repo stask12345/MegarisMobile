@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/9mm Glock 17-SoundBible.com-1873916083.mp3-daddaf3d239aaff97d026e8fd380a5e1.mp3str"
+
+[deps]
+
+source_file="res://muzyka/9mm Glock 17-SoundBible.com-1873916083.mp3"
+dest_files=[ "res://.import/9mm Glock 17-SoundBible.com-1873916083.mp3-daddaf3d239aaff97d026e8fd380a5e1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

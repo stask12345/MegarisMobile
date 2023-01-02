@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grafika/terrain/castleBaner3.png" type="Texture" id=1]
+
+[node name="Baner3" type="Sprite" groups=["saveGroupTerrain"]]
+position = Vector2( 7, 1488 )
+texture = ExtResource( 1 )

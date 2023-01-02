@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grafika/terrain/os10.png" type="Texture" id=1]
+
+[node name="Os10" type="Sprite" groups=["saveGroupTerrain"]]
+self_modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
+position = Vector2( 194, 1629 )
+z_index = -2
+texture = ExtResource( 1 )

@@ -13,7 +13,7 @@ func shoot():
 		b.global_position = global_position
 		b.look_at(monster.global_position)
 	
-	$Timer.start(0.35)
+	$Timer.start(0.55)
 	yield($Timer,"timeout")
 	shoot()
 
@@ -26,6 +26,12 @@ func _on_Area2D_area_exited(area):
 	if "monster" in area.name:
 		if area.get_parent() == null and monster == null:
 			monster = null
+			scanMonsters()
 			return
 		if area.get_parent() == monster: 
 			monster = null
+			scanMonsters()
+
+func scanMonsters():
+	$Area2D/CollisionShape2D.set_deferred("disabled",true)
+	$Area2D/CollisionShape2D.set_deferred("disabled",false)

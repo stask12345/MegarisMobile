@@ -8,6 +8,9 @@ func _process(_delta):
 			if get_parent().scale.x == 1: move_and_slide(Vector2(550,0).rotated(get_parent().rotation))
 			else: move_and_slide(Vector2(550,0).rotated(get_parent().rotation-135))
 		if $Pocisk.self_modulate.a > 0: $Pocisk.self_modulate.a = $Pocisk.self_modulate.a - 0.04
+	if destroyed:
+		$Pocisk.self_modulate.a = 1
+		$AnimationPlayer.play("destroyAnimation")
 
 
 func _on_Area2D_area_entered(area): #kontakt z mobkiem Area_attack
@@ -16,3 +19,5 @@ func _on_Area2D_area_entered(area): #kontakt z mobkiem Area_attack
 		if !monster.hpDelay:
 			attackMonster(monster)
 
+func _on_Area2D_terrain_body_entered(_body): #kontakt z ziemią Area_terrain
+	destroyed = true

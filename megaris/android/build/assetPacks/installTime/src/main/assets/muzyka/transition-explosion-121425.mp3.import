@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/transition-explosion-121425.mp3-421116a2b88c43b22388ae9d875cc412.mp3str"
+
+[deps]
+
+source_file="res://muzyka/transition-explosion-121425.mp3"
+dest_files=[ "res://.import/transition-explosion-121425.mp3-421116a2b88c43b22388ae9d875cc412.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

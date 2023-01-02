@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/breeze-of-blood-122253.mp3-db99f6c27f86083887e08b009eb41b70.mp3str"
+
+[deps]
+
+source_file="res://muzyka/breeze-of-blood-122253.mp3"
+dest_files=[ "res://.import/breeze-of-blood-122253.mp3-db99f6c27f86083887e08b009eb41b70.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

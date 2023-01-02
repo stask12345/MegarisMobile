@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/clothes-drop-2-40202.mp3-aa933eb25f9f0c4598340b38770d9b11.mp3str"
+
+[deps]
+
+source_file="res://muzyka/clothes-drop-2-40202.mp3"
+dest_files=[ "res://.import/clothes-drop-2-40202.mp3-aa933eb25f9f0c4598340b38770d9b11.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

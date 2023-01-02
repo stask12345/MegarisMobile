@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bing1-91919.mp3-cf73d5e225d914c731b1c332f0224f02.mp3str"
+
+[deps]
+
+source_file="res://muzyka/bing1-91919.mp3"
+dest_files=[ "res://.import/bing1-91919.mp3-cf73d5e225d914c731b1c332f0224f02.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

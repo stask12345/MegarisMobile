@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://skrypty/arrowBullet.gd" type="Script" id=1]
+[ext_resource path="res://grafika/itemy/arrow1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.5, 3 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14.5, 1 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+
+[sub_resource type="Animation" id=6]
+resource_name = "destroyAnimation"
+length = 0.2
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroyAfterAnimation"
+} ]
+}
+
+[node name="BulletArrow" type="KinematicBody2D"]
+z_index = 2
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Pocisk" type="Sprite" parent="."]
+position = Vector2( 12, -1 )
+texture = ExtResource( 2 )
+
+[node name="Area2D_attack" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_attack"]
+position = Vector2( 14.5, -1 )
+shape = SubResource( 1 )
+
+[node name="Area2D_terrain" type="Area2D" parent="."]
+position = Vector2( -34, -22 )
+collision_layer = 16
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_terrain"]
+position = Vector2( 49.5, 21 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/destroyAnimation = SubResource( 6 )
+
+[node name="TimerD" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D_attack" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D_terrain" to="." method="_on_Area2D_terrain_body_entered"]

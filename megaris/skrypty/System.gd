@@ -164,3 +164,10 @@ func _on_MainScene_child_exiting_tree(node):
 #		saveEntireGame()
 	pass
 
+func showRewardAddCrystals():
+	
+	pass
+
+func showRewardAddHp():
+	
+	pass

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cash-register-purchase-87313.mp3-9253cf54605164167d62fe683dde118e.mp3str"
+
+[deps]
+
+source_file="res://muzyka/cash-register-purchase-87313.mp3"
+dest_files=[ "res://.import/cash-register-purchase-87313.mp3-9253cf54605164167d62fe683dde118e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

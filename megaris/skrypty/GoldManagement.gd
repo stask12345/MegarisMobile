@@ -25,6 +25,7 @@ var slayedFirstBoss = 0
 var slayedSecondBoss = 0
 var maxHpAcquired = 0
 var maxGoldAcquired = 0
+var addHpWatched = false
 var playerAnimationWalking1 = preload("res://grafika/animation/player_animation1.png")
 var playerAnimationWalking2 = preload("res://grafika/animation/player_animation2.png")
 var playerAnimationWalking3 = preload("res://grafika/animation/player_animation3.png")
@@ -95,7 +96,7 @@ func save():
 		"slayedSecondBoss": slayedSecondBoss,
 		"maxHpAcquired": maxHpAcquired,
 		"maxGoldAcquired": maxGoldAcquired,
-		"addedCash": addedCash,
+	#	"addedCash": addedCash,
 		"nodePath": get_path()
 	}
 	return node_data
@@ -107,6 +108,7 @@ func saveCurrent():
 		"totalCollected": totalCollected,
 		"levelOfArmor": levelOfArmor,
 		"killedMonster": killedMonster,
+		"addHpWatched": addHpWatched,
 		"nodePath": get_path()
 	}
 	return node_data

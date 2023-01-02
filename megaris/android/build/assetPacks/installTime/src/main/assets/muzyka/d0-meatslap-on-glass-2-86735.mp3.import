@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/d0-meatslap-on-glass-2-86735.mp3-715dfcce6acf712ff489e580a1427033.mp3str"
+
+[deps]
+
+source_file="res://muzyka/d0-meatslap-on-glass-2-86735.mp3"
+dest_files=[ "res://.import/d0-meatslap-on-glass-2-86735.mp3-715dfcce6acf712ff489e580a1427033.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

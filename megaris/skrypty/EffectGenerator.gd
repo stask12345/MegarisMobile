@@ -30,6 +30,7 @@ func _ready():
 			duringBossFight = false
 			get_node("/root/MainScene/EffectGenerator").winnedLastFight = false
 			duringRewards = false
+			UI1.addHpWatched = false
 		loadSave = true
 	else:
 		var tutorial = preload("res://instances/Tutorial.tscn").instance()
